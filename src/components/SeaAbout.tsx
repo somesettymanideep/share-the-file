@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import ArchitecturalScene from "@/components/ArchitecturalScene";
 import { HISTORY_STAGES } from "@/lib/history-sequence";
 import logo from "@/assets/sea-logo.svg";
-import residence from "@/assets/sea-residence.asset.json";
-import process from "@/assets/sea-design-process.asset.json";
 
 const values = [
   { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
@@ -53,7 +51,6 @@ export default function SeaAbout() {
         timeline.to(".history-bottom", { opacity: 0, duration: 0.1 }, HISTORY_STAGES.move.start);
         gsap.from(".founder-visual", { clipPath: "inset(0 0 100% 0)", duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: ".sea-founder", start: "top 75%" } });
         gsap.from(".founder-copy > *", { opacity: 0, y: 35, stagger: 0.1, duration: 0.8, scrollTrigger: { trigger: ".sea-founder", start: "top 65%" } });
-        gsap.to(".founder-process img", { scale: 1.07, ease: "none", scrollTrigger: { trigger: ".sea-founder", start: "top bottom", end: "bottom top", scrub: true } });
         gsap.utils.toArray<HTMLElement>(".sea-value").forEach((item) => {
           gsap.from(item.querySelectorAll("h3, p, .value-number"), { y: 22, opacity: 0, stagger: 0.12, duration: 0.7, scrollTrigger: { trigger: item, start: "top 85%" } });
           const lines = item.querySelectorAll("svg path, svg line, svg rect, svg circle");
@@ -92,7 +89,6 @@ export default function SeaAbout() {
           <span className="sea-eyebrow history-detail">01 / OUR HISTORY</span>
           <h1><span className="history-line"><span>BUILT ON VISION.</span></span><span className="history-line"><span>DRIVEN BY DESIGN.</span></span></h1>
           <p className="history-detail">SEA represents a commitment to architectural innovation, engineering precision, and thoughtful design. Our journey is driven by the ambition to create meaningful spaces through integrated architectural solutions, structural expertise, and advanced building technologies.</p>
-          <figure className="history-detail history-photo"><img src={residence.url} alt="SEA residence with planted balconies and colour-blocked perforated screens" /><figcaption>DESIGN THAT CONNECTS PEOPLE & PLACE <span>SEA / ARCHITECTURE</span></figcaption></figure>
         </div>
         <div className="history-bottom"><span>ARCHITECTURE. ENGINEERING. POSSIBILITY.</span><ArrowDown size={20} /><span>VIJAYAWADA, INDIA</span></div>
       </section>
@@ -104,12 +100,11 @@ export default function SeaAbout() {
         </div>
         <div className="founder-copy">
           <span className="sea-eyebrow">02 / LEADERSHIP & VISION</span>
-          <h2>THE VISION<br />BEHIND OUR<br /><span className="sea-teal">ARCHITECTURE.</span></h2>
+          <h2><span className="founder-heading-line">THE VISION BEHIND</span><span className="founder-heading-line">OUR <span className="sea-teal">ARCHITECTURE.</span></span></h2>
           <div className="founder-name"><h3>P.V. Naresh Kumar</h3><span>FOUNDER & CEO</span></div>
           <p>With a passion for design and a commitment to excellence, P.V. Naresh Kumar leads SEA with a vision to create innovative, sustainable, and people-centric spaces.</p>
           <p>Through an integrated approach to architectural design, structural engineering, and BIM services, SEA aims to transform ideas into meaningful spaces that inspire and endure.</p>
           <Button asChild variant="link" className="sea-journey"><a href="#values">DISCOVER OUR JOURNEY <ArrowUpRight /></a></Button>
-          <figure className="founder-process"><img src={process.url} alt="Architectural model, drawings, and design tools" loading="lazy" /><figcaption>FROM A FIRST IDEA. TO A LASTING IMPACT.</figcaption></figure>
         </div>
       </section>
 
@@ -124,6 +119,9 @@ export default function SeaAbout() {
         <div className="sea-awards-list">{[{ name: "BUSINESS AWARDS", year: "2024" }, { name: "THE INDIA DESIGN AWARDS", year: "2024" }, { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025" }].map((award, i) => <article className="sea-award" key={award.name}><span className="award-index">0{i + 1}</span><div className="award-title-mask"><h3>{award.name}</h3></div><span className="award-year">{award.year}</span><ArrowUpRight aria-hidden="true" /></article>)}</div>
       </section>
     </main>
-    <footer className="sea-footer"><div><span className="sea-eyebrow">A CONVERSATION IS A BEGINNING.</span><a href="mailto:naresh@s4eaindia.com" className="sea-footer-title">LET’S BUILD<br />WHAT’S NEXT. <ArrowUpRight /></a></div><div className="sea-footer-bottom"><Link to="/" aria-label="SEA home"><img src={logo} alt="SEA" /></Link><span>© 2026 SEA — Studio for Eclectic Architecture</span><a href="/studio.html#contact">Contact <ArrowUpRight size={16} /></a></div></footer>
+    <footer className="sea-footer" id="contact">
+      <div className="sea-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
+      <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><a href="/studio.html#projects">Projects</a><a href="/studio.html#services">What We Do</a><a href="#contact">Contact</a></nav></div>
+    </footer>
   </div>;
 }
