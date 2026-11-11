@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Preserve the imported homepage at public/studio.html; build additional content pages with TanStack routes so the original experience stays intact.
+- Scope About page tokens and layout under .sea-about; the imported homepage has its own independent design system.
+- Initialize Three.js only after React mounts, dispose all scene resources on unmount, and keep text usable without WebGL so SSR and low-capability devices remain supported.
+- Keep history stage boundaries in the shared history-sequence module so enlargement, movement, and content reveal remain ordered and testable.

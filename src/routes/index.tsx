@@ -7,6 +7,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Studio for Eclectic Architecture homepage." },
       { property: "og:title", content: "Studio – Architecture" },
       { property: "og:description", content: "Studio for Eclectic Architecture homepage." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   beforeLoad: () => {

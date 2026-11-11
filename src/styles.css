@@ -142,3 +142,171 @@
     color: var(--color-foreground);
   }
 }
+
+/* SEA editorial system, isolated from the original imported homepage. */
+.sea-about {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.19 0.004 180);
+  --primary: oklch(0.47 0.074 203);
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.94 0.009 185);
+  --accent-foreground: var(--foreground);
+  --muted: oklch(0.95 0.003 180);
+  --muted-foreground: oklch(0.48 0.005 180);
+  --border: oklch(0.86 0.006 180);
+  --sea-dark: oklch(0.18 0.015 185);
+  --sea-light: oklch(0.96 0.003 180);
+  --sea-gold: oklch(0.76 0.07 80);
+  --sea-wire: #267c80;
+  --sea-grid: color-mix(in oklab, var(--foreground) 5%, transparent);
+  background: var(--background); color: var(--foreground);
+  font-family: "DM Sans", sans-serif; letter-spacing: 0;
+  overflow: clip;
+}
+.sea-about h1, .sea-about h2, .sea-about h3 { font-family: "Oswald", "Arial Narrow", sans-serif; font-weight: 600; letter-spacing: 0; }
+.sea-about h2 { font-size: 72px; line-height: 1.05; }
+.sea-about p { font-size: 15px; line-height: 1.8; color: var(--muted-foreground); }
+.sea-about a { text-decoration: none; }
+.sea-teal { color: var(--primary); }
+.sea-eyebrow { display: block; font-size: 10px; font-weight: 600; line-height: 1.6; }
+.sea-header { height: 90px; display: flex; align-items: center; gap: 20px; padding: 0 5%; background: var(--background); border-bottom: 1px solid var(--border); position: absolute; top: 0; left: 0; right: 0; z-index: 30; }
+.sea-brand { padding: 0; border-radius: 0; width: 76px; height: 42px; }
+.sea-brand img { width: 76px; height: auto; }
+.sea-header-name { font-size: 8px; line-height: 1.55; border-left: 1px solid var(--border); padding-left: 20px; }
+.sea-desktop-nav { margin-left: auto; display: flex; gap: 16px; }
+.sea-desktop-nav a { font-size: 12px; font-weight: 500; border-radius: 0; }
+.sea-desktop-nav [aria-current] { color: var(--primary); border-bottom: 1px solid var(--primary); }
+.sea-menu-toggle { display: none; }
+.sea-mobile-nav { position: absolute; top: 76px; left: 0; right: 0; background: var(--background); padding: 30px 7%; display: grid; gap: 24px; border-bottom: 1px solid var(--border); }
+.sea-history { position: relative; height: 100svh; min-height: 720px; overflow: hidden; }
+.history-grid { position: absolute; inset: 90px 5% 0; background-image: repeating-linear-gradient(90deg, var(--sea-grid) 0, var(--sea-grid) 1px, transparent 1px, transparent 8.333%); pointer-events: none; }
+.history-logo { position: absolute; width: 150px; top: 47%; left: 50%; transform: translate(-50%, -50%); z-index: 2; }
+.history-geometry { position: absolute; inset: 12% 55% 8% -12%; opacity: 0.22; }
+.sea-scene { width: 100%; height: 100%; }
+.sea-scene canvas { display: block; width: 100%; height: 100%; }
+.history-content { position: absolute; width: 46%; top: 21%; right: 6%; visibility: hidden; }
+.history-content h1 { font-size: 58px; line-height: 1.07; margin: 20px 0 22px; }
+.history-line { display: block; overflow: hidden; }
+.history-line span { display: block; }
+.history-content p { max-width: 490px; font-size: 13px; line-height: 1.8; }
+.history-photo { margin-top: 24px; }
+.history-photo img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: 50% 47%; }
+.history-photo figcaption { display: flex; justify-content: space-between; font-size: 8px; margin-top: 10px; gap: 16px; }
+.history-photo figcaption span { color: var(--muted-foreground); }
+.history-bottom { position: absolute; bottom: 40px; left: 5%; right: 5%; display: flex; justify-content: space-between; align-items: center; font-size: 8px; color: var(--muted-foreground); }
+.sea-founder { display: grid; grid-template-columns: 45% 1fr; gap: 8%; padding: 120px 6%; border-top: 1px solid var(--border); }
+.founder-visual { display: flex; flex-direction: column; min-width: 0; }
+.founder-monogram { background: var(--muted); position: relative; display: flex; flex-direction: column; justify-content: center; padding: 60px 12%; min-height: 560px; overflow: hidden; }
+.founder-monogram > span { font-family: "Oswald", sans-serif; font-size: 172px; font-weight: 500; line-height: 1.05; z-index: 1; }
+.monogram-dot { color: var(--primary); }
+.founder-portrait-lines { position: absolute; inset: 15% -25% -20% 30%; border: 1px solid var(--border); transform: rotate(-25deg); }
+.founder-portrait-lines::after, .founder-portrait-lines::before { content: ""; position: absolute; inset: 30px; border: 1px solid var(--border); }
+.founder-portrait-lines::after { inset: 60px; }
+.founder-signature { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; gap: 12px; }
+.founder-signature > span:first-child { font-family: Georgia, serif; font-size: 21px; font-style: italic; }
+.founder-signature > span:last-child { font-size: 8px; color: var(--muted-foreground); }
+.founder-copy { min-width: 0; }
+.founder-copy h2 { font-size: 58px; margin: 24px 0 30px; }
+.founder-name { border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 22px; }
+.founder-name h3 { font-size: 26px; font-weight: 500; }
+.founder-name span { display: block; font-size: 9px; color: var(--primary); margin-top: 6px; }
+.founder-copy p + p { margin-top: 16px; }
+.sea-journey { font-size: 10px; padding: 0 0 8px; height: auto; border-bottom: 1px solid var(--primary); border-radius: 0; margin-top: 28px; color: var(--primary); }
+.founder-process { margin-top: 40px; overflow: hidden; }
+.founder-process img { width: 100%; height: 160px; object-fit: cover; }
+.founder-process figcaption { font-size: 8px; padding-top: 10px; background: var(--background); position: relative; }
+.sea-values { padding: 90px 6% 110px; background: var(--muted); }
+.sea-section-heading h2 { margin-top: 24px; }
+.sea-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 60px; }
+.sea-value { padding: 20px 36px 10px; border-left: 1px solid var(--border); transition: background 0.3s; }
+.sea-value:first-child { border: 0; padding-left: 0; }
+.sea-value:last-child { padding-right: 0; }
+.sea-value:hover { background: var(--accent); }
+.value-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 36px; }
+.value-number { font-size: 11px; color: var(--muted-foreground); }
+.value-top svg { color: var(--primary); }
+.sea-value h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 16px; }
+.sea-value p { font-size: 13px; max-width: 270px; }
+.sea-awards { background: var(--sea-dark); color: var(--sea-light); padding: 100px 6% 120px; position: relative; overflow: hidden; }
+.sea-awards .sea-eyebrow { color: var(--sea-gold); }
+.award-gold { color: var(--sea-gold); }
+.awards-geometry { position: absolute; top: -70px; right: -100px; width: 55%; height: 500px; opacity: 0.6; }
+.sea-awards .sea-section-heading, .sea-awards-list { position: relative; }
+.sea-awards-list { margin-top: 70px; }
+.sea-award { display: grid; grid-template-columns: 5% 1fr 140px 24px; gap: 24px; align-items: center; padding: 32px 0; border-top: 1px solid color-mix(in oklab, var(--sea-light) 22%, transparent); }
+.sea-award:last-child { border-bottom: 1px solid color-mix(in oklab, var(--sea-light) 22%, transparent); }
+.award-index { font-size: 10px; color: var(--sea-gold); }
+.award-title-mask { overflow: hidden; }
+.sea-award h3 { font-size: 32px; line-height: 1.15; }
+.award-year { font-family: "Oswald", sans-serif; font-size: 52px; font-weight: 500; color: var(--sea-gold); }
+.sea-award > svg { color: var(--sea-gold); }
+.sea-footer { padding: 80px 6% 30px; }
+.sea-footer-title { display: block; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 80px; line-height: 1.05; margin: 24px 0 70px; }
+.sea-footer-title svg { display: inline; width: 60px; height: 60px; color: var(--primary); }
+.sea-footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 10px; color: var(--muted-foreground); }
+.sea-footer-bottom img { width: 62px; }
+.sea-footer-bottom > a:last-child { display: flex; align-items: center; gap: 8px; }
+@media (min-width: 1440px) {
+  .history-content h1 { font-size: 72px; }
+  .history-content p { font-size: 15px; }
+  .history-photo img { height: 250px; }
+  .founder-copy h2 { font-size: 72px; }
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .history-content h1 { font-size: 44px; }
+  .founder-copy h2 { font-size: 43px; }
+  .founder-monogram > span { font-size: 128px; }
+  .founder-monogram { min-height: 490px; }
+  .sea-about h2 { font-size: 60px; }
+  .sea-award h3 { font-size: 26px; }
+}
+@media (max-width: 767px) {
+  .sea-header { height: 76px; padding: 0 7%; gap: 14px; }
+  .sea-header-name { padding-left: 14px; }
+  .sea-desktop-nav { display: none; }
+  .sea-menu-toggle { display: flex; margin-left: auto; }
+  .sea-history { min-height: 740px; }
+  .history-logo { width: 108px; }
+  .history-geometry { inset: 12% 0 25% 0; opacity: 0.13; }
+  .history-content { width: 86%; right: 7%; top: 39%; }
+  .history-content h1 { font-size: 38px; margin: 14px 0; }
+  .history-content p { font-size: 12px; line-height: 1.75; }
+  .history-photo { margin-top: 18px; }
+  .history-photo img { height: 142px; }
+  .history-photo figcaption { font-size: 7px; }
+  .history-photo figcaption span { display: none; }
+  .history-bottom { bottom: 26px; left: 7%; right: 7%; }
+  .history-bottom span { font-size: 7px; max-width: 110px; }
+  .history-bottom span:last-child { text-align: right; }
+  .sea-founder { grid-template-columns: 1fr; padding: 64px 7%; gap: 44px; }
+  .founder-monogram { min-height: 390px; padding: 35px 12%; }
+  .founder-monogram > span { font-size: 125px; }
+  .founder-signature > span:first-child { font-size: 20px; }
+  .sea-about h2, .founder-copy h2 { font-size: 44px; }
+  .sea-values { padding: 64px 7%; }
+  .sea-values-grid { grid-template-columns: 1fr; margin-top: 35px; }
+  .sea-value, .sea-value:first-child, .sea-value:last-child { padding: 32px 0; border-left: 0; border-top: 1px solid var(--border); }
+  .value-top { margin-bottom: 20px; }
+  .sea-value p { max-width: none; }
+  .sea-awards { padding: 64px 7%; }
+  .awards-geometry { width: 100%; right: -90px; opacity: 0.35; }
+  .sea-awards-list { margin-top: 40px; }
+  .sea-award { grid-template-columns: 20px 1fr 70px; gap: 12px; padding: 28px 0; }
+  .sea-award h3 { font-size: 23px; }
+  .award-year { font-size: 34px; text-align: right; }
+  .sea-award > svg { display: none; }
+  .sea-footer { padding: 60px 7% 26px; }
+  .sea-footer-title { font-size: 48px; margin-bottom: 45px; }
+  .sea-footer-title svg { width: 38px; height: 38px; }
+  .sea-footer-bottom { flex-wrap: wrap; font-size: 9px; }
+  .sea-footer-bottom > span { order: 3; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .history-logo { width: 35%; left: 6%; top: 43%; transform: translateY(-50%); }
+  .history-content { visibility: visible; }
+  .history-bottom { display: none; }
+  .sea-about *, .sea-about *::before, .sea-about *::after { transition: none !important; scroll-behavior: auto !important; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 767px) {
+  .history-logo { width: 57%; left: 7%; top: 17%; transform: none; }
+}
