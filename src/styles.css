@@ -161,6 +161,7 @@
   --sea-footer-foreground: oklch(0.968 0.002 180);
   --sea-footer-muted: color-mix(in oklab, var(--sea-footer-foreground) 62%, transparent);
   --sea-footer-border: color-mix(in oklab, var(--sea-footer-foreground) 20%, transparent);
+  --sea-values-background: #eef3f3;
   --sea-wire: #267c80;
   --sea-grid: color-mix(in oklab, var(--foreground) 5%, transparent);
   background: var(--background); color: var(--foreground);
@@ -213,7 +214,7 @@
 .founder-name span { display: block; font-size: 9px; color: var(--primary); margin-top: 6px; }
 .founder-copy p + p { margin-top: 16px; }
 .sea-journey { font-size: 10px; padding: 0 0 8px; height: auto; border-bottom: 1px solid var(--primary); border-radius: 0; margin-top: 28px; color: var(--primary); }
-.sea-values { padding: 90px 6% 110px; background: var(--muted); }
+.sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
 .sea-section-heading h2 { margin-top: 24px; }
 .sea-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 60px; }
 .sea-value { padding: 20px 36px 10px; border-left: 1px solid var(--border); transition: background 0.3s; }
