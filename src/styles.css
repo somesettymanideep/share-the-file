@@ -174,7 +174,8 @@
 .sea-about a { text-decoration: none; }
 .sea-teal { color: var(--primary); }
 .sea-eyebrow { display: block; font-size: 10px; font-weight: 600; line-height: 1.6; }
-.sea-header { height: 90px; display: flex; align-items: center; gap: 20px; padding: 0 5%; background: var(--background); border-bottom: 1px solid var(--border); position: absolute; top: 0; left: 0; right: 0; z-index: 30; }
+.sea-header { height: 90px; display: flex; align-items: center; gap: 20px; padding: 0 5%; background: transparent; border-bottom: 1px solid transparent; position: fixed; top: 0; left: 0; right: 0; z-index: 30; transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+.sea-header.is-scrolled { background: color-mix(in oklab, var(--background) 92%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border); box-shadow: 0 8px 30px -12px color-mix(in oklab, var(--foreground) 22%, transparent); }
 .sea-brand { padding: 0; border-radius: 0; width: 76px; height: 42px; }
 .sea-brand img { width: 76px; height: auto; }
 .sea-header-name { font-size: 8px; line-height: 1.55; border-left: 1px solid var(--border); padding-left: 20px; }

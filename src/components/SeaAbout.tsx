@@ -17,6 +17,13 @@ const values = [
 export default function SeaAbout() {
   const root = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
@@ -67,7 +74,7 @@ export default function SeaAbout() {
   }, []);
 
   return <div className="sea-about" ref={root}>
-    <header className="sea-header">
+    <header className={"sea-header" + (scrolled || menuOpen ? " is-scrolled" : "")}>
       <Button asChild variant="ghost" className="sea-brand"><Link to="/" aria-label="SEA home"><img src={logo} alt="SEA" /></Link></Button>
       <span className="sea-header-name">STUDIO FOR<br />ECLECTIC ARCHITECTURE</span>
       <nav className="sea-desktop-nav" aria-label="Main navigation">
