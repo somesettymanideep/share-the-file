@@ -162,6 +162,7 @@
   --sea-footer-muted: color-mix(in oklab, var(--sea-footer-foreground) 62%, transparent);
   --sea-footer-border: color-mix(in oklab, var(--sea-footer-foreground) 20%, transparent);
   --sea-values-background: #eef3f3;
+  --sea-awards-background: #0a222a;
   --sea-founder-ink: oklch(0.28 0.047 221);
   --sea-founder-surface: oklch(0.97 0.003 220);
   --sea-wire: #267c80;
@@ -259,7 +260,7 @@
 .value-top svg { color: var(--primary); }
 .sea-value h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 16px; }
 .sea-value p { font-size: 13px; max-width: 270px; }
-.sea-awards { background: var(--sea-dark); color: var(--sea-light); padding: 100px 6% 120px; position: relative; overflow: hidden; }
+.sea-awards { background: var(--sea-awards-background); color: var(--sea-light); padding: 100px 6% 120px; position: relative; overflow: hidden; }
 .sea-awards .sea-eyebrow { color: var(--sea-gold); }
 .award-gold { color: var(--sea-gold); }
 .awards-geometry { position: absolute; top: -70px; right: -100px; width: 55%; height: 500px; opacity: 0.6; }
