@@ -215,6 +215,10 @@
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea-scene { width: 100%; height: 100%; }
 .sea-scene canvas { display: block; width: 100%; height: 100%; }
+.sea-about .sea-founder-image-section { position: relative; width: 100%; scroll-margin-top: 90px; }
+.sea-about .sea-founder-image { display: block; width: 100%; height: auto; }
+.sea-about .sea-founder-image-journey { position: absolute; left: 55.7%; top: 83.8%; width: 12.6%; height: 5%; }
+.sea-about .sea-founder-image-journey:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 .sea-founder { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); padding: 64px 6% 0; gap: 4%; min-height: max(740px, 66.667vw); background: var(--sea-founder-surface); color: var(--sea-founder-ink); overflow: hidden; scroll-margin-top: 90px; }
 .founder-artwork { position: absolute; bottom: 0; left: 0; width: 100%; aspect-ratio: 3 / 2; z-index: -1; }
 .founder-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }

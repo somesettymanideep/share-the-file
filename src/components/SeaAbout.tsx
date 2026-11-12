@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Building2, Handshake, Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
 import AboutHero from "@/components/AboutHero";
 import ArchitecturalScene from "@/components/ArchitecturalScene";
 import logoColor from "@/assets/sea-logo-color.png";
-import founderPortrait from "@/assets/sea-founder-portrait.png.asset.json";
-import founderArchitecture from "@/assets/sea-founder-architecture.png.asset.json";
+import founderVision from "@/assets/sea-founder-vision.png.asset.json";
 
 const values = [
   { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
@@ -36,8 +34,6 @@ export default function SeaAbout() {
       const conditions = context.conditions;
       if (!conditions || !root.current || conditions['reduce']) return;
       const scope = gsap.context(() => {
-        gsap.from(".founder-visual", { clipPath: "inset(0 0 100% 0)", duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: ".sea-founder", start: "top 75%" } });
-        gsap.from(".founder-copy > *", { opacity: 0, y: 35, stagger: 0.1, duration: 0.8, scrollTrigger: { trigger: ".sea-founder", start: "top 65%" } });
         gsap.utils.toArray<HTMLElement>(".sea-value").forEach((item) => {
           gsap.from(item.querySelectorAll("h3, p, .value-number"), { y: 22, opacity: 0, stagger: 0.12, duration: 0.7, scrollTrigger: { trigger: item, start: "top 85%" } });
           const lines = item.querySelectorAll("svg path, svg line, svg rect, svg circle");
@@ -76,27 +72,9 @@ export default function SeaAbout() {
     <main>
       <AboutHero />
 
-      <section className="sea-founder" id="founder">
-        <div className="founder-artwork">
-        <img className="founder-background" src={founderArchitecture.url} alt="" aria-hidden="true" loading="lazy" />
-        <div className="founder-visual">
-          <img className="founder-portrait" src={founderPortrait.url} alt="P.V. Naresh Kumar, founder and CEO of SEA" loading="lazy" />
-          <div className="founder-signature"><span>P.V. Naresh Kumar</span><span>FOUNDER & CEO</span></div>
-        </div>
-        </div>
-        <div className="founder-copy">
-          <span className="sea-eyebrow">02 / LEADERSHIP & VISION</span>
-          <h2><span className="founder-heading-line">THE VISION BEHIND</span><span className="founder-heading-line">OUR <span className="sea-teal">ARCHITECTURE.</span></span></h2>
-          <div className="founder-name"><h3>P.V. Naresh Kumar</h3><span>FOUNDER & CEO</span></div>
-          <p>With a passion for design and a commitment to excellence, P.V. Naresh Kumar leads SEA with a vision to create innovative, sustainable, and people-centric spaces.</p>
-          <p>Through an integrated approach to architectural design, structural engineering, and BIM services, SEA aims to transform ideas into meaningful spaces that inspire and endure.</p>
-          <div className="founder-principles">
-            <div><Building2 aria-hidden="true" strokeWidth={1.4} /><span><strong>Innovative</strong>Design Solutions</span></div>
-            <div><Leaf aria-hidden="true" strokeWidth={1.4} /><span><strong>Sustainable</strong>Architecture</span></div>
-            <div><Handshake aria-hidden="true" strokeWidth={1.4} /><span><strong>Long-Term</strong>Partnerships</span></div>
-          </div>
-          <Button asChild className="sea-journey"><a href="#values">DISCOVER OUR JOURNEY <ArrowUpRight /></a></Button>
-        </div>
+      <section className="sea-founder-image-section" id="founder" aria-label="Founder's vision">
+        <img className="sea-founder-image" src={founderVision.url} width={1152} height={768} loading="lazy" alt="The vision behind our architecture. P.V. Naresh Kumar, Founder & CEO. With a passion for design and a commitment to excellence, P.V. Naresh Kumar leads SEA with a vision to create innovative, sustainable, and people-centric spaces that inspire. Innovative Design Solutions. Sustainable Architecture. Long-Term Partnerships." />
+        <a className="sea-founder-image-journey" href="#values" aria-label="Our Journey" />
       </section>
 
       <section className="sea-values" id="values">
