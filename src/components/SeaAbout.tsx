@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
 import FounderSection from "@/components/FounderSection";
-import ArchitecturalScene from "@/components/ArchitecturalScene";
 import Lenis from "lenis";
 import logoColor from "@/assets/sea-logo-color.png";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
@@ -140,7 +139,6 @@ export default function SeaAbout() {
       </section>
     </main>
     <footer className="sea-footer" id="contact">
-      <div className="sea-footer-scene"><ArchitecturalScene /></div>
       <div className="sea-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
       <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><a href="/studio.html#projects">Projects</a><a href="/studio.html#services">What We Do</a><a href="#contact">Contact</a></nav></div>
     </footer>
