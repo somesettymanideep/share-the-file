@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Menu, X, Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import ArchitecturalScene from "@/components/ArchitecturalScene";
 import { HISTORY_STAGES } from "@/lib/history-sequence";
 import logo from "@/assets/sea-logo.svg";
+import logoColor from "@/assets/sea-logo-color.png";
 
 const values = [
   { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
@@ -74,18 +75,24 @@ export default function SeaAbout() {
   }, []);
 
   return <div className="sea-about" ref={root}>
-    <header className={"sea-header" + (scrolled || menuOpen ? " is-scrolled" : "")}>
-      <Button asChild variant="ghost" className="sea-brand"><Link to="/" aria-label="SEA home"><img src={logo} alt="SEA" /></Link></Button>
-      <span className="sea-header-name">STUDIO FOR<br />ECLECTIC ARCHITECTURE</span>
-      <nav className="sea-desktop-nav" aria-label="Main navigation">
-        <Button asChild variant="ghost"><Link to="/">Home</Link></Button>
-        <Button asChild variant="ghost"><Link to="/about" aria-current="page">About</Link></Button>
-        <Button asChild variant="ghost"><a href="/studio.html#projects">Projects</a></Button>
-        <Button asChild variant="ghost"><a href="/studio.html#contact">Let’s talk <ArrowUpRight /></a></Button>
-      </nav>
-      <Button variant="ghost" size="icon" className="sea-menu-toggle" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
-      {menuOpen && <nav className="sea-mobile-nav" aria-label="Mobile navigation"><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link><a href="/studio.html#projects">Projects</a><a href="/studio.html#contact">Let’s talk ↗</a></nav>}
+    <header className={"sea-header" + (scrolled ? " is-scrolled" : "")}>
+      <Link to="/" aria-label="SEA home" className="sea-brand"><img src={logoColor} alt="SEA – Studio for Eclectic Architecture" /></Link>
+      <button type="button" className="sea-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
+        <span className="sea-menu-line sea-menu-line-a" />
+        <span className="sea-menu-line sea-menu-line-b" />
+      </button>
     </header>
+    {menuOpen && (
+      <div className="sea-menu-overlay" role="dialog" aria-label="Menu">
+        <button type="button" className="sea-menu-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>×</button>
+        <nav aria-label="Main navigation">
+          <Link to="/about" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are</Link>
+          <a href="/studio.html#projects">Projects</a>
+          <a href="/studio.html#services">What We Do</a>
+          <a href="/studio.html#contact">Contact</a>
+        </nav>
+      </div>
+    )}
 
     <main>
       <section className="sea-history" aria-label="Our history">
