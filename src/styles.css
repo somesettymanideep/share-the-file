@@ -223,10 +223,10 @@
 .sea-scene { width: 100%; height: 100%; }
 .sea-scene canvas { display: block; width: 100%; height: 100%; }
 .sea-founder { background: var(--sea-founder-bg); scroll-margin-top: 90px; }
-.sea-founder .founder-stage { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; height: 100svh; min-height: 560px; overflow: hidden; container-type: inline-size; }
+.sea-founder .founder-stage { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; aspect-ratio: 3 / 2; overflow: hidden; container-type: inline-size; }
 .sea-founder .founder-art { position: absolute; inset: 0; }
 .sea-founder .founder-plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.sea-founder .founder-portrait { position: absolute; left: 7.5%; bottom: 0; z-index: 1; display: block; height: 96%; width: auto; max-width: 52%; object-fit: contain; object-position: bottom left; }
+.sea-founder .founder-portrait { position: absolute; left: 7.5%; bottom: 0; z-index: 1; display: block; width: 49%; height: auto; }
 .sea-founder .founder-watermark { position: absolute; right: 1.2cqw; bottom: 0.4cqw; z-index: 0; font-family: Georgia, "Times New Roman", serif; font-size: 11.5cqw; line-height: 1; letter-spacing: -0.02em; color: var(--sea-founder-watermark); }
 .sea-founder .founder-copy { position: absolute; left: 52.1cqw; top: 50%; transform: translateY(-50%); z-index: 2; width: 45cqw; text-align: left; }
 .sea-founder .founder-heading { margin: 0; font-family: "Archivo", sans-serif; font-stretch: 85%; font-weight: 800; font-size: 4.1cqw; line-height: 0.93; letter-spacing: -0.015em; text-transform: uppercase; color: var(--sea-founder-navy); }
@@ -276,7 +276,7 @@
 .sea-footer-bottom nav { display: flex; flex-wrap: wrap; gap: 20px; }
 .sea-footer-bottom a:hover { color: var(--sea-footer-foreground); }
 @media (max-width: 899px) {
-  .sea-founder .founder-stage { height: auto; min-height: 0; overflow: visible; }
+  .sea-founder .founder-stage { aspect-ratio: auto; overflow: visible; }
   .sea-founder .founder-art { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
   .sea-founder .founder-copy { position: static; top: auto; transform: none; width: auto; padding: 2.5rem 1.25rem 3rem; background: #fff; }
   .sea-founder .founder-heading { font-size: clamp(1.6rem, 7.4vw, 2.6rem); }
