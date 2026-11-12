@@ -266,7 +266,8 @@
 .sea-awards .sea-eyebrow { color: var(--sea-awards-accent); }
 .award-gold { color: var(--sea-awards-accent); }
 .sea-awards .sea-section-heading, .sea-awards-list { position: relative; }
-.sea-awards .sea-section-heading h2 { margin-top: 0; white-space: nowrap; display: inline-block; padding-bottom: 14px; border-bottom: 3px solid var(--sea-awards-accent); }
+.sea-awards .sea-section-heading { padding-bottom: 22px; border-bottom: 2px solid var(--sea-awards-accent); }
+.sea-awards .sea-section-heading h2 { margin-top: 0; white-space: nowrap; }
 .sea-awards-list { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
 .sea-award { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); }
 .award-card-top { display: flex; justify-content: space-between; align-items: baseline; }
