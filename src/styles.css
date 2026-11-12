@@ -198,26 +198,32 @@
 .sea-menu-overlay a:hover, .sea-menu-overlay a[aria-current] { color: #fff; }
 .sea-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; font-size: 32px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
 .sea-history { --hist-bg: var(--sea-awards-background); --hist-text: var(--sea-awards-ink); --hist-secondary: color-mix(in oklab, var(--sea-awards-ink) 68%, transparent); --hist-line: color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); --hist-accent: var(--sea-awards-accent); background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
-.history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); }
 .history-logo-outline, .history-logo-fill { display: block; width: 100%; height: auto; }
 .history-logo-outline { color: var(--hist-text); }
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
 .history-glow { position: absolute; top: 50%; left: 0; width: 30vw; height: 30vw; transform: translateY(-50%); background: radial-gradient(closest-side, color-mix(in oklab, var(--sea-awards-accent) 55%, transparent), transparent 72%); filter: blur(28px); opacity: 0; pointer-events: none; }
 .history-scroll-cue { display: none; }
-.history-text { position: relative; }
 .history-heading { margin: 0 0 48px; font-family: "Archivo", sans-serif; font-stretch: 62%; font-weight: 800; text-transform: uppercase; line-height: 0.86; font-size: clamp(3rem, 9vw, 10rem); letter-spacing: 0.01em; }
 .history-heading-line { display: block; overflow: hidden; }
 .history-heading-line > span { display: block; }
-.history-paragraphs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px 0; }
 .sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1rem, 1.45vw, 1.55rem); line-height: 1.5; color: var(--hist-secondary); }
 .sea-history .history-paragraph:not(:first-child) { border-top: 0; }
+.history-track { display: flex; flex-direction: column; gap: 72px; }
+.history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto; color: var(--hist-accent); will-change: transform; }
+.history-slide { position: relative; }
+.history-slide-number { display: none; }
+.history-slide-count { display: block; margin-bottom: 18px; font-size: 12px; letter-spacing: 0.3em; color: var(--hist-accent); }
+.sea-history .history-text-slide .history-heading { font-size: clamp(2.6rem, 7vw, 7.5rem); margin-bottom: 28px; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
-.sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: 92vw; max-width: none; margin: 0; z-index: 2; }
+.sea-history.is-animated .history-track { flex-direction: row; gap: 0; height: 100%; width: max-content; will-change: transform; }
+.sea-history.is-animated .history-slide { flex: 0 0 100vw; width: 100vw; height: 100%; display: flex; align-items: center; overflow: hidden; }
+.sea-history.is-animated .history-logo-slide { justify-content: center; }
+.sea-history.is-animated .history-logo-wrap { width: 80vw; max-width: 1200px; }
+.sea-history.is-animated .history-text-slide { padding: 110px 8% 60px; }
+.sea-history.is-animated .history-slide-number { display: block; position: absolute; right: 4%; bottom: -4vw; font-family: "Archivo", sans-serif; font-stretch: 62%; font-weight: 800; font-size: 34vw; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--hist-line); pointer-events: none; will-change: transform; }
+.sea-history.is-animated .history-slide-body { position: relative; max-width: 980px; }
+.sea-history.is-animated .history-paragraph { font-size: clamp(1rem, 1.35vw, 1.4rem); border-top: 1px solid var(--hist-line); }
 .sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-text); z-index: 2; }
-.sea-history.is-animated .history-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
-.sea-history.is-animated .history-heading { margin-bottom: clamp(28px, 5vh, 56px); }
-.sea-history.is-animated .history-paragraphs { gap: clamp(14px, 2.4vh, 28px); }
-.sea-history.is-animated .history-paragraph { font-size: clamp(0.84rem, 1.02vw, 1.12rem); line-height: 1.5; padding-top: clamp(10px, 1.6vh, 18px); }
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea-scene { width: 100%; height: 100%; }
 .sea-scene canvas { display: block; width: 100%; height: 100%; }
@@ -293,15 +299,6 @@
   .sea-header { height: 76px; padding: 0 7%; gap: 14px; }
   .sea-brand img { width: 96px; }
   .sea-header.is-scrolled .sea-brand img { width: 84px; }
-  .sea-history { padding: 96px 7% 64px; }
-  .history-logo-wrap { margin-bottom: 56px; }
-  .history-heading { margin-bottom: 32px; }
-  .history-paragraphs { grid-template-columns: 1fr; gap: 24px; }
-  .history-paragraph { font-size: 0.95rem; }
-  .sea-history.is-animated .history-text { padding: 108px 7% 32px; }
-  .sea-history.is-animated .history-heading { margin-bottom: 20px; }
-  .sea-history.is-animated .history-paragraphs { gap: 16px; }
-  .sea-history.is-animated .history-paragraph { font-size: 0.8rem; padding-top: 12px; }
   .sea-founder { scroll-margin-top: 76px; }
   .sea-about h2 { font-size: 44px; }
   .sea-values { padding: 64px 7%; }
