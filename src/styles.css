@@ -433,23 +433,33 @@ html.lenis, html.lenis body { height: auto; }
 .value2-top svg { color: var(--primary); }
 .sea2-value h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 16px; }
 .sea2-value p { font-size: 13px; max-width: 270px; }
-.sea2-awards { background: var(--sea-awards-background); color: var(--sea-awards-ink); padding: 100px 6% 120px; position: relative; overflow: hidden; }
-.sea2-awards .sea2-eyebrow { color: var(--sea-awards-accent); }
-.award2-gold { color: var(--sea-awards-accent); }
-.sea2-awards .sea2-section-heading, .sea2-awards-list { position: relative; }
-.sea2-awards .sea2-section-heading { padding-bottom: 22px; border-bottom: 2px solid var(--sea-awards-accent); }
-.sea2-awards .sea2-section-heading h2 { margin-top: 0; white-space: nowrap; }
-.sea2-awards-list { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
-.sea2-award { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); }
-.award2-card-top { display: flex; justify-content: space-between; align-items: baseline; }
-.award2-index { font-size: 10px; color: var(--sea-awards-accent); }
-.award2-title-mask { overflow: hidden; }
-.award2-photo { overflow: hidden; }
-.award2-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.sea2-award h3 { font-size: 26px; line-height: 1.15; }
-.award2-year { font-family: "Oswald", sans-serif; font-size: 40px; font-weight: 500; color: var(--sea-awards-accent); }
-.award2-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.award2-card-bottom > svg { color: var(--sea-awards-accent); flex: 0 0 auto; }
+/* Awards carousel (split-screen) */
+.sea2-awards.awc { background: var(--sea-awards-background); color: var(--sea-awards-ink); padding: 0 6%; min-height: 100vh; display: flex; align-items: center; outline: none; }
+.awc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); width: 100%; max-width: 1440px; margin: 0 auto; padding: clamp(64px, 9vh, 110px) 0; align-items: center; }
+.awc-grid > * { min-width: 0; }
+.awc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 18%, transparent); }
+.awc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sea-awards-accent); }
+.awc-counter { font-family: "Oswald", sans-serif; font-size: 14px; letter-spacing: 0.18em; color: color-mix(in oklab, var(--sea-awards-ink) 60%, transparent); }
+.awc-badge { display: inline-block; margin-top: 28px; padding: 6px 14px; border: 1px solid var(--sea-awards-accent); border-radius: 999px; font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sea-awards-accent); }
+.awc-title { font-family: "Oswald", sans-serif; font-size: clamp(2rem, 3.4vw, 3.4rem); font-weight: 600; line-height: 1.08; text-transform: uppercase; letter-spacing: 0.01em; margin: 18px 0 0; }
+.awc-meta { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea-awards-accent); margin: 14px 0 0; }
+.awc-description { font-size: clamp(0.95rem, 1.05vw, 1.08rem); line-height: 1.7; color: color-mix(in oklab, var(--sea-awards-ink) 78%, transparent); margin: 16px 0 0; max-width: 46ch; }
+.awc-list { list-style: none; margin: clamp(28px, 4vh, 44px) 0 0; padding: 0; }
+.awc-item { display: flex; align-items: center; gap: 18px; width: 100%; padding: 14px 0; background: none; border: 0; border-top: 1px solid color-mix(in oklab, var(--sea-awards-ink) 14%, transparent); cursor: pointer; text-align: left; color: color-mix(in oklab, var(--sea-awards-ink) 55%, transparent); transition: color 0.3s ease; }
+.awc-list li:last-child .awc-item { border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 14%, transparent); }
+.awc-item-index { font-family: "Oswald", sans-serif; font-size: 12px; letter-spacing: 0.14em; color: var(--sea-awards-accent); flex: 0 0 auto; }
+.awc-item-title { font-size: clamp(0.92rem, 1.05vw, 1.05rem); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; flex: 0 1 auto; }
+.awc-item-line { flex: 1 1 auto; height: 2px; background: color-mix(in oklab, var(--sea-awards-ink) 12%, transparent); position: relative; overflow: hidden; }
+.awc-item-line::after { content: ""; position: absolute; inset: 0; background: var(--sea-awards-accent); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.awc-item:hover { color: var(--sea-awards-ink); }
+.awc-item.is-active { color: var(--sea-awards-ink); }
+.awc-item.is-active .awc-item-line::after { transform: scaleX(1); }
+.awc-nav { display: flex; gap: 12px; margin-top: clamp(24px, 3.5vh, 36px); }
+.awc-arrow { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1px solid color-mix(in oklab, var(--sea-awards-ink) 30%, transparent); border-radius: 50%; background: none; color: var(--sea-awards-ink); cursor: pointer; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+.awc-arrow:hover { background: var(--sea-awards-accent); border-color: var(--sea-awards-accent); color: #fff; }
+.awc-visual { display: flex; align-items: center; justify-content: center; }
+.awc-image { width: 100%; aspect-ratio: 4 / 5; max-height: 78vh; border: 1px solid color-mix(in oklab, var(--sea-awards-ink) 16%, transparent); padding: clamp(10px, 1.2vw, 18px); background: #fff; }
+.awc-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .sea2-footer { position: relative; overflow: hidden; isolation: isolate; padding: 72px 4% 28px; background: var(--sea-footer-background); color: var(--sea-footer-foreground); }
 .sea2-footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 36px; }
 .sea2-footer-top h2 { font-size: 76px; line-height: .97; font-weight: 700; text-transform: uppercase; min-width: 0; }
@@ -470,7 +480,8 @@ html.lenis, html.lenis body { height: auto; }
 }
 @media (min-width: 768px) and (max-width: 1050px) {
   .sea2-about h2 { font-size: 60px; }
-  .sea2-award h3 { font-size: 26px; }
+  .awc-grid { gap: 40px; }
+  .awc-image { aspect-ratio: 4 / 4.4; }
 }
 @media (max-width: 767px) {
   .sea2-header { height: 76px; padding: 0 7%; gap: 14px; }
@@ -492,10 +503,18 @@ html.lenis, html.lenis body { height: auto; }
   .sea2-value, .sea2-value:first-child, .sea2-value:last-child { padding: 32px 0; border-left: 0; border-top: 1px solid var(--border); }
   .value2-top { margin-bottom: 20px; }
   .sea2-value p { max-width: none; }
-  .sea2-awards { padding: 64px 7%; }
-  .sea2-awards-list { margin-top: 40px; grid-template-columns: 1fr; gap: 44px; }
-  .sea2-award h3 { font-size: 23px; }
-  .award2-year { font-size: 30px; }
+  .sea2-awards.awc { min-height: 0; padding: 0 7%; }
+  .awc-grid { grid-template-columns: 1fr; padding: 64px 0; gap: 36px; }
+  .awc-visual { order: 2; }
+  .awc-image { aspect-ratio: 4 / 3; max-height: none; }
+  .awc-list { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .awc-list::-webkit-scrollbar { display: none; }
+  .awc-list li { flex: 0 0 auto; }
+  .awc-item { border-top: 0; padding: 12px 20px 12px 0; }
+  .awc-list li:last-child .awc-item { border-bottom: 0; }
+  .awc-item-line { display: none; }
+  .awc-item-title { white-space: nowrap; }
+  .awc-item.is-active .awc-item-title { border-bottom: 2px solid var(--sea-awards-accent); padding-bottom: 2px; }
   .sea2-footer { padding: 48px 20px 28px; }
   .sea2-footer-top { flex-direction: column; }
   .sea2-footer address { margin-left: 0; }
