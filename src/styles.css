@@ -162,6 +162,8 @@
   --sea-footer-muted: color-mix(in oklab, var(--sea-footer-foreground) 62%, transparent);
   --sea-footer-border: color-mix(in oklab, var(--sea-footer-foreground) 20%, transparent);
   --sea-values-background: #eef3f3;
+  --sea-founder-ink: oklch(0.28 0.047 221);
+  --sea-founder-surface: oklch(0.97 0.003 220);
   --sea-wire: #267c80;
   --sea-grid: color-mix(in oklab, var(--foreground) 5%, transparent);
   background: var(--background); color: var(--foreground);
@@ -213,25 +215,32 @@
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea-scene { width: 100%; height: 100%; }
 .sea-scene canvas { display: block; width: 100%; height: 100%; }
-.sea-founder { display: grid; grid-template-columns: 45% 1fr; gap: 8%; padding: 120px 6%; border-top: 1px solid var(--border); }
-.founder-visual { display: flex; flex-direction: column; min-width: 0; }
-.founder-monogram { background: var(--muted); position: relative; display: flex; flex-direction: column; justify-content: center; padding: 60px 12%; min-height: 560px; overflow: hidden; }
-.founder-monogram > span { font-family: "Oswald", sans-serif; font-size: 172px; font-weight: 500; line-height: 1.05; z-index: 1; }
-.monogram-dot { color: var(--primary); }
-.founder-portrait-lines { position: absolute; inset: 15% -25% -20% 30%; border: 1px solid var(--border); transform: rotate(-25deg); }
-.founder-portrait-lines::after, .founder-portrait-lines::before { content: ""; position: absolute; inset: 30px; border: 1px solid var(--border); }
-.founder-portrait-lines::after { inset: 60px; }
-.founder-signature { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; gap: 12px; }
-.founder-signature > span:first-child { font-family: Georgia, serif; font-size: 21px; font-style: italic; }
-.founder-signature > span:last-child { font-size: 8px; color: var(--muted-foreground); }
-.founder-copy { min-width: 0; }
-.founder-copy h2 { font-size: 42px; margin: 24px 0 30px; }
+.sea-founder { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); padding: 80px 6% 0; gap: 4%; min-height: 740px; background: var(--sea-founder-surface); color: var(--sea-founder-ink); overflow: hidden; scroll-margin-top: 90px; }
+.founder-background { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.founder-visual { position: relative; min-width: 0; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
+.founder-portrait { display: block; width: 112%; max-width: none; height: auto; max-height: 760px; object-fit: contain; object-position: bottom; }
+.founder-signature { position: absolute; bottom: 30px; right: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; color: var(--primary-foreground); }
+.founder-signature > span:first-child { font-family: Georgia, serif; font-size: 24px; font-style: italic; border-bottom: 1px solid currentColor; padding-bottom: 8px; }
+.founder-signature > span:last-child { font-size: 10px; }
+.founder-copy { min-width: 0; padding: 0 0 76px; align-self: center; }
+.founder-copy .sea-eyebrow { display: flex; align-items: center; gap: 20px; font-size: 11px; }
+.founder-copy .sea-eyebrow::after { content: ""; width: 74px; height: 1px; background: currentColor; }
+.founder-copy h2 { font-size: 48px; line-height: 1.12; margin: 28px 0 30px; color: var(--sea-founder-ink); }
 .founder-heading-line { display: block; white-space: nowrap; }
-.founder-name { border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 22px; }
-.founder-name h3 { font-size: 26px; font-weight: 500; }
-.founder-name span { display: block; font-size: 9px; color: var(--primary); margin-top: 6px; }
+.founder-name { margin-bottom: 22px; }
+.founder-name h3 { font-family: "DM Sans", sans-serif; font-size: 28px; font-weight: 600; }
+.founder-name span { display: flex; align-items: center; gap: 24px; font-size: 11px; margin-top: 6px; }
+.founder-name span::after { content: ""; height: 1px; width: 110px; background: var(--sea-founder-ink); }
+.sea-founder .founder-copy p { color: var(--sea-founder-ink); font-size: 15px; line-height: 1.6; max-width: 540px; }
 .founder-copy p + p { margin-top: 16px; }
-.sea-journey { font-size: 10px; padding: 0 0 8px; height: auto; border-bottom: 1px solid var(--primary); border-radius: 0; margin-top: 28px; color: var(--primary); }
+.founder-principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; }
+.founder-principles > div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 0 12px; border-left: 1px solid var(--sea-founder-ink); }
+.founder-principles > div:first-child { border: 0; padding-left: 0; }
+.founder-principles svg { width: 34px; height: 34px; }
+.founder-principles span { font-size: 11px; line-height: 1.4; }
+.founder-principles strong { display: block; font-weight: 600; }
+.sea-journey { font-size: 11px; padding: 0 20px; height: 42px; border-radius: 0; margin-top: 32px; background: var(--sea-founder-ink); color: var(--primary-foreground); }
+.sea-journey:hover { background: var(--primary); }
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
 .sea-section-heading h2 { margin-top: 24px; }
 .sea-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 60px; }
@@ -267,12 +276,13 @@
 .sea-footer-bottom nav { display: flex; flex-wrap: wrap; gap: 20px; }
 .sea-footer-bottom a:hover { color: var(--sea-footer-foreground); }
 @media (min-width: 1440px) {
-  .founder-copy h2 { font-size: 50px; }
+  .founder-copy h2 { font-size: 58px; }
+  .sea-founder { padding-left: max(6%, calc((100% - 1440px) / 2)); padding-right: max(6%, calc((100% - 1440px) / 2)); }
 }
 @media (min-width: 768px) and (max-width: 1050px) {
-  .sea-about .founder-copy h2 { font-size: 30px; }
-  .founder-monogram > span { font-size: 128px; }
-  .founder-monogram { min-height: 490px; }
+  .sea-about .founder-copy h2 { font-size: 36px; }
+  .sea-founder { padding: 64px 5% 0; min-height: 670px; gap: 3%; }
+  .founder-portrait { width: 125%; }
   .sea-about h2 { font-size: 60px; }
   .sea-award h3 { font-size: 26px; }
 }
@@ -290,12 +300,18 @@
   .sea-history.is-animated .history-heading { margin-bottom: 20px; }
   .sea-history.is-animated .history-paragraphs { gap: 16px; }
   .sea-history.is-animated .history-paragraph { font-size: 0.8rem; padding-top: 12px; }
-  .sea-founder { grid-template-columns: 1fr; padding: 64px 7%; gap: 44px; }
-  .founder-monogram { min-height: 390px; padding: 35px 12%; }
-  .founder-monogram > span { font-size: 125px; }
+  .sea-founder { grid-template-columns: 1fr; padding: 56px 7% 0; gap: 24px; min-height: 0; scroll-margin-top: 76px; }
+  .founder-background { object-position: 28% center; opacity: 0.38; }
+  .founder-copy { padding: 0; }
+  .founder-visual { height: 480px; margin: 0 -8%; }
+  .founder-portrait { width: auto; max-width: 100%; height: 100%; }
+  .founder-signature { right: 7%; bottom: 24px; padding: 10px 14px; background: var(--sea-founder-ink); }
   .founder-signature > span:first-child { font-size: 20px; }
   .sea-about h2 { font-size: 44px; }
   .sea-about .founder-copy h2 { font-size: 32px; }
+  .founder-name h3 { font-size: 26px; }
+  .founder-principles > div { padding: 0 8px; }
+  .founder-principles span { font-size: 10px; }
   .sea-values { padding: 64px 7%; }
   .sea-values-grid { grid-template-columns: 1fr; margin-top: 35px; }
   .sea-value, .sea-value:first-child, .sea-value:last-child { padding: 32px 0; border-left: 0; border-top: 1px solid var(--border); }
