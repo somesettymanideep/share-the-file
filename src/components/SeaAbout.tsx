@@ -27,12 +27,31 @@ export default function SeaAbout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 60);
+    let frame = 0;
+    const read = () => {
+      frame = 0;
+      const history = document.querySelector<HTMLElement>(".sea-history");
+      if (!history) {
+        setScrolled(window.scrollY > 60);
+        return;
+      }
+      const rect = history.getBoundingClientRect();
+      // While the history section is pinned it sits at the viewport top, so its
+      // bottom equals its own height. It only drops below that once the pinned
+      // sequence ends and the section starts scrolling away.
+      setScrolled(rect.bottom < rect.height - 40);
     };
-    onScroll();
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(read);
+    };
+    read();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
