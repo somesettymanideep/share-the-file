@@ -49,7 +49,7 @@ export default function FounderSection() {
           stagger: 0.12,
           scrollTrigger: { trigger: section.current, start: "top 60%" },
         });
-        gsap.from(".founder-signature, .founder-watermark", {
+        gsap.from(".founder-watermark", {
           x: -24,
           opacity: 0,
           duration: 0.9,
@@ -74,11 +74,6 @@ export default function FounderSection() {
             alt="P.V. Naresh Kumar, Founder and CEO"
             loading="lazy"
           />
-          <div className="founder-signature" aria-hidden="true">
-            <span className="founder-script">P.V. Naresh Kumar</span>
-            <span className="founder-sig-line" />
-            <span className="founder-sig-role">FOUNDER &amp; CEO</span>
-          </div>
           <span className="founder-watermark" aria-hidden="true">SEA</span>
         </div>
 
