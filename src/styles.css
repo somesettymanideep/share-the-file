@@ -196,12 +196,12 @@
 .sea-menu-overlay a { font-family: "Oswald", sans-serif; font-size: clamp(42px, 7vw, 72px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.25; color: color-mix(in oklab, #fff 80%, transparent); text-decoration: none; transition: color 0.3s ease; padding: 8px 0; }
 .sea-menu-overlay a:hover, .sea-menu-overlay a[aria-current] { color: #fff; }
 .sea-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; font-size: 32px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
-.sea-history { --hist-bg: #15181A; --hist-text: #F5F7F7; --hist-secondary: #B9C0C2; --hist-line: #2E3336; --hist-accent: #007890; background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
+.sea-history { --hist-bg: var(--sea-awards-background); --hist-text: var(--sea-awards-ink); --hist-secondary: color-mix(in oklab, var(--sea-awards-ink) 68%, transparent); --hist-line: color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); --hist-accent: var(--sea-awards-accent); background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
 .history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); }
 .history-logo-outline, .history-logo-fill { display: block; width: 100%; height: auto; }
-.history-logo-outline { color: var(--hist-secondary); }
+.history-logo-outline { color: var(--hist-text); }
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
-.history-glow { position: absolute; top: 50%; left: 0; width: 30vw; height: 30vw; transform: translateY(-50%); background: radial-gradient(closest-side, rgba(0, 120, 144, 0.55), transparent 72%); filter: blur(28px); opacity: 0; pointer-events: none; }
+.history-glow { position: absolute; top: 50%; left: 0; width: 30vw; height: 30vw; transform: translateY(-50%); background: radial-gradient(closest-side, color-mix(in oklab, var(--sea-awards-accent) 55%, transparent), transparent 72%); filter: blur(28px); opacity: 0; pointer-events: none; }
 .history-scroll-cue { display: none; }
 .history-text { position: relative; }
 .history-heading { margin: 0 0 48px; font-family: "Archivo", sans-serif; font-stretch: 62%; font-weight: 800; text-transform: uppercase; line-height: 0.86; font-size: clamp(3rem, 9vw, 10rem); letter-spacing: 0.01em; }
@@ -212,7 +212,7 @@
 .history-paragraph:nth-child(4) { grid-column: span 2; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
 .sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: 92vw; max-width: none; margin: 0; z-index: 2; }
-.sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-secondary); z-index: 2; }
+.sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-text); z-index: 2; }
 .sea-history.is-animated .history-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
 .sea-history.is-animated .history-heading { margin-bottom: clamp(28px, 5vh, 56px); }
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }

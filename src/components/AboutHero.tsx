@@ -16,7 +16,7 @@ export default function AboutHero() {
       if (!section) return;
       section.classList.add("is-animated");
       const scope = gsap.context(() => {
-        gsap.set(".history-logo-wrap", { xPercent: -50, yPercent: -50, scale: 0.12 });
+        gsap.set(".history-logo-wrap", { xPercent: -50, yPercent: -50, scale: 0.18 });
         gsap.set(".history-logo-fill", { clipPath: "inset(0 100% 0 0)" });
         gsap.set(".history-glow", { opacity: 1, x: "-30vw" });
         gsap.set(".history-heading-line > span", { yPercent: 110 });
