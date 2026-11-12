@@ -130,7 +130,7 @@ export default function SeaAbout() {
 
       <section className="sea2-values" id="values">
         <div className="sea2-section-heading"><span className="sea2-eyebrow">03 / OUR VALUES</span><h2>WHAT DEFINES US<span className="sea2-teal">.</span></h2></div>
-        <div className="sea2-values-grid">{values.map(({ number, title, Icon, description }) => <article className="sea2-value" key={number}><div className="value2-top"><span className="value2-number">{number}</span><Icon size={72} strokeWidth={1} aria-hidden="true" /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+        <div className="sea2-values-grid">{values.map(({ number, title, Icon, description }) => <article className="sea2-value" key={number}><div className="value2-top"><Icon size={62} strokeWidth={1.5} aria-hidden="true" /><span className="value2-number">{number}</span></div><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section className="sea2-awards">
