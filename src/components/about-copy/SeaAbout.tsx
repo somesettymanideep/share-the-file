@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "./AboutHero";
 import FounderSection from "./FounderSection";
-import AwardCarousel from "./AwardCarousel";
 import Lenis from "lenis";
 import logoColor from "@/assets/sea-logo-color.png";
+import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
+import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
+import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
+
+const awards = [
+  { name: "THE INDIA DESIGN AWARDS", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
+  { name: "BHARAT BUSINESS AWARDS", year: "2024", image: awardBharatBusiness, alt: "P.V. Naresh Kumar receiving the Bharat Business Awards 2024 trophy and certificate" },
+  { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025", image: awardArchitectureHerald, alt: "P.V. Naresh Kumar holding the Architectural Excellence Award 2025 trophy and certificate at the Architecture Herald event" },
+];
 
 const values = [
   { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
@@ -77,10 +85,17 @@ export default function SeaAbout() {
           const heading = section.querySelector(".sea2-section-heading, .sea2-footer-top h2");
           if (heading) gsap.from(heading, { y: 50, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%" } });
         });
+        gsap.utils.toArray<HTMLElement>(".award2-photo img").forEach((img) => {
+          gsap.fromTo(img, { yPercent: -8, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+        });
         gsap.utils.toArray<HTMLElement>(".sea2-value").forEach((item) => {
           gsap.from(item.querySelectorAll("h3, p, .value2-number"), { y: 22, opacity: 0, stagger: 0.12, duration: 0.7, scrollTrigger: { trigger: item, start: "top 85%" } });
           const lines = item.querySelectorAll("svg path, svg line, svg rect, svg circle");
           gsap.fromTo(lines, { strokeDasharray: 100, strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 1.8, stagger: 0.06, scrollTrigger: { trigger: item, start: "top 85%" } });
+        });
+        gsap.utils.toArray<HTMLElement>(".sea2-award").forEach((item) => {
+          gsap.from(item.querySelector("h3"), { yPercent: 100, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: item, start: "top 90%" } });
+          gsap.from(item.querySelector(".award2-year"), { scale: 0.8, opacity: 0, duration: 1, scrollTrigger: { trigger: item, start: "top 90%" } });
         });
       }, root);
       return () => scope.revert();
@@ -118,7 +133,10 @@ export default function SeaAbout() {
         <div className="sea2-values-grid">{values.map(({ number, title, Icon, description }) => <article className="sea2-value" key={number}><div className="value2-top"><span className="value2-number">{number}</span><Icon size={72} strokeWidth={1} aria-hidden="true" /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
-      <AwardCarousel />
+      <section className="sea2-awards">
+        <div className="sea2-section-heading"><h2>AWARDS & RECOGNITION<span className="award2-gold">.</span></h2></div>
+        <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-card-top"><span className="award2-index">0{i + 1}</span><span className="award2-year">{award.year}</span></div><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-card-bottom"><div className="award2-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
+      </section>
     </main>
     <footer className="sea2-footer" id="contact">
       <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
