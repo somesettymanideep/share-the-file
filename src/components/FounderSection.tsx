@@ -75,10 +75,7 @@ export default function FounderSection() {
       <div className="founder-stage">
         <div className="founder-art">
           <img className="founder-plate" src={founderBackground.url} alt="" aria-hidden="true" loading="lazy" />
-          <p className="founder-aboutus">
-            <span>ABOUT US</span>
-            <i aria-hidden="true" />
-          </p>
+          <p className="founder-aboutus">ABOUT US</p>
           <img
             className="founder-portrait"
             src={founderPortrait.url}
