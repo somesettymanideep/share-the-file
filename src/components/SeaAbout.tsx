@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
 import FounderSection from "@/components/FounderSection";
+import ArchitecturalScene from "@/components/ArchitecturalScene";
+import Lenis from "lenis";
 import logoColor from "@/assets/sea-logo-color.png";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
 import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
@@ -54,12 +56,39 @@ export default function SeaAbout() {
     };
   }, []);
   useEffect(() => {
+    // Smooth scroll: Lenis drives the page and is ticked by GSAP so ScrollTrigger stays in sync.
+    gsap.registerPlugin(ScrollTrigger);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
+    const onAnchor = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!a) return;
+      const target = document.querySelector(a.getAttribute("href")!);
+      if (target) { e.preventDefault(); lenis.scrollTo(target as HTMLElement, { offset: -80 }); }
+    };
+    document.addEventListener("click", onAnchor);
+    return () => { document.removeEventListener("click", onAnchor); gsap.ticker.remove(tick); lenis.destroy(); };
+  }, []);
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     media.add({ desktop: "(min-width: 768px)", mobile: "(max-width: 767px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
       const conditions = context.conditions;
       if (!conditions || !root.current || conditions['reduce']) return;
       const scope = gsap.context(() => {
+        // Section transitions: headings rise in, sections ease up as they enter.
+        gsap.utils.toArray<HTMLElement>(".sea-values, .sea-awards").forEach((section) => {
+          gsap.from(section, { y: 80, opacity: 0.4, ease: "none", scrollTrigger: { trigger: section, start: "top bottom", end: "top 55%", scrub: true } });
+          const heading = section.querySelector(".sea-section-heading, .sea-footer-top h2");
+          if (heading) gsap.from(heading, { y: 50, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%" } });
+        });
+        gsap.utils.toArray<HTMLElement>(".award-photo img").forEach((img) => {
+          gsap.fromTo(img, { yPercent: -8, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+        });
         gsap.utils.toArray<HTMLElement>(".sea-value").forEach((item) => {
           gsap.from(item.querySelectorAll("h3, p, .value-number"), { y: 22, opacity: 0, stagger: 0.12, duration: 0.7, scrollTrigger: { trigger: item, start: "top 85%" } });
           const lines = item.querySelectorAll("svg path, svg line, svg rect, svg circle");
@@ -111,6 +140,7 @@ export default function SeaAbout() {
       </section>
     </main>
     <footer className="sea-footer" id="contact">
+      <div className="sea-footer-scene"><ArchitecturalScene /></div>
       <div className="sea-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
       <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><a href="/studio.html#projects">Projects</a><a href="/studio.html#services">What We Do</a><a href="#contact">Contact</a></nav></div>
     </footer>
