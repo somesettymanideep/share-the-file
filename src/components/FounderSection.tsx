@@ -79,9 +79,8 @@ export default function FounderSection() {
 
         <div className="founder-copy">
           <h2 className="founder-heading">
-            <span className="founder-heading-line"><span>THE VISION</span></span>
-            <span className="founder-heading-line"><span>BEHIND OUR</span></span>
-            <span className="founder-heading-line"><span>ARCHITECTURE.</span></span>
+            <span className="founder-heading-line"><span>THE VISION BEHIND OUR</span></span>
+            <span className="founder-heading-line"><span className="founder-heading-accent">ARCHITECTURE.</span></span>
           </h2>
           <p className="founder-name founder-rise">P.V. Naresh Kumar</p>
           <p className="founder-role founder-rise">
