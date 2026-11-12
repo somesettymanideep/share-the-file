@@ -12,9 +12,9 @@ import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.js
 import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
 
 const awards = [
-  { name: "THE INDIA DESIGN AWARDS", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
-  { name: "BHARAT BUSINESS AWARDS", year: "2024", image: awardBharatBusiness, alt: "P.V. Naresh Kumar receiving the Bharat Business Awards 2024 trophy and certificate" },
-  { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025", image: awardArchitectureHerald, alt: "P.V. Naresh Kumar holding the Architectural Excellence Award 2025 trophy and certificate at the Architecture Herald event" },
+  { name: "The India Design Awards", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
+  { name: "Bharat Business Awards", year: "2024", image: awardBharatBusiness, alt: "P.V. Naresh Kumar receiving the Bharat Business Awards 2024 trophy and certificate" },
+  { name: "Architectural Excellence Award", year: "2025", image: awardArchitectureHerald, alt: "P.V. Naresh Kumar holding the Architectural Excellence Award 2025 trophy and certificate at the Architecture Herald event" },
 ];
 
 const values = [
@@ -134,8 +134,8 @@ export default function SeaAbout() {
       </section>
 
       <section className="sea2-awards">
-        <div className="sea2-section-heading"><h2>AWARDS & RECOGNITION<span className="award2-gold">.</span></h2></div>
-        <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-card-top"><span className="award2-index">0{i + 1}</span><span className="award2-year">{award.year}</span></div><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-card-bottom"><div className="award2-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
+        <div className="sea2-section-heading"><span className="sea2-eyebrow">04 / AWARDS & RECOGNITION</span><h2>RECOGNISED FOR EXCELLENCE<span className="award2-gold">.</span></h2></div>
+        <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-body"><span className="award2-index">0{i + 1}</span><div className="award2-title-mask"><h3>{award.name}</h3></div><div className="award2-card-bottom"><span className="award2-year">{award.year}</span><span className="award2-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div></div></article>)}</div>
       </section>
     </main>
     <footer className="sea2-footer" id="contact">

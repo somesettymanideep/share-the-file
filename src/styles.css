@@ -437,19 +437,20 @@ html.lenis, html.lenis body { height: auto; }
 .sea2-awards .sea2-eyebrow { color: var(--sea-awards-accent); }
 .award2-gold { color: var(--sea-awards-accent); }
 .sea2-awards .sea2-section-heading, .sea2-awards-list { position: relative; }
-.sea2-awards .sea2-section-heading { padding-bottom: 22px; border-bottom: 2px solid var(--sea-awards-accent); }
-.sea2-awards .sea2-section-heading h2 { margin-top: 0; white-space: nowrap; }
-.sea2-awards-list { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
-.sea2-award { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); }
-.award2-card-top { display: flex; justify-content: space-between; align-items: baseline; }
-.award2-index { font-size: 10px; color: var(--sea-awards-accent); }
+.sea2-awards .sea2-section-heading { padding-bottom: 26px; border-bottom: 2px solid var(--sea-awards-accent); }
+.sea2-awards .sea2-section-heading h2 { margin-top: 18px; white-space: nowrap; font-size: clamp(2.4rem, 5.4vw, 4.6rem); }
+.sea2-awards .sea2-eyebrow { font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase; }
+.sea2-awards-list { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
+.sea2-award { display: flex; flex-direction: column; background: #fff; border-bottom: 2px solid var(--sea-awards-accent); }
+.award2-index { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--sea-awards-accent); }
 .award2-title-mask { overflow: hidden; }
 .award2-photo { overflow: hidden; }
 .award2-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.sea2-award h3 { font-size: 26px; line-height: 1.15; }
-.award2-year { font-family: "Oswald", sans-serif; font-size: 40px; font-weight: 500; color: var(--sea-awards-accent); }
-.award2-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.award2-card-bottom > svg { color: var(--sea-awards-accent); flex: 0 0 auto; }
+.award2-body { display: flex; flex-direction: column; gap: 14px; padding: 26px 26px 28px; }
+.sea2-award h3 { font-family: "Archivo", "DM Sans", sans-serif; font-size: 27px; font-weight: 700; line-height: 1.18; }
+.award2-year { display: inline-block; padding: 7px 16px; background: var(--sea-awards-accent); color: #fff; font-family: "Oswald", sans-serif; font-size: 17px; font-weight: 600; letter-spacing: 0.06em; }
+.award2-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 6px; }
+.award2-arrow { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1.5px solid var(--sea-awards-accent); border-radius: 50%; color: var(--sea-awards-accent); flex: 0 0 auto; }
 .sea2-footer { position: relative; overflow: hidden; isolation: isolate; padding: 72px 4% 28px; background: var(--sea-footer-background); color: var(--sea-footer-foreground); }
 .sea2-footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 36px; }
 .sea2-footer-top h2 { font-size: 76px; line-height: .97; font-weight: 700; text-transform: uppercase; min-width: 0; }
@@ -493,9 +494,10 @@ html.lenis, html.lenis body { height: auto; }
   .value2-top { margin-bottom: 20px; }
   .sea2-value p { max-width: none; }
   .sea2-awards { padding: 64px 7%; }
+  .sea2-awards .sea2-section-heading h2 { white-space: normal; }
   .sea2-awards-list { margin-top: 40px; grid-template-columns: 1fr; gap: 44px; }
   .sea2-award h3 { font-size: 23px; }
-  .award2-year { font-size: 30px; }
+  .award2-year { font-size: 15px; }
   .sea2-footer { padding: 48px 20px 28px; }
   .sea2-footer-top { flex-direction: column; }
   .sea2-footer address { margin-left: 0; }
