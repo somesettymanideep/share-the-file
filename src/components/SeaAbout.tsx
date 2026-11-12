@@ -4,7 +4,6 @@ import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
-import ArchitecturalScene from "@/components/ArchitecturalScene";
 import logoColor from "@/assets/sea-logo-color.png";
 import founderVision from "@/assets/sea-founder-vision.png.asset.json";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
@@ -92,8 +91,7 @@ export default function SeaAbout() {
       </section>
 
       <section className="sea-awards">
-        <div className="awards-geometry"><ArchitecturalScene /></div>
-        <div className="sea-section-heading"><span className="sea-eyebrow">04 / RECOGNITION OF EXCELLENCE</span><h2>AWARDS &<br />RECOGNITION<span className="award-gold">.</span></h2></div>
+        <div className="sea-section-heading"><h2>AWARDS & RECOGNITION<span className="award-gold">.</span></h2></div>
         <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
       </section>
     </main>
