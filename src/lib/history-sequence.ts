@@ -1,11 +1,8 @@
 // Each stage finishes before the next begins; shared by animation and tests.
-// fill: the logo fills in place on the first slide; travel: the track slides right-to-left.
 export const HISTORY_STAGES = {
-  fill: { start: 0, duration: 0.2 },
-  travel: { start: 0.2, duration: 0.8 },
+  grow: { start: 0, duration: 0.42 },
+  hold: { start: 0.42, duration: 0.08 },
+  logoOut: { start: 0.5, duration: 0.12 },
+  heading: { start: 0.62, duration: 0.1 },
+  paragraphs: { start: 0.72, duration: 0.28 },
 } as const;
-
-/** Timeline position at which content slide `index` (1-based) is fully in view. */
-export function slideArrival(index: number, contentSlides: number) {
-  return HISTORY_STAGES.travel.start + (index / contentSlides) * HISTORY_STAGES.travel.duration;
-}
