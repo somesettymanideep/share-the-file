@@ -78,6 +78,10 @@ export default function SeaAbout() {
 
       <section className="sea-founder" id="founder">
         <img className="founder-background" src={founderArchitecture.url} alt="" aria-hidden="true" loading="lazy" />
+        <div className="founder-visual">
+          <img className="founder-portrait" src={founderPortrait.url} alt="P.V. Naresh Kumar, founder and CEO of SEA" loading="lazy" />
+          <div className="founder-signature"><span>P.V. Naresh Kumar</span><span>FOUNDER & CEO</span></div>
+        </div>
         <div className="founder-copy">
           <span className="sea-eyebrow">02 / LEADERSHIP & VISION</span>
           <h2><span className="founder-heading-line">THE VISION BEHIND</span><span className="founder-heading-line">OUR <span className="sea-teal">ARCHITECTURE.</span></span></h2>
@@ -90,10 +94,6 @@ export default function SeaAbout() {
             <div><Handshake aria-hidden="true" strokeWidth={1.4} /><span><strong>Long-Term</strong>Partnerships</span></div>
           </div>
           <Button asChild className="sea-journey"><a href="#values">DISCOVER OUR JOURNEY <ArrowUpRight /></a></Button>
-        </div>
-        <div className="founder-visual">
-          <img className="founder-portrait" src={founderPortrait.url} alt="P.V. Naresh Kumar, founder and CEO of SEA" loading="lazy" />
-          <div className="founder-signature"><span>P.V. Naresh Kumar</span><span>FOUNDER & CEO</span></div>
         </div>
       </section>
 
