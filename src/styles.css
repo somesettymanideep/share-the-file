@@ -179,8 +179,8 @@
 .sea-about a { text-decoration: none; }
 .sea-teal { color: var(--primary); }
 .sea-eyebrow { display: block; font-size: 10px; font-weight: 600; line-height: 1.6; }
-.sea-header { height: 90px; display: flex; align-items: center; gap: 20px; padding: 0 5%; background: var(--background); border-bottom: 1px solid var(--border); box-shadow: 0 8px 30px -12px color-mix(in oklab, var(--foreground) 18%, transparent); position: fixed; top: 0; left: 0; right: 0; z-index: 30; transition: box-shadow 0.4s ease; }
-.sea-header.is-scrolled { box-shadow: 0 10px 34px -12px color-mix(in oklab, var(--foreground) 26%, transparent); }
+.sea-header { height: 90px; display: flex; align-items: center; gap: 20px; padding: 0 5%; background-color: transparent; border-bottom: 1px solid transparent; box-shadow: none; position: fixed; top: 0; left: 0; right: 0; z-index: 30; transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+.sea-header.is-scrolled { background-color: var(--background); border-bottom-color: var(--border); box-shadow: 0 10px 34px -12px color-mix(in oklab, var(--foreground) 26%, transparent); }
 .sea-brand { display: inline-flex; align-items: center; padding: 0; }
 .sea-brand img { width: 118px; height: auto; display: block; transition: width 0.4s ease; }
 .sea-header.is-scrolled .sea-brand img { width: 96px; }

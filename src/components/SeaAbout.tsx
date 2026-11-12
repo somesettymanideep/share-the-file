@@ -28,8 +28,7 @@ export default function SeaAbout() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => {
-      const history = document.querySelector(".sea-history");
-      setScrolled(history ? history.getBoundingClientRect().bottom < 80 : window.scrollY > 60);
+      setScrolled(window.scrollY > 60);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
