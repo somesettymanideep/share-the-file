@@ -167,10 +167,6 @@
   --sea-awards-accent: #006b80;
   --sea-founder-bg: #f1f3f4;
   --sea-founder-navy: #0b3445;
-  --sea-founder-btn: #0b3b4c;
-  --sea-founder-body: #1d2d35;
-  --sea-founder-sub: #2d3d45;
-  --sea-founder-divider: #b7c0c5;
   --sea-founder-watermark: rgba(110, 125, 140, 0.24);
   --sea-wire: #267c80;
   --sea-grid: color-mix(in oklab, var(--foreground) 5%, transparent);
@@ -229,7 +225,6 @@
 .sea-founder .founder-stage { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; aspect-ratio: 3 / 2; overflow: hidden; container-type: inline-size; }
 .sea-founder .founder-art { position: absolute; inset: 0; }
 .sea-founder .founder-plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.sea-founder .founder-aboutus { position: absolute; left: 4.4cqw; top: 3.5cqw; z-index: 2; margin: 0; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.05em; color: var(--sea-founder-navy); }
 .sea-founder .founder-portrait { position: absolute; left: 7.5%; bottom: 0; z-index: 1; display: block; width: 49%; height: auto; }
 .sea-founder .founder-signature { position: absolute; left: 2.4cqw; top: 55cqw; z-index: 2; width: 24cqw; color: #fff; }
 .sea-founder .founder-script { display: block; font-family: "Mrs Saint Delafield", "Snell Roundhand", cursive; font-size: 3.4cqw; line-height: 1.1; }
@@ -243,17 +238,6 @@
 .sea-founder .founder-name { margin: 3.2cqw 0 0; font-family: "Inter", sans-serif; font-size: 2.8cqw; font-weight: 600; line-height: 1.2; color: var(--sea-founder-navy); }
 .sea-founder .founder-role { display: flex; align-items: center; gap: 2cqw; margin: 1cqw 0 0; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.18em; color: var(--sea-founder-navy); }
 .sea-founder .founder-role i { display: block; width: 12.8cqw; height: 1px; background: var(--sea-founder-navy); }
-.sea-founder .founder-para { margin: 2.2cqw 0 0; max-width: 45cqw; font-family: "Inter", sans-serif; font-size: 1.5cqw; line-height: 2cqw; color: var(--sea-founder-body); }
-.sea-founder .founder-features { display: grid; grid-template-columns: 12.6cqw 14.5cqw 15.9cqw; margin-top: 3.4cqw; }
-.sea-founder .founder-feature { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9cqw; height: 6.7cqw; text-align: center; border-left: 1px solid var(--sea-founder-divider); }
-.sea-founder .founder-feature:first-child { border-left: 0; }
-.sea-founder .founder-feature svg { width: 3.3cqw; height: 3.3cqw; color: var(--sea-founder-navy); }
-.sea-founder .founder-feature p { margin: 0; font-family: "Inter", sans-serif; font-size: 1.1cqw; line-height: 1.45; }
-.sea-founder .founder-feature strong { display: block; font-weight: 600; color: var(--sea-founder-navy); }
-.sea-founder .founder-feature span { color: var(--sea-founder-sub); }
-.sea-founder .founder-journey { display: inline-flex; align-items: center; justify-content: center; gap: 0.8cqw; width: 12.5cqw; height: 3.2cqw; margin: 4.2cqw 0 0 3.6cqw; background: var(--sea-founder-btn); color: #fff; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 500; text-decoration: none; }
-.sea-founder .founder-journey:hover { background: var(--sea-founder-navy); }
-.sea-founder .founder-journey:focus-visible { outline: 2px solid var(--sea-founder-navy); outline-offset: 3px; }
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
 .sea-section-heading h2 { margin-top: 24px; }
 .sea-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 60px; }
@@ -300,12 +284,6 @@
   .sea-founder .founder-name { margin-top: 1.6rem; font-size: 1.6rem; }
   .sea-founder .founder-role { margin-top: 0.6rem; font-size: 0.8rem; }
   .sea-founder .founder-role i { width: 6rem; }
-  .sea-founder .founder-para { margin-top: 1.2rem; max-width: none; font-size: 1rem; line-height: 1.55; }
-  .sea-founder .founder-features { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 2rem; }
-  .sea-founder .founder-feature { height: auto; padding: 0.4rem 0.3rem; gap: 0.5rem; }
-  .sea-founder .founder-feature svg { width: 1.9rem; height: 1.9rem; }
-  .sea-founder .founder-feature p { font-size: 0.75rem; }
-  .sea-founder .founder-journey { width: auto; height: 3rem; padding: 0 1.6rem; margin: 2rem 0 0; font-size: 0.9rem; }
 }
 @media (min-width: 768px) and (max-width: 1050px) {
   .sea-about h2 { font-size: 60px; }

@@ -1,15 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Building2, Leaf, Handshake } from "lucide-react";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import founderBackground from "@/assets/founder-background.png.asset.json";
-
-const features = [
-  { Icon: Building2, line1: "Innovative", line2: "Design Solutions" },
-  { Icon: Leaf, line1: "Sustainable", line2: "Architecture" },
-  { Icon: Handshake, line1: "Long-Term", line2: "Partnerships" },
-];
 
 export default function FounderSection() {
   const section = useRef<HTMLElement>(null);
@@ -56,7 +49,7 @@ export default function FounderSection() {
           stagger: 0.12,
           scrollTrigger: { trigger: section.current, start: "top 60%" },
         });
-        gsap.from(".founder-aboutus, .founder-signature, .founder-watermark", {
+        gsap.from(".founder-signature, .founder-watermark", {
           x: -24,
           opacity: 0,
           duration: 0.9,
@@ -75,7 +68,6 @@ export default function FounderSection() {
       <div className="founder-stage">
         <div className="founder-art">
           <img className="founder-plate" src={founderBackground.url} alt="" aria-hidden="true" loading="lazy" />
-          <p className="founder-aboutus">ABOUT US</p>
           <img
             className="founder-portrait"
             src={founderPortrait.url}
@@ -101,24 +93,6 @@ export default function FounderSection() {
             <span>FOUNDER &amp; CEO</span>
             <i aria-hidden="true" />
           </p>
-          <p className="founder-para founder-rise">
-            With a passion for design and a commitment to excellence, P.V. Naresh Kumar leads SEA with a vision to
-            create innovative, sustainable and people-centric spaces that inspire.
-          </p>
-          <div className="founder-features founder-rise">
-            {features.map(({ Icon, line1, line2 }) => (
-              <div className="founder-feature" key={line1}>
-                <Icon strokeWidth={1.5} aria-hidden="true" />
-                <p>
-                  <strong>{line1}</strong>
-                  <span>{line2}</span>
-                </p>
-              </div>
-            ))}
-          </div>
-          <a className="founder-journey founder-rise" href="#history">
-            Our Journey <span aria-hidden="true">→</span>
-          </a>
         </div>
       </div>
     </section>
