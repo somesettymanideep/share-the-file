@@ -164,6 +164,7 @@
   --sea-values-background: #eef3f3;
   --sea-awards-background: #eef3f3;
   --sea-awards-ink: #0a222a;
+  --sea-awards-accent: #006b80;
   --sea-founder-ink: oklch(0.28 0.047 221);
   --sea-founder-surface: oklch(0.97 0.003 220);
   --sea-wire: #267c80;
@@ -262,21 +263,21 @@
 .sea-value h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 16px; }
 .sea-value p { font-size: 13px; max-width: 270px; }
 .sea-awards { background: var(--sea-awards-background); color: var(--sea-awards-ink); padding: 100px 6% 120px; position: relative; overflow: hidden; }
-.sea-awards .sea-eyebrow { color: var(--sea-gold); }
-.award-gold { color: var(--sea-gold); }
+.sea-awards .sea-eyebrow { color: var(--sea-awards-accent); }
+.award-gold { color: var(--sea-awards-accent); }
 .awards-geometry { position: absolute; top: -70px; right: -100px; width: 55%; height: 500px; opacity: 0.6; }
 .sea-awards .sea-section-heading, .sea-awards-list { position: relative; }
 .sea-awards-list { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
 .sea-award { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; border-bottom: 1px solid color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); }
 .award-card-top { display: flex; justify-content: space-between; align-items: baseline; }
-.award-index { font-size: 10px; color: var(--sea-gold); }
+.award-index { font-size: 10px; color: var(--sea-awards-accent); }
 .award-title-mask { overflow: hidden; }
 .award-photo { overflow: hidden; }
 .award-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .sea-award h3 { font-size: 26px; line-height: 1.15; }
-.award-year { font-family: "Oswald", sans-serif; font-size: 40px; font-weight: 500; color: var(--sea-gold); }
+.award-year { font-family: "Oswald", sans-serif; font-size: 40px; font-weight: 500; color: var(--sea-awards-accent); }
 .award-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.award-card-bottom > svg { color: var(--sea-gold); flex: 0 0 auto; }
+.award-card-bottom > svg { color: var(--sea-awards-accent); flex: 0 0 auto; }
 .sea-footer { padding: 72px 4% 28px; background: var(--sea-footer-background); color: var(--sea-footer-foreground); }
 .sea-footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 36px; }
 .sea-footer-top h2 { font-size: 76px; line-height: .97; font-weight: 700; text-transform: uppercase; min-width: 0; }

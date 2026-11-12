@@ -93,7 +93,7 @@ export default function SeaAbout() {
 
       <section className="sea-awards">
         <div className="awards-geometry"><ArchitecturalScene /></div>
-        <div className="sea-section-heading"><span className="sea-eyebrow">04 / AWARDS & RECOGNITION</span><h2>RECOGNITION<br />OF EXCELLENCE<span className="award-gold">.</span></h2></div>
+        <div className="sea-section-heading"><span className="sea-eyebrow">04 / RECOGNITION OF EXCELLENCE</span><h2>AWARDS &<br />RECOGNITION<span className="award-gold">.</span></h2></div>
         <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
       </section>
     </main>
