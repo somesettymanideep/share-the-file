@@ -33,4 +33,4 @@ use the editor.
 - Scope About page tokens and layout under .sea-about; the imported homepage has its own independent design system.
 - Initialize Three.js only after React mounts, dispose all scene resources on unmount, and keep text usable without WebGL so SSR and low-capability devices remain supported.
 - Keep history stage boundaries in the shared history-sequence module so enlargement, movement, and content reveal remain ordered and testable.
-- Display the client-supplied complete founder composition as an uncropped, full-width image with descriptive alternative text and a positioned journey link; this preserves the exact requested layout and original pixels.
+- Build the founder section as the coded FounderSection component with separate portrait and background-plate assets, descriptive alternative text on the portrait, and the heading, name and role in the right column; it has no journey link.
