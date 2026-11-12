@@ -215,14 +215,16 @@
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea-scene { width: 100%; height: 100%; }
 .sea-scene canvas { display: block; width: 100%; height: 100%; }
-.sea-founder { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); padding: 80px 6% 0; gap: 4%; min-height: 740px; background: var(--sea-founder-surface); color: var(--sea-founder-ink); overflow: hidden; scroll-margin-top: 90px; }
-.founder-background { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; }
-.founder-visual { position: relative; min-width: 0; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
-.founder-portrait { display: block; width: 112%; max-width: none; height: auto; max-height: 760px; object-fit: contain; object-position: bottom; }
-.founder-signature { position: absolute; bottom: 30px; left: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; color: var(--primary-foreground); }
+.sea-founder { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); padding: 64px 6% 0; gap: 4%; min-height: max(740px, 66.667vw); background: var(--sea-founder-surface); color: var(--sea-founder-ink); overflow: hidden; scroll-margin-top: 90px; }
+.founder-artwork { position: absolute; bottom: 0; left: 0; width: 100%; aspect-ratio: 3 / 2; z-index: -1; }
+.founder-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+.founder-visual { position: absolute; inset: 0; }
+.founder-artwork { overflow: hidden; }
+.founder-portrait { position: absolute; bottom: -1%; left: 1.8%; display: block; width: 52%; max-width: none; height: auto; }
+.founder-signature { position: absolute; bottom: 5%; left: 3%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; color: var(--primary-foreground); }
 .founder-signature > span:first-child { font-family: Georgia, serif; font-size: 24px; font-style: italic; border-bottom: 1px solid currentColor; padding-bottom: 8px; }
 .founder-signature > span:last-child { font-size: 10px; }
-.founder-copy { min-width: 0; padding: 0 0 76px; align-self: center; }
+.founder-copy { grid-column: 2; min-width: 0; padding: 0 0 112px; align-self: center; }
 .founder-copy .sea-eyebrow { display: flex; align-items: center; gap: 20px; font-size: 11px; }
 .founder-copy .sea-eyebrow::after { content: ""; width: 74px; height: 1px; background: currentColor; }
 .founder-copy h2 { font-size: 48px; line-height: 1.12; margin: 28px 0 30px; color: var(--sea-founder-ink); }
@@ -281,8 +283,13 @@
 }
 @media (min-width: 768px) and (max-width: 1050px) {
   .sea-about .founder-copy h2 { font-size: 36px; }
-  .sea-founder { padding: 64px 5% 0; min-height: 670px; gap: 3%; }
-  .founder-portrait { width: 125%; }
+  .sea-founder { padding: 40px 5% 0; min-height: max(660px, 66.667vw); gap: 3%; }
+  .founder-copy { padding-bottom: 88px; }
+  .founder-copy h2 { margin: 20px 0; }
+  .sea-founder .founder-copy p { font-size: 13px; }
+  .founder-name { margin-bottom: 16px; }
+  .founder-principles { margin-top: 20px; }
+  .sea-journey { margin-top: 24px; }
   .sea-about h2 { font-size: 60px; }
   .sea-award h3 { font-size: 26px; }
 }
@@ -300,13 +307,12 @@
   .sea-history.is-animated .history-heading { margin-bottom: 20px; }
   .sea-history.is-animated .history-paragraphs { gap: 16px; }
   .sea-history.is-animated .history-paragraph { font-size: 0.8rem; padding-top: 12px; }
-  .sea-founder { grid-template-columns: 1fr; padding: 56px 7% 0; gap: 24px; min-height: 0; scroll-margin-top: 76px; }
-  .founder-background { object-position: 28% center; opacity: 0.38; }
-  .founder-copy { padding: 0 0 48px; }
-  .founder-visual { height: 480px; margin: 0 -8%; }
-  .founder-portrait { width: auto; max-width: 100%; height: 100%; }
-  .founder-signature { left: 7%; bottom: 24px; padding: 10px 14px; background: var(--sea-founder-ink); }
-  .founder-signature > span:first-child { font-size: 20px; }
+  .sea-founder { grid-template-columns: 1fr; padding: 0; gap: 0; min-height: 0; scroll-margin-top: 76px; }
+  .founder-artwork { position: relative; z-index: 0; }
+  .founder-copy { grid-column: 1; padding: 36px 7% 48px; }
+  .founder-signature { bottom: 5%; left: 3%; gap: 4px; }
+  .founder-signature > span:first-child { font-size: 14px; padding-bottom: 4px; }
+  .founder-signature > span:last-child { font-size: 7px; }
   .sea-about h2 { font-size: 44px; }
   .sea-about .founder-copy h2 { font-size: 32px; }
   .founder-name h3 { font-size: 26px; }

@@ -77,10 +77,12 @@ export default function SeaAbout() {
       <AboutHero />
 
       <section className="sea-founder" id="founder">
+        <div className="founder-artwork">
         <img className="founder-background" src={founderArchitecture.url} alt="" aria-hidden="true" loading="lazy" />
         <div className="founder-visual">
           <img className="founder-portrait" src={founderPortrait.url} alt="P.V. Naresh Kumar, founder and CEO of SEA" loading="lazy" />
           <div className="founder-signature"><span>P.V. Naresh Kumar</span><span>FOUNDER & CEO</span></div>
+        </div>
         </div>
         <div className="founder-copy">
           <span className="sea-eyebrow">02 / LEADERSHIP & VISION</span>
