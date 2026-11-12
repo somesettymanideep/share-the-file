@@ -227,12 +227,12 @@
 .sea-founder .founder-plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .sea-founder .founder-portrait { position: absolute; left: 7.5%; bottom: 0; z-index: 1; display: block; width: 49%; height: auto; }
 .sea-founder .founder-watermark { position: absolute; right: 1.2cqw; bottom: 0.4cqw; z-index: 0; font-family: Georgia, "Times New Roman", serif; font-size: 11.5cqw; line-height: 1; letter-spacing: -0.02em; color: var(--sea-founder-watermark); }
-.sea-founder .founder-copy { position: absolute; left: 52.1cqw; top: 50%; transform: translateY(-50%); z-index: 2; width: 45cqw; text-align: center; }
+.sea-founder .founder-copy { position: absolute; left: 52.1cqw; top: 50%; transform: translateY(-50%); z-index: 2; width: 45cqw; text-align: left; }
 .sea-founder .founder-heading { margin: 0; font-family: "Archivo", sans-serif; font-stretch: 85%; font-weight: 800; font-size: 5.95cqw; line-height: 0.93; letter-spacing: -0.015em; text-transform: uppercase; color: var(--sea-founder-navy); }
 .sea-founder .founder-heading-line { display: block; overflow: hidden; }
 .sea-founder .founder-heading-line > span { display: block; white-space: nowrap; }
 .sea-founder .founder-name { margin: 3.2cqw 0 0; font-family: "Inter", sans-serif; font-size: 2.8cqw; font-weight: 600; line-height: 1.2; color: var(--sea-founder-navy); }
-.sea-founder .founder-role { display: flex; align-items: center; justify-content: center; gap: 2cqw; margin: 1cqw auto 0; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.18em; color: var(--sea-founder-navy); }
+.sea-founder .founder-role { display: flex; align-items: center; justify-content: flex-start; gap: 2cqw; margin: 1cqw 0 0; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.18em; color: var(--sea-founder-navy); }
 .sea-founder .founder-role i { display: block; width: 12.8cqw; height: 1px; background: var(--sea-founder-navy); }
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
 .sea-section-heading h2 { margin-top: 24px; }
