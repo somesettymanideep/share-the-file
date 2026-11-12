@@ -7,6 +7,15 @@ import AboutHero from "@/components/AboutHero";
 import ArchitecturalScene from "@/components/ArchitecturalScene";
 import logoColor from "@/assets/sea-logo-color.png";
 import founderVision from "@/assets/sea-founder-vision.png.asset.json";
+import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
+import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
+import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
+
+const awards = [
+  { name: "THE INDIA DESIGN AWARDS", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
+  { name: "BHARAT BUSINESS AWARDS", year: "2024", image: awardBharatBusiness, alt: "P.V. Naresh Kumar receiving the Bharat Business Awards 2024 trophy and certificate" },
+  { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025", image: awardArchitectureHerald, alt: "P.V. Naresh Kumar holding the Architectural Excellence Award 2025 trophy and certificate at the Architecture Herald event" },
+];
 
 const values = [
   { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
@@ -85,7 +94,7 @@ export default function SeaAbout() {
       <section className="sea-awards">
         <div className="awards-geometry"><ArchitecturalScene /></div>
         <div className="sea-section-heading"><span className="sea-eyebrow">04 / AWARDS & RECOGNITION</span><h2>RECOGNITION<br />OF EXCELLENCE<span className="award-gold">.</span></h2></div>
-        <div className="sea-awards-list">{[{ name: "BUSINESS AWARDS", year: "2024" }, { name: "THE INDIA DESIGN AWARDS", year: "2024" }, { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025" }].map((award, i) => <article className="sea-award" key={award.name}><span className="award-index">0{i + 1}</span><div className="award-title-mask"><h3>{award.name}</h3></div><span className="award-year">{award.year}</span><ArrowUpRight aria-hidden="true" /></article>)}</div>
+        <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
       </section>
     </main>
     <footer className="sea-footer" id="contact">
