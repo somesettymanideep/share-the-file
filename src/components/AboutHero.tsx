@@ -50,7 +50,7 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <section className="sea-history" aria-label="Our history" ref={root}>
+    <section className="sea-history" id="history" aria-label="Our history" ref={root}>
       <div className="history-logo-wrap" aria-hidden="true">
         <SeaLogoMark className="history-logo-outline" filled={false} />
         <div className="history-glow" />

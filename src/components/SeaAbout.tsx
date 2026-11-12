@@ -4,8 +4,8 @@ import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
+import FounderSection from "@/components/FounderSection";
 import logoColor from "@/assets/sea-logo-color.png";
-import founderVision from "@/assets/sea-founder-vision.png.asset.json";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
 import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
 import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
@@ -98,10 +98,7 @@ export default function SeaAbout() {
     <main>
       <AboutHero />
 
-      <section className="sea-founder-image-section" id="founder" aria-label="Founder's vision">
-        <img className="sea-founder-image" src={founderVision.url} width={1152} height={768} loading="lazy" alt="The vision behind our architecture. P.V. Naresh Kumar, Founder & CEO. With a passion for design and a commitment to excellence, P.V. Naresh Kumar leads SEA with a vision to create innovative, sustainable, and people-centric spaces that inspire. Innovative Design Solutions. Sustainable Architecture. Long-Term Partnerships." />
-        <a className="sea-founder-image-journey" href="#values" aria-label="Our Journey" />
-      </section>
+      <FounderSection />
 
       <section className="sea-values" id="values">
         <div className="sea-section-heading"><span className="sea-eyebrow">03 / OUR VALUES</span><h2>WHAT DEFINES US<span className="sea-teal">.</span></h2></div>
