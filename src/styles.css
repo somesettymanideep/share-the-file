@@ -209,7 +209,6 @@
 .history-heading-line > span { display: block; }
 .history-paragraphs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 36px; }
 .sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1rem, 1.45vw, 1.55rem); line-height: 1.5; color: var(--hist-secondary); }
-.history-paragraph:nth-child(4) { grid-column: span 2; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
 .sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: 92vw; max-width: none; margin: 0; z-index: 2; }
 .sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-text); z-index: 2; }
@@ -313,8 +312,7 @@
   .history-heading { margin-bottom: 32px; }
   .history-paragraphs { grid-template-columns: 1fr; gap: 24px; }
   .history-paragraph { font-size: 0.95rem; }
-  .history-paragraph:nth-child(4) { grid-column: auto; }
-  .sea-history.is-animated .history-text { padding: 72px 7% 32px; }
+  .sea-history.is-animated .history-text { padding: 108px 7% 32px; }
   .sea-history.is-animated .history-heading { margin-bottom: 20px; }
   .sea-history.is-animated .history-paragraphs { gap: 16px; }
   .sea-history.is-animated .history-paragraph { font-size: 0.8rem; padding-top: 12px; }
