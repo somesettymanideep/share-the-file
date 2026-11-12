@@ -1,7 +1,8 @@
 // Each stage finishes before the next begins; shared by animation and tests.
 export const HISTORY_STAGES = {
-  enlarge: { start: 0, duration: 0.36 },
-  move: { start: 0.36, duration: 0.28 },
-  reveal: { start: 0.64, duration: 0.26 },
-  hold: { start: 0.9, duration: 0.1 },
+  grow: { start: 0, duration: 0.42 },
+  hold: { start: 0.42, duration: 0.08 },
+  logoOut: { start: 0.5, duration: 0.12 },
+  heading: { start: 0.62, duration: 0.1 },
+  paragraphs: { start: 0.72, duration: 0.28 },
 } as const;

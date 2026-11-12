@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import AboutHero from "@/components/AboutHero";
 import ArchitecturalScene from "@/components/ArchitecturalScene";
-import { HISTORY_STAGES } from "@/lib/history-sequence";
-import logo from "@/assets/sea-logo.svg";
 import logoColor from "@/assets/sea-logo-color.png";
 
 const values = [
@@ -20,7 +19,10 @@ export default function SeaAbout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      const history = document.querySelector(".sea-history");
+      setScrolled(history ? history.getBoundingClientRect().bottom < 80 : window.scrollY > 60);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,33 +32,8 @@ export default function SeaAbout() {
     const media = gsap.matchMedia();
     media.add({ desktop: "(min-width: 768px)", mobile: "(max-width: 767px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
       const conditions = context.conditions;
-      if (!conditions || !root.current) return;
+      if (!conditions || !root.current || conditions['reduce']) return;
       const scope = gsap.context(() => {
-        const logoElement = root.current?.querySelector<HTMLElement>(".history-logo");
-        const history = root.current?.querySelector<HTMLElement>(".sea-history");
-        if (!logoElement || !history) return;
-        if (conditions['reduce']) {
-          gsap.set(".history-content", { autoAlpha: 1 });
-          return;
-        }
-        const mobile = conditions['mobile'];
-        gsap.set(".history-content", { autoAlpha: 0 });
-        gsap.set(".history-line span", { yPercent: 110 });
-        gsap.set(".history-detail", { y: 24, opacity: 0 });
-        const finalWidth = mobile ? Math.min(window.innerWidth * 0.57, 265) : window.innerWidth * 0.35;
-        const initialWidth = mobile ? 108 : 150;
-        const timeline = gsap.timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: { trigger: history, start: "top top", end: () => `+=${window.innerHeight * (mobile ? 1.65 : 2.1)}`, pin: true, scrub: 0.6, invalidateOnRefresh: true },
-        });
-        timeline.fromTo(logoElement, { width: initialWidth, xPercent: -50, yPercent: -50, left: "50%", top: "47%" },
-          { width: () => window.innerWidth * (mobile ? 0.84 : 0.667), duration: HISTORY_STAGES.enlarge.duration }, HISTORY_STAGES.enlarge.start);
-        timeline.to(logoElement, { width: finalWidth, left: mobile ? "7%" : "6%", top: mobile ? "17%" : "43%", xPercent: 0, yPercent: mobile ? 0 : -50, duration: HISTORY_STAGES.move.duration }, HISTORY_STAGES.move.start);
-        timeline.set(".history-content", { autoAlpha: 1 }, HISTORY_STAGES.reveal.start);
-        timeline.to(".history-line span", { yPercent: 0, duration: 0.12, stagger: 0.025 }, HISTORY_STAGES.reveal.start);
-        timeline.to(".history-detail", { opacity: 1, y: 0, duration: 0.15, stagger: 0.035 }, HISTORY_STAGES.reveal.start + 0.06);
-        timeline.to({}, { duration: HISTORY_STAGES.hold.duration }, HISTORY_STAGES.hold.start);
-        timeline.to(".history-bottom", { opacity: 0, duration: 0.1 }, HISTORY_STAGES.move.start);
         gsap.from(".founder-visual", { clipPath: "inset(0 0 100% 0)", duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: ".sea-founder", start: "top 75%" } });
         gsap.from(".founder-copy > *", { opacity: 0, y: 35, stagger: 0.1, duration: 0.8, scrollTrigger: { trigger: ".sea-founder", start: "top 65%" } });
         gsap.utils.toArray<HTMLElement>(".sea-value").forEach((item) => {
@@ -95,17 +72,7 @@ export default function SeaAbout() {
     )}
 
     <main>
-      <section className="sea-history" aria-label="Our history">
-        <div className="history-grid" aria-hidden="true" />
-        <div className="history-geometry"><ArchitecturalScene /></div>
-        <img className="history-logo" src={logo} alt="SEA — Studio for Eclectic Architecture" />
-        <div className="history-content">
-          <span className="sea-eyebrow history-detail">01 / OUR HISTORY</span>
-          <h1><span className="history-line"><span>BUILT ON VISION.</span></span><span className="history-line"><span>DRIVEN BY DESIGN.</span></span></h1>
-          <p className="history-detail">SEA represents a commitment to architectural innovation, engineering precision, and thoughtful design. Our journey is driven by the ambition to create meaningful spaces through integrated architectural solutions, structural expertise, and advanced building technologies.</p>
-        </div>
-        <div className="history-bottom"><span>ARCHITECTURE. ENGINEERING. POSSIBILITY.</span><ArrowDown size={20} /><span>VIJAYAWADA, INDIA</span></div>
-      </section>
+      <AboutHero />
 
       <section className="sea-founder" id="founder">
         <div className="founder-visual">
