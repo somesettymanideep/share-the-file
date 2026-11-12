@@ -78,7 +78,7 @@ export default function AwardCarousel() {
     return () => { ctx.revert(); animating.current = false; };
   }, [active]);
 
-  const award = AWARDS[active];
+  const award = AWARDS[active] ?? AWARDS[0]!;
 
   return (
     <section
