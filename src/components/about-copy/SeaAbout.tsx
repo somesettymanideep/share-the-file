@@ -106,6 +106,11 @@ export default function SeaAbout() {
   return <div className="sea2-about" ref={root}>
     <header className={"sea2-header" + (scrolled ? " is-scrolled" : "")}>
       <Link to="/" aria-label="SEA home" className="sea2-brand"><img src={logoColor} alt="SEA – Studio for Eclectic Architecture" /></Link>
+      <nav className="sea2-header-nav" aria-label="Main navigation">
+        <Link to="/">Home</Link>
+        <Link to="/about">Who We Are</Link>
+        <Link to="/about-copy" aria-current="page">Who We Are Two</Link>
+      </nav>
       <button type="button" className="sea2-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
         <span className="sea2-menu-line sea2-menu-line-a" />
         <span className="sea2-menu-line sea2-menu-line-b" />
@@ -115,10 +120,9 @@ export default function SeaAbout() {
       <div className="sea2-menu-overlay" role="dialog" aria-label="Menu">
         <button type="button" className="sea2-menu-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>×</button>
         <nav aria-label="Main navigation">
-          <Link to="/about-copy" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are</Link>
-          <a href="/studio.html#projects">Projects</a>
-          <a href="/studio.html#services">What We Do</a>
-          <a href="/studio.html#contact">Contact</a>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>Who We Are</Link>
+          <Link to="/about-copy" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are Two</Link>
         </nav>
       </div>
     )}

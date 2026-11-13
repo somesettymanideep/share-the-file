@@ -186,7 +186,12 @@
 .sea-brand { display: inline-flex; align-items: center; padding: 0; }
 .sea-brand img { width: 118px; height: auto; display: block; transition: width 0.4s ease; }
 .sea-header.is-scrolled .sea-brand img { width: 96px; }
+.sea-header-nav, .sea2-header-nav { margin-left: auto; display: flex; align-items: center; gap: 34px; }
+.sea-header-nav a, .sea2-header-nav a { font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sea-awards-ink); text-decoration: none; transition: color 0.3s ease; }
+.sea-header-nav a:hover, .sea-header-nav a[aria-current="page"], .sea2-header-nav a:hover, .sea2-header-nav a[aria-current="page"] { color: var(--sea-awards-accent); }
 .sea-menu-toggle { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 7px; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; }
+@media (min-width: 768px) { .sea-menu-toggle, .sea2-menu-toggle { display: none; } }
+@media (max-width: 767px) { .sea-header-nav, .sea2-header-nav { display: none; } }
 .sea-menu-line { display: block; height: 2px; background: var(--foreground); transition: width 0.3s ease; }
 .sea-menu-line-a { width: 32px; }
 .sea-menu-line-b { width: 20px; }
