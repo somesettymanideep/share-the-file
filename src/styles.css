@@ -236,6 +236,7 @@
 .sea-founder .founder-heading-line { display: block; overflow: hidden; }
 .sea-founder .founder-heading-line > span { display: block; white-space: nowrap; }
 .sea-founder .founder-heading-accent { color: var(--sea-founder-accent); }
+.sea-founder .founder-quote { margin: 2cqw 0 0; max-width: 40cqw; font-family: "Inter", sans-serif; font-size: 1.35cqw; font-weight: 400; line-height: 1.65; color: var(--sea-founder-navy); }
 .sea-founder .founder-name { margin: 3.2cqw 0 0; font-family: "Inter", sans-serif; font-size: 2.8cqw; font-weight: 600; line-height: 1.2; color: var(--sea-founder-navy); }
 .sea-founder .founder-role { display: flex; align-items: center; justify-content: flex-start; gap: 2cqw; margin: 1cqw 0 0; font-family: "Inter", sans-serif; font-size: 1.05cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.16em; color: var(--sea-founder-navy); }
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
@@ -281,6 +282,7 @@
   .sea-founder .founder-art { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
   .sea-founder .founder-copy { position: static; top: auto; transform: none; width: auto; padding: 2.5rem 1.25rem 3rem; background: #fff; }
   .sea-founder .founder-heading { font-size: clamp(1.6rem, 7.4vw, 2.6rem); }
+  .sea-founder .founder-quote { margin-top: 1.4rem; max-width: none; font-size: 0.95rem; }
   .sea-founder .founder-name { margin-top: 1.6rem; font-size: 1.6rem; }
   .sea-founder .founder-role { margin-top: 0.6rem; font-size: 0.72rem; letter-spacing: 0.12em; }
 }

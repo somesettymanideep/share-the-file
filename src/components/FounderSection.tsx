@@ -82,6 +82,9 @@ export default function FounderSection() {
             <span className="founder-heading-line"><span>THE MIND BEHIND</span></span>
             <span className="founder-heading-line"><span className="founder-heading-accent">THE VISION</span></span>
           </h2>
+          <p className="founder-quote founder-rise">
+            &ldquo;Architecture begins with imagination. Great architecture begins with responsibility.&rdquo;
+          </p>
           <p className="founder-name founder-rise">P.V. Naresh Kumar</p>
           <p className="founder-role founder-rise">
             <span>FOUNDER ARCHITECT &amp; MANAGING DIRECTOR</span>
