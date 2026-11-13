@@ -523,3 +523,30 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .sea2-about *, .sea2-about *::before, .sea2-about *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Scroll-to-top button (shared by both About pages) */
+.sea-scroll-top, .sea2-scroll-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--sea-awards-accent);
+  color: var(--sea-awards-background);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  box-shadow: 0 8px 24px rgba(10, 34, 42, 0.25);
+}
+.sea-scroll-top.is-visible, .sea2-scroll-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.sea-scroll-top:hover, .sea2-scroll-top:hover { transform: translateY(-3px); }
+@media (max-width: 767px) {
+  .sea-scroll-top, .sea2-scroll-top { right: 18px; bottom: 18px; width: 44px; height: 44px; }
+}

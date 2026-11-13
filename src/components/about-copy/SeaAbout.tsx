@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "./AboutHero";
@@ -27,10 +27,12 @@ export default function SeaAbout() {
   const root = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showTop, setShowTop] = useState(false);
   useEffect(() => {
     let frame = 0;
     const read = () => {
       frame = 0;
+      setShowTop(window.scrollY > 600);
       const history = document.querySelector<HTMLElement>(".sea2-history");
       if (!history) {
         setScrolled(window.scrollY > 60);
@@ -146,5 +148,6 @@ export default function SeaAbout() {
       <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
       <div className="sea2-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about-copy">Who We Are</Link><a href="/studio.html#projects">Projects</a><a href="/studio.html#services">What We Do</a><a href="#contact">Contact</a></nav></div>
     </footer>
+    <button type="button" className={"sea2-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ArrowUp size={20} aria-hidden="true" /></button>
   </div>;
 }
