@@ -71,7 +71,7 @@ export default function FounderSection() {
           <img
             className="founder-portrait"
             src={founderPortrait.url}
-            alt="P.V. Naresh Kumar, Founder and CEO"
+            alt="P.V. Naresh Kumar, Founder Architect &amp; Managing Director"
             loading="lazy"
           />
           <span className="founder-watermark" aria-hidden="true">SEA</span>
@@ -79,13 +79,12 @@ export default function FounderSection() {
 
         <div className="founder-copy">
           <h2 className="founder-heading">
-            <span className="founder-heading-line"><span>THE VISION BEHIND OUR</span></span>
-            <span className="founder-heading-line"><span className="founder-heading-accent">SEA</span></span>
+            <span className="founder-heading-line"><span>THE MIND BEHIND</span></span>
+            <span className="founder-heading-line"><span className="founder-heading-accent">THE VISION</span></span>
           </h2>
           <p className="founder-name founder-rise">P.V. Naresh Kumar</p>
           <p className="founder-role founder-rise">
-            <span>FOUNDER &amp; CEO</span>
-            <i aria-hidden="true" />
+            <span>FOUNDER ARCHITECT &amp; MANAGING DIRECTOR</span>
           </p>
         </div>
       </div>
