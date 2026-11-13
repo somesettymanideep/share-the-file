@@ -404,7 +404,7 @@ html.lenis, html.lenis body { height: auto; }
 .history2-heading-line { display: block; overflow: hidden; }
 .history2-heading-line > span { display: block; }
 .history2-paragraphs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px 0; }
-.sea2-history .history2-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1rem, 1.45vw, 1.55rem); line-height: 1.5; color: var(--hist-secondary); }
+.sea2-history .history2-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1.15rem, 1.7vw, 1.85rem); line-height: 1.55; color: var(--hist-secondary); }
 .sea2-history .history2-paragraph:not(:first-child) { border-top: 0; }
 .sea2-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
 .sea2-history.is-animated .history2-logo-wrap { position: absolute; top: 50%; left: 50%; width: 92vw; max-width: none; margin: 0; z-index: 2; }
@@ -412,7 +412,7 @@ html.lenis, html.lenis body { height: auto; }
 .sea2-history.is-animated .history2-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
 .sea2-history.is-animated .history2-heading { margin-bottom: clamp(28px, 5vh, 56px); }
 .sea2-history.is-animated .history2-paragraphs { gap: clamp(14px, 2.4vh, 28px); }
-.sea2-history.is-animated .history2-paragraph { font-size: clamp(0.84rem, 1.02vw, 1.12rem); line-height: 1.5; padding-top: clamp(10px, 1.6vh, 18px); }
+.sea2-history.is-animated .history2-paragraph { font-size: clamp(0.98rem, 1.25vw, 1.4rem); line-height: 1.55; padding-top: clamp(10px, 1.6vh, 18px); }
 .sea2-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea2-founder { background: var(--sea-founder-bg); scroll-margin-top: 90px; }
 .sea2-founder .founder2-stage { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; aspect-ratio: 1714 / 922; overflow: hidden; container-type: inline-size; }
