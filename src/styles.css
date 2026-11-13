@@ -424,10 +424,9 @@ html.lenis, html.lenis body { height: auto; }
 .sea2-founder .founder2-role { display: flex; align-items: center; justify-content: flex-start; gap: 2cqw; margin: 1cqw 0 0; font-family: "Inter", sans-serif; font-size: 1.2cqw; font-weight: 600; line-height: 1.6; letter-spacing: 0.18em; color: var(--sea-founder-navy); }
 .sea2-founder .founder2-role i { display: block; width: 12.8cqw; height: 1px; background: var(--sea-founder-navy); }
 .sea2-values { padding: 100px 6% 120px; background: var(--sea-values-background); color: var(--sea-awards-ink); }
-.sea2-section-heading h2 { margin-top: 24px; }
 .sea2-values .sea2-eyebrow { color: var(--sea-awards-accent); font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase; }
 .sea2-values .sea2-section-heading { padding-bottom: 26px; border-bottom: 2px solid var(--sea-awards-accent); }
-.sea2-values .sea2-section-heading h2 { margin-top: 18px; font-family: "Archivo", sans-serif; font-stretch: 75%; font-weight: 800; font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1; letter-spacing: -0.01em; text-transform: uppercase; }
+.sea2-values .sea2-section-heading h2 { font-family: "Archivo", sans-serif; font-stretch: 75%; font-weight: 800; font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1; letter-spacing: -0.01em; text-transform: uppercase; }
 .sea2-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 48px; }
 .sea2-value { padding: 0 40px; }
 .sea2-value + .sea2-value { border-left: 1px solid var(--sea-values-line); }
@@ -443,7 +442,7 @@ html.lenis, html.lenis body { height: auto; }
 .award2-gold { color: var(--sea-awards-accent); }
 .sea2-awards .sea2-section-heading, .sea2-awards-list { position: relative; }
 .sea2-awards .sea2-section-heading { padding-bottom: 26px; border-bottom: 2px solid var(--sea-awards-accent); }
-.sea2-awards .sea2-section-heading h2 { margin-top: 18px; white-space: nowrap; font-size: clamp(2.4rem, 5.4vw, 4.6rem); }
+.sea2-awards .sea2-section-heading h2 { white-space: nowrap; font-size: clamp(2.4rem, 5.4vw, 4.6rem); }
 .sea2-awards .sea2-eyebrow { font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase; }
 .sea2-awards-list { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
 .sea2-award { display: flex; flex-direction: column; background: #fff; border-bottom: 2px solid var(--sea-awards-accent); }

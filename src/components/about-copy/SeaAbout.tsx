@@ -129,12 +129,12 @@ export default function SeaAbout() {
       <FounderSection />
 
       <section className="sea2-values" id="values">
-        <div className="sea2-section-heading"><span className="sea2-eyebrow">03 / OUR VALUES</span><h2>WHAT DEFINES US<span className="sea2-teal">.</span></h2></div>
+        <div className="sea2-section-heading"><h2>WHAT DEFINES US<span className="sea2-teal">.</span></h2></div>
         <div className="sea2-values-grid">{values.map(({ number, title, Icon, description }) => <article className="sea2-value" key={number}><div className="value2-top"><Icon size={62} strokeWidth={1.5} aria-hidden="true" /><span className="value2-number">{number}</span></div><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section className="sea2-awards">
-        <div className="sea2-section-heading"><span className="sea2-eyebrow">04 / AWARDS & RECOGNITION</span><h2>RECOGNISED FOR EXCELLENCE<span className="award2-gold">.</span></h2></div>
+        <div className="sea2-section-heading"><h2>RECOGNISED FOR EXCELLENCE<span className="award2-gold">.</span></h2></div>
         <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-body"><span className="award2-index">0{i + 1}</span><div className="award2-title-mask"><h3>{award.name}</h3></div><div className="award2-card-bottom"><span className="award2-year">{award.year}</span><span className="award2-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div></div></article>)}</div>
       </section>
     </main>
