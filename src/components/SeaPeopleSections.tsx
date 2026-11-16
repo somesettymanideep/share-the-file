@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import clientPortrait from "@/assets/sea-sample-client.jpg";
+import clientPortraitTwo from "@/assets/sea-sample-client-2.jpg";
 import portraitOne from "@/assets/sea-sample-team-1.jpg";
 import portraitTwo from "@/assets/sea-sample-team-2.jpg";
 import portraitThree from "@/assets/sea-sample-team-3.jpg";
@@ -23,7 +24,7 @@ const team = [
   { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour },
 ];
 
-const testimonialPortraits = [clientPortrait, portraitTwo, clientPortrait, portraitTwo, portraitThree, portraitFour];
+const testimonialPortraits = [clientPortrait, portraitTwo, clientPortraitTwo, portraitFour, portraitThree, portraitOne];
 
 export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", testimonialStyle = "cards" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials"; testimonialStyle?: "cards" | "editorial" }) {
   const [active, setActive] = useState(0);
@@ -55,9 +56,10 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", 
   return <div className="sea-people">
     {parts !== "team" && <section className={`people-testimonials${testimonialStyle === "editorial" ? " people-testimonials-editorial" : ""}`} aria-labelledby="people-testimonials-title" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
       <div className="people-inner">
-        {testimonialStyle === "editorial" ? <div className="people-editorial-panel">
+        {testimonialStyle === "editorial" ? <>
+          <div className="people-heading people-testimonials-heading"><h2 id="people-testimonials-title">What Our Clients Say<span>.</span></h2></div>
+          <div className="people-editorial-panel">
           <div className="people-editorial-copy">
-            <h2 id="people-testimonials-title">Testimonials</h2>
             <div className="people-editorial-story" aria-roledescription="carousel" aria-label="Sample client testimonials" aria-live={autoplay ? "off" : "polite"} aria-atomic="true">
               <div key={active} className="people-editorial-slide">
                 <blockquote>“{testimonials[active]?.quote}”</blockquote>
@@ -71,10 +73,9 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", 
             </div>
           </div>
           <div className="people-portrait-cluster" aria-label="Choose testimonial">
-            <div className="people-portrait-current" aria-hidden="true"><img key={active} src={testimonialPortraits[active]} alt="" width={816} height={816} loading="lazy" /></div>
-            {testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-portrait-choice" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} title={item.name} onClick={() => setActive(index)}><img src={testimonialPortraits[index]} alt={`Illustrative sample portrait for ${item.name}`} width={816} height={816} loading="lazy" /></Button>)}
+            {testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-portrait-choice" data-slot={(index - active + testimonials.length) % testimonials.length} aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} title={item.name} onClick={() => setActive(index)}><img src={testimonialPortraits[index]} alt={`Illustrative sample portrait for ${item.name}`} width={816} height={816} loading="lazy" /></Button>)}
           </div>
-        </div> : <>
+        </div></> : <>
         <div className="people-heading people-testimonials-heading">
           <h2 id="people-testimonials-title">What Our Clients Say<span>.</span></h2>
         </div>
