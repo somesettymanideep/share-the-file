@@ -51,10 +51,11 @@ export default function AboutHero() {
 
   return (
     <section className="sea-history" id="history" aria-label="Our history" ref={root}>
-      <div className="history-logo-wrap" aria-hidden="true">
+      <div className="history-logo-wrap">
         <SeaLogoMark className="history-logo-outline" filled={false} />
         <div className="history-glow" />
         <SeaLogoMark className="history-logo-fill" />
+        <p className="history-logo-caption">STUDIO FOR ECLECTIC ARCHITECTURE</p>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
       <HistoryText />
