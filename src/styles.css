@@ -279,6 +279,14 @@
 @media (min-width: 1440px) { .sea-about .sea-defines h2 { font-size: 112px; } .sea-about .sea-defines h3 { font-size: 32px; } .sea-about .sea-defines p { font-size: 20px; } }
 @media (min-width: 900px) and (max-width: 1199px) { .sea-about .sea-defines h2 { font-size: 64px; } .sea-about .defines-row { grid-template-columns: 58px minmax(0, 1fr); padding-block: 16px; } .sea-about .sea-defines h3 { font-size: 22px; } .sea-about .sea-defines p { font-size: 15px; } .sea-about .sea-defines .defines-tag { font-size: 16px; } .sea-about .defines-icon { width: 34px; height: 34px; } }
 @media (max-width: 899px) { .sea-about .defines-layout { display: flex; flex-direction: column; gap: 36px; padding: 104px 24px 64px; } .sea-about .sea-defines h2 { font-size: 64px; } .sea-about .defines-left { gap: 40px; } .sea-about .defines-drawing { max-width: 340px; } .sea-about .defines-row { grid-template-columns: 58px minmax(0, 1fr); padding-block: 28px; } .sea-about .sea-defines h3 { font-size: 23px; } .sea-about .sea-defines p { font-size: 16px; } .sea-about .sea-defines .defines-tag { font-size: 17px; } .sea-about .defines-icon { width: 34px; height: 34px; } }
+@media (min-width: 900px) and (max-height: 850px) {
+  .sea-about .sea-defines .defines-row { padding-block: 10px; }
+  .sea-about .sea-defines .defines-row:first-child { padding-top: 0; }
+  .sea-about .sea-defines .defines-row:last-child { padding-bottom: 0; }
+  .sea-about .sea-defines h3 { font-size: 20px; margin-bottom: 6px; }
+  .sea-about .sea-defines p { font-size: 14px; }
+  .sea-about .sea-defines .defines-tag { font-size: 16px; margin-bottom: 6px; }
+}
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
 .sea-section-heading h2 { margin-top: 24px; }
 .sea-values .sea-section-heading h2 { margin-top: 0; }
