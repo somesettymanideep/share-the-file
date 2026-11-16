@@ -80,7 +80,7 @@ export default function SeaPeopleSections() {
     <section className="people-team" aria-labelledby="people-team-title">
       <div className="people-inner">
         <div className="people-heading people-team-heading">
-          <div><h2 id="people-team-title">Meet Our <em>Team</em><span>.</span></h2><p>A team of passionate architects, designers and innovators, dedicated to bringing your vision to life.</p></div>
+          <h2 id="people-team-title">The Minds That Make SEA<span>.</span></h2>
           <Button asChild variant="link" className="people-contact"><a href="mailto:naresh@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>
         </div>
         <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>
