@@ -58,11 +58,11 @@ export default function AboutHero() {
         <SeaLogoMark className="history-logo-outline" filled={false} />
         <div className="history-glow" />
         <SeaLogoMark className="history-logo-fill" />
-        <svg className="history-logo-caption" viewBox="0 0 618 48" role="img" aria-label="STUDIO FOR ECLECTIC ARCHITECTURE">
-          <text x="309" y="34" textAnchor="middle">STUDIO FOR ECLECTIC ARCHITECTURE</text>
+        <svg className="history-logo-caption" viewBox="0 0 642 48" role="img" aria-label="STUDIO FOR ECLECTIC ARCHITECTURE">
+          <text x="321" y="34" textAnchor="middle" wordSpacing="8">STUDIO FOR ECLECTIC ARCHITECTURE</text>
         </svg>
         <p className="history-logo-definition">
-          <strong>Eclecticism</strong> is a “a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.”
+          <strong>Eclecticism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
         </p>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
