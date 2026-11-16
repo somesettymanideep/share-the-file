@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SeaLogoMark from "@/components/SeaLogoMark";
 import HistoryText from "@/components/HistoryText";
-import { HISTORY_STAGES } from "@/lib/history-sequence";
+import { ABOUT_HISTORY_STAGES as HISTORY_STAGES } from "@/lib/history-sequence";
 
 export default function AboutHero() {
   const root = useRef<HTMLElement>(null);
@@ -21,6 +21,7 @@ export default function AboutHero() {
         gsap.set(".history-glow", { opacity: 1, x: "-30vw" });
         gsap.set(".history-heading-line > span", { yPercent: 110 });
         gsap.set(".history-paragraph", { y: 40, opacity: 0 });
+        gsap.set(".history-logo-caption, .history-logo-definition", { y: 40, autoAlpha: 0 });
         const timeline = gsap.timeline({
           defaults: { ease: "none" },
           scrollTrigger: {
@@ -36,6 +37,8 @@ export default function AboutHero() {
         timeline.to(".history-logo-wrap", { scale: 1, duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-fill", { clipPath: "inset(0 0% 0 0)", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-glow", { x: "92vw", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
+        timeline.to(".history-logo-caption", { y: 0, autoAlpha: 1, duration: HISTORY_STAGES.caption.duration, ease: "power1.out" }, HISTORY_STAGES.caption.start);
+        timeline.to(".history-logo-definition", { y: 0, autoAlpha: 1, duration: HISTORY_STAGES.definition.duration, ease: "power1.out" }, HISTORY_STAGES.definition.start);
         timeline.to({}, { duration: HISTORY_STAGES.hold.duration }, HISTORY_STAGES.hold.start);
         timeline.to(".history-logo-wrap", { opacity: 0, scale: 1.12, duration: HISTORY_STAGES.logoOut.duration }, HISTORY_STAGES.logoOut.start);
         timeline.to(".history-heading-line > span", { yPercent: 0, duration: HISTORY_STAGES.heading.duration, ease: "power2.out" }, HISTORY_STAGES.heading.start);
