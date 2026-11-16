@@ -147,7 +147,7 @@ export default function SeaAbout() {
         <div className="sea-section-heading"><h2>AWARDS & RECOGNITION<span className="award-gold">.</span></h2></div>
         <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
       </section>
-      <SeaPeopleSections />
+      <SeaPeopleSections showTeamMeta={false} />
     </main>
     <footer className="sea-footer" id="contact">
       <div className="sea-footer-top"><h2>Let’s Create<br />Something Meaningful</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>

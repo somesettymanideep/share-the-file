@@ -23,7 +23,7 @@ const team = [
   { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour },
 ];
 
-export default function SeaPeopleSections() {
+export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMeta?: boolean }) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -81,9 +81,9 @@ export default function SeaPeopleSections() {
       <div className="people-inner">
         <div className="people-heading people-team-heading">
           <h2 id="people-team-title">The Minds That Make SEA<span>.</span></h2>
-          <Button asChild variant="link" className="people-contact"><a href="mailto:naresh@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>
+          {showTeamMeta && <Button asChild variant="link" className="people-contact"><a href="mailto:naresh@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>}
         </div>
-        <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>
+        {showTeamMeta && <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>}
         <div className="people-team-grid">{team.map((member, index) => <article className="people-team-card" key={member.name}>
           <div className="people-team-photo"><img src={member.image} alt={`Illustrative portrait for sample team member ${member.name}`} loading="lazy" width={768} height={768} /><span className="people-member-number">0{index + 1}</span></div>
           <div className="people-member-info"><h3>{member.name}</h3><p>{member.role}</p><div className="people-socials"><span title="Sample LinkedIn profile — not connected" aria-label="Sample LinkedIn profile — not connected"><Linkedin size={16} aria-hidden="true" /></span><span title="Sample Instagram profile — not connected" aria-label="Sample Instagram profile — not connected"><Instagram size={16} aria-hidden="true" /></span></div></div>
