@@ -9,5 +9,6 @@
 - [x] Rebuild the awards section as three photo cards on a #EEF3F3 background using the client's ceremony photos.
 
 # Testimonials and team
+- [x] Match testimonials to the supplied two-card portrait reference and verify both pages.
 - [x] Add editorial testimonials and four sample team cards to both About pages.
 - [x] Verify testimonial navigation, contact link, portraits, and desktop/mobile layouts on both pages.

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Instagram, Linkedin, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import residence from "@/assets/sea-residence.asset.json";
 import clientPortrait from "@/assets/sea-sample-client.jpg";
 import portraitOne from "@/assets/sea-sample-team-1.jpg";
 import portraitTwo from "@/assets/sea-sample-team-2.jpg";
@@ -23,35 +22,32 @@ const team = [
 
 export default function SeaPeopleSections() {
   const [active, setActive] = useState(0);
-  const testimonial = testimonials[active];
-  if (!testimonial) return null;
+  const visibleTestimonials = [testimonials[active], testimonials[(active + 1) % testimonials.length]];
 
   return <div className="sea-people">
     <section className="people-testimonials" aria-labelledby="people-testimonials-title">
       <div className="people-inner">
-        <div className="people-heading">
-          <h2 id="people-testimonials-title">What Our Clients <em>Say</em><span>.</span></h2>
-          <p>Trusted by clients, inspired by our work. Here's what they have to say about SEA.</p>
+        <div className="people-heading people-testimonials-heading">
+          <h2 id="people-testimonials-title">AWARDS &amp; RECOGNITION<span>.</span></h2>
+          <p>CLIENT TESTIMONIALS</p>
         </div>
-        <div className="people-testimonial-layout">
-          <figure className="people-project">
-            <img src={residence.url} alt="Contemporary residential architecture with carefully composed lines and natural light" loading="lazy" width={1000} height={1200} />
-            <figcaption><span>SPACE. LIGHT. LIFE.</span><span>SEA / Architecture</span></figcaption>
-          </figure>
-          <div className="people-testimonial-card" aria-roledescription="carousel" aria-label="Sample client testimonials">
-            <div className="people-quote-top"><Quote size={52} strokeWidth={1} aria-hidden="true" /><span className="people-sample">Sample testimonial · {String(active + 1).padStart(2, "0")}</span></div>
-            <div className="people-quote-content" aria-live="polite" aria-atomic="true">
-              <blockquote key={active}>“{testimonial.quote}”</blockquote>
-              <div className="people-client">
-                <img src={clientPortrait} alt="Illustrative sample client portrait" loading="lazy" width={816} height={816} />
-                <div><h3>{testimonial.name}</h3><p>{testimonial.role} · {testimonial.company}</p><span>Fictional client & quotation</span></div>
+        <div className="people-testimonial-layout" aria-roledescription="carousel" aria-label="Sample client testimonials" aria-live="polite" aria-atomic="true">
+          {visibleTestimonials.map((testimonial) => testimonial && <article className="people-testimonial-card" key={testimonial.name}>
+            <div className="people-testimonial-portrait"><img src={testimonial.name === "Vikram Mehta" ? portraitTwo : clientPortrait} alt={`Illustrative sample portrait for ${testimonial.name}`} loading="lazy" width={816} height={816} /></div>
+            <div className="people-quote-content">
+              <Quote className="people-quote-mark" size={46} strokeWidth={1.5} fill="currentColor" aria-hidden="true" />
+              <blockquote>“{testimonial.quote}”</blockquote>
+              <div className="people-client"><h3>{testimonial.name}</h3><p>{testimonial.role}</p>
+                <div className="people-stars" aria-label="Illustrative five-star rating">{Array.from({ length: 5 }, (_, index) => <Star key={index} size={19} fill="currentColor" strokeWidth={0} aria-hidden="true" />)}</div>
+                <span>Sample · Fictional client &amp; quotation</span>
               </div>
             </div>
-            <div className="people-carousel-controls">
-              <div className="people-pagination" aria-label="Choose testimonial">{testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-page-dot" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} onClick={() => setActive(index)}><span /></Button>)}</div>
-              <div className="people-arrows"><Button variant="outline" size="icon" className="people-arrow" aria-label="Previous testimonial" title="Previous testimonial" onClick={() => setActive((active + testimonials.length - 1) % testimonials.length)}><ArrowLeft /></Button><Button variant="outline" size="icon" className="people-arrow" aria-label="Next testimonial" title="Next testimonial" onClick={() => setActive((active + 1) % testimonials.length)}><ArrowRight /></Button></div>
-            </div>
-          </div>
+          </article>)}
+        </div>
+        <div className="people-carousel-controls">
+          <Button variant="outline" size="icon" className="people-arrow" aria-label="Previous testimonial" title="Previous testimonial" onClick={() => setActive((active + testimonials.length - 1) % testimonials.length)}><ChevronLeft /></Button>
+          <div className="people-pagination" aria-label="Choose testimonial">{testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-page-dot" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} onClick={() => setActive(index)}><span /></Button>)}</div>
+          <Button variant="outline" size="icon" className="people-arrow" aria-label="Next testimonial" title="Next testimonial" onClick={() => setActive((active + 1) % testimonials.length)}><ChevronRight /></Button>
         </div>
       </div>
     </section>
