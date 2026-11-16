@@ -19,6 +19,7 @@ export default function AboutHero() {
         gsap.set(".history-logo-wrap", { xPercent: -50, yPercent: -50, scale: 0.18 });
         gsap.set(".history-logo-fill", { clipPath: "inset(0 100% 0 0)" });
         gsap.set(".history-glow", { opacity: 1, x: "-30vw" });
+        gsap.set(".history-caption", { y: 26, opacity: 0 });
         gsap.set(".history-heading-line > span", { yPercent: 110 });
         gsap.set(".history-paragraph", { y: 40, opacity: 0 });
         const timeline = gsap.timeline({
@@ -36,6 +37,7 @@ export default function AboutHero() {
         timeline.to(".history-logo-wrap", { scale: 1, duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-fill", { clipPath: "inset(0 0% 0 0)", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-glow", { x: "92vw", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
+        timeline.to(".history-caption", { y: 0, opacity: 1, duration: HISTORY_STAGES.caption.duration, ease: "power2.out" }, HISTORY_STAGES.caption.start);
         timeline.to({}, { duration: HISTORY_STAGES.hold.duration }, HISTORY_STAGES.hold.start);
         timeline.to(".history-logo-wrap", { opacity: 0, scale: 1.12, duration: HISTORY_STAGES.logoOut.duration }, HISTORY_STAGES.logoOut.start);
         timeline.to(".history-heading-line > span", { yPercent: 0, duration: HISTORY_STAGES.heading.duration, ease: "power2.out" }, HISTORY_STAGES.heading.start);
@@ -55,6 +57,7 @@ export default function AboutHero() {
         <SeaLogoMark className="history-logo-outline" filled={false} />
         <div className="history-glow" />
         <SeaLogoMark className="history-logo-fill" />
+        <p className="history-caption">Studio for Eclectic Architecture</p>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
       <HistoryText />

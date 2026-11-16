@@ -5,6 +5,10 @@ describe("History storytelling order", () => {
   it("grows the logo from the very start", () => {
     expect(HISTORY_STAGES.grow.start).toBe(0);
   });
+  it("reveals the caption while the logo grows and clears it before the heading", () => {
+    expect(HISTORY_STAGES.caption.start).toBeGreaterThanOrEqual(HISTORY_STAGES.grow.start);
+    expect(HISTORY_STAGES.caption.start + HISTORY_STAGES.caption.duration).toBeLessThanOrEqual(HISTORY_STAGES.hold.start + HISTORY_STAGES.hold.duration);
+  });
   it("holds the filled logo before it leaves", () => {
     expect(HISTORY_STAGES.hold.start).toBeGreaterThanOrEqual(HISTORY_STAGES.grow.start + HISTORY_STAGES.grow.duration);
     expect(HISTORY_STAGES.logoOut.start).toBeGreaterThanOrEqual(HISTORY_STAGES.hold.start + HISTORY_STAGES.hold.duration);
