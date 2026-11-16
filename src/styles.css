@@ -210,7 +210,6 @@
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
 .history-glow { position: absolute; top: 50%; left: 0; width: 30vw; height: 30vw; transform: translateY(-50%); background: radial-gradient(closest-side, color-mix(in oklab, var(--sea-awards-accent) 55%, transparent), transparent 72%); filter: blur(28px); opacity: 0; pointer-events: none; }
 .history-scroll-cue { display: none; }
-.history-caption { margin: 22px 0 0; text-align: center; font-family: "Oswald", sans-serif; font-size: clamp(0.95rem, 1.6vw, 1.35rem); font-weight: 500; letter-spacing: 0.42em; text-transform: uppercase; color: var(--hist-text); }
 .history-text { position: relative; }
 .history-heading { margin: 0 0 48px; font-family: "Archivo", sans-serif; font-stretch: 62%; font-weight: 800; text-transform: uppercase; line-height: 0.86; font-size: clamp(3rem, 9vw, 10rem); letter-spacing: 0.01em; }
 .history-heading-line { display: block; overflow: hidden; }
