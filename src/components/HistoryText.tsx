@@ -8,7 +8,7 @@ export default function HistoryText() {
   return (
     <div className="history-text">
       <h1 className="history-heading">
-        <span className="history-heading-line"><span>OUR HISTORY</span></span>
+        <span className="history-heading-line"><span>THE SEA STORY</span></span>
       </h1>
       <div className="history-paragraphs">
         {paragraphs.map((text) => <p className="history-paragraph" key={text.slice(0, 24)}>{text}</p>)}
