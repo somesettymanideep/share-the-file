@@ -53,7 +53,7 @@ export default function WhatDefinesUs() {
   return <section className="sea-defines" id="values" ref={root} aria-labelledby="defines-heading">
     <div className="defines-layout">
       <div className="defines-left">
-        <div><h2 id="defines-heading">{["What", "Defines", "Us"].map((word) => <span className="defines-heading-line" key={word}><span>{word}</span></span>)}</h2><div className="defines-bar" /></div>
+        <div><h2 id="defines-heading">{["What", "Defines Us"].map((word) => <span className="defines-heading-line" key={word}><span>{word}</span></span>)}</h2><div className="defines-bar" /></div>
       </div>
       <ol className="defines-list">{principles.map(({ title, Icon, description, tag }, index) => <li className="defines-row" key={title} onMouseEnter={(event) => redrawIcon(event.currentTarget)}>
         {index > 0 && <span className="defines-divider" aria-hidden="true" />}
