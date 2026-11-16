@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "6f901f5d-34d2-44c5-a574-31ee8a9d4701",
-  "project_id": "6d763d98-84f0-4449-a909-3db6a3ebb547",
-  "url": "/__l5e/assets-v1/6f901f5d-34d2-44c5-a574-31ee8a9d4701/sea-founder-vision.png",
-  "r2_key": "a/v1/6d763d98-84f0-4449-a909-3db6a3ebb547/6f901f5d-34d2-44c5-a574-31ee8a9d4701/sea-founder-vision.png",
-  "original_filename": "sea-founder-vision.png",
-  "size": 2081817,
   "content_type": "image/png",
-  "created_at": "2026-11-12T06:13:26Z"
+  "created_at": "2026-11-12T06:13:26Z",
+  "original_filename": "sea-founder-vision.png",
+  "project_id": "f09b23eb-ae85-4923-99f0-c7754171741a",
+  "r2_key": "a/v1/f09b23eb-ae85-4923-99f0-c7754171741a/6f901f5d-34d2-44c5-a574-31ee8a9d4701/sea-founder-vision.png",
+  "size": 2081817,
+  "url": "/__l5e/assets-v1/6f901f5d-34d2-44c5-a574-31ee8a9d4701/sea-founder-vision.png",
+  "version": 1
 }

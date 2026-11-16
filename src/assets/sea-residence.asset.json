@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "1593acf8-b169-412d-8528-718a24c07cea",
-  "project_id": "6d763d98-84f0-4449-a909-3db6a3ebb547",
-  "url": "/__l5e/assets-v1/1593acf8-b169-412d-8528-718a24c07cea/sea-residence.jpg",
-  "r2_key": "a/v1/6d763d98-84f0-4449-a909-3db6a3ebb547/1593acf8-b169-412d-8528-718a24c07cea/sea-residence.jpg",
-  "original_filename": "sea-residence.jpg",
-  "size": 258025,
   "content_type": "image/jpeg",
-  "created_at": "2026-11-11T13:27:28Z"
+  "created_at": "2026-11-11T13:27:28Z",
+  "original_filename": "sea-residence.jpg",
+  "project_id": "f09b23eb-ae85-4923-99f0-c7754171741a",
+  "r2_key": "a/v1/f09b23eb-ae85-4923-99f0-c7754171741a/1593acf8-b169-412d-8528-718a24c07cea/sea-residence.jpg",
+  "size": 258025,
+  "url": "/__l5e/assets-v1/1593acf8-b169-412d-8528-718a24c07cea/sea-residence.jpg",
+  "version": 1
 }

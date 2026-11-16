@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "d42c2fbe-03ed-4301-acd9-25d5143689a4",
-  "project_id": "6d763d98-84f0-4449-a909-3db6a3ebb547",
-  "url": "/__l5e/assets-v1/d42c2fbe-03ed-4301-acd9-25d5143689a4/sea-design-process.jpg",
-  "r2_key": "a/v1/6d763d98-84f0-4449-a909-3db6a3ebb547/d42c2fbe-03ed-4301-acd9-25d5143689a4/sea-design-process.jpg",
-  "original_filename": "sea-design-process.jpg",
-  "size": 240310,
   "content_type": "image/jpeg",
-  "created_at": "2026-11-11T13:27:23Z"
+  "created_at": "2026-11-11T13:27:23Z",
+  "original_filename": "sea-design-process.jpg",
+  "project_id": "f09b23eb-ae85-4923-99f0-c7754171741a",
+  "r2_key": "a/v1/f09b23eb-ae85-4923-99f0-c7754171741a/d42c2fbe-03ed-4301-acd9-25d5143689a4/sea-design-process.jpg",
+  "size": 240310,
+  "url": "/__l5e/assets-v1/d42c2fbe-03ed-4301-acd9-25d5143689a4/sea-design-process.jpg",
+  "version": 1
 }

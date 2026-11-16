@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "35bacf12-f755-4145-9fb5-3b3bd64a7140",
-  "project_id": "6d763d98-84f0-4449-a909-3db6a3ebb547",
-  "url": "/__l5e/assets-v1/35bacf12-f755-4145-9fb5-3b3bd64a7140/sea-award-bharat-business.png",
-  "r2_key": "a/v1/6d763d98-84f0-4449-a909-3db6a3ebb547/35bacf12-f755-4145-9fb5-3b3bd64a7140/sea-award-bharat-business.png",
-  "original_filename": "sea-award-bharat-business.png",
-  "size": 2716348,
   "content_type": "image/png",
-  "created_at": "2026-11-12T06:58:39Z"
+  "created_at": "2026-11-12T06:58:39Z",
+  "original_filename": "sea-award-bharat-business.png",
+  "project_id": "f09b23eb-ae85-4923-99f0-c7754171741a",
+  "r2_key": "a/v1/f09b23eb-ae85-4923-99f0-c7754171741a/35bacf12-f755-4145-9fb5-3b3bd64a7140/sea-award-bharat-business.png",
+  "size": 2716348,
+  "url": "/__l5e/assets-v1/35bacf12-f755-4145-9fb5-3b3bd64a7140/sea-award-bharat-business.png",
+  "version": 1
 }
