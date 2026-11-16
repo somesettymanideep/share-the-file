@@ -208,7 +208,10 @@
 .history-logo-outline, .history-logo-fill { display: block; width: 100%; height: auto; }
 .history-logo-outline { color: var(--hist-text); }
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
-.sea-about .history-logo-caption { position: absolute; top: 100%; left: 0; display: block; width: 100%; height: auto; margin: 24px 0 0; font-family: "Archivo", sans-serif; font-size: 32px; font-weight: 400; font-style: normal; font-stretch: normal; letter-spacing: 0; fill: var(--hist-text); }
+.sea-about .history-logo-caption { position: relative; display: block; width: 100%; height: auto; margin: 24px 0 0; font-family: "Archivo", sans-serif; font-size: 32px; font-weight: 400; font-style: normal; font-stretch: normal; letter-spacing: 0; fill: var(--hist-text); }
+.sea-about .history-logo-definition { margin: 20px 0 0; font-family: "Archivo", sans-serif; font-size: 18px; font-weight: 400; line-height: 1.55; text-align: center; color: var(--hist-text); }
+.sea-about .history-logo-definition strong { font-weight: 700; color: var(--hist-accent); }
+@media (max-width: 767px) { .sea-about .history-logo-definition { font-size: 16px; margin-top: 16px; } }
 @media (max-width: 767px) { .sea-about .history-logo-caption { margin-top: 16px; } }
 .history-glow { position: absolute; top: 50%; left: 0; width: 30vw; height: 30vw; transform: translateY(-50%); background: radial-gradient(closest-side, color-mix(in oklab, var(--sea-awards-accent) 55%, transparent), transparent 72%); filter: blur(28px); opacity: 0; pointer-events: none; }
 .history-scroll-cue { display: none; }
@@ -220,7 +223,7 @@
 .sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1.15rem, 1.7vw, 1.85rem); line-height: 1.55; color: var(--hist-secondary); }
 .sea-history .history-paragraph:not(:first-child) { border-top: 0; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
-.sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: 92vw; max-width: none; margin: 0; z-index: 2; }
+.sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: min(92vw, 130svh); max-width: none; margin: 0; z-index: 2; }
 .sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-text); z-index: 2; }
 .sea-history.is-animated .history-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
 .sea-history.is-animated .history-heading { margin-bottom: clamp(28px, 5vh, 56px); }

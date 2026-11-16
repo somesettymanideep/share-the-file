@@ -58,6 +58,9 @@ export default function AboutHero() {
         <svg className="history-logo-caption" viewBox="0 0 1000 48" role="img" aria-label="STUDIO FOR ECLECTIC ARCHITECTURE">
           <text x="0" y="34" textLength="1000" lengthAdjust="spacingAndGlyphs">STUDIO FOR ECLECTIC ARCHITECTURE</text>
         </svg>
+        <p className="history-logo-definition">
+          <strong>Eclecticism</strong> is a “a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.”
+        </p>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
       <HistoryText />
