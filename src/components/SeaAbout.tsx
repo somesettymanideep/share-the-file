@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUp, ArrowUpRight, Lightbulb, Leaf, ScanLine } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Fingerprint, Lightbulb, Leaf, ScanLine, Handshake, Globe } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
@@ -18,9 +18,12 @@ const awards = [
 ];
 
 const values = [
-  { number: "01", title: "Innovation", Icon: Lightbulb, description: "We embrace new ideas and technologies to create intelligent, forward-thinking architectural solutions." },
-  { number: "02", title: "Sustainability", Icon: Leaf, description: "We design responsible spaces that balance environmental awareness, functionality, and long-term value." },
-  { number: "03", title: "Excellence", Icon: ScanLine, description: "We maintain exceptional standards through precision, collaboration, and attention to every detail." },
+  { number: "01", title: "Design with Identity", Icon: Fingerprint, description: "Every space deserves its own story, character, and purpose." },
+  { number: "02", title: "Intelligence in Design", Icon: Lightbulb, description: "Integrating creativity, technology, and intelligent problem-solving." },
+  { number: "03", title: "Responsible Architecture", Icon: Leaf, description: "Creating thoughtful spaces with long-term environmental and human value." },
+  { number: "04", title: "Precision in Execution", Icon: ScanLine, description: "Where imagination is supported by detailing, discipline, and technical expertise." },
+  { number: "05", title: "Trust by Design", Icon: Handshake, description: "Building transparent relationships through accountability and collaboration." },
+  { number: "06", title: "Glocal Thinking", qualifier: "[Global Vision. Local Wisdom].", Icon: Globe, description: "Rooted in local understanding, inspired by global design perspectives." },
 ];
 
 export default function SeaAbout() {
@@ -135,8 +138,8 @@ export default function SeaAbout() {
       <FounderSection />
 
       <section className="sea-values" id="values">
-        <div className="sea-section-heading"><span className="sea-eyebrow">03 / OUR VALUES</span><h2>WHAT DEFINES US<span className="sea-teal">.</span></h2></div>
-        <div className="sea-values-grid">{values.map(({ number, title, Icon, description }) => <article className="sea-value" key={number}><div className="value-top"><span className="value-number">{number}</span><Icon size={72} strokeWidth={1} aria-hidden="true" /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+        <div className="sea-section-heading"><h2>WHAT DEFINES US<span className="sea-teal">.</span></h2></div>
+        <div className="sea-values-grid">{values.map(({ number, title, qualifier, Icon, description }) => <article className="sea-value" key={number}><div className="value-top"><span className="value-number">{number} /</span><Icon size={62} strokeWidth={1} aria-hidden="true" /></div><h3>{title}{qualifier && <span className="value-qualifier">{qualifier}</span>}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section className="sea-awards">
