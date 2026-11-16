@@ -7,3 +7,7 @@
 - [x] Anchor the founder’s hand to the wall and tidy the section at desktop, tablet, and mobile sizes.
 - [x] Replace the founder section with the client's complete supplied image.
 - [x] Rebuild the awards section as three photo cards on a #EEF3F3 background using the client's ceremony photos.
+
+# Testimonials and team
+- [x] Add editorial testimonials and four sample team cards to both About pages.
+- [x] Verify testimonial navigation, contact link, portraits, and desktop/mobile layouts on both pages.

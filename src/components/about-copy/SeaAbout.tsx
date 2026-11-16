@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "./AboutHero";
 import FounderSection from "./FounderSection";
+import SeaPeopleSections from "@/components/SeaPeopleSections";
 import Lenis from "lenis";
 import logoColor from "@/assets/sea-logo-color.png";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
@@ -143,6 +144,7 @@ export default function SeaAbout() {
         <div className="sea2-section-heading"><h2>RECOGNISED FOR EXCELLENCE<span className="award2-gold">.</span></h2></div>
         <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-body"><span className="award2-index">0{i + 1}</span><div className="award2-title-mask"><h3>{award.name}</h3></div><div className="award2-card-bottom"><span className="award2-year">{award.year}</span><span className="award2-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div></div></article>)}</div>
       </section>
+      <SeaPeopleSections />
     </main>
     <footer className="sea2-footer" id="contact">
       <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>

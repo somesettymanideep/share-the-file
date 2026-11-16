@@ -34,3 +34,4 @@ use the editor.
 - Initialize Three.js only after React mounts, dispose all scene resources on unmount, and keep text usable without WebGL so SSR and low-capability devices remain supported.
 - Keep history stage boundaries in the shared history-sequence module, with separate schedules for About and its independent copy, so logo enlargement, caption, definition, and story reveals remain ordered and testable without changing the copy.
 - Build the founder section as the coded FounderSection component with separate portrait and background-plate assets, descriptive alternative text on the portrait, and the heading, name and role in the right column; it has no journey link.
+- Keep the connected testimonials and team sections in SeaPeopleSections with .sea-people-scoped tokens so both About pages share this requested design without altering their independent existing layouts.
