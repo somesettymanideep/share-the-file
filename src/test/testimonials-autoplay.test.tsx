@@ -26,12 +26,13 @@ describe("testimonial playback", () => {
     advance();
     expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
   });
-  it("keeps playback paused until explicitly restarted", () => {
+  it("pauses while a navigation control is focused and resumes on blur", () => {
     render(<SeaPeopleSections />);
-    fireEvent.click(screen.getByRole("button", { name: "Pause testimonials" }));
+    const next = screen.getByRole("button", { name: "Next testimonial" });
+    fireEvent.focus(next);
     advance();
     expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
-    fireEvent.click(screen.getByRole("button", { name: "Play testimonials" }));
+    fireEvent.blur(next, { relatedTarget: document.body });
     advance();
     expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
   });

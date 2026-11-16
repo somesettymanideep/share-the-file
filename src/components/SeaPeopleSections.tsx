@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star, Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import clientPortrait from "@/assets/sea-sample-client.jpg";
 import portraitOne from "@/assets/sea-sample-team-1.jpg";
@@ -25,7 +25,6 @@ const team = [
 
 export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials" }) {
   const [active, setActive] = useState(0);
-  const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -43,7 +42,7 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }
       document.removeEventListener("visibilitychange", updateVisibility);
     };
   }, []);
-  const autoplay = playing && !hovered && !focused && !reducedMotion && visible;
+  const autoplay = !hovered && !focused && !reducedMotion && visible;
   useEffect(() => {
     if (!autoplay) return;
     const timer = window.setTimeout(() => setActive((index) => (index + 1) % testimonials.length), 8000);
@@ -73,7 +72,6 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }
           <Button variant="outline" size="icon" className="people-arrow" aria-label="Previous testimonial" title="Previous testimonial" onClick={() => setActive((active + testimonials.length - 1) % testimonials.length)}><ChevronLeft /></Button>
           <div className="people-pagination" aria-label="Choose testimonial">{testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-page-dot" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} onClick={() => setActive(index)}><span /></Button>)}</div>
           <Button variant="outline" size="icon" className="people-arrow" aria-label="Next testimonial" title="Next testimonial" onClick={() => setActive((active + 1) % testimonials.length)}><ChevronRight /></Button>
-          <Button variant="outline" size="icon" className="people-arrow" aria-label={playing ? "Pause testimonials" : "Play testimonials"} title={playing ? "Pause testimonials" : "Play testimonials"} aria-pressed={!playing} onClick={() => setPlaying((value) => !value)}>{playing ? <Pause /> : <Play />}</Button>
         </div>
       </div>
     </section>}
