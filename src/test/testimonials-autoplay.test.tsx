@@ -16,6 +16,16 @@ describe("testimonial playback", () => {
     for (let index = 0; index < 5; index++) advance();
     expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
   });
+  it("keeps the editorial variant autoplaying every eight seconds and supports portrait selection", () => {
+    render(<SeaPeopleSections parts="testimonials" testimonialStyle="editorial" />);
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(screen.getByRole("button", { name: "Show testimonial 6" }));
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(screen.getByRole("button", { name: "Previous testimonial" }));
+    expect(screen.getByRole("button", { name: "Show testimonial 6" })).toHaveAttribute("aria-pressed", "true");
+  });
   it("pauses on interaction and resumes after leaving", () => {
     render(<SeaPeopleSections />);
     const section = screen.getByRole("region", { name: /What Our Clients Say/ });

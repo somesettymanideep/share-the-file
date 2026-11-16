@@ -23,7 +23,9 @@ const team = [
   { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour },
 ];
 
-export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials" }) {
+const testimonialPortraits = [clientPortrait, portraitTwo, clientPortrait, portraitTwo, portraitThree, portraitFour];
+
+export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", testimonialStyle = "cards" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials"; testimonialStyle?: "cards" | "editorial" }) {
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -51,8 +53,28 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }
   const visibleTestimonials = [testimonials[active], testimonials[(active + 1) % testimonials.length]];
 
   return <div className="sea-people">
-    {parts !== "team" && <section className="people-testimonials" aria-labelledby="people-testimonials-title" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+    {parts !== "team" && <section className={`people-testimonials${testimonialStyle === "editorial" ? " people-testimonials-editorial" : ""}`} aria-labelledby="people-testimonials-title" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
       <div className="people-inner">
+        {testimonialStyle === "editorial" ? <div className="people-editorial-panel">
+          <div className="people-editorial-copy">
+            <h2 id="people-testimonials-title">Testimonials</h2>
+            <div className="people-editorial-story" aria-roledescription="carousel" aria-label="Sample client testimonials" aria-live={autoplay ? "off" : "polite"} aria-atomic="true">
+              <div key={active} className="people-editorial-slide">
+                <blockquote>“{testimonials[active]?.quote}”</blockquote>
+                <div className="people-client"><h3>{testimonials[active]?.name}</h3><p>{testimonials[active]?.role}</p></div>
+              </div>
+            </div>
+            <div className="people-editorial-controls">
+              <Button variant="ghost" size="icon" aria-label="Previous testimonial" title="Previous testimonial" onClick={() => setActive((active + testimonials.length - 1) % testimonials.length)}><ChevronLeft /></Button>
+              <span className="people-editorial-count">0{active + 1} / 0{testimonials.length}</span>
+              <Button variant="ghost" size="icon" aria-label="Next testimonial" title="Next testimonial" onClick={() => setActive((active + 1) % testimonials.length)}><ChevronRight /></Button>
+            </div>
+          </div>
+          <div className="people-portrait-cluster" aria-label="Choose testimonial">
+            <div className="people-portrait-current" aria-hidden="true"><img key={active} src={testimonialPortraits[active]} alt="" width={816} height={816} loading="lazy" /></div>
+            {testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-portrait-choice" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} title={item.name} onClick={() => setActive(index)}><img src={testimonialPortraits[index]} alt={`Illustrative sample portrait for ${item.name}`} width={816} height={816} loading="lazy" /></Button>)}
+          </div>
+        </div> : <>
         <div className="people-heading people-testimonials-heading">
           <h2 id="people-testimonials-title">What Our Clients Say<span>.</span></h2>
         </div>
@@ -73,6 +95,7 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }
           <div className="people-pagination" aria-label="Choose testimonial">{testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="people-page-dot" aria-label={`Show testimonial ${index + 1}`} aria-pressed={active === index} onClick={() => setActive(index)}><span /></Button>)}</div>
           <Button variant="outline" size="icon" className="people-arrow" aria-label="Next testimonial" title="Next testimonial" onClick={() => setActive((active + 1) % testimonials.length)}><ChevronRight /></Button>
         </div>
+        </>}
       </div>
     </section>}
     {parts !== "testimonials" && <section className="people-team" aria-labelledby="people-team-title">
