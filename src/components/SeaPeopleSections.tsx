@@ -28,7 +28,7 @@ export default function SeaPeopleSections() {
     <section className="people-testimonials" aria-labelledby="people-testimonials-title">
       <div className="people-inner">
         <div className="people-heading people-testimonials-heading">
-          <h2 id="people-testimonials-title">What Our Clients <em>Say</em><span>.</span></h2>
+          <h2 id="people-testimonials-title">What Our Clients Say<span>.</span></h2>
         </div>
         <div className="people-testimonial-layout" aria-roledescription="carousel" aria-label="Sample client testimonials" aria-live="polite" aria-atomic="true">
           {visibleTestimonials.map((testimonial) => testimonial && <article className="people-testimonial-card" key={testimonial.name}>
@@ -38,7 +38,6 @@ export default function SeaPeopleSections() {
               <blockquote>“{testimonial.quote}”</blockquote>
               <div className="people-client"><h3>{testimonial.name}</h3><p>{testimonial.role}</p>
                 <div className="people-stars" aria-label="Illustrative five-star rating">{Array.from({ length: 5 }, (_, index) => <Star key={index} size={19} fill="currentColor" strokeWidth={0} aria-hidden="true" />)}</div>
-                <span>Sample · Fictional client &amp; quotation</span>
               </div>
             </div>
           </article>)}
