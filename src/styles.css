@@ -376,6 +376,7 @@
   .value-top { margin-bottom: 20px; }
   .sea-value p { max-width: none; }
   .sea-awards { padding: 64px 7%; }
+  .sea-awards .sea-section-heading h2 { white-space: normal; }
   .sea-awards-list { margin-top: 40px; grid-template-columns: 1fr; gap: 44px; }
   .sea-award h3 { font-size: 23px; }
   .award-year { font-size: 30px; }
