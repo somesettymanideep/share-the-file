@@ -23,7 +23,7 @@ const team = [
   { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour },
 ];
 
-export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMeta?: boolean }) {
+export default function SeaPeopleSections({ showTeamMeta = true, parts = "all" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials" }) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -52,7 +52,7 @@ export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMet
   const visibleTestimonials = [testimonials[active], testimonials[(active + 1) % testimonials.length]];
 
   return <div className="sea-people">
-    <section className="people-testimonials" aria-labelledby="people-testimonials-title" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+    {parts !== "team" && <section className="people-testimonials" aria-labelledby="people-testimonials-title" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
       <div className="people-inner">
         <div className="people-heading people-testimonials-heading">
           <h2 id="people-testimonials-title">What Our Clients Say<span>.</span></h2>
@@ -76,8 +76,8 @@ export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMet
           <Button variant="outline" size="icon" className="people-arrow" aria-label={playing ? "Pause testimonials" : "Play testimonials"} title={playing ? "Pause testimonials" : "Play testimonials"} aria-pressed={!playing} onClick={() => setPlaying((value) => !value)}>{playing ? <Pause /> : <Play />}</Button>
         </div>
       </div>
-    </section>
-    <section className="people-team" aria-labelledby="people-team-title">
+    </section>}
+    {parts !== "testimonials" && <section className="people-team" aria-labelledby="people-team-title">
       <div className="people-inner">
         <div className="people-heading people-team-heading">
           <h2 id="people-team-title">The Minds That Make SEA<span>.</span></h2>
@@ -89,6 +89,6 @@ export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMet
           <div className="people-member-info"><h3>{member.name}</h3><p>{member.role}</p><div className="people-socials"><span title="Sample LinkedIn profile — not connected" aria-label="Sample LinkedIn profile — not connected"><Linkedin size={16} aria-hidden="true" /></span><span title="Sample Instagram profile — not connected" aria-label="Sample Instagram profile — not connected"><Instagram size={16} aria-hidden="true" /></span></div></div>
         </article>)}</div>
       </div>
-    </section>
+    </section>}
   </div>;
 }
