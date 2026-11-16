@@ -55,7 +55,9 @@ export default function AboutHero() {
         <SeaLogoMark className="history-logo-outline" filled={false} />
         <div className="history-glow" />
         <SeaLogoMark className="history-logo-fill" />
-        <p className="history-logo-caption">STUDIO FOR ECLECTIC ARCHITECTURE</p>
+        <svg className="history-logo-caption" viewBox="0 0 1000 48" role="img" aria-label="STUDIO FOR ECLECTIC ARCHITECTURE">
+          <text x="0" y="34" textLength="1000" lengthAdjust="spacingAndGlyphs">STUDIO FOR ECLECTIC ARCHITECTURE</text>
+        </svg>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
       <HistoryText />
