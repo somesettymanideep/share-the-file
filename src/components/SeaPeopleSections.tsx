@@ -85,7 +85,7 @@ export default function SeaPeopleSections({ showTeamMeta = true }: { showTeamMet
         </div>
         {showTeamMeta && <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>}
         <div className="people-team-grid">{team.map((member, index) => <article className="people-team-card" key={member.name}>
-          <div className="people-team-photo"><img src={member.image} alt={`Illustrative portrait for sample team member ${member.name}`} loading="lazy" width={768} height={768} /><span className="people-member-number">0{index + 1}</span></div>
+          <div className="people-team-photo"><img src={member.image} alt={`Illustrative portrait for sample team member ${member.name}`} loading="lazy" width={768} height={768} />{showTeamMeta && <span className="people-member-number">0{index + 1}</span>}</div>
           <div className="people-member-info"><h3>{member.name}</h3><p>{member.role}</p><div className="people-socials"><span title="Sample LinkedIn profile — not connected" aria-label="Sample LinkedIn profile — not connected"><Linkedin size={16} aria-hidden="true" /></span><span title="Sample Instagram profile — not connected" aria-label="Sample Instagram profile — not connected"><Instagram size={16} aria-hidden="true" /></span></div></div>
         </article>)}</div>
       </div>
