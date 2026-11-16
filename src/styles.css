@@ -591,7 +591,7 @@ html.lenis, html.lenis body { height: auto; }
 .sea-people .people-testimonials-heading { margin-bottom: 36px; }
 .sea-people .people-testimonials-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; text-transform: uppercase; }
 .sea-people .people-testimonial-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
-.sea-people .people-testimonial-card { padding: 14px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 26px; border-radius: 8px; background: var(--people-paper); box-shadow: var(--people-shadow); min-width: 0; }
+.sea-people .people-testimonial-card { padding: 14px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 26px; border-radius: 8px; background: var(--people-paper); box-shadow: var(--people-shadow); min-width: 0; animation: people-quote-in 1.2s ease both; }
 .sea-people .people-testimonial-portrait { overflow: hidden; border-radius: 6px; min-height: 340px; }
 .sea-people .people-testimonial-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .sea-people .people-quote-mark { color: var(--people-teal); flex-shrink: 0; }
@@ -602,7 +602,7 @@ html.lenis, html.lenis body { height: auto; }
 .sea-people .people-client h3, .sea-people .people-member-info h3 { font-family: "DM Sans", sans-serif; font-size: 17px; font-weight: 600; line-height: 1.4; margin: 0; }
 .sea-people .people-client p { font-size: 14px; line-height: 1.6; color: var(--people-muted); margin: 4px 0 0; }
 .sea-people .people-stars { display: flex; gap: 5px; color: var(--people-teal); margin: 12px 0 4px; }
-.sea-people .people-carousel-controls { display: flex; justify-content: center; gap: 64px; align-items: center; margin-top: 40px; }
+.sea-people .people-carousel-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; align-items: center; margin-top: 40px; }
 .sea-people .people-pagination, .sea-people .people-arrows { display: flex; gap: 8px; }
 .sea-people .people-page-dot { width: 28px; height: 36px; padding: 0; }
 .sea-people .people-page-dot span { width: 12px; height: 12px; border-radius: 50%; background: var(--people-line); }
@@ -642,7 +642,7 @@ html.lenis, html.lenis body { height: auto; }
   .sea-people blockquote { font-size: 15px; }
   .sea-people .people-client h3 { font-size: 16px; }
   .sea-people .people-client p { font-size: 12px; }
-  .sea-people .people-carousel-controls { gap: 28px; }
+  .sea-people .people-carousel-controls { gap: 10px; }
   .sea-people .people-team-heading { flex-direction: column; align-items: flex-start; }
   .sea-people .people-team-grid { gap: 28px 16px; }
   .sea-people .people-member-info h3 { font-size: 15px; }

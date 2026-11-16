@@ -1,0 +1,38 @@
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import SeaPeopleSections from "@/components/SeaPeopleSections";
+
+describe("testimonial playback", () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => { cleanup(); vi.useRealTimers(); });
+  const advance = () => act(() => { vi.advanceTimersByTime(8000); });
+
+  it("advances slowly and loops through all six testimonials", () => {
+    render(<SeaPeopleSections />);
+    act(() => { vi.advanceTimersByTime(7999); });
+    expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
+    act(() => { vi.advanceTimersByTime(1); });
+    expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
+    for (let index = 0; index < 5; index++) advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
+  });
+  it("pauses on interaction and resumes after leaving", () => {
+    render(<SeaPeopleSections />);
+    const section = screen.getByRole("region", { name: /What Our Clients Say/ });
+    fireEvent.mouseEnter(section);
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.mouseLeave(section);
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
+  });
+  it("keeps playback paused until explicitly restarted", () => {
+    render(<SeaPeopleSections />);
+    fireEvent.click(screen.getByRole("button", { name: "Pause testimonials" }));
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 1" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(screen.getByRole("button", { name: "Play testimonials" }));
+    advance();
+    expect(screen.getByRole("button", { name: "Show testimonial 2" })).toHaveAttribute("aria-pressed", "true");
+  });
+});
