@@ -1,4 +1,5 @@
 # About page
+- [x] Replace What Defines Us with the supplied six-row layout and verify its drawing, scroll sequence, mobile, and reduced-motion states.
 - [x] Match the homepage footer, set the founder heading to two lines, and remove the history and journey images.
 - [x] Build the sequenced history, founder, values, and awards sections.
 - [x] Add Three.js architectural geometry and GSAP scroll animations.

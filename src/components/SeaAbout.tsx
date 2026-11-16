@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUp, ArrowUpRight, Fingerprint, Lightbulb, Leaf, ScanLine, Handshake, Globe } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
 import FounderSection from "@/components/FounderSection";
 import SeaPeopleSections from "@/components/SeaPeopleSections";
+import WhatDefinesUs from "@/components/WhatDefinesUs";
 import Lenis from "lenis";
 import logoColor from "@/assets/sea-logo-color.png";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
@@ -16,15 +17,6 @@ const awards = [
   { name: "THE INDIA DESIGN AWARDS", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
   { name: "BHARAT BUSINESS AWARDS", year: "2024", image: awardBharatBusiness, alt: "P.V. Naresh Kumar receiving the Bharat Business Awards 2024 trophy and certificate" },
   { name: "ARCHITECTURAL EXCELLENCE AWARD", year: "2025", image: awardArchitectureHerald, alt: "P.V. Naresh Kumar holding the Architectural Excellence Award 2025 trophy and certificate at the Architecture Herald event" },
-];
-
-const values = [
-  { number: "01", title: "Design with Identity", Icon: Fingerprint, description: "Every space deserves its own story, character, and purpose." },
-  { number: "02", title: "Intelligence in Design", Icon: Lightbulb, description: "Integrating creativity, technology, and intelligent problem-solving." },
-  { number: "03", title: "Responsible Architecture", Icon: Leaf, description: "Creating thoughtful spaces with long-term environmental and human value." },
-  { number: "04", title: "Precision in Execution", Icon: ScanLine, description: "Where imagination is supported by detailing, discipline, and technical expertise." },
-  { number: "05", title: "Trust by Design", Icon: Handshake, description: "Building transparent relationships through accountability and collaboration." },
-  { number: "06", title: "Glocal Thinking", qualifier: "[Global Vision. Local Wisdom].", Icon: Globe, description: "Rooted in local understanding, inspired by global design perspectives." },
 ];
 
 export default function SeaAbout() {
@@ -86,7 +78,7 @@ export default function SeaAbout() {
       if (!conditions || !root.current || conditions['reduce']) return;
       const scope = gsap.context(() => {
         // Section transitions: headings rise in, sections ease up as they enter.
-        gsap.utils.toArray<HTMLElement>(".sea-values, .sea-awards").forEach((section) => {
+        gsap.utils.toArray<HTMLElement>(".sea-awards").forEach((section) => {
           gsap.from(section, { y: 80, opacity: 0.4, ease: "none", scrollTrigger: { trigger: section, start: "top bottom", end: "top 55%", scrub: true } });
           const heading = section.querySelector(".sea-section-heading, .sea-footer-top h2");
           if (heading) gsap.from(heading, { y: 50, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%" } });
@@ -103,11 +95,6 @@ export default function SeaAbout() {
         }
         gsap.utils.toArray<HTMLElement>(".award-photo img").forEach((img) => {
           gsap.fromTo(img, { yPercent: -8, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
-        });
-        gsap.utils.toArray<HTMLElement>(".sea-value").forEach((item) => {
-          gsap.from(item.querySelectorAll("h3, p, .value-number"), { y: 22, opacity: 0, stagger: 0.12, duration: 0.7, scrollTrigger: { trigger: item, start: "top 85%" } });
-          const lines = item.querySelectorAll("svg path, svg line, svg rect, svg circle");
-          gsap.fromTo(lines, { strokeDasharray: 100, strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 1.8, stagger: 0.06, scrollTrigger: { trigger: item, start: "top 85%" } });
         });
         gsap.utils.toArray<HTMLElement>(".sea-award").forEach((item) => {
           gsap.from(item.querySelector("h3"), { yPercent: 100, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: item, start: "top 90%" } });
@@ -149,10 +136,7 @@ export default function SeaAbout() {
       <FounderSection />
       <SeaPeopleSections showTeamMeta={false} parts="team" />
 
-      <section className="sea-values" id="values">
-        <div className="sea-section-heading"><h2>WHAT DEFINES US<span className="sea-teal">.</span></h2></div>
-        <div className="sea-values-grid">{values.map(({ number, title, qualifier, Icon, description }) => <article className="sea-value" key={number}><div className="value-top"><span className="value-number">{number} /</span><Icon size={62} strokeWidth={1} aria-hidden="true" /></div><h3>{title}{qualifier && <span className="value-qualifier">{qualifier}</span>}</h3><p>{description}</p></article>)}</div>
-      </section>
+      <WhatDefinesUs />
 
       <section className="sea-awards">
         <div className="sea-section-heading"><h2>AWARDS & RECOGNITION<span className="award-gold">.</span></h2></div>
