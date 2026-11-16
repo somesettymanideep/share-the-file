@@ -13,3 +13,4 @@
 - [x] Match testimonials to the supplied two-card portrait reference and verify both pages.
 - [x] Add editorial testimonials and four sample team cards to both About pages.
 - [x] Verify testimonial navigation, contact link, portraits, and desktop/mobile layouts on both pages.
+- [x] Blur the logo caption in word by word over 0.3 of the history sequence.

@@ -204,11 +204,12 @@
 .sea-menu-overlay a:hover, .sea-menu-overlay a[aria-current] { color: #fff; }
 .sea-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; font-size: 32px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
 .sea-history { --hist-bg: var(--sea-awards-background); --hist-text: var(--sea-awards-ink); --hist-secondary: color-mix(in oklab, var(--sea-awards-ink) 68%, transparent); --hist-line: color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); --hist-accent: var(--sea-awards-accent); background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
-.history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); }
+.history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); container-type: inline-size; }
 .history-logo-outline, .history-logo-fill { display: block; width: 100%; height: auto; }
 .history-logo-outline { color: var(--hist-text); }
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
-.sea-about .history-logo-caption { position: relative; display: block; width: 100%; height: auto; margin: 24px 0 0; font-family: "Archivo", sans-serif; font-size: 32px; font-weight: 400; font-style: normal; font-stretch: normal; letter-spacing: 0; fill: var(--hist-text); }
+.sea-about .history-logo-caption { position: relative; display: flex; justify-content: center; align-items: baseline; width: 100%; margin: 24px 0 0; gap: 1.25cqw; white-space: nowrap; font-family: "Archivo", sans-serif; font-size: 4.98cqw; font-weight: 400; font-style: normal; font-stretch: normal; letter-spacing: 0; line-height: 1.15; color: var(--hist-text); }
+.sea-about .history-logo-word { display: inline-block; will-change: transform, filter; }
 .sea-about .history-logo-definition { margin: 20px 0 0; font-family: "Archivo", sans-serif; font-size: 24px; font-weight: 400; line-height: 1.55; text-align: center; color: var(--hist-text); }
 .sea-about .history-logo-definition strong { font-weight: 700; color: var(--hist-accent); }
 @media (max-width: 767px) { .sea-about .history-logo-definition { font-size: 18px; margin-top: 16px; } }

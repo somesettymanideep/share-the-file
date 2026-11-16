@@ -23,8 +23,11 @@ describe("About logo text reveal order", () => {
     expect(ABOUT_HISTORY_STAGES.caption.start).toBe(0.32);
     expect(ABOUT_HISTORY_STAGES.caption.start).toBeGreaterThanOrEqual(ABOUT_HISTORY_STAGES.grow.start + ABOUT_HISTORY_STAGES.grow.duration);
   });
+  it("blurs the caption in by word over 0.3 of the sequence", () => {
+    expect(ABOUT_HISTORY_STAGES.caption.duration).toBe(0.3);
+  });
   it("reveals the definition only after the caption finishes", () => {
-    expect(ABOUT_HISTORY_STAGES.definition.start).toBe(0.42);
+    expect(ABOUT_HISTORY_STAGES.definition.start).toBe(0.62);
     expect(ABOUT_HISTORY_STAGES.definition.start).toBeCloseTo(ABOUT_HISTORY_STAGES.caption.start + ABOUT_HISTORY_STAGES.caption.duration, 10);
   });
   it("keeps both texts visible before transitioning into the story", () => {
