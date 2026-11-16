@@ -28,8 +28,7 @@ export default function SeaPeopleSections() {
     <section className="people-testimonials" aria-labelledby="people-testimonials-title">
       <div className="people-inner">
         <div className="people-heading people-testimonials-heading">
-          <h2 id="people-testimonials-title">AWARDS &amp; RECOGNITION<span>.</span></h2>
-          <p>CLIENT TESTIMONIALS</p>
+          <h2 id="people-testimonials-title">What Our Clients <em>Say</em><span>.</span></h2>
         </div>
         <div className="people-testimonial-layout" aria-roledescription="carousel" aria-label="Sample client testimonials" aria-live="polite" aria-atomic="true">
           {visibleTestimonials.map((testimonial) => testimonial && <article className="people-testimonial-card" key={testimonial.name}>

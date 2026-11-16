@@ -588,12 +588,7 @@ html.lenis, html.lenis body { height: auto; }
 .sea-people .people-heading h2 > span { color: var(--people-teal); }
 .sea-people .people-heading p { max-width: 580px; font-size: 16px; line-height: 1.7; color: var(--people-muted); margin: 0; }
 .sea-people .people-testimonials { padding-inline: 3%; }
-.sea-people .people-testimonials-heading { text-align: center; margin-bottom: 36px; }
-.sea-people .people-testimonials-heading h2 { display: flex; justify-content: center; align-items: center; gap: 22px; font-family: "Oswald", sans-serif; font-size: 46px; font-weight: 600; margin-bottom: 20px; }
-.sea-people .people-testimonials-heading h2::before, .sea-people .people-testimonials-heading h2::after { content: ""; flex: 1; height: 2px; background: var(--people-teal); }
-.sea-people .people-testimonials-heading h2 > span { margin-left: -22px; }
-.sea-people .people-testimonials-heading p { margin-inline: auto; font-size: 17px; }
-.sea-people .people-testimonials-heading p::after { content: ""; display: block; width: 100px; height: 2px; margin: 14px auto 0; background: var(--people-teal); }
+.sea-people .people-testimonials-heading { margin-bottom: 36px; }
 .sea-people .people-testimonial-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
 .sea-people .people-testimonial-card { padding: 14px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 26px; border-radius: 8px; background: var(--people-paper); box-shadow: var(--people-shadow); min-width: 0; }
 .sea-people .people-testimonial-portrait { overflow: hidden; border-radius: 6px; min-height: 340px; }
@@ -632,7 +627,6 @@ html.lenis, html.lenis body { height: auto; }
   .sea-people .people-testimonial-layout { gap: 20px; }
   .sea-people .people-testimonial-card { gap: 16px; grid-template-columns: 0.7fr 1.3fr; }
   .sea-people blockquote { font-size: 16px; }
-  .sea-people .people-testimonials-heading h2 { font-size: 38px; }
   .sea-people .people-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
 }
 @media (max-width: 767px) {
@@ -641,10 +635,6 @@ html.lenis, html.lenis body { height: auto; }
   .sea-people .people-heading { margin-bottom: 32px; }
   .sea-people .people-heading p { font-size: 14px; }
   .sea-people .people-testimonial-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .sea-people .people-testimonials-heading h2 { font-size: 28px; gap: 10px; }
-  .sea-people .people-testimonials-heading h2 > span { margin-left: -10px; }
-  .sea-people .people-testimonials-heading h2::before, .sea-people .people-testimonials-heading h2::after { display: none; }
-  .sea-people .people-testimonials-heading p { font-size: 14px; }
   .sea-people .people-testimonial-card { padding: 12px; gap: 14px; }
   .sea-people .people-testimonial-portrait { min-height: 320px; }
   .sea-people blockquote { font-size: 15px; }
