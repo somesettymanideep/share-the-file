@@ -288,6 +288,13 @@
   .sea-about .sea-defines .defines-tag { font-size: 16px; margin-bottom: 6px; }
 }
 .sea-values { padding: 90px 6% 110px; background: var(--sea-values-background); }
+.sea-about .sea-defines h3 { font-size: 32px; margin-bottom: 12px; }
+.sea-about .sea-defines p { font-size: 21px; }
+.sea-about .sea-defines .defines-tag { font-size: 23px; margin-bottom: 12px; }
+@media (min-width: 1440px) { .sea-about .sea-defines h3 { font-size: 36px; } .sea-about .sea-defines p { font-size: 23px; } }
+@media (min-width: 900px) and (max-width: 1199px) { .sea-about .sea-defines h3 { font-size: 27px; } .sea-about .sea-defines p { font-size: 19px; } .sea-about .sea-defines .defines-tag { font-size: 21px; } }
+@media (max-width: 899px) { .sea-about .sea-defines h3 { font-size: 27px; } .sea-about .sea-defines p { font-size: 18px; } .sea-about .sea-defines .defines-tag { font-size: 20px; } }
+@media (min-width: 900px) and (max-height: 949px) { .sea-about .sea-defines .defines-row { padding-block: 22px; } .sea-about .sea-defines .defines-row:first-child { padding-top: 0; } .sea-about .sea-defines .defines-row:last-child { padding-bottom: 0; } }
 .sea-section-heading h2 { margin-top: 24px; }
 .sea-values .sea-section-heading h2 { margin-top: 0; }
 .sea-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 60px; row-gap: 40px; }

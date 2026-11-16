@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import { PenTool, Lightbulb, Leaf, Ruler, Handshake, Globe } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { VALUES_DRAWING } from "@/lib/values-drawing";
-import { useValuesDrawing } from "@/hooks/use-values-drawing";
 
 const principles = [
   { title: "Design with Identity", Icon: PenTool, description: "Every space deserves its own story, character, and purpose." },
@@ -16,28 +14,21 @@ const principles = [
 
 export default function WhatDefinesUs() {
   const root = useRef<HTMLElement>(null);
-  const updateDrawing = useValuesDrawing(root);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const section = root.current;
     if (!section) return;
     section.querySelectorAll(".defines-icon path, .defines-icon circle, .defines-icon line, .defines-icon rect, .defines-icon polyline").forEach((path) => path.setAttribute("pathLength", "1"));
     const media = gsap.matchMedia();
-    media.add({ desktop: "(min-width: 900px)", mobile: "(max-width: 899px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
-      if (context.conditions?.['reduce']) {
-        VALUES_DRAWING.forEach((_, index) => updateDrawing(index, 1));
-        return;
-      }
-      VALUES_DRAWING.forEach((_, index) => updateDrawing(index, 0));
+    media.add({ desktop: "(min-width: 900px) and (min-height: 950px)", mobile: "(max-width: 899px), (max-height: 949px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
+      if (context.conditions?.['reduce']) return;
       const rows = Array.from(section.querySelectorAll<HTMLElement>(".defines-row"));
       gsap.from(section.querySelectorAll(".defines-heading-line > span"), { yPercent: 105, stagger: 0.12, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 75%" } });
       gsap.from(section.querySelector(".defines-bar"), { scaleX: 0, transformOrigin: "left", duration: 0.8, scrollTrigger: { trigger: section, start: "top 75%" } });
       const reveal = (timeline: gsap.core.Timeline, row: HTMLElement, index: number, at: number) => {
-        const drawing = { progress: 0 };
         timeline.from(row.querySelector(".defines-row-content"), { opacity: 0, y: 36, duration: 0.65 }, at)
           .from(row.querySelector(".defines-icon"), { opacity: 0, duration: 0.2 }, at)
-          .fromTo(row.querySelectorAll(".defines-icon > *"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8 }, at)
-          .to(drawing, { progress: 1, duration: 0.95, onUpdate: () => updateDrawing(index, drawing.progress) }, at);
+          .fromTo(row.querySelectorAll(".defines-icon > *"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8 }, at);
         const divider = row.querySelector(".defines-divider");
         if (divider) timeline.from(divider, { scaleX: 0, transformOrigin: "left", duration: 0.8 }, at);
       };
@@ -51,7 +42,6 @@ export default function WhatDefinesUs() {
           reveal(timeline, row, index, 0);
         });
       }
-      return () => VALUES_DRAWING.forEach((_, index) => updateDrawing(index, 1));
     }, section);
     return () => media.revert();
   }, []);
@@ -64,10 +54,6 @@ export default function WhatDefinesUs() {
     <div className="defines-layout">
       <div className="defines-left">
         <div><h2 id="defines-heading">{["What", "Defines", "Us"].map((word) => <span className="defines-heading-line" key={word}><span>{word}</span></span>)}</h2><div className="defines-bar" /></div>
-        <div className="defines-drawing">
-          <canvas role="img" aria-label="Teal architectural line drawing of intersecting buildings, a circular arc, and an arch" />
-          <svg viewBox="40 550 450 385" role="img" aria-label="Architectural line drawing of buildings and arches">{VALUES_DRAWING.map((points, index) => <polyline key={index} points={points.map((point) => point.join(",")).join(" ")} pathLength="1" />)}</svg>
-        </div>
       </div>
       <ol className="defines-list">{principles.map(({ title, Icon, description, tag }, index) => <li className="defines-row" key={title} onMouseEnter={(event) => redrawIcon(event.currentTarget)}>
         {index > 0 && <span className="defines-divider" aria-hidden="true" />}

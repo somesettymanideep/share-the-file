@@ -35,4 +35,4 @@ use the editor.
 - Keep history stage boundaries in the shared history-sequence module, with separate schedules for About and its independent copy, so logo enlargement, caption, definition, and story reveals remain ordered and testable without changing the copy.
 - Build the founder section as the coded FounderSection component with separate portrait and background-plate assets, descriptive alternative text on the portrait, and the heading, name and role in the right column; it has no journey link.
 - Keep the connected testimonials and team sections in SeaPeopleSections with .sea-people-scoped tokens so both About pages share this requested design without altering their independent existing layouts.
-- Keep the original About principles in WhatDefinesUs, with demand-rendered Three.js drawing and an equivalent SVG fallback; its scoped scroll sequence must not alter the independent About copy.
+- Keep the original About principles in WhatDefinesUs without a decorative drawing; pin its scoped sequence only on tall desktop viewports so larger text stays readable without altering the independent About copy.
