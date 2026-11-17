@@ -19,7 +19,7 @@ export default function AboutHero() {
       if (!section) return;
       section.classList.add("is-animated");
       const scope = gsap.context(() => {
-        gsap.set(".history-logo-wrap", { xPercent: -50, yPercent: -50, scale: 0.18 });
+        gsap.set(".history-logo-art", { scale: 0.18 });
         gsap.set(".history-logo-fill", { clipPath: "inset(0 100% 0 0)" });
         gsap.set(".history-glow", { opacity: 1, x: "-30vw" });
         gsap.set(".history-heading-line > span", { yPercent: 110 });
@@ -38,7 +38,7 @@ export default function AboutHero() {
           },
         });
         timeline.to(".history-scroll-cue", { opacity: 0, duration: 0.04 }, 0);
-        timeline.to(".history-logo-wrap", { scale: 1, duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
+        timeline.to(".history-logo-art", { scale: 1, duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-fill", { clipPath: "inset(0 0% 0 0)", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-glow", { x: "92vw", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-word", {
@@ -51,7 +51,8 @@ export default function AboutHero() {
         }, HISTORY_STAGES.caption.start);
         timeline.to(".history-logo-definition", { y: 0, autoAlpha: 1, duration: HISTORY_STAGES.definition.duration, ease: "power1.out" }, HISTORY_STAGES.definition.start);
         timeline.to({}, { duration: HISTORY_STAGES.hold.duration }, HISTORY_STAGES.hold.start);
-        timeline.to(".history-logo-wrap", { opacity: 0, scale: 1.12, duration: HISTORY_STAGES.logoOut.duration }, HISTORY_STAGES.logoOut.start);
+        timeline.to(".history-logo-art", { scale: 1.12, duration: HISTORY_STAGES.logoOut.duration }, HISTORY_STAGES.logoOut.start);
+        timeline.to(".history-logo-wrap", { opacity: 0, duration: HISTORY_STAGES.logoOut.duration }, HISTORY_STAGES.logoOut.start);
         timeline.to(".history-heading-line > span", { yPercent: 0, duration: HISTORY_STAGES.heading.duration, ease: "power2.out" }, HISTORY_STAGES.heading.start);
         timeline.to(".history-paragraph", { y: 0, opacity: 1, duration: 0.08, stagger: 0.04, ease: "power1.out" }, HISTORY_STAGES.paragraphs.start);
       }, root);
@@ -66,15 +67,19 @@ export default function AboutHero() {
   return (
     <section className="sea-history" id="history" aria-label="Our history" ref={root}>
       <div className="history-logo-wrap">
-        <SeaLogoMark className="history-logo-outline" filled={false} />
-        <div className="history-glow" />
-        <SeaLogoMark className="history-logo-fill" />
-        <span className="history-logo-caption">
-          {CAPTION_WORDS.map((word) => <span className="history-logo-word" key={word}>{word}</span>)}
-        </span>
-        <p className="history-logo-definition">
-          <strong>Eclecticism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
-        </p>
+        <div className="history-logo-art">
+          <SeaLogoMark className="history-logo-outline" filled={false} />
+          <div className="history-glow" />
+          <SeaLogoMark className="history-logo-fill" />
+        </div>
+        <div className="history-logo-text">
+          <span className="history-logo-caption">
+            {CAPTION_WORDS.map((word) => <span className="history-logo-word" key={word}>{word}</span>)}
+          </span>
+          <p className="history-logo-definition">
+            <strong>Eclecticism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
+          </p>
+        </div>
       </div>
       <span className="history-scroll-cue" aria-hidden="true">Scroll</span>
       <HistoryText />

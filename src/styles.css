@@ -205,6 +205,7 @@
 .sea-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; font-size: 32px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
 .sea-history { --hist-bg: var(--sea-awards-background); --hist-text: var(--sea-awards-ink); --hist-secondary: color-mix(in oklab, var(--sea-awards-ink) 68%, transparent); --hist-line: color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); --hist-accent: var(--sea-awards-accent); background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
 .history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); container-type: inline-size; }
+.history-logo-art { position: relative; width: 100%; }
 .history-logo-outline, .history-logo-fill { display: block; width: 100%; height: auto; }
 .history-logo-outline { color: var(--hist-text); }
 .history-logo-fill { position: absolute; inset: 0; color: var(--hist-accent); }
@@ -224,7 +225,19 @@
 .sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1.3rem, 2.1vw, 2.35rem); line-height: 1.55; color: var(--hist-secondary); }
 .sea-history .history-paragraph:not(:first-child) { border-top: 0; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
-.sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: min(92vw, 130svh); max-width: none; margin: 0; z-index: 2; }
+.sea-history.is-animated .history-logo-wrap { position: absolute; inset: 0; width: 100%; max-width: none; margin: 0; z-index: 2; display: grid; grid-template-rows: 50% 50%; grid-template-columns: auto; justify-content: center; justify-items: center; align-items: center; }
+.sea-history.is-animated .history-logo-art { position: relative; height: 100%; max-width: 92vw; max-height: calc(92vw * 755 / 1531); aspect-ratio: 1531 / 755; }
+.sea-history.is-animated .history-logo-art > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sea-history.is-animated .history-logo-text { container-type: inline-size; width: 100%; display: flex; flex-direction: column; justify-content: center; }
+.sea-history.is-animated .history-logo-caption { margin: 0; }
+.sea-history.is-animated .history-logo-definition { margin: clamp(14px, 2.4vh, 26px) 0 0; }
+/* Portrait screens: the logo can't fill half the height there, so keep it capped
+   at half and centre logo + studio name + definition as one group. */
+@media (orientation: portrait) {
+  .sea-history.is-animated .history-logo-wrap { --logo-w: min(92vw, calc(50svh * 1531 / 755)); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .sea-history.is-animated .history-logo-art { width: var(--logo-w); height: auto; max-height: none; }
+  .sea-history.is-animated .history-logo-text { width: var(--logo-w); align-self: center; justify-content: center; padding-top: clamp(16px, 2.5vh, 32px); }
+}
 .sea-history.is-animated .history-scroll-cue { display: block; position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hist-text); z-index: 2; }
 .sea-history.is-animated .history-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
 .sea-history.is-animated .history-heading { margin-bottom: clamp(28px, 5vh, 56px); }

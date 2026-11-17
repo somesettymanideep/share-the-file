@@ -9,6 +9,7 @@
 - [x] Replace the founder section with the client's complete supplied image.
 - [x] Rebuild the awards section as three photo cards on a #EEF3F3 background using the client's ceremony photos.
 - [x] Rename the history heading to "Where It All Began", enlarge its paragraphs, and drop the third paragraph.
+- [x] Split the pinned history stage so the logo holds the top half and the studio name and definition the bottom half.
 
 # Testimonials and team
 - [x] Match the About-copy carousel to the supplied editorial quote and portrait-circle reference; verify navigation, autoplay, and desktop/mobile layout.
