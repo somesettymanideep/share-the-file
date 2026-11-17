@@ -212,7 +212,7 @@
 .sea-about .history-logo-caption { position: relative; display: flex; justify-content: center; align-items: baseline; width: 100%; margin: 24px 0 0; gap: 1.25cqw; white-space: nowrap; font-family: "Archivo", sans-serif; font-size: min(5.75cqw, 4.5vw); font-weight: 400; font-style: normal; font-stretch: normal; letter-spacing: 0; line-height: 1.15; color: var(--hist-text); }
 .sea-about .history-logo-word { display: inline-block; will-change: transform, filter; }
 .sea-about .history-logo-word--accent { color: var(--hist-accent); }
-.sea-about .history-logo-definition { margin: 20px auto 0; width: min(120cqw, calc(100vw - 56px)); font-family: "Archivo", sans-serif; font-size: clamp(21px, 2.35vw, 45px); font-weight: 400; line-height: 1.5; text-align: center; color: var(--hist-text); }
+.sea-about .history-logo-definition { margin: 20px auto 0; width: min(200cqw, calc(100vw - 56px)); font-family: "Archivo", sans-serif; font-size: clamp(21px, 2.35vw, 45px); font-weight: 400; line-height: 1.5; text-align: center; color: var(--hist-text); }
 .sea-about .history-logo-definition strong { font-weight: 700; color: var(--hist-accent); }
 @media (max-width: 767px) { .sea-about .history-logo-definition { font-size: 21px; margin-top: 16px; } }
 @media (max-width: 767px) { .sea-about .history-logo-caption { margin-top: 16px; } }
