@@ -8,6 +8,7 @@
 - [x] Anchor the founder’s hand to the wall and tidy the section at desktop, tablet, and mobile sizes.
 - [x] Replace the founder section with the client's complete supplied image.
 - [x] Rebuild the awards section as three photo cards on a #EEF3F3 background using the client's ceremony photos.
+- [x] Rename the history heading to "Where It All Began", enlarge its paragraphs, and drop the third paragraph.
 
 # Testimonials and team
 - [x] Match the About-copy carousel to the supplied editorial quote and portrait-circle reference; verify navigation, autoplay, and desktop/mobile layout.

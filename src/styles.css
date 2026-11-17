@@ -221,7 +221,7 @@
 .history-heading-line { display: block; overflow: hidden; }
 .history-heading-line > span { display: block; }
 .history-paragraphs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px 0; }
-.sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1.15rem, 1.7vw, 1.85rem); line-height: 1.55; color: var(--hist-secondary); }
+.sea-history .history-paragraph { margin: 0; padding-top: 18px; border-top: 1px solid var(--hist-line); font-family: "Archivo", sans-serif; font-size: clamp(1.3rem, 2.1vw, 2.35rem); line-height: 1.55; color: var(--hist-secondary); }
 .sea-history .history-paragraph:not(:first-child) { border-top: 0; }
 .sea-history.is-animated { height: 100svh; min-height: 620px; padding: 0; }
 .sea-history.is-animated .history-logo-wrap { position: absolute; top: 50%; left: 50%; width: min(92vw, 130svh); max-width: none; margin: 0; z-index: 2; }
@@ -229,7 +229,7 @@
 .sea-history.is-animated .history-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: clamp(90px, 13vh, 150px) 6% 60px; }
 .sea-history.is-animated .history-heading { margin-bottom: clamp(28px, 5vh, 56px); }
 .sea-history.is-animated .history-paragraphs { gap: clamp(14px, 2.4vh, 28px); }
-.sea-history.is-animated .history-paragraph { font-size: clamp(0.98rem, 1.25vw, 1.4rem); line-height: 1.55; padding-top: clamp(10px, 1.6vh, 18px); }
+.sea-history.is-animated .history-paragraph { font-size: clamp(1.08rem, 1.55vw, 1.72rem); line-height: 1.55; padding-top: clamp(10px, 1.6vh, 18px); }
 .sea-history a:focus-visible { outline: 2px solid var(--hist-accent); outline-offset: 3px; }
 .sea-founder { background: var(--sea-founder-bg); scroll-margin-top: 90px; }
 .sea-founder .founder-stage { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; aspect-ratio: 3 / 2; overflow: hidden; container-type: inline-size; }
@@ -363,11 +363,11 @@
   .history-logo-wrap { margin-bottom: 56px; }
   .history-heading { margin-bottom: 32px; }
   .history-paragraphs { grid-template-columns: 1fr; gap: 24px; }
-  .history-paragraph { font-size: 0.95rem; }
+  .history-paragraph { font-size: 1.05rem; }
   .sea-history.is-animated .history-text { padding: 108px 7% 32px; }
   .sea-history.is-animated .history-heading { margin-bottom: 20px; }
   .sea-history.is-animated .history-paragraphs { gap: 16px; }
-  .sea-history.is-animated .history-paragraph { font-size: 0.8rem; padding-top: 12px; }
+  .sea-history.is-animated .history-paragraph { font-size: 0.9rem; padding-top: 12px; }
   .sea-founder { scroll-margin-top: 76px; }
   .sea-about h2 { font-size: 44px; }
   .sea-values { padding: 64px 7%; }
