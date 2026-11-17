@@ -74,7 +74,11 @@ export default function AboutHero() {
         </div>
         <div className="history-logo-text">
           <span className="history-logo-caption">
-            {CAPTION_WORDS.map((word) => <span className="history-logo-word" key={word}>{word}</span>)}
+            {CAPTION_WORDS.map((word) => (
+              <span className={`history-logo-word${word === "ECLECTIC" ? " history-logo-word--accent" : ""}`} key={word}>
+                {word}
+              </span>
+            ))}
           </span>
           <p className="history-logo-definition">
             <strong>Eclecticism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
