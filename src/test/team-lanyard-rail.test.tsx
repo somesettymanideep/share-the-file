@@ -11,6 +11,15 @@ describe("team lanyard rail", () => {
     expect(screen.getAllByRole("button", { name: /Name to be added, Designation/ })).toHaveLength(5);
     expect(screen.getByText("naresh@s4eaindia.com")).toBeInTheDocument();
   });
+  it("flips a badge back when its back face is clicked", () => {
+    render(<TeamLanyardRail />);
+    const badge = screen.getByRole("button", { name: /P\.V\. Naresh Kumar, Founder & CEO/ });
+    fireEvent.click(badge);
+    expect(badge).toHaveAttribute("aria-pressed", "true");
+    const back = screen.getByRole("button", { name: /flip the badge back/ });
+    fireEvent.click(back);
+    expect(badge).toHaveAttribute("aria-pressed", "false");
+  });
   it("flips a badge on click and turns it back with Escape", () => {
     render(<TeamLanyardRail />);
     const badge = screen.getByRole("button", { name: /P\.V\. Naresh Kumar, Founder & CEO/ });

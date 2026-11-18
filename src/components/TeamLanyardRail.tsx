@@ -234,14 +234,9 @@ export default function TeamLanyardRail() {
   return (
     <section className="sea-lanyard" aria-labelledby="lanyard-heading">
       <div className="lany-head">
-        <p className="lany-eyebrow">Meet Our Team</p>
         <h2 id="lany-heading">
           THE PEOPLE BEHIND OUR PROJECTS<span className="lany-teal">.</span>
         </h2>
-        <p className="lany-caption">Brush along the rail to meet someone, pull a badge down, click to flip it.</p>
-        <a href="#contact" className="lany-cta">
-          Get in touch
-        </a>
       </div>
       <div className="lany-rail-wrap">
         <div className="lany-rail" aria-hidden="true" />
@@ -290,7 +285,20 @@ export default function TeamLanyardRail() {
                     <span className="lany-teamline">{m.teamLine}</span>
                     <span className="lany-barcode" aria-hidden="true" />
                   </button>
-                  <div className="lany-face lany-back" aria-hidden={!flipped[i]}>
+                  <div
+                    className="lany-face lany-back"
+                    aria-hidden={!flipped[i]}
+                    role="button"
+                    tabIndex={flipped[i] ? 0 : -1}
+                    aria-label={`${m.name} — activate to flip the badge back`}
+                    onClick={() => toggleFlip(i)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleFlip(i);
+                      }
+                    }}
+                  >
                     <span className="lany-ribbon" aria-hidden="true" />
                     <p className="lany-bio">{m.bio}</p>
                     <ul className="lany-tags">
@@ -299,19 +307,16 @@ export default function TeamLanyardRail() {
                       ))}
                     </ul>
                     {m.email && (
-                      <a className="lany-mail" href={`mailto:${m.email}`} tabIndex={flipped[i] ? 0 : -1}>
+                      <a
+                        className="lany-mail"
+                        href={`mailto:${m.email}`}
+                        tabIndex={flipped[i] ? 0 : -1}
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <Mail size={14} aria-hidden="true" /> {m.email}
                       </a>
                     )}
                     <QrPattern seed={m.id} />
-                    <button
-                      type="button"
-                      className="lany-flipback"
-                      onClick={() => toggleFlip(i)}
-                      tabIndex={flipped[i] ? 0 : -1}
-                    >
-                      Flip back
-                    </button>
                   </div>
                 </div>
               </div>
