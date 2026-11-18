@@ -4,6 +4,7 @@ import ramko from "@/assets/sea-project-ramko-heights.jpg.asset.json";
 import krishnaSindhura from "@/assets/sea-project-krishna-sindhura-hospital.jpg.asset.json";
 import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg.asset.json";
 import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png.asset.json";
+import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png.asset.json";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg.asset.json";
 
 export interface SeaProject {
@@ -63,10 +64,11 @@ export const SEA_PROJECTS: SeaProject[] = [
       "A slender tower whose sculpted slab edges sweep across the façade, glowing warm against the evening sky.",
     image: gangadhar.url,
     alt: "Gangadhar Estate tower with sculpted slab edges at dusk",
-    gallery: [1, 2, 3].map((view) => ({
-      image: gangadharSunset.url,
-      alt: `Gangadhar Estate sunset facade with cars and landscaping — view ${String(view).padStart(2, "0")}`,
-    })),
+    gallery: [
+      { image: gangadharSunset.url, alt: "Gangadhar Estate sunset facade with cars and landscaping — view 01" },
+      { image: gangadharFrontView.url, alt: "Gangadhar Estate building front view — view 02" },
+      { image: gangadharSunset.url, alt: "Gangadhar Estate sunset facade with cars and landscaping — view 03" },
+    ],
   },
   {
     slug: "kishore-jain-kms-infra",

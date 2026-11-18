@@ -24,8 +24,12 @@ describe("Project details", () => {
     const project = getProject("gangadhar-estate");
     const gallery = getProjectGallery(project!);
     expect(gallery).toHaveLength(3);
-    expect(gallery.every(slot => slot.image === project!.gallery![0]!.image)).toBe(true);
+    expect(gallery[0]!.image).toBe(project!.gallery![0]!.image);
+    expect(gallery[1]!.image).toBe(project!.gallery![1]!.image);
+    expect(gallery[2]!.image).toBe(project!.gallery![2]!.image);
     expect(gallery.every(slot => slot.image !== null)).toBe(true);
+    expect(gallery[0]!.image).toBe(gallery[2]!.image);
+    expect(gallery[1]!.image).not.toBe(gallery[0]!.image);
     expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
   });
   it("returns adjacent project links and wraps at either end", () => {

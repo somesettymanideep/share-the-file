@@ -52,13 +52,12 @@ export default function ProjectImageGallery({ project }: { project: SeaProject }
       </figure>)}</div>
     </div>
     <div className="project-gallery-hero">
-      <div className="project-gallery-caption" ref={captionRef}>
+      {index === 0 && <div className="project-gallery-caption" ref={captionRef}>
       <h1>{project.title}<span className="sea-projects-dot">.</span></h1>
       {project.location && <p>{project.location}</p>}
-      </div>
+      </div>}
     </div>
     <div className="project-gallery-controls">
-      <span aria-live="polite" aria-atomic="true">{String(index + 1).padStart(2, "0")} / 03</span>
       <div className="project-gallery-dots">{slides.map((slide, slot) => <Button key={slide.id} variant="ghost" size="icon" className={"project-gallery-dot" + (index === slot ? " is-active" : "")} aria-label={`Show image ${slot + 1}`} aria-pressed={index === slot} onClick={() => go(slot)}><span /></Button>)}</div>
       <div className="project-gallery-arrows"><Button variant="outline" size="icon" aria-label="Previous image" disabled={index === 0} onClick={() => go(index - 1)}><ArrowLeft /></Button><Button variant="outline" size="icon" aria-label="Next image" disabled={index === 2} onClick={() => go(index + 1)}><ArrowRight /></Button></div>
     </div>
