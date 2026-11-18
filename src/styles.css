@@ -844,7 +844,7 @@ html.lenis, html.lenis body { height: auto; }
   --project-placeholder: oklch(0.925 0.012 197);
   --project-hero-foreground: oklch(0.99 0 0);
   --project-hero-shadow: 0 4px 30px oklch(0.15 0.02 220 / 0.55);
-  --project-hero-scrim: linear-gradient(180deg, oklch(0.25 0.04 220 / 0.4), oklch(0.25 0.04 220 / 0.12) 45%, oklch(0.25 0.04 220 / 0.5));
+  --project-hero-scrim: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,.18) 55%, rgba(0,0,0,.38)), radial-gradient(120% 90% at 0% 100%, rgba(0,0,0,.45), transparent 60%);
   --background: oklch(0.985 0 0);
   --border: oklch(0.86 0.006 180);
   --foreground: oklch(0.19 0.004 180);
