@@ -3,8 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUp, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoColor from "@/assets/sea-logo-color.png";
+import SeaLogoMark from "@/components/SeaLogoMark";
 
-export default function SeaProjectShell({ children }: { children: ReactNode }) {
+export default function SeaProjectShell({ children, heroHeader = false }: { children: ReactNode; heroHeader?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -26,9 +27,9 @@ export default function SeaProjectShell({ children }: { children: ReactNode }) {
     <Link to="/about-copy" onClick={() => setMenuOpen(false)}>Who We Are Two</Link>
     <Link to="/projects" aria-current="page" onClick={() => setMenuOpen(false)}>Projects</Link>
   </>;
-  return <div className="sea-projects">
+  return <div className={"sea-projects" + (heroHeader ? " sea-projects-detail" : "")}>
     <header className={"sea-header" + (scrolled ? " is-scrolled" : "")}>
-      <Link to="/" aria-label="SEA home" className="sea-brand"><img src={logoColor} alt="SEA – Studio for Eclectic Architecture" /></Link>
+      <Link to="/" aria-label="SEA home" className="sea-brand">{heroHeader ? <SeaLogoMark className="sea-brand-white" /> : <img src={logoColor} alt="SEA – Studio for Eclectic Architecture" />}</Link>
       <nav className="sea-header-nav" aria-label="Main navigation">{navigation}</nav>
       <Button variant="ghost" size="icon" className="sea-menu-toggle" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu /></Button>
     </header>

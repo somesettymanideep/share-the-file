@@ -30,7 +30,7 @@ function ProjectDetailsPage() {
   const project = getProject(slug);
   if (!project) return null;
   const { previous, next } = getAdjacentProjects(slug);
-  return <SeaProjectShell><main className="project-details" key={slug}>
+  return <SeaProjectShell heroHeader><main className="project-details" key={slug}>
     <Link to="/projects" className="project-back project-back-overlay"><ArrowLeft size={18} />Back to Projects</Link>
     <ProjectImageGallery key={slug} project={project} />
     <section className="project-information" aria-labelledby="project-information-heading">

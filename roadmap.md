@@ -12,6 +12,7 @@
 - [x] Split the pinned history stage so the logo holds the top half and the studio name and definition the bottom half.
 
 # Projects page
+- [x] Apply white detail-page headers and bottom-left animated project captions; verify gallery navigation on desktop and phone.
 - [x] Add clickable project cards, individual detail pages, three-slot horizontal galleries, and project-to-project navigation; verify desktop and phone.
 - [x] Build /projects with "The Art of Creation" heading, the six homepage project photos, animated scroll gallery, and links from both About pages; verify desktop and mobile.
 

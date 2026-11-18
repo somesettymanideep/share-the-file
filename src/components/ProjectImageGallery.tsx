@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,17 @@ import { getProjectGallery, type SeaProject } from "@/lib/projects";
 export default function ProjectImageGallery({ project }: { project: SeaProject }) {
   const [viewportRef, api] = useEmblaCarousel({ align: "center", duration: 35, watchDrag: true });
   const [index, setIndex] = useState(0);
+  const captionRef = useRef<HTMLDivElement>(null);
   const slides = getProjectGallery(project);
+  useEffect(() => {
+    const caption = captionRef.current;
+    if (!caption || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const context = gsap.context(() => {
+      gsap.fromTo(caption.querySelector("h1"), { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 1.3, ease: "power3.out" });
+      gsap.fromTo(caption.querySelector("p"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" });
+    }, caption);
+    return () => context.revert();
+  }, [index, project.slug]);
   useEffect(() => {
     if (!api) return;
     const update = () => setIndex(api.selectedScrollSnap());
@@ -41,8 +52,10 @@ export default function ProjectImageGallery({ project }: { project: SeaProject }
       </figure>)}</div>
     </div>
     <div className="project-gallery-hero">
+      <div className="project-gallery-caption" ref={captionRef}>
       <h1>{project.title}<span className="sea-projects-dot">.</span></h1>
       {project.location && <p>{project.location}</p>}
+      </div>
     </div>
     <div className="project-gallery-controls">
       <span aria-live="polite" aria-atomic="true">{String(index + 1).padStart(2, "0")} / 03</span>
