@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import {
   ContainerAnimated,
   ContainerScroll,
@@ -143,21 +143,6 @@ export default function SeaProjects() {
           </ContainerScroll>
         </section>
 
-        <section className="sea-projects-list" aria-label="Project details">
-          {SEA_PROJECTS.map((project, i) => (
-            <article className="sea-projects-item" key={project.title}>
-              <span className="sea-projects-index">{String(i + 1).padStart(2, "0")}</span>
-              <div className="sea-projects-item-photo">
-                <img src={project.image} alt={project.alt} loading="lazy" />
-              </div>
-              <div className="sea-projects-item-copy">
-                <h2>{project.title}</h2>
-                <p>{project.description}</p>
-              </div>
-              <ArrowUpRight aria-hidden="true" className="sea-projects-item-arrow" />
-            </article>
-          ))}
-        </section>
       </main>
 
       <footer className="sea-footer" id="contact">
