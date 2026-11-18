@@ -932,12 +932,12 @@ html.lenis, html.lenis body { height: auto; }
 .project-gallery-dot span { width: 6px; height: 6px; border-radius: 50%; background: oklch(0.99 0 0 / 0.45); }
 .project-gallery-dot.is-active span { background: var(--project-hero-foreground); }
 .project-information { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; padding: 76px 5%; }
-.project-information h2 { font-size: 40px; line-height: 1.1; text-transform: uppercase; margin-bottom: 24px; }
-.project-information p { font-size: 18px; line-height: 1.8; }
+.project-information h2 { font-size: clamp(44px, 4vw, 68px); line-height: 1.1; text-transform: uppercase; margin-bottom: 24px; }
+.project-information p { font-size: clamp(21px, 1.9vw, 30px); line-height: 1.7; }
 .project-information dl { margin: 0; }
-.project-information dl > div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--input); }
-.project-information dt { font-size: 14px; color: var(--primary); }
-.project-information dd { margin: 0; font-size: 16px; font-weight: 500; }
+.project-information dl > div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--input); }
+.project-information dt { font-size: clamp(18px, 1.5vw, 24px); color: var(--primary); }
+.project-information dd { margin: 0; font-size: clamp(21px, 1.8vw, 30px); font-weight: 500; }
 .project-adjacent { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; border-top: 1px solid var(--input); margin: 0 5%; padding-top: 32px; }
 .project-adjacent a { color: inherit; text-decoration: none; min-width: 0; }
 .project-adjacent a:last-child { text-align: right; }
@@ -957,8 +957,10 @@ html.lenis, html.lenis body { height: auto; }
   .sea-projects-detail .sea-brand-white { width: 96px; }
   .sea-projects-detail .sea-header.is-scrolled .sea-brand-white { width: 84px; }
   .project-information { grid-template-columns: 1fr; gap: 24px; padding: 48px 6%; }
-  .project-information h2 { font-size: 32px; }
-  .project-information p { font-size: 16px; }
+  .project-information h2 { font-size: 40px; }
+  .project-information p { font-size: 21px; }
+  .project-information dt { font-size: 19px; }
+  .project-information dd { font-size: 23px; }
   .project-adjacent { gap: 18px; }
   .project-adjacent span { font-size: 20px; }
   .sea-projects .sea-footer-top h2 { font-size: 44px; }
