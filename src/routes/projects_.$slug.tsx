@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SeaProjectShell from "@/components/SeaProjectShell";
-import ProjectImageGallery from "@/components/ProjectImageGallery";
+import ProjectMorphGallery from "@/components/ProjectMorphGallery";
 import { Button } from "@/components/ui/button";
 import { getAdjacentProjects, getProject } from "@/lib/projects";
 
@@ -32,7 +32,7 @@ function ProjectDetailsPage() {
   const { previous, next } = getAdjacentProjects(slug);
   return <SeaProjectShell heroHeader><main className="project-details" key={slug}>
     <Link to="/projects" className="project-back project-back-overlay"><ArrowLeft size={18} />Back to Projects</Link>
-    <ProjectImageGallery key={slug} project={project} />
+    <ProjectMorphGallery key={slug} project={project} />
     <section className="project-information" aria-labelledby="project-information-heading">
       <div><h2 id="project-information-heading">Project Details</h2><p>{project.description}</p></div>
       <dl>{[
