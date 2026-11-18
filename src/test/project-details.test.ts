@@ -1,0 +1,28 @@
+import { describe, expect, it } from "vitest";
+import { getAdjacentProjects, getProject, getProjectGallery, SEA_PROJECTS } from "@/lib/projects";
+
+describe("Project details", () => {
+  it("uses the supplied Gangadhar Estate location", () => { expect(getProject("gangadhar-estate")?.location).toBe("Vijayawada, Andhra Pradesh"); });
+  it("uses the supplied plot size", () => { expect(getProject("gangadhar-estate")?.plotSize).toBe("2,110 Sq. Yds."); });
+  it("uses the supplied completed status", () => { expect(getProject("gangadhar-estate")?.status).toBe("Completed"); });
+  it("uses the supplied parametric style", () => { expect(getProject("gangadhar-estate")?.architectureStyle).toBe("Parametric"); });
+  it("gives every project a unique slug and its own photograph", () => {
+    expect(new Set(SEA_PROJECTS.map(p => p.slug)).size).toBe(6);
+    expect(new Set(SEA_PROJECTS.map(p => p.image)).size).toBe(6);
+    for (const project of SEA_PROJECTS) expect(getProject(project.slug)).toBe(project);
+  });
+  it("has exactly three gallery slots without duplicating or substituting photographs", () => {
+    for (const project of SEA_PROJECTS) {
+      const gallery = getProjectGallery(project);
+      expect(gallery).toHaveLength(3);
+      expect(gallery.map(slot => slot.image)).toEqual([project.image, null, null]);
+      expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
+    }
+  });
+  it("returns adjacent project links and wraps at either end", () => {
+    expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe("kishore-jain-kms-infra");
+    expect(getAdjacentProjects("manjunatha-constructions").previous?.slug).toBe("kishore-jain-kms-infra");
+    expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe("manjunatha-constructions");
+  });
+  it("does not resolve unknown projects", () => { expect(getProject("unknown")).toBeUndefined(); });
+});

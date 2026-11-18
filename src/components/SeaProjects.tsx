@@ -1,107 +1,13 @@
-import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUp } from "lucide-react";
-import {
-  ContainerAnimated,
-  ContainerScroll,
-  ContainerStagger,
-  ContainerSticky,
-  GalleryCol,
-  GalleryContainer,
-} from "@/components/ui/animated-gallery";
+import { ContainerAnimated, ContainerScroll, ContainerStagger, ContainerSticky, GalleryCol, GalleryContainer } from "@/components/ui/animated-gallery";
 import { SEA_PROJECTS } from "@/lib/projects";
-import logoColor from "@/assets/sea-logo-color.png";
+import SeaProjectShell from "@/components/SeaProjectShell";
 
-type SeaProject = (typeof SEA_PROJECTS)[number];
-const COLS: SeaProject[][] = [
-  [SEA_PROJECTS[0]!, SEA_PROJECTS[3]!],
-  [SEA_PROJECTS[1]!, SEA_PROJECTS[4]!],
-  [SEA_PROJECTS[2]!, SEA_PROJECTS[5]!],
-];
-
-const COL_Y_RANGES: [string, string][] = [
-  ["-10%", "2%"],
-  ["15%", "5%"],
-  ["-10%", "2%"],
-];
+const COLS = [0, 1, 2].map((column) => SEA_PROJECTS.filter((_, index) => index % 3 === column));
+const COL_Y_RANGES: [string, string][] = [["-10%", "2%"], ["15%", "5%"], ["-10%", "2%"]];
 
 export default function SeaProjects() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [showTop, setShowTop] = useState(false);
-
-  useEffect(() => {
-    let frame = 0;
-    const read = () => {
-      frame = 0;
-      setScrolled(window.scrollY > 60);
-      setShowTop(window.scrollY > 600);
-    };
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(read);
-    };
-    read();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
-  return (
-    <div className="sea-projects">
-      <header className={"sea-header" + (scrolled ? " is-scrolled" : "")}>
-        <Link to="/" aria-label="SEA home" className="sea-brand">
-          <img src={logoColor} alt="SEA – Studio for Eclectic Architecture" />
-        </Link>
-        <nav className="sea-header-nav" aria-label="Main navigation">
-          <Link to="/">Home</Link>
-          <Link to="/about">Who We Are</Link>
-          <Link to="/about-copy">Who We Are Two</Link>
-          <Link to="/projects" aria-current="page">
-            Projects
-          </Link>
-        </nav>
-        <button
-          type="button"
-          className="sea-menu-toggle"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(true)}
-        >
-          <span className="sea-menu-line sea-menu-line-a" />
-          <span className="sea-menu-line sea-menu-line-b" />
-        </button>
-      </header>
-      {menuOpen && (
-        <div className="sea-menu-overlay" role="dialog" aria-label="Menu">
-          <button
-            type="button"
-            className="sea-menu-close"
-            aria-label="Close menu"
-            onClick={() => setMenuOpen(false)}
-          >
-            ×
-          </button>
-          <nav aria-label="Main navigation">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
-              Home
-            </Link>
-            <Link to="/about" onClick={() => setMenuOpen(false)}>
-              Who We Are
-            </Link>
-            <Link to="/about-copy" onClick={() => setMenuOpen(false)}>
-              Who We Are Two
-            </Link>
-            <Link to="/projects" aria-current="page" onClick={() => setMenuOpen(false)}>
-              Projects
-            </Link>
-          </nav>
-        </div>
-      )}
-
+  return <SeaProjectShell>
       <main>
         <section className="sea-projects-hero" aria-labelledby="projects-heading">
           <ContainerStagger className="sea-projects-intro">
@@ -125,16 +31,16 @@ export default function SeaProjects() {
                 {COLS.map((col, colIndex) => (
                   <GalleryCol
                     key={colIndex}
-                    yRange={COL_Y_RANGES[colIndex]!}
+                    yRange={COL_Y_RANGES[colIndex] ?? ["0%", "0%"]}
                     className={colIndex === 1 ? "sea-projects-col-mid" : undefined}
                   >
                     {col.map((project) => (
-                      <figure className="sea-projects-tile" key={project.title}>
+                      <Link className="sea-projects-tile" key={project.slug} to="/projects/$slug" params={{ slug: project.slug }} aria-label={`View ${project.title}`}><figure>
                         <img src={project.image} alt={project.alt} loading="lazy" />
                         <figcaption>
                           <span>{project.title}</span>
                         </figcaption>
-                      </figure>
+                      </figure></Link>
                     ))}
                   </GalleryCol>
                 ))}
@@ -144,38 +50,5 @@ export default function SeaProjects() {
         </section>
 
       </main>
-
-      <footer className="sea-footer" id="contact">
-        <div className="sea-footer-top">
-          <h2>
-            Let’s Create
-            <br />
-            Something Meaningful
-          </h2>
-          <address>
-            <a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a>
-            <a href="tel:+919000299600">+91 9000299600</a>
-            <span>Vijayawada, Andhra Pradesh</span>
-          </address>
-        </div>
-        <div className="sea-footer-bottom">
-          <span>© 2026 SEA – Studio for Eclectic Architecture</span>
-          <nav aria-label="Footer">
-            <Link to="/about">Who We Are</Link>
-            <Link to="/projects">Projects</Link>
-            <a href="/studio.html#services">What We Do</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-      </footer>
-      <button
-        type="button"
-        className={"sea-scroll-top" + (showTop ? " is-visible" : "")}
-        aria-label="Scroll to top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        <ArrowUp size={20} aria-hidden="true" />
-      </button>
-    </div>
-  );
+  </SeaProjectShell>;
 }
