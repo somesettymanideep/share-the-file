@@ -40,6 +40,10 @@ export default function ProjectImageGallery({ project }: { project: SeaProject }
         {slide.image ? <img src={slide.image} alt={slide.alt} draggable={false} /> : <div className="project-photo-placeholder" role="img" aria-label={slide.alt}><ImageIcon size={40} strokeWidth={1} /><span>{project.title}</span><small>View {String(slot + 1).padStart(2, "0")} · Photograph forthcoming</small></div>}
       </figure>)}</div>
     </div>
+    <div className="project-gallery-hero">
+      <h1>{project.title}<span className="sea-projects-dot">.</span></h1>
+      {project.location && <p>{project.location}</p>}
+    </div>
     <div className="project-gallery-controls">
       <span aria-live="polite" aria-atomic="true">{String(index + 1).padStart(2, "0")} / 03</span>
       <div className="project-gallery-dots">{slides.map((slide, slot) => <Button key={slide.id} variant="ghost" size="icon" className={"project-gallery-dot" + (index === slot ? " is-active" : "")} aria-label={`Show image ${slot + 1}`} aria-pressed={index === slot} onClick={() => go(slot)}><span /></Button>)}</div>

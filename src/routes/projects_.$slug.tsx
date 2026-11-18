@@ -31,8 +31,7 @@ function ProjectDetailsPage() {
   if (!project) return null;
   const { previous, next } = getAdjacentProjects(slug);
   return <SeaProjectShell><main className="project-details" key={slug}>
-    <Link to="/projects" className="project-back"><ArrowLeft size={18} />Back to Projects</Link>
-    <div className="project-details-heading"><h1>{project.title}<span className="sea-projects-dot">.</span></h1>{project.location && <p>{project.location}</p>}</div>
+    <Link to="/projects" className="project-back project-back-overlay"><ArrowLeft size={18} />Back to Projects</Link>
     <ProjectImageGallery key={slug} project={project} />
     <section className="project-information" aria-labelledby="project-information-heading">
       <div><h2 id="project-information-heading">Project Details</h2><p>{project.description}</p></div>
