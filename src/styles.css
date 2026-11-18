@@ -767,3 +767,50 @@ html.lenis, html.lenis body { height: auto; }
   .sea-people .people-editorial-story .people-client p { font-size: 16px; }
   .sea-people .people-portrait-cluster { max-width: 380px; justify-self: center; }
 }
+
+/* Team lanyard rail (About page): badges hang from a teal rail, pull down, click to flip. */
+.sea-people .people-lanyard { margin-top: 8px; }
+.sea-people .people-lanyard-hint { font-size: 14px; color: var(--people-muted); margin: 0 0 34px; }
+.sea-people .people-lanyard-track { position: relative; height: 486px; }
+.sea-people .people-lanyard-rail { position: absolute; top: 0; left: 0; right: 0; height: 6px; border-radius: 3px; background: var(--people-teal); box-shadow: var(--people-shadow); }
+.sea-people .people-lanyard-item { position: absolute; top: 3px; left: var(--item-left); width: 250px; margin-left: -125px; display: flex; justify-content: center; }
+.sea-people .people-lanyard-hang { display: flex; flex-direction: column; align-items: center; transform-origin: top center; }
+.sea-people .people-lanyard-item.is-active .people-lanyard-hang { animation: people-lanyard-swing 3.6s ease-in-out infinite; }
+@keyframes people-lanyard-swing { 0%, 100% { transform: rotate(2.4deg); } 50% { transform: rotate(-2.4deg); } }
+.sea-people .people-lanyard-pin { width: 14px; height: 14px; border-radius: 50%; background: var(--people-ink); border: 3px solid var(--people-paper); box-shadow: 0 0 0 1px var(--people-line); margin-top: -4px; z-index: 2; }
+.sea-people .people-lanyard-strap { width: 3px; height: var(--strap, 80px); background: linear-gradient(var(--people-teal), var(--people-ink)); transform-origin: top center; }
+.sea-people .people-lanyard-badge { position: relative; width: 250px; height: 350px; padding: 0; border: 0; background: transparent; perspective: 1200px; cursor: grab; touch-action: pan-y; }
+.sea-people .people-lanyard-badge:active { cursor: grabbing; }
+.sea-people .people-lanyard-flip { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1); }
+.sea-people .people-lanyard-badge.is-flipped .people-lanyard-flip { transform: rotateY(180deg); }
+.sea-people .people-lanyard-face { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 16px 18px; background: var(--people-paper); border: 1px solid var(--people-line); border-radius: 12px; box-shadow: var(--people-shadow); backface-visibility: hidden; transition: border-color 0.3s ease; }
+.sea-people .people-lanyard-front::before { content: ""; width: 34px; height: 8px; border-radius: 4px; background: var(--people-line); margin-bottom: 8px; }
+.sea-people .people-lanyard-back { transform: rotateY(180deg); justify-content: center; gap: 16px; }
+.sea-people .people-lanyard-photo { width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--people-background); }
+.sea-people .people-lanyard-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.sea-people .people-lanyard-item.is-brushed .people-lanyard-photo img { transform: scale(1.06); }
+.sea-people .people-lanyard-item.is-brushed .people-lanyard-face { border-color: var(--people-teal); }
+.sea-people .people-lanyard-name { font-family: "DM Sans", sans-serif; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--people-ink); }
+.sea-people .people-lanyard-role { font-size: 13px; color: var(--people-muted); }
+.sea-people .people-lanyard-bio { font-size: 14px; line-height: 1.6; color: var(--people-ink); text-align: center; }
+.sea-people .people-lanyard-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.sea-people .people-lanyard-tags span { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--people-teal); border: 1px solid var(--people-teal); border-radius: 999px; padding: 4px 10px; }
+.sea-people .people-lanyard-links { display: flex; gap: 16px; }
+.sea-people .people-lanyard-links span { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--people-teal); }
+@media (max-width: 1050px) {
+  .sea-people .people-lanyard-track { height: 456px; }
+  .sea-people .people-lanyard-item { width: 220px; margin-left: -110px; }
+  .sea-people .people-lanyard-badge { width: 220px; height: 320px; }
+}
+@media (max-width: 767px) {
+  .sea-people .people-lanyard { overflow-x: auto; padding-bottom: 14px; }
+  .sea-people .people-lanyard-track { display: flex; gap: 26px; height: auto; min-width: max-content; padding: 3px 4px 0; }
+  .sea-people .people-lanyard-rail { left: 4px; right: 4px; }
+  .sea-people .people-lanyard-item { position: relative; left: auto; width: 210px; margin-left: 0; flex: 0 0 auto; }
+  .sea-people .people-lanyard-strap { height: calc(var(--strap, 80px) * 0.5); }
+  .sea-people .people-lanyard-badge { width: 210px; height: 305px; }
+  .sea-people .people-lanyard-hint { font-size: 13px; margin-bottom: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sea-people .people-lanyard-item.is-active .people-lanyard-hang { animation: none; }
+}

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Linkedin, Quote, Star, Mail, Link2 } from "lucide-react";
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
 import { Button } from "@/components/ui/button";
 import clientPortrait from "@/assets/sea-sample-client.jpg";
 import clientPortraitTwo from "@/assets/sea-sample-client-2.jpg";
@@ -18,15 +20,127 @@ const testimonials = [
 ];
 
 const team = [
-  { name: "Aditi Sharma", role: "Senior Architect", image: portraitOne },
-  { name: "Arjun Reddy", role: "Design Architect", image: portraitTwo },
-  { name: "Meera Iyer", role: "Interior Designer", image: portraitThree },
-  { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour },
+  { name: "Aditi Sharma", role: "Senior Architect", image: portraitOne, bio: "Leads residential and workspace projects from the first sketch to the final handover.", tags: ["Architecture", "Since 2018"] },
+  { name: "Arjun Reddy", role: "Design Architect", image: portraitTwo, bio: "Turns complex briefs into clear plans, balancing light, movement and structure.", tags: ["Design", "Since 2020"] },
+  { name: "Meera Iyer", role: "Interior Designer", image: portraitThree, bio: "Shapes interiors with material warmth, colour and care for every detail.", tags: ["Interiors", "Since 2021"] },
+  { name: "Rohan Patel", role: "BIM Specialist", image: portraitFour, bio: "Builds the digital models that keep every drawing, site and schedule in sync.", tags: ["BIM", "Since 2022"] },
 ];
 
 const testimonialPortraits = [clientPortrait, portraitTwo, clientPortraitTwo, portraitFour, portraitThree, portraitOne];
 
-export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", testimonialStyle = "cards" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials"; testimonialStyle?: "cards" | "editorial" }) {
+function TeamLanyardRail() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [flipped, setFlipped] = useState<number | null>(null);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Autoplay: gently swing one badge at a time, pausing on interaction or reduced motion.
+  useEffect(() => {
+    if (paused || document.hidden || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setActive((index) => (index + 1) % team.length), 5000);
+    return () => window.clearInterval(timer);
+  }, [paused]);
+
+  // Pull a badge down: the strap stretches, then springs back on release.
+  useEffect(() => {
+    gsap.registerPlugin(Draggable);
+    const track = trackRef.current;
+    if (!track) return;
+    const draggables: Draggable[] = [];
+    track.querySelectorAll<HTMLElement>(".people-lanyard-item").forEach((item) => {
+      const badge = item.querySelector<HTMLElement>(".people-lanyard-badge");
+      const strap = item.querySelector<HTMLElement>(".people-lanyard-strap");
+      if (!badge || !strap) return;
+      const base = strap.getBoundingClientRect().height || 80;
+      try {
+        draggables.push(...Draggable.create(badge, {
+          type: "y",
+          bounds: { minY: 0, maxY: 130 },
+          onDrag(this: Draggable) {
+            gsap.set(strap, { scaleY: 1 + this.y / base });
+          },
+          onRelease() {
+            gsap.to(badge, { y: 0, duration: 1.2, ease: "elastic.out(1, 0.32)" });
+            gsap.to(strap, { scaleY: 1, duration: 1.2, ease: "elastic.out(1, 0.32)" });
+          },
+        }));
+      } catch {
+        // Environments without real CSS transforms (e.g. jsdom) skip dragging;
+        // the badges still flip on click.
+      }
+    });
+    return () => draggables.forEach((draggable) => draggable.kill());
+  }, []);
+
+  // Brush along the rail: the nearest badge lifts and its photo zooms.
+  const brush = (clientX: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll<HTMLElement>(".people-lanyard-item"));
+    let nearest: HTMLElement | null = null;
+    let best = Infinity;
+    for (const item of items) {
+      const rect = item.getBoundingClientRect();
+      const distance = Math.abs(clientX - (rect.left + rect.width / 2));
+      if (distance < best) { best = distance; nearest = item; }
+    }
+    for (const item of items) item.classList.toggle("is-brushed", item === nearest);
+  };
+
+  return (
+    <div
+      className="people-lanyard"
+      onPointerMove={(event) => brush(event.clientX)}
+      onPointerLeave={() => brush(-9999)}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}
+    >
+      <p className="people-lanyard-hint">Brush along the rail to meet someone, pull a badge down, click to flip it.</p>
+      <div className="people-lanyard-track" ref={trackRef}>
+        <div className="people-lanyard-rail" aria-hidden="true" />
+        {team.map((member, index) => (
+          <div
+            key={member.name}
+            className={"people-lanyard-item" + (active === index ? " is-active" : "")}
+            style={{ "--item-left": `${8 + index * 24}%`, "--strap": `${index % 2 === 0 ? 64 : 116}px` } as React.CSSProperties}
+          >
+            <div className="people-lanyard-hang">
+              <span className="people-lanyard-pin" aria-hidden="true" />
+              <span className="people-lanyard-strap" aria-hidden="true" />
+              <button
+                type="button"
+                className={"people-lanyard-badge" + (flipped === index ? " is-flipped" : "")}
+                aria-pressed={flipped === index}
+                aria-label={`Flip badge for ${member.name}`}
+                onClick={() => setFlipped(flipped === index ? null : index)}
+              >
+                <span className="people-lanyard-flip">
+                  <span className="people-lanyard-face people-lanyard-front">
+                    <span className="people-lanyard-photo"><img src={member.image} alt={`Illustrative portrait for sample team member ${member.name}`} loading="lazy" width={768} height={768} /></span>
+                    <span className="people-lanyard-name">{member.name}</span>
+                    <span className="people-lanyard-role">{member.role}</span>
+                  </span>
+                  <span className="people-lanyard-face people-lanyard-back">
+                    <span className="people-lanyard-bio">{member.bio}</span>
+                    <span className="people-lanyard-tags">{member.tags.map((tag) => <span key={tag}>{tag}</span>)}</span>
+                    <span className="people-lanyard-links">
+                      <span title="Sample email link — not connected"><Mail size={14} aria-hidden="true" /> Email</span>
+                      <span title="Sample portfolio link — not connected"><Link2 size={14} aria-hidden="true" /> Portfolio</span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", testimonialStyle = "cards", teamStyle = "grid" }: { showTeamMeta?: boolean; parts?: "all" | "team" | "testimonials"; testimonialStyle?: "cards" | "editorial"; teamStyle?: "grid" | "lanyard" }) {
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -106,10 +220,10 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", 
           {showTeamMeta && <Button asChild variant="link" className="people-contact"><a href="mailto:naresh@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>}
         </div>
         {showTeamMeta && <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>}
-        <div className="people-team-grid">{team.map((member, index) => <article className="people-team-card" key={member.name}>
+        {teamStyle === "lanyard" ? <TeamLanyardRail /> : <div className="people-team-grid">{team.map((member, index) => <article className="people-team-card" key={member.name}>
           <div className="people-team-photo"><img src={member.image} alt={`Illustrative portrait for sample team member ${member.name}`} loading="lazy" width={768} height={768} />{showTeamMeta && <span className="people-member-number">0{index + 1}</span>}</div>
           <div className="people-member-info"><h3>{member.name}</h3><p>{member.role}</p><div className="people-socials"><span title="Sample LinkedIn profile — not connected" aria-label="Sample LinkedIn profile — not connected"><Linkedin size={16} aria-hidden="true" /></span><span title="Sample Instagram profile — not connected" aria-label="Sample Instagram profile — not connected"><Instagram size={16} aria-hidden="true" /></span></div></div>
-        </article>)}</div>
+        </article>)}</div>}
       </div>
     </section>}
   </div>;

@@ -83,15 +83,20 @@ export default function SeaAbout() {
           const heading = section.querySelector(".sea-section-heading, .sea-footer-top h2");
           if (heading) gsap.from(heading, { y: 50, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%" } });
         });
-        // Team section: heading and rule reveal, cards rise in a stagger, portraits parallax.
+        // Team section: heading and rule reveal, cards or lanyard badges rise in a stagger, portraits parallax.
         const teamSection = document.querySelector<HTMLElement>(".sea-about .people-team");
         if (teamSection) {
           gsap.from(teamSection, { y: 80, opacity: 0.4, ease: "none", scrollTrigger: { trigger: teamSection, start: "top bottom", end: "top 55%", scrub: true } });
           gsap.from(teamSection.querySelector(".people-heading"), { y: 60, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: teamSection, start: "top 80%" } });
-          gsap.from(teamSection.querySelectorAll(".people-team-card"), { y: 90, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: teamSection.querySelector(".people-team-grid"), start: "top 85%" } });
-          teamSection.querySelectorAll<HTMLElement>(".people-team-photo img").forEach((img) => {
-            gsap.fromTo(img, { yPercent: -6, scale: 1.1 }, { yPercent: 6, scale: 1.1, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
-          });
+          const lanyardTrack = teamSection.querySelector(".people-lanyard-track");
+          if (lanyardTrack) {
+            gsap.from(teamSection.querySelectorAll(".people-lanyard-item"), { y: 90, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: lanyardTrack, start: "top 85%" } });
+          } else {
+            gsap.from(teamSection.querySelectorAll(".people-team-card"), { y: 90, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: teamSection.querySelector(".people-team-grid"), start: "top 85%" } });
+            teamSection.querySelectorAll<HTMLElement>(".people-team-photo img").forEach((img) => {
+              gsap.fromTo(img, { yPercent: -6, scale: 1.1 }, { yPercent: 6, scale: 1.1, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+            });
+          }
         }
         gsap.utils.toArray<HTMLElement>(".award-photo img").forEach((img) => {
           gsap.fromTo(img, { yPercent: -8, scale: 1.12 }, { yPercent: 8, scale: 1.12, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
@@ -134,7 +139,7 @@ export default function SeaAbout() {
       <AboutHero />
 
       <FounderSection />
-      <SeaPeopleSections showTeamMeta={false} parts="team" />
+      <SeaPeopleSections showTeamMeta={false} parts="team" teamStyle="lanyard" />
 
       <WhatDefinesUs />
 
