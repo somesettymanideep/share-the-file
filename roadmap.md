@@ -11,6 +11,9 @@
 - [x] Rename the history heading to "Where It All Began", enlarge its paragraphs, and drop the third paragraph.
 - [x] Split the pinned history stage so the logo holds the top half and the studio name and definition the bottom half.
 
+# Projects page
+- [x] Build /projects with "The Art of Creation" heading, the six homepage project photos, animated scroll gallery, and links from both About pages; verify desktop and mobile.
+
 # Testimonials and team
 - [x] Match the About-copy carousel to the supplied editorial quote and portrait-circle reference; verify navigation, autoplay, and desktop/mobile layout.
 - [x] Replace team heading with “The Minds That Make SEA” in the awards heading style and remove the paragraph.
