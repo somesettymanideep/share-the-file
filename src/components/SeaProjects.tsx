@@ -106,17 +106,15 @@ export default function SeaProjects() {
         <section className="sea-projects-hero" aria-labelledby="projects-heading">
           <ContainerStagger className="sea-projects-intro">
             <ContainerAnimated>
-              <p className="sea-projects-eyebrow">Our Work</p>
-            </ContainerAnimated>
-            <ContainerAnimated>
               <h1 id="projects-heading" className="sea-projects-heading">
-                The Art of Creation<span className="sea-projects-dot">.</span>
+                The Art of Architecture<span className="sea-projects-dot">.</span>
               </h1>
             </ContainerAnimated>
             <ContainerAnimated>
               <p className="sea-projects-lede">
-                Six built stories — residences, estates, towers and care campuses —
-                each shaped by light, material and the people who live with them.
+                Where structure meets imagination — residences, estates, towers and
+                care campuses, each one an eclectic composition of light, material
+                and form, crafted for the people who live with them.
               </p>
             </ContainerAnimated>
           </ContainerStagger>

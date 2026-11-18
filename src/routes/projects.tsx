@@ -4,13 +4,13 @@ import SeaProjects from "@/components/SeaProjects";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects – The Art of Creation | SEA" },
+      { title: "Projects – The Art of Architecture | SEA" },
       {
         name: "description",
         content:
           "Explore SEA's built work — residences, estates, towers and healthcare campuses by Studio for Eclectic Architecture.",
       },
-      { property: "og:title", content: "Projects – The Art of Creation | SEA" },
+      { property: "og:title", content: "Projects – The Art of Architecture | SEA" },
       {
         property: "og:description",
         content:
