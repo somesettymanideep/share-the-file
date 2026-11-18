@@ -13,11 +13,20 @@ describe("Project details", () => {
   });
   it("has exactly three gallery slots without duplicating or substituting photographs", () => {
     for (const project of SEA_PROJECTS) {
+      if (project.gallery) continue;
       const gallery = getProjectGallery(project);
       expect(gallery).toHaveLength(3);
       expect(gallery.map(slot => slot.image)).toEqual([project.image, null, null]);
       expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
     }
+  });
+  it("shows the supplied sunset photograph in all three Gangadhar Estate gallery slots", () => {
+    const project = getProject("gangadhar-estate");
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(3);
+    expect(gallery.every(slot => slot.image === project!.gallery![0]!.image)).toBe(true);
+    expect(gallery.every(slot => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
   });
   it("returns adjacent project links and wraps at either end", () => {
     expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe("kishore-jain-kms-infra");

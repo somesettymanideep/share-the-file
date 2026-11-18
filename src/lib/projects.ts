@@ -3,6 +3,7 @@ import sarika from "@/assets/sea-project-sarika-estate.jpg.asset.json";
 import ramko from "@/assets/sea-project-ramko-heights.jpg.asset.json";
 import krishnaSindhura from "@/assets/sea-project-krishna-sindhura-hospital.jpg.asset.json";
 import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg.asset.json";
+import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png.asset.json";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg.asset.json";
 
 export interface SeaProject {
@@ -15,6 +16,7 @@ export interface SeaProject {
   plotSize?: string;
   status?: string;
   architectureStyle?: string;
+  gallery?: { image: string; alt: string }[];
 }
 
 export const SEA_PROJECTS: SeaProject[] = [
@@ -61,6 +63,10 @@ export const SEA_PROJECTS: SeaProject[] = [
       "A slender tower whose sculpted slab edges sweep across the façade, glowing warm against the evening sky.",
     image: gangadhar.url,
     alt: "Gangadhar Estate tower with sculpted slab edges at dusk",
+    gallery: [1, 2, 3].map((view) => ({
+      image: gangadharSunset.url,
+      alt: `Gangadhar Estate sunset facade with cars and landscaping — view ${String(view).padStart(2, "0")}`,
+    })),
   },
   {
     slug: "kishore-jain-kms-infra",
@@ -77,6 +83,13 @@ export function getProject(slug: string) {
 }
 
 export function getProjectGallery(project: SeaProject) {
+  if (project.gallery) {
+    return project.gallery.map((slot, index) => ({
+      id: `${project.slug}-${String(index + 1).padStart(2, "0")}`,
+      image: slot.image,
+      alt: slot.alt,
+    }));
+  }
   return [
     { id: `${project.slug}-01`, image: project.image, alt: project.alt },
     { id: `${project.slug}-02`, image: null, alt: `${project.title} — view 02 awaiting photograph` },
