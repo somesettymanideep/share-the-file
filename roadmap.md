@@ -1,3 +1,8 @@
+# Contact and project headers
+- [x] Build the supplied Contact layout with validated email enquiry and interactive office/project map.
+- [x] Remove the project page opening fade and keep its header transparent until the gallery ends, then use #EEF3F3.
+- [x] Verify enquiry, map interactions, and project headers on desktop and phone.
+
 # About page
 - [x] Replace What Defines Us with the supplied six-row layout and verify its drawing, scroll sequence, mobile, and reduced-motion states.
 - [x] Match the homepage footer, set the founder heading to two lines, and remove the history and journey images.

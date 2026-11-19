@@ -105,6 +105,7 @@ export default function SeaAbout() {
         <Link to="/about" aria-current="page">Who We Are</Link>
         <Link to="/about-copy">Who We Are Two</Link>
         <Link to="/projects">Projects</Link>
+        <Link to="/contact">Contact</Link>
       </nav>
       <button type="button" className="sea-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
         <span className="sea-menu-line sea-menu-line-a" />
@@ -119,6 +120,7 @@ export default function SeaAbout() {
           <Link to="/about" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are</Link>
           <Link to="/about-copy" onClick={() => setMenuOpen(false)}>Who We Are Two</Link>
           <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       </div>
     )}
@@ -139,7 +141,7 @@ export default function SeaAbout() {
     </main>
     <footer className="sea-footer" id="contact">
       <div className="sea-footer-top"><h2>Let’s Create<br />Something Meaningful</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
-      <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><a href="/studio.html#services">What We Do</a><a href="#contact">Contact</a></nav></div>
+      <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link></nav></div>
     </footer>
     <button type="button" className={"sea-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ArrowUp size={20} aria-hidden="true" /></button>
   </div>;

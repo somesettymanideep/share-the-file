@@ -15,6 +15,7 @@ export const Route = createFileRoute("/projects_/$slug")({
       { title }, { name: "description", content: description },
       { property: "og:title", content: title }, { property: "og:description", content: description },
       { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+      ...(project ? [{ property: "og:image", content: project.gallery?.[0]?.image ?? project.image }, { name: "twitter:image", content: project.gallery?.[0]?.image ?? project.image }] : []),
     ], links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }] };
   },
   component: ProjectDetailsPage,
