@@ -1,7 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import SeaProjects from "@/components/SeaProjects";
+import { SEA_PROJECT_CATEGORIES, type SeaProjectCategory } from "@/lib/projects";
 
 export const Route = createFileRoute("/projects")({
+  validateSearch: (search: Record<string, unknown>): { category?: SeaProjectCategory } => {
+    const category = search["category"];
+    return SEA_PROJECT_CATEGORIES.includes(category as SeaProjectCategory)
+      ? { category: category as SeaProjectCategory }
+      : {};
+  },
   head: () => ({
     meta: [
       { title: "Projects – The Art of Architecture | SEA" },
@@ -21,5 +28,8 @@ export const Route = createFileRoute("/projects")({
     ],
     links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }],
   }),
-  component: SeaProjects,
+  component: function ProjectsPage() {
+    const search = Route.useSearch();
+    return <SeaProjects {...(search.category ? { category: search.category } : {})} />;
+  },
 });

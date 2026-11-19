@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { ContainerAnimated, ContainerScroll, ContainerStagger, ContainerSticky, GalleryCol, GalleryContainer } from "@/components/ui/animated-gallery";
-import { SEA_PROJECTS } from "@/lib/projects";
+import { getProjectsByCategory, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
 import SeaProjectShell from "@/components/SeaProjectShell";
 
-const COLS = [0, 1, 2].map((column) => SEA_PROJECTS.filter((_, index) => index % 3 === column));
 const COL_Y_RANGES: [string, string][] = [["-10%", "2%"], ["15%", "5%"], ["-10%", "2%"]];
 
-export default function SeaProjects() {
+export default function SeaProjects({ category }: { category?: SeaProjectCategory }) {
+  const projects = getProjectsByCategory(category);
+  const cols = [0, 1, 2].map((column) => projects.filter((_, index) => index % 3 === column));
   return <SeaProjectShell>
       <main>
         <section className="sea-projects-hero" aria-labelledby="projects-heading">
@@ -23,12 +24,28 @@ export default function SeaProjects() {
                 and form, crafted for the people who live with them.
               </p>
             </ContainerAnimated>
+            <ContainerAnimated>
+              <nav className="sea-projects-filters" aria-label="Project categories">
+                <Link to="/projects" className="sea-projects-filter" aria-current={!category ? "page" : undefined}>All</Link>
+                {SEA_PROJECT_CATEGORIES.map((item) => (
+                  <Link key={item} to="/projects" search={{ category: item }} className="sea-projects-filter" aria-current={category === item ? "page" : undefined}>
+                    {SEA_PROJECT_CATEGORY_LABELS[item]}
+                  </Link>
+                ))}
+              </nav>
+            </ContainerAnimated>
           </ContainerStagger>
 
+          {projects.length === 0 ? (
+            <div className="sea-projects-empty">
+              <p>No {category ? SEA_PROJECT_CATEGORY_LABELS[category].toLowerCase() : ""} projects published yet.</p>
+              <Link to="/projects" className="sea-projects-empty-link">View all projects</Link>
+            </div>
+          ) : (
           <ContainerScroll className="sea-projects-scroll">
             <ContainerSticky className="sea-projects-sticky">
               <GalleryContainer className="sea-projects-gallery">
-                {COLS.map((col, colIndex) => (
+                {cols.map((col, colIndex) => (
                   <GalleryCol
                     key={colIndex}
                     yRange={COL_Y_RANGES[colIndex] ?? ["0%", "0%"]}
@@ -47,6 +64,7 @@ export default function SeaProjects() {
               </GalleryContainer>
             </ContainerSticky>
           </ContainerScroll>
+          )}
         </section>
 
       </main>

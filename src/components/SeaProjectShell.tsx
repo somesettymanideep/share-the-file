@@ -28,10 +28,18 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, [menuOpen]);
+  const projectLinks = <>
+    <Link to="/projects" search={{ category: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
+    <Link to="/projects" search={{ category: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
+    <Link to="/projects" search={{ category: "landscape" }} onClick={() => setMenuOpen(false)}>Landscape</Link>
+  </>;
   const navigation = <>
     <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
     <Link to="/about" onClick={() => setMenuOpen(false)}>Who We Are</Link>
-    <Link to="/projects" aria-current={pathname.startsWith("/projects") ? "page" : undefined} onClick={() => setMenuOpen(false)}>Projects</Link>
+    <div className="sea-nav-item">
+      <Link to="/projects" aria-current={pathname.startsWith("/projects") ? "page" : undefined} onClick={() => setMenuOpen(false)}>Projects</Link>
+      <div className="sea-nav-sub" role="menu" aria-label="Project categories">{projectLinks}</div>
+    </div>
     <Link to="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setMenuOpen(false)}>Contact</Link>
   </>;
   return <div ref={shellRef} className={"sea-projects" + (heroHeader ? " sea-projects-detail" : "")}>

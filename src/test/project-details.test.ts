@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getAdjacentProjects, getProject, getProjectGallery, SEA_PROJECTS } from "@/lib/projects";
+import { getAdjacentProjects, getProject, getProjectGallery, getProjectsByCategory, SEA_PROJECTS } from "@/lib/projects";
 
 describe("Project details", () => {
   it("uses the supplied Gangadhar Estate location", () => { expect(getProject("gangadhar-estate")?.location).toBe("Vijayawada, Andhra Pradesh"); });
@@ -38,4 +38,12 @@ describe("Project details", () => {
     expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe("manjunatha-constructions");
   });
   it("does not resolve unknown projects", () => { expect(getProject("unknown")).toBeUndefined(); });
+  it("lists all six projects under architecture", () => {
+    expect(getProjectsByCategory("architecture")).toHaveLength(6);
+    expect(getProjectsByCategory()).toHaveLength(6);
+  });
+  it("has no interior or landscape projects until the client supplies them", () => {
+    expect(getProjectsByCategory("interior")).toHaveLength(0);
+    expect(getProjectsByCategory("landscape")).toHaveLength(0);
+  });
 });

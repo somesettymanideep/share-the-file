@@ -190,6 +190,11 @@
 .sea-header-nav, .sea2-header-nav { margin-left: auto; display: flex; align-items: center; gap: 34px; }
 .sea-header-nav a, .sea2-header-nav a { font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sea-awards-ink); text-decoration: none; transition: color 0.3s ease; }
 .sea-header-nav a:hover, .sea-header-nav a[aria-current="page"], .sea2-header-nav a:hover, .sea2-header-nav a[aria-current="page"] { color: var(--sea-awards-accent); }
+.sea-nav-item { position: relative; display: flex; align-items: center; }
+.sea-nav-sub { position: absolute; top: 100%; left: 50%; transform: translate(-50%, 8px); min-width: 190px; padding: 10px 0; background: var(--background); border: 1px solid var(--border); box-shadow: 0 18px 40px -18px color-mix(in oklab, var(--foreground) 35%, transparent); opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+.sea-nav-item:hover .sea-nav-sub, .sea-nav-item:focus-within .sea-nav-sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.sea-nav-sub a { display: block; padding: 10px 22px; font-size: 13px; letter-spacing: 0.12em; white-space: nowrap; }
+.sea-nav-sub a:hover, .sea-nav-sub a[aria-current="page"] { color: var(--sea-awards-accent); }
 .sea-menu-toggle { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 7px; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; }
 @media (min-width: 768px) { .sea-menu-toggle, .sea2-menu-toggle { display: none; } }
 @media (max-width: 767px) { .sea-header-nav, .sea2-header-nav { display: none; } }
@@ -203,6 +208,10 @@
 .sea-menu-overlay nav { display: flex; flex-direction: column; }
 .sea-menu-overlay a { font-family: "Oswald", sans-serif; font-size: clamp(42px, 7vw, 72px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.25; color: color-mix(in oklab, #fff 80%, transparent); text-decoration: none; transition: color 0.3s ease; padding: 8px 0; }
 .sea-menu-overlay a:hover, .sea-menu-overlay a[aria-current] { color: #fff; }
+.sea-menu-overlay .sea-nav-item { flex-direction: column; align-items: flex-start; }
+.sea-menu-overlay .sea-nav-sub { position: static; transform: none; opacity: 1; visibility: visible; min-width: 0; padding: 0 0 0 28px; background: none; border: 0; box-shadow: none; }
+.sea-menu-overlay .sea-nav-sub a { font-size: clamp(20px, 3.4vw, 30px); padding: 4px 0; color: color-mix(in oklab, #fff 55%, transparent); }
+.sea-menu-overlay .sea-nav-sub a:hover { color: #fff; }
 .sea-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; font-size: 32px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
 .sea-history { --hist-bg: var(--sea-awards-background); --hist-text: var(--sea-awards-ink); --hist-secondary: color-mix(in oklab, var(--sea-awards-ink) 68%, transparent); --hist-line: color-mix(in oklab, var(--sea-awards-ink) 22%, transparent); --hist-accent: var(--sea-awards-accent); background: var(--hist-bg); color: var(--hist-text); position: relative; padding: 120px 6% 90px; overflow: hidden; }
 .history-logo-wrap { position: relative; width: min(620px, 88%); margin: 0 auto 80px; color: var(--hist-accent); container-type: inline-size; }
@@ -867,6 +876,13 @@ html.lenis, html.lenis body { height: auto; }
 .sea-projects-heading { font-family: "Oswald", sans-serif; font-size: clamp(52px, 8.5vw, 120px); font-weight: 700; line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; margin: 0; color: var(--sea-awards-ink); }
 .sea-projects-dot { color: var(--sea-awards-accent); }
 .sea-projects-lede { max-width: 760px; margin: 26px auto 0; font-size: clamp(19px, 1.6vw, 24px); line-height: 1.65; color: color-mix(in oklab, var(--sea-awards-ink) 72%, transparent); }
+.sea-projects-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 34px; }
+.sea-projects-filter { font-family: "Oswald", sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--sea-awards-ink); padding: 10px 22px; border: 1px solid color-mix(in oklab, var(--sea-awards-ink) 25%, transparent); transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; }
+.sea-projects-filter:hover { border-color: var(--sea-awards-accent); color: var(--sea-awards-accent); }
+.sea-projects-filter[aria-current="page"] { background: var(--sea-awards-accent); border-color: var(--sea-awards-accent); color: #fff; }
+.sea-projects-empty { padding: 90px 5% 140px; text-align: center; }
+.sea-projects-empty p { margin: 0 0 22px; font-size: clamp(19px, 1.6vw, 24px); color: color-mix(in oklab, var(--sea-awards-ink) 72%, transparent); }
+.sea-projects-empty-link { font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sea-awards-accent); text-decoration: none; border-bottom: 2px solid var(--sea-awards-accent); padding-bottom: 4px; }
 .sea-projects-scroll { height: 240vh; margin-top: -30px; }
 .sea-projects-sticky { height: 100svh; display: flex; align-items: center; padding: calc(var(--sea-header-height) + 10px) 4% 4%; }
 .sea-projects-gallery { gap: 18px; align-content: center; }

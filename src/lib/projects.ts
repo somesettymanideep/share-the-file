@@ -7,9 +7,19 @@ import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png.as
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png.asset.json";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg.asset.json";
 
+export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape"] as const;
+export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
+
+export const SEA_PROJECT_CATEGORY_LABELS: Record<SeaProjectCategory, string> = {
+  architecture: "Architecture",
+  interior: "Interior",
+  landscape: "Landscape",
+};
+
 export interface SeaProject {
   slug: string;
   title: string;
+  category: SeaProjectCategory;
   description: string;
   image: string;
   alt: string;
@@ -24,6 +34,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "manjunatha-constructions",
     title: "Manjunatha Constructions",
+    category: "architecture",
     description:
       "A four-level residence wrapped in colour-blocked perforated screens and climbing vines that filter light and cool the interiors.",
     image: manjunatha.url,
@@ -32,6 +43,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "sarika-estate",
     title: "Sarika Estate",
+    category: "architecture",
     description:
       "A gated villa community beside the highway, anchored by a tiled-roof convention centre, a parking court and a landscaped entry.",
     image: sarika.url,
@@ -40,6 +52,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "ramko-heights",
     title: "Ramko Heights",
+    category: "architecture",
     description:
       "A stilt-parking apartment tower with dark framed bays, glazed balconies, warm timber soffits and an illuminated vertical signature.",
     image: ramko.url,
@@ -48,6 +61,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "krishna-sindhura-hospital",
     title: "Krishna Sindhura Hospital",
+    category: "architecture",
     description:
       "A multi-block healthcare campus joined by a glazed atrium and a sky-garden podium, planned around a clear, calm arrival.",
     image: krishnaSindhura.url,
@@ -56,6 +70,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "gangadhar-estate",
     title: "Gangadhar Estate",
+    category: "architecture",
     location: "Vijayawada, Andhra Pradesh",
     plotSize: "2,110 Sq. Yds.",
     status: "Completed",
@@ -73,6 +88,7 @@ export const SEA_PROJECTS: SeaProject[] = [
   {
     slug: "kishore-jain-kms-infra",
     title: "Kishore Jain KMS Infra",
+    category: "architecture",
     description:
       "Stepped residential terraces with continuous planted balconies that give every home a green edge.",
     image: kishoreJain.url,
@@ -82,6 +98,11 @@ export const SEA_PROJECTS: SeaProject[] = [
 
 export function getProject(slug: string) {
   return SEA_PROJECTS.find((project) => project.slug === slug);
+}
+
+export function getProjectsByCategory(category?: SeaProjectCategory) {
+  if (!category) return SEA_PROJECTS;
+  return SEA_PROJECTS.filter((project) => project.category === category);
 }
 
 export function getProjectGallery(project: SeaProject) {
