@@ -1101,20 +1101,6 @@ html.lenis, html.lenis body { height: auto; }
 .contact-project-info { min-width: 0; }
 .contact-project-link { display: inline-flex; align-items: center; gap: 6px; margin: 8px 0 0 16px; color: var(--contact-accent); font-size: 14px; font-weight: 600; }
 .contact-presence-empty { padding: 26px; border: 1px dashed var(--contact-line); border-radius: 12px; background: var(--contact-surface); color: var(--contact-muted); font-size: 15px; line-height: 1.6; text-align: center; }
-.contact-region-details { min-width: 0; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--contact-line); }
-.contact-region-kind { color: var(--contact-accent); font-size: 13px; font-weight: 600; text-transform: uppercase; }
-.contact-region-details h3 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 36px; line-height: 1.2; margin: 10px 0 26px; overflow-wrap: anywhere; }
-.contact-region-capitals { margin: 0; }
-.contact-region-capitals dt { font-size: 14px; color: var(--contact-muted); margin-bottom: 8px; }
-.contact-region-capitals dd { margin: 0; font-size: 23px; line-height: 1.5; }
-.contact-region-capitals dd span { display: block; }
-.contact-region-office { border-top: 1px solid var(--contact-line); margin-top: 28px; padding-top: 24px; }
-.contact-region-office h4 { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; }
-.contact-region-office h4 svg { color: var(--contact-accent); flex-shrink: 0; }
-.contact-region-office p { font-size: 17px; line-height: 1.65; margin: 14px 0 18px; }
-.contact-region-office a { display: flex; align-items: center; gap: 10px; color: var(--contact-accent); font-size: 16px; margin-top: 14px; overflow-wrap: anywhere; }
-.contact-capital-sources { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 28px; }
-.contact-capital-sources a { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--contact-muted); }
 @keyframes contact-pulse { 0%, 100% { opacity: 0.2; stroke-width: 1; } 50% { opacity: 0.8; stroke-width: 3; } }
 @keyframes contact-pin-in { from { transform: scale(0); } to { transform: scale(1); } }
 @keyframes contact-pin-ripple { 0% { opacity: 0.8; transform: scale(0.6); } 100% { opacity: 0; transform: scale(2.6); } }
@@ -1141,8 +1127,6 @@ html.lenis, html.lenis body { height: auto; }
   .contact-map-wrap, .contact-presence { grid-column: 1; grid-row: auto; }
   .contact-presence-tab { font-size: 13px; padding: 9px 8px; }
   .contact-pin-tooltip { max-width: 200px; }
-  .contact-region-details h3 { font-size: 30px; }
-  .contact-region-capitals dd { font-size: 21px; }
   .contact-locations { padding-top: 28px; }
 }
 @media (max-width: 420px) {

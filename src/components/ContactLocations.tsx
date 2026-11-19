@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Building2, LayoutGrid, Mail, MapPin, Phone } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CAPITAL_SOURCES, INDIA_REGIONS, getRegionOffice, indiaRegionPoint } from "@/lib/india-regions";
+import { INDIA_REGIONS, indiaRegionPoint } from "@/lib/india-regions";
 import { STUDIO_BRANCHES, STUDIO_CONTACT, STUDIO_LOCATIONS, type StudioLocation } from "@/lib/contact";
 
 type PresenceTab = "office" | "branches" | "projects";
@@ -61,8 +61,6 @@ export default function ContactLocations() {
   const [active, setActive] = useState("Telangana");
   const [tab, setTab] = useState<PresenceTab>("office");
   const [activePin, setActivePin] = useState<string | null>(HEAD_OFFICE?.id ?? null);
-  const selected = INDIA_REGIONS.find(region => region.name === active);
-  const office = getRegionOffice(active);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -190,11 +188,6 @@ export default function ContactLocations() {
               {project.slug && <Link className="contact-project-link" to="/projects/$slug" params={{ slug: project.slug }}>View Project<ArrowUpRight size={14} aria-hidden="true" /></Link>}
             </li>)}
           </ul>}
-        </div>
-        <div className="contact-region-details" aria-live="polite" aria-atomic="true">
-          {selected && <><span className="contact-region-kind">{selected.kind}</span><h3>{selected.name}</h3><dl className="contact-region-capitals"><dt>{selected.capitals.length > 1 ? "Capitals" : "Capital"}</dt><dd>{selected.capitals.map(capital => <span key={capital}>{capital}</span>)}</dd></dl></>}
-          {office && <div className="contact-region-office"><h4><MapPin size={23} />{office.name}</h4><p>{office.address}</p><a href={office.directions} target="_blank" rel="noopener noreferrer">Get Directions<ArrowUpRight size={18} /></a><a href={`tel:${STUDIO_CONTACT.phone.replace(/\s/g, "")}`}><Phone size={17} />{STUDIO_CONTACT.phone}</a><a href={`mailto:${STUDIO_CONTACT.email}`}><Mail size={17} />{STUDIO_CONTACT.email}</a></div>}
-          <div className="contact-capital-sources">{CAPITAL_SOURCES.map(source => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer">{source.label}<ArrowUpRight size={12} /></a>)}</div>
         </div>
       </div>
     </div>
