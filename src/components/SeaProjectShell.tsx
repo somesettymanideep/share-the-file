@@ -29,9 +29,9 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
     return () => window.removeEventListener("keydown", close);
   }, [menuOpen]);
   const projectLinks = <>
-    <Link to="/projects" search={{ category: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
-    <Link to="/projects" search={{ category: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
-    <Link to="/projects" search={{ category: "landscape" }} onClick={() => setMenuOpen(false)}>Landscape</Link>
+    <Link to="/projects/$slug" params={{ slug: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
+    <Link to="/projects/$slug" params={{ slug: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
+    <Link to="/projects/$slug" params={{ slug: "landscape" }} onClick={() => setMenuOpen(false)}>Landscape</Link>
   </>;
   const navigation = <>
     <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>

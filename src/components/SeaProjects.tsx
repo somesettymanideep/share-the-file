@@ -24,11 +24,14 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
                 and form, crafted for the people who live with them.
               </p>
             </ContainerAnimated>
+            {category && <ContainerAnimated>
+              <p className="sea-projects-eyebrow">{SEA_PROJECT_CATEGORY_LABELS[category]} Projects</p>
+            </ContainerAnimated>}
             <ContainerAnimated>
               <nav className="sea-projects-filters" aria-label="Project categories">
                 <Link to="/projects" className="sea-projects-filter" aria-current={!category ? "page" : undefined}>All</Link>
                 {SEA_PROJECT_CATEGORIES.map((item) => (
-                  <Link key={item} to="/projects" search={{ category: item }} className="sea-projects-filter" aria-current={category === item ? "page" : undefined}>
+                  <Link key={item} to="/projects/$slug" params={{ slug: item }} className="sea-projects-filter" aria-current={category === item ? "page" : undefined}>
                     {SEA_PROJECT_CATEGORY_LABELS[item]}
                   </Link>
                 ))}

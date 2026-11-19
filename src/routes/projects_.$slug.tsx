@@ -1,13 +1,27 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SeaProjectShell from "@/components/SeaProjectShell";
+import SeaProjects from "@/components/SeaProjects";
 import ProjectMorphGallery from "@/components/ProjectMorphGallery";
 import { Button } from "@/components/ui/button";
-import { getAdjacentProjects, getProject } from "@/lib/projects";
+import { getAdjacentProjects, getProject, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
+
+const asCategory = (slug: string) => (SEA_PROJECT_CATEGORIES as readonly string[]).includes(slug) ? (slug as SeaProjectCategory) : undefined;
 
 export const Route = createFileRoute("/projects_/$slug")({
-  beforeLoad: ({ params }) => { if (!getProject(params.slug)) throw notFound(); },
+  beforeLoad: ({ params }) => { if (!getProject(params.slug) && !asCategory(params.slug)) throw notFound(); },
   head: ({ params }) => {
+    const category = asCategory(params.slug);
+    if (category) {
+      const label = SEA_PROJECT_CATEGORY_LABELS[category];
+      return { meta: [
+        { title: `${label} Projects | SEA – Studio for Eclectic Architecture` },
+        { name: "description", content: `Explore SEA's ${label.toLowerCase()} work by Studio for Eclectic Architecture, Vijayawada.` },
+        { property: "og:title", content: `${label} Projects | SEA` },
+        { property: "og:description", content: `Explore SEA's ${label.toLowerCase()} work by Studio for Eclectic Architecture, Vijayawada.` },
+        { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+      ], links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }] };
+    }
     const project = getProject(params.slug);
     const title = project ? `${project.title} — Architecture | SEA` : "Project unavailable | SEA";
     const description = project?.description ?? "Explore architecture projects by Studio for Eclectic Architecture.";
@@ -28,6 +42,8 @@ export const Route = createFileRoute("/projects_/$slug")({
 
 function ProjectDetailsPage() {
   const { slug } = Route.useParams();
+  const category = asCategory(slug);
+  if (category) return <SeaProjects category={category} />;
   const project = getProject(slug);
   if (!project) return null;
   const { previous, next } = getAdjacentProjects(slug);
