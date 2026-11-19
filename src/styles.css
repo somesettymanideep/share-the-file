@@ -1000,12 +1000,10 @@ html.lenis, html.lenis body { height: auto; }
   padding: calc(var(--sea-header-height) + 38px) 5.5% 64px;
 }
 .contact-opening { position: relative; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 5%; padding-bottom: 56px; }
-.contact-architecture { position: absolute; top: -38px; right: -6.2%; width: 64%; height: 370px; pointer-events: none; overflow: hidden; }
-.contact-architecture img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .88; mask-image: linear-gradient(to right, transparent, black 38%), linear-gradient(to bottom, black 48%, transparent); mask-composite: intersect; }
 .contact-copy, .contact-form { position: relative; z-index: 1; min-width: 0; }
 .contact-kicker { display: flex; align-items: center; gap: 18px; color: var(--contact-accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
 .contact-kicker::after { content: ""; height: 1px; width: 80px; background: var(--contact-line); }
-.contact-copy h1 { font-family: "DM Sans", sans-serif; font-size: 44px; line-height: 1.08; font-weight: 700; margin: 0; letter-spacing: 0; }
+.contact-copy h1 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; line-height: 1.05; font-weight: 600; margin: 0; letter-spacing: 0; text-transform: uppercase; }
 .sea-contact h1 span, .sea-contact h2 span { color: var(--contact-accent); }
 .contact-intro { font-size: 16px; line-height: 1.65; max-width: 410px; margin: 20px 0 26px; color: var(--contact-muted); }
 .contact-details { display: grid; gap: 18px; margin: 0; padding-right: 22px; border-right: 1px solid var(--contact-line); }
@@ -1022,10 +1020,7 @@ html.lenis, html.lenis body { height: auto; }
 .contact-office-summary svg { color: var(--contact-accent); }
 .contact-office-summary p { margin: 0; }
 .contact-office-summary strong, .contact-office-summary span, .contact-office-summary a { display: block; line-height: 1.7; }
-.contact-form { align-self: start; margin-top: 155px; padding: 26px; border-radius: 8px; background: var(--contact-surface); box-shadow: var(--contact-shadow); }
-.contact-form-heading { padding-left: 16px; border-left: 3px solid var(--contact-accent); margin-bottom: 22px; }
-.contact-form h2 { font-family: inherit; font-size: 23px; font-weight: 700; line-height: 1.2; margin: 0 0 5px; }
-.contact-form-heading p { font-size: 12px; color: var(--contact-muted); margin: 0; }
+.contact-form { align-self: start; padding: 26px; border-radius: 8px; background: var(--contact-surface); box-shadow: var(--contact-shadow); }
 .contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
 .contact-field { min-width: 0; }
 .contact-field label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; }
@@ -1093,9 +1088,9 @@ html.lenis, html.lenis body { height: auto; }
 .contact-project-link, .contact-directory-email { margin-top: 14px; }
 .contact-directory-all { justify-content: flex-end; margin-top: 24px; }
 @keyframes contact-pulse { 0%, 100% { opacity: 0.2; stroke-width: 1; } 50% { opacity: 0.8; stroke-width: 3; } }
-@media (min-width: 1600px) { .contact-copy h1 { font-size: 58px; } .contact-intro { font-size: 18px; } .contact-form { margin-top: 185px; padding: 32px; } .contact-architecture { height: 430px; } }
+@media (min-width: 1600px) { .contact-intro { font-size: 18px; } .contact-form { padding: 32px; } }
 @media (max-width: 1100px) {
-  .contact-copy h1 { font-size: 36px; }
+  .contact-copy h1 { font-size: 60px; }
   .contact-fields { gap: 16px 12px; }
   .contact-form { padding: 20px; }
   .contact-locations { grid-template-columns: 1fr; }
@@ -1107,8 +1102,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   .sea-contact { padding: calc(var(--sea-header-height) + 28px) 6% 40px; }
   .contact-opening { grid-template-columns: 1fr; gap: 30px; padding-bottom: 40px; }
-  .contact-copy h1 { font-size: 38px; max-width: 440px; }
-  .contact-architecture { top: -28px; right: -6.8%; width: 80%; height: 270px; opacity: .35; }
+  .contact-copy h1 { font-size: 44px; }
   .contact-intro { font-size: 15px; }
   .contact-details { border-right: 0; padding-right: 0; }
   .contact-form { margin-top: 0; padding: 24px; }
@@ -1118,7 +1112,7 @@ html.lenis, html.lenis body { height: auto; }
   .contact-locations { padding-top: 28px; }
 }
 @media (max-width: 420px) {
-  .contact-copy h1 { font-size: 32px; }
+  .contact-copy h1 { font-size: 36px; }
   .contact-form { padding: 20px; }
   .contact-fields { grid-template-columns: 1fr; }
   .contact-submit { width: 100%; }

@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import SeaProjectShell from "@/components/SeaProjectShell";
 import ContactLocations from "@/components/ContactLocations";
 import { BUDGETS, PROJECT_TYPES, STUDIO_CONTACT, enquirySchema, enquiryEmail } from "@/lib/contact";
-import { SEA_PROJECTS } from "@/lib/projects";
 
 export default function SeaContact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -27,7 +26,6 @@ export default function SeaContact() {
   }
   return <SeaProjectShell><main className="sea-contact">
     <section className="contact-opening" aria-labelledby="contact-heading">
-      <div className="contact-architecture" aria-hidden="true"><img src={SEA_PROJECTS.find(project => project.slug === "krishna-sindhura-hospital")?.image} alt="" /></div>
       <div className="contact-copy">
         <span className="contact-kicker">CONTACT US</span>
         <h1 id="contact-heading">Let’s Create<br />Something <span>Extraordinary.</span></h1>
@@ -41,7 +39,6 @@ export default function SeaContact() {
         <div className="contact-office-summary"><h2>Our Offices & Branches</h2><div><Building2 aria-hidden="true" /><p><strong>Head Office</strong><span>{STUDIO_CONTACT.city}</span><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></p></div></div>
       </div>
       <form className="contact-form" onSubmit={submit} noValidate>
-        <header className="contact-form-heading"><h2>Send Us a Message</h2><p>Tell us about your project.</p></header>
         <div className="contact-fields">
           {[
             { name: "name", label: "Full Name", type: "text", autocomplete: "name", max: 100 },
