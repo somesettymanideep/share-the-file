@@ -177,6 +177,10 @@ export default function ContactLocations() {
               <button type="button" className={`contact-branch-item${activePin === branch.id ? " is-active" : ""}`} onClick={() => setActivePin(branch.id)}>
                 <MapPin size={16} aria-hidden="true" /><span><strong>{branch.name}</strong><span>{branch.city}</span></span>
               </button>
+              {branch.address && <div className="contact-branch-details">
+                <p className="contact-branch-address">{branch.address}</p>
+                <a className="contact-branch-link" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(branch.address)}`} target="_blank" rel="noopener noreferrer"><MapPin size={15} aria-hidden="true" />Get Directions<ArrowUpRight size={14} aria-hidden="true" /></a>
+              </div>}
             </li>)}
           </ul> : <p className="contact-presence-empty">No branch offices yet — our Hyderabad head office serves clients across India.</p>)}
           {tab === "projects" && <ul className="contact-project-list">

@@ -1,4 +1,5 @@
 # Contact and project headers
+- [x] List the confirmed Vijayawada and Bangalore branches in the presence section: pins, Vijayawada address and directions, Bangalore city only; verify desktop and phone.
 - [x] Upgrade Our Presence Across India: Head Office/Branches/Projects tabs, coordinate-placed pins with tooltips, legend, staggered reveals, Escape dismissal; verify desktop and mobile.
 - [x] Activate requested WebGL skills and unify smooth scrolling across React pages; verify navigation, menus, scroll-to-top, and reduced motion while preserving the homepage.
 - [x] Replace presence map with all selectable Indian regions, verified capitals, searchable dropdown, office-only directions, and check desktop/mobile interactions.

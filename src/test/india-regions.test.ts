@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { INDIA_REGIONS, getRegionOffice, indiaRegionPoint } from "@/lib/india-regions";
+import { STUDIO_BRANCHES } from "@/lib/contact";
 
 function pathBounds(path: string) {
   const numbers = (path.match(/-?\d+\.?\d*/g) ?? []).map(Number);
@@ -46,6 +47,13 @@ describe("Contact region directory", () => {
   });
   it("places the Vijayawada project pin inside Andhra Pradesh", () => {
     expectInsideRegion(80.648, 16.5062, "Andhra Pradesh");
+  });
+  it("places both confirmed branch pins inside their states", () => {
+    const vijayawada = STUDIO_BRANCHES.find(branch => branch.id === "branch-vijayawada");
+    const bangalore = STUDIO_BRANCHES.find(branch => branch.id === "branch-bangalore");
+    if (!vijayawada || !bangalore) throw new Error("Both confirmed branches must be listed.");
+    expectInsideRegion(vijayawada.longitude, vijayawada.latitude, "Andhra Pradesh");
+    expectInsideRegion(bangalore.longitude, bangalore.latitude, "Karnataka");
   });
   it("shows the confirmed Hyderabad office and address-based directions only in Telangana", () => {
     const office = getRegionOffice("Telangana");

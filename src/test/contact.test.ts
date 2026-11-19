@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { enquiryEmail, enquirySchema, STUDIO_LOCATIONS } from "@/lib/contact";
+import { enquiryEmail, enquirySchema, STUDIO_BRANCHES, STUDIO_LOCATIONS } from "@/lib/contact";
 
 const enquiry = { name: "Test Client", email: "test@example.com", phone: "+91 9000299600", location: "Vijayawada", type: "Residence", budget: "To be discussed", message: "A new residence with a courtyard." };
 describe("Contact enquiries", () => {
@@ -13,4 +13,14 @@ describe("Contact enquiries", () => {
   });
   it("never forwards invalid input to the email app", () => { expect(() => enquiryEmail({ ...enquiry, phone: "javascript:bad" })).toThrow(); });
   it("maps only projects with a confirmed city", () => { expect(STUDIO_LOCATIONS.filter(location => location.kind === "project").map(location => location.id)).toEqual(["gangadhar-estate"]); });
+  it("shows the Vijayawada branch at the client-supplied address", () => {
+    expect(STUDIO_BRANCHES.find(branch => branch.id === "branch-vijayawada")?.address)
+      .toBe("Flat No: 101, Sri Sai Nilayam, Chandramoulipuram, ADJ. HDFC Bank, BENZ Circle, Vijayawada, Andhra Pradesh, India- 520 010");
+  });
+  it("lists Bangalore as a branch without inventing a street address", () => {
+    const bangalore = STUDIO_BRANCHES.find(branch => branch.id === "branch-bangalore");
+    expect(bangalore?.city).toBe("Bangalore, Karnataka");
+    expect(bangalore?.address).toBeUndefined();
+    expect(STUDIO_BRANCHES.filter(branch => branch.address).map(branch => branch.id)).toEqual(["branch-vijayawada"]);
+  });
 });

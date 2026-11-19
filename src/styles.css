@@ -1097,6 +1097,10 @@ html.lenis, html.lenis body { height: auto; }
 .contact-branch-item > svg { color: var(--contact-accent); flex-shrink: 0; }
 .contact-branch-item strong, .contact-project-info strong { display: block; font-size: 16px; }
 .contact-branch-item span span, .contact-project-info span { font-size: 14px; color: var(--contact-muted); }
+.contact-branch-details { padding: 12px 16px 2px; }
+.contact-branch-address { font-size: 15px; line-height: 1.65; color: var(--contact-ink); margin: 0; }
+.contact-branch-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--contact-accent); font-size: 14px; font-weight: 600; }
+.contact-branch-link svg { flex-shrink: 0; }
 .contact-project-card img { width: 64px; height: 64px; border-radius: 9px; object-fit: cover; flex-shrink: 0; }
 .contact-project-info { min-width: 0; }
 .contact-project-link { display: inline-flex; align-items: center; gap: 6px; margin: 8px 0 0 16px; color: var(--contact-accent); font-size: 14px; font-weight: 600; }
