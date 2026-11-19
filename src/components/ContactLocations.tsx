@@ -125,8 +125,7 @@ export default function ContactLocations() {
 
   return <section ref={root} className="contact-locations" aria-labelledby="contact-map-title">
     <header className="contact-map-heading">
-      <h2 id="contact-map-title">Our Presence<br /><span>Across India.</span></h2>
-      <p>Building remarkable spaces across the country.</p>
+      <h2 id="contact-map-title">Our Presence <span>Across India.</span></h2>
     </header>
     <div className="contact-map-layout">
       <div className="contact-map-wrap">

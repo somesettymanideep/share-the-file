@@ -1036,9 +1036,8 @@ html.lenis, html.lenis body { height: auto; }
 .contact-error { color: var(--contact-error); font-size: 12px; line-height: 1.5; margin-top: 8px; }
 .contact-feedback { font-size: 14px; line-height: 1.6; border-left: 2px solid var(--contact-accent); padding-left: 16px; margin-top: 20px; }
 .contact-feedback a { display: flex; align-items: center; gap: 8px; color: var(--contact-accent); margin-top: 8px; }
-.contact-locations { padding: 40px 0 0; }
-.contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 14px; text-transform: uppercase; }
-.contact-map-heading p { font-size: 18px; line-height: 1.6; color: var(--contact-muted); margin: 0 0 36px; }
+.contact-locations { padding: 40px 0 0; border-top: 1px solid var(--contact-accent); }
+.contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 36px; text-transform: uppercase; white-space: nowrap; }
 .contact-map-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 5%; align-items: start; }
 .contact-map-wrap { grid-column: 1; grid-row: 1; min-width: 0; position: relative; }
 .contact-india-map { display: block; width: 100%; aspect-ratio: 550 / 600; max-height: 640px; }
@@ -1116,7 +1115,8 @@ html.lenis, html.lenis body { height: auto; }
 }
 @media (min-width: 1600px) { .contact-form { padding: 32px; } }
 @media (max-width: 1100px) {
-  .contact-copy h1, .contact-map-heading h2 { font-size: 60px; }
+  .contact-copy h1 { font-size: 60px; }
+  .contact-map-heading h2 { font-size: 52px; }
   .contact-fields { gap: 16px 12px; }
   .contact-form { padding: 20px; }
 
@@ -1124,7 +1124,8 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   .sea-contact { padding: calc(var(--sea-header-height) + 28px) 6% 40px; }
   .contact-opening { grid-template-columns: 1fr; gap: 30px; padding-bottom: 40px; }
-  .contact-copy h1, .contact-map-heading h2 { font-size: 44px; }
+  .contact-copy h1 { font-size: 44px; }
+  .contact-map-heading h2 { font-size: 28px; margin-bottom: 28px; }
   .contact-form { margin-top: 0; padding: 24px; }
   .contact-map-layout { gap: 28px; grid-template-columns: 1fr; }
   .contact-india-map { max-height: 420px; }
@@ -1134,7 +1135,8 @@ html.lenis, html.lenis body { height: auto; }
   .contact-locations { padding-top: 28px; }
 }
 @media (max-width: 420px) {
-  .contact-copy h1, .contact-map-heading h2 { font-size: 36px; }
+  .contact-copy h1 { font-size: 36px; }
+  .contact-map-heading h2 { font-size: 22px; }
   .contact-form { padding: 20px; }
   .contact-fields { grid-template-columns: 1fr; }
   .contact-submit { width: 100%; }
