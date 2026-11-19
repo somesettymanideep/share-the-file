@@ -1034,63 +1034,45 @@ html.lenis, html.lenis body { height: auto; }
 .contact-error { color: var(--contact-error); font-size: 12px; line-height: 1.5; margin-top: 8px; }
 .contact-feedback { font-size: 14px; line-height: 1.6; border-left: 2px solid var(--contact-accent); padding-left: 16px; margin-top: 20px; }
 .contact-feedback a { display: flex; align-items: center; gap: 8px; color: var(--contact-accent); margin-top: 8px; }
-.contact-locations { display: grid; grid-template-columns: .48fr 1.52fr; gap: 24px; padding: 40px 0 0; align-items: center; }
-.contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 20px; text-transform: uppercase; }
-.contact-map-heading > p { font-size: 14px; line-height: 1.6; max-width: 190px; }
-.contact-map-heading .contact-kicker { font-size: 11px; gap: 12px; }
-.contact-map-heading .contact-kicker::after { width: 45px; }
-.contact-map-legend { display: grid; gap: 14px; list-style: none; padding: 0; margin: 24px 0 0; font-size: 12px; }
-.contact-map-legend li { display: flex; gap: 10px; align-items: center; }
-.contact-map-legend svg { color: var(--contact-accent); }
-.contact-map-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; min-width: 0; }
-.contact-map-wrap { position: relative; min-width: 0; }
-.contact-india-map { display: block; width: 100%; max-height: 420px; }
-.contact-map-land { fill: var(--contact-map-fill); }
-.contact-map-outline { fill: none; stroke: var(--contact-accent); stroke-width: 1; }
-.contact-map-orbit { fill: none; stroke: var(--contact-line); stroke-width: 1; }
-.contact-map-label { fill: var(--contact-surface); font-size: 16px; font-family: inherit; }
-.contact-map-city { fill: var(--contact-ink); font-size: 12px; font-family: inherit; }
-.contact-map-pin { cursor: pointer; outline: none; }
-.contact-pin-dot { fill: var(--contact-surface); stroke: var(--contact-accent); stroke-width: 3; transition: fill 300ms ease; }
-.contact-map-pin.is-active .contact-pin-dot { fill: var(--contact-surface); stroke: var(--contact-ink); }
-.contact-pin-pulse { fill: none; stroke: var(--contact-surface); stroke-width: 1; opacity: 0.5; }
-.contact-map-pin.is-active .contact-pin-pulse { animation: contact-pulse 2.5s ease-in-out infinite; }
-.contact-map-pin:focus-visible .contact-pin-dot { stroke-width: 5; }
-.contact-map-preview { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--contact-line); padding: 14px 0; min-height: 90px; }
-.contact-map-preview img { width: 65px; height: 65px; object-fit: cover; border-radius: 4px; }
-.contact-map-preview strong, .contact-map-preview span { display: block; }
-.contact-map-preview strong { font-size: 14px; font-weight: 600; }
-.contact-map-preview span { font-size: 11px; color: var(--contact-muted); margin-top: 4px; }
-.contact-map-credit { font-size: 9px; color: var(--contact-muted); margin-top: 8px; }
-.contact-directory { min-width: 0; }
-.contact-directory-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.contact-directory-tabs > button { height: 50px; padding: 8px 5px; gap: 6px; white-space: normal; font-size: 11px; border-radius: 6px 6px 0 0; border: 1px solid var(--contact-line); }
-.contact-directory-tabs > button[aria-selected="true"] { background: var(--contact-accent); color: var(--contact-surface); }
-.contact-directory > section { padding: 22px 18px; background: var(--contact-surface); border-radius: 0 0 8px 8px; box-shadow: var(--contact-shadow); min-height: 250px; }
-.contact-directory h3 { font-family: inherit; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
-.contact-directory p { font-size: 14px; color: var(--contact-muted); line-height: 1.65; }
-.contact-directory-photo { width: 100%; height: 140px; object-fit: cover; border-radius: 4px; margin-bottom: 12px; }
-.contact-location-row { display: flex; align-items: flex-start; justify-content: flex-start; gap: 10px; width: 100%; height: auto; min-height: 68px; padding: 8px 0; border-radius: 0; white-space: normal; text-align: left; font-weight: 400; }
-.contact-location-row > svg { color: var(--contact-accent); flex-shrink: 0; margin-top: 3px; }
-.contact-location-row span { min-width: 0; }
-.contact-location-row strong { display: block; font-size: 16px; font-weight: 700; line-height: 1.4; }
-.contact-location-row small { display: block; font-size: 12px; color: var(--contact-muted); line-height: 1.6; margin-top: 5px; }
-.contact-directory-details { display: grid; gap: 10px; padding: 12px 0 20px; border-bottom: 1px solid var(--contact-line); }
-.contact-directory-details a, .contact-directory-email, .contact-project-link, .contact-directory-all { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--contact-accent); text-decoration: none; overflow-wrap: anywhere; }
-.contact-directory-details svg { flex-shrink: 0; }
-.contact-project-link, .contact-directory-email { margin-top: 14px; }
-.contact-directory-all { justify-content: flex-end; margin-top: 24px; }
+.contact-locations { padding: 40px 0 0; }
+.contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 36px; text-transform: uppercase; }
+.contact-map-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 5%; align-items: start; }
+.contact-region-picker { grid-column: 2; grid-row: 1; min-width: 0; margin-bottom: 30px; }
+.contact-region-picker label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.contact-region-trigger { width: 100%; min-height: 50px; height: auto; justify-content: space-between; white-space: normal; text-align: left; background: var(--contact-surface); border-color: var(--contact-line); font-size: 17px; }
+.contact-region-trigger span { min-width: 0; }
+.contact-region-trigger svg { flex-shrink: 0; }
+.contact-region-options { width: var(--radix-popover-trigger-width); max-width: calc(100vw - 32px); font-family: "DM Sans", sans-serif; }
+.contact-region-options [cmdk-item] { min-height: 44px; justify-content: space-between; }
+.contact-map-wrap { grid-column: 1; grid-row: 1 / span 2; min-width: 0; }
+.contact-india-map { display: block; width: 100%; aspect-ratio: 550 / 600; max-height: 640px; }
+.contact-region { fill: var(--contact-line); stroke: var(--contact-background); stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill 200ms ease; }
+.contact-region:hover { fill: var(--contact-map-fill); }
+.contact-region.is-active { fill: var(--contact-accent); }
+.contact-region:focus-visible { outline: none; stroke: var(--contact-ink); stroke-width: 2.5; }
+.contact-map-credit { font-size: 11px; color: var(--contact-muted); margin-top: 12px; }
+.contact-map-credit a { text-decoration: underline; text-underline-offset: 3px; }
+.contact-region-details { grid-column: 2; grid-row: 2; min-width: 0; min-height: 370px; }
+.contact-region-kind { color: var(--contact-accent); font-size: 13px; font-weight: 600; text-transform: uppercase; }
+.contact-region-details h3 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 36px; line-height: 1.2; margin: 10px 0 26px; overflow-wrap: anywhere; }
+.contact-region-capitals { margin: 0; }
+.contact-region-capitals dt { font-size: 14px; color: var(--contact-muted); margin-bottom: 8px; }
+.contact-region-capitals dd { margin: 0; font-size: 23px; line-height: 1.5; }
+.contact-region-capitals dd span { display: block; }
+.contact-region-office { border-top: 1px solid var(--contact-line); margin-top: 28px; padding-top: 24px; }
+.contact-region-office h4 { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; }
+.contact-region-office h4 svg { color: var(--contact-accent); flex-shrink: 0; }
+.contact-region-office p { font-size: 17px; line-height: 1.65; margin: 14px 0 18px; }
+.contact-region-office a { display: flex; align-items: center; gap: 10px; color: var(--contact-accent); font-size: 16px; margin-top: 14px; overflow-wrap: anywhere; }
+.contact-capital-sources { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 28px; }
+.contact-capital-sources a { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--contact-muted); }
 @keyframes contact-pulse { 0%, 100% { opacity: 0.2; stroke-width: 1; } 50% { opacity: 0.8; stroke-width: 3; } }
 @media (min-width: 1600px) { .contact-form { padding: 32px; } }
 @media (max-width: 1100px) {
   .contact-copy h1, .contact-map-heading h2 { font-size: 60px; }
   .contact-fields { gap: 16px 12px; }
   .contact-form { padding: 20px; }
-  .contact-locations { grid-template-columns: 1fr; }
-  .contact-map-heading { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
-  .contact-map-heading .contact-kicker { grid-column: 1 / -1; }
-  .contact-map-heading h2 { grid-row: span 2; }
-  .contact-map-legend { margin: 10px 0; }
+
 }
 @media (max-width: 767px) {
   .sea-contact { padding: calc(var(--sea-header-height) + 28px) 6% 40px; }
@@ -1099,7 +1081,11 @@ html.lenis, html.lenis body { height: auto; }
   .contact-form { margin-top: 0; padding: 24px; }
   .contact-map-layout { gap: 28px; grid-template-columns: 1fr; }
   .contact-india-map { max-height: 420px; }
-  .contact-directory-tabs > button { font-size: 13px; }
+  .contact-region-picker, .contact-map-wrap, .contact-region-details { grid-column: 1; grid-row: auto; }
+  .contact-region-picker { margin-bottom: 0; }
+  .contact-region-details { min-height: 0; }
+  .contact-region-details h3 { font-size: 30px; }
+  .contact-region-capitals dd { font-size: 21px; }
   .contact-locations { padding-top: 28px; }
 }
 @media (max-width: 420px) {
