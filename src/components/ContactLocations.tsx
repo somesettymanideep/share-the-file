@@ -58,9 +58,11 @@ function PinGlyph({ kind }: { kind: MapPinData["pinKind"] }) {
 
 export default function ContactLocations() {
   const root = useRef<HTMLElement>(null);
-  const [active, setActive] = useState("Telangana");
+  const [active, setActive] = useState<string[]>(["Telangana"]);
+  const [focusedRegion, setFocusedRegion] = useState("Telangana");
   const [tab, setTab] = useState<PresenceTab>("office");
   const [activePin, setActivePin] = useState<string | null>(HEAD_OFFICE?.id ?? null);
+  const [hoveredPin, setHoveredPin] = useState<string | null>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -73,7 +75,7 @@ export default function ContactLocations() {
 
   useEffect(() => {
     function dismiss(event: KeyboardEvent) {
-      if (event.key === "Escape") setActivePin(null);
+      if (event.key === "Escape") setHoveredPin(null);
     }
     document.addEventListener("keydown", dismiss);
     return () => document.removeEventListener("keydown", dismiss);
@@ -81,6 +83,12 @@ export default function ContactLocations() {
 
   function selectTab(next: PresenceTab) {
     setTab(next);
+    setHoveredPin(null);
+    const locations = next === "office" ? (HEAD_OFFICE ? [HEAD_OFFICE] : [])
+      : next === "branches" ? STUDIO_BRANCHES : PROJECT_LOCATIONS;
+    const regions = INDIA_REGIONS.filter(region => locations.some(location => location.city.endsWith(`, ${region.name}`))).map(region => region.name);
+    setActive(regions);
+    setFocusedRegion(regions[0] ?? "Telangana");
     setActivePin(
       next === "office" ? (HEAD_OFFICE?.id ?? null)
         : next === "branches" ? (STUDIO_BRANCHES[0]?.id ?? null)
@@ -99,14 +107,19 @@ export default function ContactLocations() {
           city: group.city, latitude: group.latitude, longitude: group.longitude,
           image: group.items[0]?.image, count: group.items.length, items: group.items,
         }));
-  const tooltipPin = pins.find(pin => pin.id === activePin);
+  const tooltipPin = pins.find(pin => pin.id === hoveredPin);
+
+  function selectRegion(name: string) {
+    setActive([name]);
+    setFocusedRegion(name);
+  }
 
   function moveRegion(index: number, key: string) {
     const offset = key === "ArrowRight" || key === "ArrowDown" ? 1 : key === "ArrowLeft" || key === "ArrowUp" ? -1 : 0;
     if (!offset) return;
     const next = INDIA_REGIONS[(index + offset + INDIA_REGIONS.length) % INDIA_REGIONS.length];
     if (!next) return;
-    setActive(next.name);
+    selectRegion(next.name);
     root.current?.querySelector<SVGPathElement>(`[data-region-index="${(index + offset + INDIA_REGIONS.length) % INDIA_REGIONS.length}"]`)?.focus();
   }
 
@@ -119,10 +132,10 @@ export default function ContactLocations() {
       <div className="contact-map-wrap">
         <svg className="contact-india-map" viewBox="0 0 550 600" aria-label="States and union territories of India">
           <title>India — states and union territories</title>
-          {INDIA_REGIONS.map((region, index) => <path key={region.name} d={region.path} fillRule="evenodd" data-region-index={index} className={`contact-region ${active === region.name ? "is-active" : ""}`} role="button" tabIndex={active === region.name ? 0 : -1} aria-label={region.name} aria-pressed={active === region.name} onClick={() => setActive(region.name)} onKeyDown={event => {
+          {INDIA_REGIONS.map((region, index) => <path key={region.name} d={region.path} fillRule="evenodd" data-region-index={index} className={`contact-region ${active.includes(region.name) ? "is-active" : ""}`} role="button" tabIndex={focusedRegion === region.name ? 0 : -1} aria-label={region.name} aria-pressed={active.includes(region.name)} onClick={() => selectRegion(region.name)} onKeyDown={event => {
             if (["Enter", " ", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) {
               event.preventDefault();
-              if (event.key === "Enter" || event.key === " ") setActive(region.name);
+              if (event.key === "Enter" || event.key === " ") selectRegion(region.name);
               else moveRegion(index, event.key);
             }
           }}><title>{region.name}</title></path>)}
@@ -130,7 +143,7 @@ export default function ContactLocations() {
             {pins.map((pin, index) => {
               const point = indiaRegionPoint(pin.longitude, pin.latitude);
               const isActive = activePin === pin.id;
-              return <g key={pin.id} className={`contact-pin contact-pin--${pin.pinKind}${isActive ? " is-active" : ""}`} transform={`translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})`} role="button" tabIndex={0} aria-label={`${pin.name}, ${pin.city}`} aria-pressed={isActive} onClick={() => setActivePin(pin.id)} onKeyDown={event => {
+              return <g key={pin.id} className={`contact-pin contact-pin--${pin.pinKind}${isActive ? " is-active" : ""}`} transform={`translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})`} role="button" tabIndex={0} aria-label={`${pin.name}, ${pin.city}`} aria-pressed={isActive} onMouseEnter={() => setHoveredPin(pin.id)} onMouseLeave={() => setHoveredPin(null)} onFocus={() => setHoveredPin(pin.id)} onBlur={() => setHoveredPin(null)} onClick={() => setActivePin(pin.id)} onKeyDown={event => {
                 if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActivePin(pin.id); }
               }}>
                 <g transform="scale(1.5)">

@@ -43,3 +43,4 @@ use the editor.
 - Build the founder section as the coded FounderSection component with separate portrait and background-plate assets, descriptive alternative text on the portrait, and the heading, name and role in the right column; it has no journey link.
 - Keep testimonials and team in SeaPeopleSections with .sea-people-scoped tokens; select the editorial testimonial variant only on About-copy so its layout changes never alter the original page's cards.
 - Keep the original About principles in WhatDefinesUs without a decorative drawing; pin its scoped sequence only on tall desktop viewports so larger text stays readable without altering the independent About copy.
+- Keep Contact pin selection separate from transient hover/focus tooltips, and derive tab highlights from confirmed location regions so selecting a tab never opens a tooltip.
