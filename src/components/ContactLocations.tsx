@@ -42,7 +42,7 @@ interface MapPinData {
   city: string;
   latitude: number;
   longitude: number;
-  image?: string;
+  image?: string | undefined;
   count: number;
   items: StudioLocation[];
 }
