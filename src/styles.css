@@ -1109,3 +1109,86 @@ html.lenis, html.lenis body { height: auto; }
   .contact-map-heading h2 { font-size: 36px; }
 }
 @media (prefers-reduced-motion: reduce) { .contact-map-pin.is-active .contact-pin-pulse { animation: none; } }
+
+/* ===== SEA preloader (shared shell pages, mirrors the homepage intro) ===== */
+html.sea-pre-lock,
+html.sea-pre-lock body {
+  overflow: hidden;
+}
+.sea-pre {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #08222b;
+  display: grid;
+  place-items: center;
+  color: #eef3f3;
+  clip-path: inset(0 0 0 0);
+}
+.sea-pre-in {
+  text-align: center;
+  padding: 0 5vw;
+}
+.sea-pre-word {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: clamp(240px, 52vw, 640px);
+  opacity: 0;
+}
+.sea-pre-word svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sea-pre-outline {
+  color: #3fa8bc;
+}
+.sea-pre-outline path {
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+.sea-pre-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #eef3f3;
+  clip-path: inset(0 100% 0 0);
+}
+.sea-pre-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(126, 222, 238, 0.95), rgba(0, 107, 128, 0.55) 42%, transparent 70%);
+  filter: blur(12px);
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.sea-pre-tag {
+  margin-top: clamp(14px, 2.4vw, 28px);
+  font-family: "Oxanium", "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.58rem, 1.3vw, 1rem);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: rgba(238, 243, 243, 0.78);
+  opacity: 0;
+}
+.sea-pre-count {
+  position: absolute;
+  right: clamp(20px, 4vw, 56px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(20px, 4vw, 48px));
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3vw, 2.6rem);
+  color: #3fa8bc;
+  opacity: 0;
+  font-variant-numeric: tabular-nums;
+}

@@ -31,7 +31,6 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
   const navigation = <>
     <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
     <Link to="/about" onClick={() => setMenuOpen(false)}>Who We Are</Link>
-    <Link to="/about-copy" onClick={() => setMenuOpen(false)}>Who We Are Two</Link>
     <Link to="/projects" aria-current={pathname.startsWith("/projects") ? "page" : undefined} onClick={() => setMenuOpen(false)}>Projects</Link>
     <Link to="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setMenuOpen(false)}>Contact</Link>
   </>;

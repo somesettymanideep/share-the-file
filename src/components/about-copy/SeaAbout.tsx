@@ -112,7 +112,6 @@ export default function SeaAbout() {
       <nav className="sea2-header-nav" aria-label="Main navigation">
         <Link to="/">Home</Link>
         <Link to="/about">Who We Are</Link>
-        <Link to="/about-copy" aria-current="page">Who We Are Two</Link>
         <Link to="/projects">Projects</Link>
         <Link to="/contact">Contact</Link>
       </nav>
@@ -127,7 +126,6 @@ export default function SeaAbout() {
         <nav aria-label="Main navigation">
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)}>Who We Are</Link>
-          <Link to="/about-copy" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are Two</Link>
           <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
