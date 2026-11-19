@@ -27,7 +27,6 @@ export default function SeaContact() {
   return <SeaProjectShell><main className="sea-contact">
     <section className="contact-opening" aria-labelledby="contact-heading">
       <div className="contact-copy">
-        <span className="contact-kicker">CONTACT US</span>
         <h1 id="contact-heading">Let’s Create<br />Something <span>Extraordinary.</span></h1>
         <dl className="contact-details">
           <div><MapPin aria-hidden="true" /><div><dt>Our Corporate Office</dt><dd>{STUDIO_CONTACT.address}</dd></div></div>
