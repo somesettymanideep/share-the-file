@@ -1040,14 +1040,7 @@ html.lenis, html.lenis body { height: auto; }
 .contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 14px; text-transform: uppercase; }
 .contact-map-heading p { font-size: 18px; line-height: 1.6; color: var(--contact-muted); margin: 0 0 36px; }
 .contact-map-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 5%; align-items: start; }
-.contact-region-picker { grid-column: 2; grid-row: 1; min-width: 0; margin-bottom: 30px; }
-.contact-region-picker label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-.contact-region-trigger { width: 100%; min-height: 50px; height: auto; justify-content: space-between; white-space: normal; text-align: left; background: var(--contact-surface); border-color: var(--contact-line); font-size: 17px; }
-.contact-region-trigger span { min-width: 0; }
-.contact-region-trigger svg { flex-shrink: 0; }
-.contact-region-options { width: var(--radix-popover-trigger-width); max-width: calc(100vw - 32px); font-family: "DM Sans", sans-serif; }
-.contact-region-options [cmdk-item] { min-height: 44px; justify-content: space-between; }
-.contact-map-wrap { grid-column: 1; grid-row: 1 / span 2; min-width: 0; position: relative; }
+.contact-map-wrap { grid-column: 1; grid-row: 1; min-width: 0; position: relative; }
 .contact-india-map { display: block; width: 100%; aspect-ratio: 550 / 600; max-height: 640px; }
 .contact-region { fill: var(--contact-line); stroke: var(--contact-background); stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill 200ms ease; }
 .contact-region:hover { fill: var(--contact-map-fill); }
@@ -1081,9 +1074,7 @@ html.lenis, html.lenis body { height: auto; }
 .contact-legend-pin--office { background: var(--contact-pin-office); }
 .contact-legend-pin--branch { background: var(--contact-accent); }
 .contact-legend-pin--project { background: var(--contact-pin-project); border: 1px solid var(--contact-accent); }
-.contact-map-credit { font-size: 11px; color: var(--contact-muted); margin-top: 12px; }
-.contact-map-credit a { text-decoration: underline; text-underline-offset: 3px; }
-.contact-presence { grid-column: 2; grid-row: 2; min-width: 0; }
+.contact-presence { grid-column: 2; grid-row: 1; min-width: 0; }
 .contact-presence-tabs { display: flex; gap: 6px; padding: 6px; margin-bottom: 20px; border-radius: 12px; background: var(--contact-surface); box-shadow: var(--contact-shadow); }
 .contact-presence-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; padding: 10px 12px; border: 0; border-radius: 9px; background: transparent; color: var(--contact-muted); font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 200ms ease, color 200ms ease; }
 .contact-presence-tab svg { flex-shrink: 0; }
@@ -1147,8 +1138,7 @@ html.lenis, html.lenis body { height: auto; }
   .contact-form { margin-top: 0; padding: 24px; }
   .contact-map-layout { gap: 28px; grid-template-columns: 1fr; }
   .contact-india-map { max-height: 420px; }
-  .contact-region-picker, .contact-map-wrap, .contact-presence { grid-column: 1; grid-row: auto; }
-  .contact-region-picker { margin-bottom: 0; }
+  .contact-map-wrap, .contact-presence { grid-column: 1; grid-row: auto; }
   .contact-presence-tab { font-size: 13px; padding: 9px 8px; }
   .contact-pin-tooltip { max-width: 200px; }
   .contact-region-details h3 { font-size: 30px; }

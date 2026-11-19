@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Building2, Check, ChevronsUpDown, LayoutGrid, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Building2, LayoutGrid, Mail, MapPin, Phone } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { CAPITAL_SOURCES, INDIA_REGIONS, getRegionOffice, indiaRegionPoint } from "@/lib/india-regions";
 import { STUDIO_BRANCHES, STUDIO_CONTACT, STUDIO_LOCATIONS, type StudioLocation } from "@/lib/contact";
 
@@ -62,7 +59,6 @@ function PinGlyph({ kind }: { kind: MapPinData["pinKind"] }) {
 export default function ContactLocations() {
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState("Telangana");
-  const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<PresenceTab>("office");
   const [activePin, setActivePin] = useState<string | null>(HEAD_OFFICE?.id ?? null);
   const selected = INDIA_REGIONS.find(region => region.name === active);
@@ -122,17 +118,6 @@ export default function ContactLocations() {
       <p>Building remarkable spaces across the country.</p>
     </header>
     <div className="contact-map-layout">
-      <div className="contact-region-picker">
-        <label id="contact-region-label">State / Union territory</label>
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild><Button variant="outline" role="combobox" aria-expanded={open} aria-labelledby="contact-region-label" className="contact-region-trigger"><span>{active}</span><ChevronsUpDown size={18} /></Button></PopoverTrigger>
-          <PopoverContent align="start" className="contact-region-options p-0">
-            <Command><CommandInput placeholder="Search regions…" aria-label="Search regions" /><CommandList><CommandEmpty>No regions found.</CommandEmpty><CommandGroup>
-              {INDIA_REGIONS.map(region => <CommandItem key={region.name} value={region.name} onSelect={() => { setActive(region.name); setOpen(false); }}><span>{region.name}</span>{active === region.name && <Check size={16} />}</CommandItem>)}
-            </CommandGroup></CommandList></Command>
-          </PopoverContent>
-        </Popover>
-      </div>
       <div className="contact-map-wrap">
         <svg className="contact-india-map" viewBox="0 0 550 600" aria-label="States and union territories of India">
           <title>India — states and union territories</title>
@@ -175,7 +160,6 @@ export default function ContactLocations() {
           <li><i className="contact-legend-pin contact-legend-pin--branch" aria-hidden="true" />Branch Offices</li>
           <li><i className="contact-legend-pin contact-legend-pin--project" aria-hidden="true" />Projects</li>
         </ul>
-        <p className="contact-map-credit">Boundaries: <a href="https://github.com/udit-001/india-maps-data" target="_blank" rel="noopener noreferrer">India Maps Data</a></p>
       </div>
       <div className="contact-presence">
         <div className="contact-presence-tabs" role="tablist" aria-label="SEA locations">
