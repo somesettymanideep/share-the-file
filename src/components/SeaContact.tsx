@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Mail, MapPin, Phone, Clock, UserRound, Building2, Send } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, Clock, UserRound, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,14 +29,12 @@ export default function SeaContact() {
       <div className="contact-copy">
         <span className="contact-kicker">CONTACT US</span>
         <h1 id="contact-heading">Let’s Create<br />Something <span>Extraordinary.</span></h1>
-        <p className="contact-intro">Every meaningful space begins with a conversation. Tell us what you imagine — we’d love to explore it with you.</p>
         <dl className="contact-details">
-          <div><MapPin aria-hidden="true" /><div><dt>Our Office</dt><dd>{STUDIO_CONTACT.city}</dd></div></div>
+          <div><MapPin aria-hidden="true" /><div><dt>Our Corporate Office</dt><dd>{STUDIO_CONTACT.address}</dd></div></div>
           <div><Mail aria-hidden="true" /><div><dt>Email Us</dt><dd><a href={`mailto:${STUDIO_CONTACT.email}`}>{STUDIO_CONTACT.email}</a></dd></div></div>
           <div><Phone aria-hidden="true" /><div><dt>Call Us</dt><dd><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></dd></div></div>
-          <div><Clock aria-hidden="true" /><div><dt>Working Hours</dt><dd>Contact us to arrange a visit.</dd></div></div>
+          <div><Clock aria-hidden="true" /><div><dt>Working Hours</dt><dd>{STUDIO_CONTACT.hours}</dd></div></div>
         </dl>
-        <div className="contact-office-summary"><h2>Our Offices & Branches</h2><div><Building2 aria-hidden="true" /><p><strong>Head Office</strong><span>{STUDIO_CONTACT.city}</span><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></p></div></div>
       </div>
       <form className="contact-form" onSubmit={submit} noValidate>
         <div className="contact-fields">

@@ -4,7 +4,9 @@ import { SEA_PROJECTS } from "@/lib/projects";
 export const STUDIO_CONTACT = {
   email: "naresh@s4eaindia.com",
   phone: "+91 9000299600",
-  city: "Vijayawada, Andhra Pradesh",
+  city: "Hyderabad, Telangana",
+  address: "229B, 2nd Floor, alt.f Coworking Green Tower, Begumpet Main Road, Hyderabad, Telangana, India - 500016",
+  hours: "10 AM to 6 PM",
 };
 export const PROJECT_TYPES = ["Residence", "Apartments", "Commercial", "Healthcare", "Institutional", "Other"] as const;
 export const BUDGETS = ["To be discussed", "Below ₹50 lakh", "₹50 lakh–₹1 crore", "₹1–5 crore", "Above ₹5 crore"] as const;
@@ -33,9 +35,10 @@ export interface StudioLocation {
   slug?: string;
   image?: string;
 }
+// Confirmed locations only: corporate office in Hyderabad, projects in Vijayawada.
 export const STUDIO_LOCATIONS: StudioLocation[] = [
-  { id: "head-office", kind: "office", name: "SEA · Head Office", city: STUDIO_CONTACT.city, latitude: 16.5062, longitude: 80.648 },
-  ...SEA_PROJECTS.filter(project => project.location === STUDIO_CONTACT.city).map(project => ({
+  { id: "head-office", kind: "office", name: "SEA · Corporate Office", city: STUDIO_CONTACT.city, latitude: 17.4399, longitude: 78.4667 },
+  ...SEA_PROJECTS.filter(project => project.location).map(project => ({
     id: project.slug, kind: "project" as const, name: project.title, city: project.location ?? STUDIO_CONTACT.city,
     latitude: 16.5062, longitude: 80.648, slug: project.slug, image: project.image,
   })),

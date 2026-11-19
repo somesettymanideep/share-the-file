@@ -29,7 +29,7 @@ export default function ContactLocations() {
     <header className="contact-map-heading"><span className="contact-kicker">OUR PRESENCE</span><h2 id="contact-map-title">Across<br />India<span>.</span></h2><p>Building meaningful spaces across the country.</p><ul className="contact-map-legend"><li><MapPin size={17} />Head Office</li><li><GitBranch size={17} />Branches</li><li><Box size={17} />Projects</li></ul></header>
     <div className="contact-map-layout">
       <div className="contact-map-wrap">
-        <svg className="contact-india-map" viewBox="0 0 650 670" role="img" aria-label="Map of India showing SEA in Vijayawada">
+        <svg className="contact-india-map" viewBox="0 0 650 670" role="img" aria-label="Map of India showing SEA in Hyderabad and Vijayawada">
            <circle cx="325" cy="335" r="225" className="contact-map-orbit" /><circle cx="325" cy="335" r="280" className="contact-map-orbit" />
            <path d={INDIA_OUTLINE} className="contact-map-land" />
           <path d={INDIA_OUTLINE} className="contact-map-outline" />
@@ -44,7 +44,8 @@ export default function ContactLocations() {
               <title>{`${location.name} · ${location.city}`}</title>
             </g>;
           })}
-          <text x="306" y="473" className="contact-map-city">VIJAYAWADA</text>
+          <text x="238" y="430" className="contact-map-city">HYDERABAD</text>
+          <text x="280" y="490" className="contact-map-city">VIJAYAWADA</text>
         </svg>
         {selected && <div className="contact-map-preview" aria-live="polite">
           {selected.image && <img src={selected.image} alt={selected.name} />}
@@ -55,7 +56,7 @@ export default function ContactLocations() {
       <div className="contact-directory">
         <div className="contact-directory-tabs" role="tablist" aria-label="Location categories">{([{ id: "office", label: "Head Office", icon: Building2 }, { id: "branches", label: "Branches", icon: GitBranch }, { id: "project", label: "Projects", icon: Box }] as const).map(tab => <Button key={tab.id} id={`contact-tab-${tab.id}`} variant="ghost" role="tab" aria-selected={category === tab.id} aria-controls="contact-location-panel" onClick={() => { setCategory(tab.id); const first = STUDIO_LOCATIONS.find(location => location.kind === tab.id); if (first) setActive(first.id); }}><tab.icon size={18} />{tab.label}</Button>)}</div>
         <section id="contact-location-panel" role="tabpanel" aria-labelledby={`contact-tab-${category}`}>
-          {category === "branches" ? <><h3>Our Branches</h3><p>For branch information, contact our Vijayawada team.</p><a className="contact-directory-email" href={`mailto:${STUDIO_CONTACT.email}`}><Mail size={16} />{STUDIO_CONTACT.email}</a></> : STUDIO_LOCATIONS.filter(location => location.kind === category).map(location => <div key={location.id} className="contact-directory-entry">
+          {category === "branches" ? <><h3>Our Branches</h3><p>For branch information, contact our Hyderabad team.</p><a className="contact-directory-email" href={`mailto:${STUDIO_CONTACT.email}`}><Mail size={16} />{STUDIO_CONTACT.email}</a></> : STUDIO_LOCATIONS.filter(location => location.kind === category).map(location => <div key={location.id} className="contact-directory-entry">
             {location.image && <img className="contact-directory-photo" src={location.image} alt={location.name} />}
             <Button variant="ghost" className={`contact-location-row ${active === location.id ? "is-active" : ""}`} onMouseEnter={() => setActive(location.id)} onFocus={() => setActive(location.id)} onClick={() => setActive(location.id)} aria-pressed={active === location.id}><MapPin size={20} /><span><strong>{location.name}</strong><small>{location.city}</small></span></Button>
             {location.kind === "office" && <div className="contact-directory-details"><a href="tel:+919000299600"><Phone size={15} />{STUDIO_CONTACT.phone}</a><a href={`mailto:${STUDIO_CONTACT.email}`}><Mail size={15} />{STUDIO_CONTACT.email}</a></div>}
