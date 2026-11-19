@@ -34,12 +34,15 @@ export interface StudioLocation {
   longitude: number;
   slug?: string;
   image?: string;
+  status?: string;
 }
 // Confirmed locations only: corporate office in Hyderabad, projects in Vijayawada.
 export const STUDIO_LOCATIONS: StudioLocation[] = [
   { id: "head-office", kind: "office", name: "SEA · Corporate Office", city: STUDIO_CONTACT.city, latitude: 17.4399, longitude: 78.4667 },
   ...SEA_PROJECTS.filter(project => project.location).map(project => ({
     id: project.slug, kind: "project" as const, name: project.title, city: project.location ?? STUDIO_CONTACT.city,
-    latitude: 16.5062, longitude: 80.648, slug: project.slug, image: project.image,
+    latitude: 16.5062, longitude: 80.648, slug: project.slug, image: project.image, status: project.status,
   })),
 ];
+// No confirmed branch offices yet — add verified locations here only.
+export const STUDIO_BRANCHES: StudioLocation[] = [];

@@ -1,4 +1,5 @@
 # Contact and project headers
+- [x] Upgrade Our Presence Across India: Head Office/Branches/Projects tabs, coordinate-placed pins with tooltips, legend, staggered reveals, Escape dismissal; verify desktop and mobile.
 - [x] Activate requested WebGL skills and unify smooth scrolling across React pages; verify navigation, menus, scroll-to-top, and reduced motion while preserving the homepage.
 - [x] Replace presence map with all selectable Indian regions, verified capitals, searchable dropdown, office-only directions, and check desktop/mobile interactions.
 - [x] Match the new contact reference while preserving the header, footer, and email-draft behaviour; verify desktop, phone, and map tabs.

@@ -36,6 +36,12 @@ export const INDIA_REGIONS: IndiaRegion[] = Object.entries({ ...states, ...terri
   path: paths[name as keyof typeof paths],
 })).sort((a, b) => a.name.localeCompare(b.name));
 
+// Linear fit of the region SVG paths (viewBox 0 0 550 600) to geographic coordinates,
+// calibrated against the Gujarat, Tamil Nadu and Telangana boundaries (max error ~1px).
+export function indiaRegionPoint(longitude: number, latitude: number) {
+  return { x: 17.075 * longitude - 1145.1, y: 684.2 - 18.018 * latitude };
+}
+
 export function getRegionOffice(name: string) {
   if (name !== "Telangana") return undefined;
   return {
