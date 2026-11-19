@@ -38,6 +38,7 @@ use the editor.
 - Scope the Contact layout under .sea-contact with equal-width desktop map/detail columns and mobile picker-map-details order; architectural imagery must not be presented as an office photograph.
 - Scope About page tokens and layout under .sea-about; the imported homepage has its own independent design system.
 - Initialize Three.js only after React mounts, dispose all scene resources on unmount, and keep text usable without WebGL so SSR and low-capability devices remain supported.
+- Own React-page smooth scrolling in SeaSmoothScroll at the root, synchronized with GSAP and suspended for menus, loading, and reduced motion; the preserved HTML homepage retains its independent controller to avoid duplicate animation loops.
 - Keep history stage boundaries in the shared history-sequence module, with separate schedules for About and its independent copy, so logo enlargement, caption, definition, and story reveals remain ordered and testable without changing the copy.
 - Build the founder section as the coded FounderSection component with separate portrait and background-plate assets, descriptive alternative text on the portrait, and the heading, name and role in the right column; it has no journey link.
 - Keep testimonials and team in SeaPeopleSections with .sea-people-scoped tokens; select the editorial testimonial variant only on About-copy so its layout changes never alter the original page's cards.

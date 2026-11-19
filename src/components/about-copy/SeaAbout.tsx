@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "./AboutHero";
 import FounderSection from "./FounderSection";
 import SeaPeopleSections from "@/components/SeaPeopleSections";
-import Lenis from "lenis";
+import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
 import logoColor from "@/assets/sea-logo-color.png";
 import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
 import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
@@ -56,24 +56,6 @@ export default function SeaAbout() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
-  useEffect(() => {
-    // Smooth scroll: Lenis drives the page and is ticked by GSAP so ScrollTrigger stays in sync.
-    gsap.registerPlugin(ScrollTrigger);
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true });
-    lenis.on("scroll", ScrollTrigger.update);
-    const tick = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
-    const onAnchor = (e: MouseEvent) => {
-      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
-      if (!a) return;
-      const target = document.querySelector(a.getAttribute("href")!);
-      if (target) { e.preventDefault(); lenis.scrollTo(target as HTMLElement, { offset: -80 }); }
-    };
-    document.addEventListener("click", onAnchor);
-    return () => { document.removeEventListener("click", onAnchor); gsap.ticker.remove(tick); lenis.destroy(); };
   }, []);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -152,6 +134,6 @@ export default function SeaAbout() {
       <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
       <div className="sea2-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about-copy">Who We Are</Link><Link to="/projects">Projects</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link></nav></div>
     </footer>
-    <button type="button" className={"sea2-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ArrowUp size={20} aria-hidden="true" /></button>
+    <button type="button" className={"sea2-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={scrollSeaToTop}><ArrowUp size={20} aria-hidden="true" /></button>
   </div>;
 }

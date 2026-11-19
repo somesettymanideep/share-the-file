@@ -4,6 +4,7 @@ import { ArrowUp, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoColor from "@/assets/sea-logo-color.png";
 import SeaLogoMark from "@/components/SeaLogoMark";
+import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
 
 export default function SeaProjectShell({ children, heroHeader = false }: { children: ReactNode; heroHeader?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -61,6 +62,6 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
         <Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link>
       </nav></div>
     </footer>
-    <Button variant="ghost" size="icon" className={"sea-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}><ArrowUp aria-hidden="true" /></Button>
+    <Button variant="ghost" size="icon" className={"sea-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={scrollSeaToTop}><ArrowUp aria-hidden="true" /></Button>
   </div>;
 }
