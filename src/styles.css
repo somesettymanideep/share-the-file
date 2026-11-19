@@ -230,6 +230,7 @@
 .history-scroll-cue { display: none; }
 .history-text { position: relative; }
 .history-heading { margin: 0 0 48px; font-family: "Archivo", sans-serif; font-stretch: 62%; font-weight: 800; text-transform: uppercase; line-height: 0.86; font-size: clamp(3rem, 9vw, 10rem); letter-spacing: 0.01em; }
+.sea-about .history-heading { margin-top: 40px; }
 .history-heading-line { display: block; overflow: hidden; }
 .history-heading-line > span { display: block; }
 .history-paragraphs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px 0; }
@@ -387,6 +388,7 @@
   .sea-history { padding: 96px 7% 64px; }
   .history-logo-wrap { margin-bottom: 56px; }
   .history-heading { margin-bottom: 32px; }
+  .sea-about .history-heading { margin-top: 24px; }
   .history-paragraphs { grid-template-columns: 1fr; gap: 24px; }
   .history-paragraph { font-size: 1.05rem; }
   .sea-history.is-animated .history-text { padding: 108px 7% 32px; }
