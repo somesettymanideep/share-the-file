@@ -1001,11 +1001,11 @@ html.lenis, html.lenis body { height: auto; }
   font-family: "DM Sans", sans-serif;
   padding: calc(var(--sea-header-height) + 38px) 5.5% 64px;
 }
-.contact-opening { position: relative; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 5%; padding-bottom: 56px; }
+.contact-opening { position: relative; display: grid; grid-template-columns: 0.9fr 1.1fr; column-gap: 5%; row-gap: 32px; align-items: start; padding-bottom: 56px; }
 .contact-copy, .contact-form { position: relative; z-index: 1; min-width: 0; }
 .contact-kicker { display: flex; align-items: center; gap: 18px; color: var(--contact-accent); font-size: 12px; font-weight: 700; margin-bottom: 16px; }
 .contact-kicker::after { content: ""; height: 1px; width: 80px; background: var(--contact-line); }
-.contact-copy h1 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; line-height: 1.05; font-weight: 600; margin: 0; padding-bottom: 22px; border-bottom: 2px solid var(--contact-accent); letter-spacing: 0; text-transform: uppercase; }
+.contact-opening > h1 { grid-column: 1 / -1; min-width: 0; font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 56px; line-height: 1.05; font-weight: 600; margin: 0; padding-bottom: 22px; border-bottom: 2px solid var(--contact-accent); letter-spacing: 0; text-transform: uppercase; white-space: nowrap; }
 .sea-contact h1 span, .sea-contact h2 span { color: var(--contact-accent); }
 .contact-details { display: grid; gap: 18px; margin: 26px 0 0; }
 .contact-details > div { display: flex; gap: 16px; align-items: flex-start; }
@@ -1113,9 +1113,10 @@ html.lenis, html.lenis body { height: auto; }
   .contact-pin-marker, .contact-pin-tooltip, .contact-presence-panel { animation: none; }
   .contact-pin-ripple { display: none; }
 }
-@media (min-width: 1600px) { .contact-form { padding: 32px; } }
+@media (min-width: 1600px) { .contact-form { padding: 32px; } .contact-details { margin-top: 32px; } }
 @media (max-width: 1100px) {
-  .contact-copy h1 { font-size: 60px; }
+  .contact-opening > h1 { font-size: 38px; }
+  .contact-details { margin-top: 20px; }
   .contact-map-heading h2 { font-size: 52px; }
   .contact-fields { gap: 16px 12px; }
   .contact-form { padding: 20px; }
@@ -1124,7 +1125,8 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   .sea-contact { padding: calc(var(--sea-header-height) + 28px) 6% 40px; }
   .contact-opening { grid-template-columns: 1fr; gap: 30px; padding-bottom: 40px; }
-  .contact-copy h1 { font-size: 44px; }
+  .contact-opening > h1 { font-size: 24px; }
+  .contact-details { margin-top: 0; }
   .contact-map-heading h2 { font-size: 28px; margin-bottom: 28px; }
   .contact-form { margin-top: 0; padding: 24px; }
   .contact-map-layout { gap: 28px; grid-template-columns: 1fr; }
@@ -1135,12 +1137,13 @@ html.lenis, html.lenis body { height: auto; }
   .contact-locations { padding-top: 28px; }
 }
 @media (max-width: 420px) {
-  .contact-copy h1 { font-size: 36px; }
+  .contact-opening > h1 { font-size: 18px; }
   .contact-map-heading h2 { font-size: 22px; }
   .contact-form { padding: 20px; }
   .contact-fields { grid-template-columns: 1fr; }
   .contact-submit { width: 100%; }
 }
+@media (max-width: 360px) { .contact-opening > h1 { font-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .contact-map-pin.is-active .contact-pin-pulse { animation: none; } }
 
 /* ===== SEA preloader (shared shell pages, mirrors the homepage intro) ===== */
