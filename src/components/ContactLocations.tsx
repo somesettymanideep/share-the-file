@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Building2, LayoutGrid, Mail, MapPin, Phone } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { INDIA_REGIONS, indiaRegionPoint } from "@/lib/india-regions";
 import { STUDIO_BRANCHES, STUDIO_CONTACT, STUDIO_LOCATIONS, type StudioLocation } from "@/lib/contact";
 
@@ -63,15 +61,6 @@ export default function ContactLocations() {
   const [tab, setTab] = useState<PresenceTab>("office");
   const [activePin, setActivePin] = useState<string | null>(HEAD_OFFICE?.id ?? null);
   const [hoveredPin, setHoveredPin] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    gsap.registerPlugin(ScrollTrigger);
-    const context = gsap.context(() => {
-      gsap.from(".contact-map-heading", { y: 24, opacity: 0, duration: 0.8, scrollTrigger: { trigger: root.current, start: "top 85%", once: true } });
-    }, root);
-    return () => context.revert();
-  }, []);
 
   useEffect(() => {
     function dismiss(event: KeyboardEvent) {

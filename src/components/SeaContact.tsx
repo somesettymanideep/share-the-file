@@ -1,4 +1,6 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Mail, MapPin, Phone, Clock, UserRound, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,8 +10,43 @@ import ContactLocations from "@/components/ContactLocations";
 import { BUDGETS, PROJECT_TYPES, STUDIO_CONTACT, enquirySchema, enquiryEmail } from "@/lib/contact";
 
 export default function SeaContact() {
+  const root = useRef<HTMLElement>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [draftUrl, setDraftUrl] = useState<string>();
+  useEffect(() => {
+    const page = root.current;
+    if (!page) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    let started = false;
+    const start = () => {
+      if (started || document.documentElement.classList.contains("sea-pre-lock")) return;
+      started = true;
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const reveal = (targets: string | Element[], trigger: Element | null, stagger = 0.1) => {
+          if (!trigger) return;
+          gsap.from(targets, {
+            y: 30, opacity: 0, duration: 0.85, stagger, ease: "power3.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: { trigger, start: "top 88%", once: true },
+          });
+        };
+        reveal(".contact-opening > h1", page.querySelector(".contact-opening"));
+        reveal(".contact-details > div", page.querySelector(".contact-details"));
+        reveal(".contact-form", page.querySelector(".contact-form"));
+        reveal(".contact-map-heading", page.querySelector(".contact-locations"));
+        reveal(".contact-map-wrap", page.querySelector(".contact-map-wrap"));
+        reveal(".contact-presence", page.querySelector(".contact-presence"));
+        const footer = page.parentElement?.querySelector(".sea-footer");
+        if (footer) reveal(Array.from(footer.children), footer, 0.14);
+      }, page);
+      ScrollTrigger.refresh();
+    };
+    const observer = new MutationObserver(start);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    start();
+    return () => { observer.disconnect(); media.revert(); };
+  }, []);
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const input = Object.fromEntries(new FormData(event.currentTarget));
@@ -24,7 +61,7 @@ export default function SeaContact() {
     setDraftUrl(url);
     window.location.href = url;
   }
-  return <SeaProjectShell><main className="sea-contact">
+  return <SeaProjectShell><main ref={root} className="sea-contact">
     <section className="contact-opening" aria-labelledby="contact-heading">
       <h1 id="contact-heading">Let’s Create Something <span>Extraordinary.</span></h1>
       <div className="contact-copy">
