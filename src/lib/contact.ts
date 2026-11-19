@@ -34,7 +34,7 @@ export interface StudioLocation {
   longitude: number;
   slug?: string;
   image?: string;
-  status?: string;
+  status?: string | undefined;
 }
 // Confirmed locations only: corporate office in Hyderabad, projects in Vijayawada.
 export const STUDIO_LOCATIONS: StudioLocation[] = [
