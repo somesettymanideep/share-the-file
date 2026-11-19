@@ -1,4 +1,5 @@
 # Contact and project headers
+- [x] Match the new contact reference while preserving the header, footer, and email-draft behaviour; verify desktop, phone, and map tabs.
 - [x] Build the supplied Contact layout with validated email enquiry and interactive office/project map.
 - [x] Remove the project page opening fade and keep its header transparent until the gallery ends, then use #EEF3F3.
 - [x] Verify enquiry, map interactions, and project headers on desktop and phone.

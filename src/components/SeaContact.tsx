@@ -1,11 +1,12 @@
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Mail, MapPin, Phone, Clock } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, Clock, UserRound, Building2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SeaProjectShell from "@/components/SeaProjectShell";
 import ContactLocations from "@/components/ContactLocations";
 import { BUDGETS, PROJECT_TYPES, STUDIO_CONTACT, enquirySchema, enquiryEmail } from "@/lib/contact";
+import { SEA_PROJECTS } from "@/lib/projects";
 
 export default function SeaContact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -26,31 +27,33 @@ export default function SeaContact() {
   }
   return <SeaProjectShell><main className="sea-contact">
     <section className="contact-opening" aria-labelledby="contact-heading">
+      <div className="contact-architecture" aria-hidden="true"><img src={SEA_PROJECTS.find(project => project.slug === "krishna-sindhura-hospital")?.image} alt="" /></div>
       <div className="contact-copy">
-        <span className="contact-kicker">CONTACT SEA</span>
-        <h1 id="contact-heading">Let’s Create<br />Something<br />Extraordinary<span>.</span></h1>
+        <span className="contact-kicker">CONTACT US</span>
+        <h1 id="contact-heading">Let’s Create<br />Something <span>Extraordinary.</span></h1>
         <p className="contact-intro">Every meaningful space begins with a conversation. Tell us what you imagine — we’d love to explore it with you.</p>
         <dl className="contact-details">
-          <div><MapPin aria-hidden="true" /><div><dt>Office Address</dt><dd>{STUDIO_CONTACT.city}</dd></div></div>
-          <div><Mail aria-hidden="true" /><div><dt>Email Address</dt><dd><a href={`mailto:${STUDIO_CONTACT.email}`}>{STUDIO_CONTACT.email}</a></dd></div></div>
-          <div><Phone aria-hidden="true" /><div><dt>Phone Number</dt><dd><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></dd></div></div>
+          <div><MapPin aria-hidden="true" /><div><dt>Our Office</dt><dd>{STUDIO_CONTACT.city}</dd></div></div>
+          <div><Mail aria-hidden="true" /><div><dt>Email Us</dt><dd><a href={`mailto:${STUDIO_CONTACT.email}`}>{STUDIO_CONTACT.email}</a></dd></div></div>
+          <div><Phone aria-hidden="true" /><div><dt>Call Us</dt><dd><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></dd></div></div>
           <div><Clock aria-hidden="true" /><div><dt>Working Hours</dt><dd>Contact us to arrange a visit.</dd></div></div>
         </dl>
+        <div className="contact-office-summary"><h2>Our Offices & Branches</h2><div><Building2 aria-hidden="true" /><p><strong>Head Office</strong><span>{STUDIO_CONTACT.city}</span><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></p></div></div>
       </div>
       <form className="contact-form" onSubmit={submit} noValidate>
-        <h2>Tell us about your project<span>.</span></h2>
+        <header className="contact-form-heading"><h2>Send Us a Message</h2><p>Tell us about your project.</p></header>
         <div className="contact-fields">
           {[
             { name: "name", label: "Full Name", type: "text", autocomplete: "name", max: 100 },
             { name: "email", label: "Email Address", type: "email", autocomplete: "email", max: 255 },
             { name: "phone", label: "Phone Number", type: "tel", autocomplete: "tel", max: 20 },
             { name: "location", label: "Project Location", type: "text", autocomplete: "off", max: 150 },
-          ].map(field => <div className="contact-field" key={field.name}><label htmlFor={`contact-${field.name}`}>{field.label}</label><Input id={`contact-${field.name}`} name={field.name} type={field.type} autoComplete={field.autocomplete} maxLength={field.max} required aria-invalid={Boolean(errors[field.name])} aria-describedby={errors[field.name] ? `error-${field.name}` : undefined} />{errors[field.name] && <p id={`error-${field.name}`} className="contact-error">{errors[field.name]}</p>}</div>)}
+          ].map(field => { const Icon = field.name === "name" ? UserRound : field.name === "email" ? Mail : field.name === "phone" ? Phone : MapPin; return <div className="contact-field" key={field.name}><label htmlFor={`contact-${field.name}`}>{field.label}<span className="contact-required"> *</span></label><div className="contact-input-wrap"><Icon size={16} aria-hidden="true" /><Input id={`contact-${field.name}`} name={field.name} type={field.type} placeholder={field.name === "name" ? "Enter your name" : field.name === "email" ? "Enter your email" : field.name === "phone" ? "Enter your phone number" : "Enter location"} autoComplete={field.autocomplete} maxLength={field.max} required aria-invalid={Boolean(errors[field.name])} aria-describedby={errors[field.name] ? `error-${field.name}` : undefined} /></div>{errors[field.name] && <p id={`error-${field.name}`} className="contact-error">{errors[field.name]}</p>}</div>; })}
           <div className="contact-field"><label htmlFor="contact-type">Project Type</label><select id="contact-type" name="type" defaultValue="" required aria-invalid={Boolean(errors['type'])}><option value="" disabled>Select project type</option>{PROJECT_TYPES.map(type => <option key={type}>{type}</option>)}</select>{errors['type'] && <p className="contact-error">Select a project type.</p>}</div>
           <div className="contact-field"><label htmlFor="contact-budget">Estimated Budget</label><select id="contact-budget" name="budget" defaultValue="To be discussed">{BUDGETS.map(budget => <option key={budget}>{budget}</option>)}</select></div>
-          <div className="contact-field contact-field-wide"><label htmlFor="contact-message">Message / Project Details</label><Textarea id="contact-message" name="message" rows={4} maxLength={2000} required aria-invalid={Boolean(errors['message'])} aria-describedby={errors['message'] ? "error-message" : undefined} />{errors['message'] && <p id="error-message" className="contact-error">{errors['message']}</p>}</div>
+          <div className="contact-field contact-field-wide"><label htmlFor="contact-message">Message / Project Details<span className="contact-required"> *</span></label><Textarea id="contact-message" name="message" placeholder="Tell us about your project…" rows={4} maxLength={2000} required aria-invalid={Boolean(errors['message'])} aria-describedby={errors['message'] ? "error-message" : undefined} />{errors['message'] && <p id="error-message" className="contact-error">{errors['message']}</p>}</div>
         </div>
-        <Button type="submit" className="contact-submit">Submit Enquiry<ArrowUpRight size={20} /></Button>
+        <Button type="submit" className="contact-submit"><Send size={17} />Prepare Enquiry<ArrowUpRight size={18} /></Button>
         <p className="contact-form-note">Opens your email app with your enquiry ready to send.</p>
         {draftUrl && <div className="contact-feedback" role="status">Your enquiry draft is ready. Send it from your email app to reach SEA. <a href={draftUrl}>Open email draft<ArrowUpRight size={16} /></a></div>}
       </form>
