@@ -824,7 +824,6 @@ html.lenis, html.lenis body { height: auto; }
 .sea-lanyard .lany-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; list-style: none; padding: 0; margin: 12px 0 0; }
 .sea-lanyard .lany-tags li { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--lany-teal); color: var(--lany-teal); border-radius: 999px; padding: 3px 9px; }
 .sea-lanyard .lany-mail { display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: var(--lany-teal); margin-top: 12px; word-break: break-all; }
-.sea-lanyard .lany-qr { margin-top: auto; width: 56px; height: 56px; fill: var(--lany-ink); opacity: 0.85; }
 .sea-lanyard .lany-live { text-align: center; min-height: 24px; margin: 34px 0 0; font-size: 15px; color: var(--lany-ink); font-weight: 600; }
 .sea-lanyard .lany-front:focus-visible, .sea-lanyard .lany-back:focus-visible, .sea-lanyard .lany-dot:focus-visible { outline: 3px solid var(--lany-teal); outline-offset: 3px; }
 .sea-lanyard .lany-dots { display: none; justify-content: center; gap: 8px; margin-top: 18px; }

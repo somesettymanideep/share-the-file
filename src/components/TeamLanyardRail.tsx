@@ -9,34 +9,11 @@ type BadgePhys = { angle: number; avel: number; pull: number; pvel: number };
 const isWide = () => window.matchMedia("(min-width: 900px)").matches;
 const isReduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/** Deterministic QR-style pattern per member id (decorative). */
-function qrCells(seed: string): boolean[] {
-  let h = 0;
-  for (const c of seed) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-  const cells: boolean[] = [];
-  for (let k = 0; k < 49; k++) {
-    h = (h * 1103515245 + 12345) >>> 0;
-    cells.push((h >> 16) % 3 === 0);
-  }
-  return cells;
-}
-
 function Silhouette() {
   return (
     <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
       <circle cx="50" cy="36" r="18" />
       <path d="M14 92c4-22 18-32 36-32s32 10 36 32Z" />
-    </svg>
-  );
-}
-
-function QrPattern({ seed }: { seed: string }) {
-  const cells = qrCells(seed);
-  return (
-    <svg className="lany-qr" viewBox="0 0 7 7" aria-hidden="true" focusable="false">
-      {cells.map((on, k) =>
-        on ? <rect key={k} x={k % 7} y={Math.floor(k / 7)} width="1" height="1" /> : null,
-      )}
     </svg>
   );
 }
@@ -315,7 +292,6 @@ export default function TeamLanyardRail() {
                         <Mail size={14} aria-hidden="true" /> {m.email}
                       </a>
                     )}
-                    <QrPattern seed={m.id} />
                   </div>
                 </div>
               </div>
