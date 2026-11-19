@@ -33,3 +33,4 @@
 - [x] Verify testimonial navigation, contact link, portraits, and desktop/mobile layouts on both pages.
 - [x] Blur the logo caption in word by word over 0.3 of the history sequence.
 - [x] Replace the About team grid with the interactive lanyard rail (spring physics, flip, autoplay, keyboard, carousel on mobile).
+- [x] Remove the "Boundaries: India Maps Data" credit under the map and the "State / Union territory" dropdown from the contact presence section.
