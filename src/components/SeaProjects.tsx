@@ -17,26 +17,23 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
                 The Art of Architecture<span className="sea-projects-dot">.</span>
               </h1>
             </ContainerAnimated>
-            <ContainerAnimated>
+            {!category && <ContainerAnimated>
               <p className="sea-projects-lede">
                 Where structure meets imagination — residences, estates, towers and
                 care campuses, each one an eclectic composition of light, material
                 and form, crafted for the people who live with them.
               </p>
-            </ContainerAnimated>
-            {category && <ContainerAnimated>
-              <p className="sea-projects-eyebrow">{SEA_PROJECT_CATEGORY_LABELS[category]} Projects</p>
             </ContainerAnimated>}
-            <ContainerAnimated>
+            {!category && <ContainerAnimated>
               <nav className="sea-projects-filters" aria-label="Project categories">
-                <Link to="/projects" className="sea-projects-filter" aria-current={!category ? "page" : undefined}>All</Link>
+                <Link to="/projects" className="sea-projects-filter" aria-current="page">All</Link>
                 {SEA_PROJECT_CATEGORIES.map((item) => (
-                  <Link key={item} to="/projects/$slug" params={{ slug: item }} className="sea-projects-filter" aria-current={category === item ? "page" : undefined}>
+                  <Link key={item} to="/projects/$slug" params={{ slug: item }} className="sea-projects-filter">
                     {SEA_PROJECT_CATEGORY_LABELS[item]}
                   </Link>
                 ))}
               </nav>
-            </ContainerAnimated>
+            </ContainerAnimated>}
           </ContainerStagger>
 
           {projects.length === 0 ? (
