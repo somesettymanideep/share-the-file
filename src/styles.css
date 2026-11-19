@@ -1036,7 +1036,7 @@ html.lenis, html.lenis body { height: auto; }
 .contact-error { color: var(--contact-error); font-size: 12px; line-height: 1.5; margin-top: 8px; }
 .contact-feedback { font-size: 14px; line-height: 1.6; border-left: 2px solid var(--contact-accent); padding-left: 16px; margin-top: 20px; }
 .contact-feedback a { display: flex; align-items: center; gap: 8px; color: var(--contact-accent); margin-top: 8px; }
-.contact-locations { padding: 40px 0 0; border-top: 1px solid var(--contact-accent); }
+.contact-locations { padding: 40px 0 0; }
 .contact-map-heading h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; margin: 0 0 36px; text-transform: uppercase; white-space: nowrap; }
 .contact-map-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 5%; align-items: start; }
 .contact-map-wrap { grid-column: 1; grid-row: 1; min-width: 0; position: relative; }
