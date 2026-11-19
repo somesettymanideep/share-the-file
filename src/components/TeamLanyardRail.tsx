@@ -232,10 +232,10 @@ export default function TeamLanyardRail() {
   };
 
   return (
-    <section className="sea-lanyard" aria-labelledby="lanyard-heading">
+    <section className="sea-lanyard" aria-labelledby="lany-heading">
       <div className="lany-head">
         <h2 id="lany-heading">
-          THE PEOPLE BEHIND OUR PROJECTS<span className="lany-teal">.</span>
+          The Minds That Make SEAIPL
         </h2>
       </div>
       <div className="lany-rail-wrap">
@@ -283,7 +283,6 @@ export default function TeamLanyardRail() {
                     <span className="lany-name">{m.name}</span>
                     <span className="lany-role">{m.role}</span>
                     <span className="lany-teamline">{m.teamLine}</span>
-                    <span className="lany-barcode" aria-hidden="true" />
                   </button>
                   <div
                     className="lany-face lany-back"

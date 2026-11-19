@@ -806,20 +806,19 @@ html.lenis, html.lenis body { height: auto; }
 .sea-lanyard .lany-cord { width: 10px; height: 52px; background: repeating-linear-gradient(45deg, var(--lany-teal) 0 6px, var(--lany-teal-2) 6px 12px); border-radius: 4px; }
 .sea-lanyard .lany-clip { width: 26px; height: 14px; background: linear-gradient(180deg, #dfe7e8, #8fa3a9); border-radius: 3px; margin-top: -2px; }
 .sea-lanyard .lany-card { perspective: 900px; width: clamp(130px, calc((100vw - 160px) / 6), 200px); }
-.sea-lanyard .lany-card-inner { position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4, 0.1, 0.2, 1); aspect-ratio: 5 / 7; }
+.sea-lanyard .lany-card-inner { position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4, 0.1, 0.2, 1); aspect-ratio: 5 / 8; min-height: 310px; }
 .sea-lanyard .lany-card.is-flipped .lany-card-inner { transform: rotateY(180deg); }
 .sea-lanyard .lany-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: var(--lany-card); border: 1px solid var(--lany-border); border-radius: 14px; box-shadow: 0 18px 34px -18px rgba(8, 34, 43, 0.45); overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 26px 16px 18px; }
 .sea-lanyard .lany-front { cursor: pointer; font: inherit; color: inherit; width: 100%; }
 .sea-lanyard .lany-back { transform: rotateY(180deg); justify-content: flex-start; cursor: pointer; }
 .sea-lanyard .lany-ribbon { position: absolute; top: 0; left: 0; right: 0; height: 34px; background: linear-gradient(180deg, var(--lany-teal), #05596b); }
 .sea-lanyard .lany-slot { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 34px; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, 0.85); }
-.sea-lanyard .lany-portrait { width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 3px solid var(--lany-teal); margin-top: 26px; background: #e7eeee; display: grid; place-items: center; flex: 0 0 auto; }
+.sea-lanyard .lany-portrait { width: 112px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 3px solid var(--lany-teal); margin-top: 26px; background: var(--lany-bg); display: grid; place-items: center; flex: 0 0 auto; }
 .sea-lanyard .lany-portrait img { width: 100%; height: 100%; object-fit: cover; }
 .sea-lanyard .lany-portrait svg { width: 70%; height: 70%; fill: #9fb4ba; }
 .sea-lanyard .lany-name { font-weight: 700; font-size: 16px; margin-top: 14px; line-height: 1.25; }
 .sea-lanyard .lany-role { color: var(--lany-teal); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
 .sea-lanyard .lany-teamline { color: var(--lany-muted); font-size: 12px; margin-top: 6px; }
-.sea-lanyard .lany-barcode { margin-top: auto; width: 70%; height: 26px; background: repeating-linear-gradient(90deg, var(--lany-ink) 0 2px, transparent 2px 5px, var(--lany-ink) 5px 6px, transparent 6px 10px); opacity: 0.8; }
 .sea-lanyard .lany-bio { font-size: 13px; line-height: 1.5; color: var(--lany-ink); margin: 44px 0 0; }
 .sea-lanyard .lany-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; list-style: none; padding: 0; margin: 12px 0 0; }
 .sea-lanyard .lany-tags li { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--lany-teal); color: var(--lany-teal); border-radius: 999px; padding: 3px 9px; }
