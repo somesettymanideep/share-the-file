@@ -81,7 +81,7 @@ export default function AboutHero() {
             ))}
           </span>
           <p className="history-logo-definition">
-            <strong>Eclecticism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
+            definition of <strong>Ecl ecti cism</strong> is a conceptual approach or practice of combining ideas, styles, theories, or elements from a diverse range of sources rather than sticking rigidly to a single system, tradition, or paradigm.
           </p>
         </div>
       </div>
