@@ -1,4 +1,4 @@
-import founderPortrait from "@/assets/sea-founder-portrait.png.asset.json";
+import samplePortrait from "@/assets/sea-sample-client-2.jpg";
 import teamPortraitOne from "@/assets/sea-sample-team-1.jpg";
 import teamPortraitTwo from "@/assets/sea-sample-team-2.jpg";
 import teamPortraitThree from "@/assets/sea-sample-team-3.jpg";
@@ -17,7 +17,7 @@ export interface TeamMember {
   placeholder?: boolean;
 }
 
-// The founder is confirmed; the remaining profiles are clearly marked sample content.
+// Team-card sample profiles are clearly labeled so they are not mistaken for confirmed staff.
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "member-2",
@@ -30,14 +30,14 @@ export const TEAM_MEMBERS: TeamMember[] = [
     placeholder: true,
   },
   {
-    id: "naresh",
-    name: "P.V. Naresh Kumar",
-    role: "Founder & CEO",
-    teamLine: "Leadership",
-    bio: "Leads SEA with a vision to create innovative, sustainable and people-centric spaces that inspire.",
-    tags: ["Innovative design", "Sustainable", "Partnerships"],
-    email: "naresh@s4eaindia.com",
-    portrait: founderPortrait.url,
+    id: "sample-design-director",
+    name: "Riya Nair",
+    role: "Design Director",
+    teamLine: "Sample team profile",
+    bio: "Sample profile focused on design direction, creative collaboration, and thoughtful architectural spaces.",
+    tags: ["Design Direction", "Creative Collaboration"],
+    portrait: samplePortrait,
+    placeholder: true,
   },
   {
     id: "member-3",
