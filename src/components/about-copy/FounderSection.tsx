@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import founderPhoto from "@/assets/founder-portrait-photo.png.asset.json";
+import founderPhoto from "@/assets/founder-portrait-photo.png";
 
 export default function FounderSection() {
   const section = useRef<HTMLElement>(null);
@@ -53,7 +53,7 @@ export default function FounderSection() {
         <div className="founder2-art">
           <img
             className="founder2-photo"
-            src={founderPhoto.url}
+            src={founderPhoto}
             alt="P.V. Naresh Kumar, Founder and CEO"
             loading="lazy"
           />

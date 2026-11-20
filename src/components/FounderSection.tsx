@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import founderPortrait from "@/assets/founder-portrait.png.asset.json";
-import founderBackground from "@/assets/founder-background.png.asset.json";
+import founderPortrait from "@/assets/founder-portrait.png";
+import founderBackground from "@/assets/founder-background.png";
 
 export default function FounderSection() {
   const section = useRef<HTMLElement>(null);
@@ -67,10 +67,10 @@ export default function FounderSection() {
     <section className="sea-founder" id="founder" ref={section} aria-label="Founder's vision">
       <div className="founder-stage">
         <div className="founder-art">
-          <img className="founder-plate" src={founderBackground.url} alt="" aria-hidden="true" loading="lazy" />
+          <img className="founder-plate" src={founderBackground} alt="" aria-hidden="true" loading="lazy" />
           <img
             className="founder-portrait"
-            src={founderPortrait.url}
+            src={founderPortrait}
             alt="P.V. Naresh Kumar, Founder Architect &amp; Managing Director"
             loading="lazy"
           />

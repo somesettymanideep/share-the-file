@@ -8,9 +8,9 @@ import FounderSection from "./FounderSection";
 import SeaPeopleSections from "@/components/SeaPeopleSections";
 import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
 import logoColor from "@/assets/sea-logo-color.png";
-import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
-import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
-import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
+import awardIndiaDesign from "@/assets/sea-award-india-design.png";
+import awardBharatBusiness from "@/assets/sea-award-bharat-business.png";
+import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png";
 
 const awards = [
   { name: "The India Design Awards", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
@@ -126,7 +126,7 @@ export default function SeaAbout() {
 
       <section className="sea2-awards">
         <div className="sea2-section-heading"><h2>RECOGNISED FOR EXCELLENCE<span className="award2-gold">.</span></h2></div>
-        <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award2-body"><span className="award2-index">0{i + 1}</span><div className="award2-title-mask"><h3>{award.name}</h3></div><div className="award2-card-bottom"><span className="award2-year">{award.year}</span><span className="award2-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div></div></article>)}</div>
+        <div className="sea2-awards-list">{awards.map((award, i) => <article className="sea2-award" key={award.name}><div className="award2-photo"><img src={award.image} alt={award.alt} loading="lazy" /></div><div className="award2-body"><span className="award2-index">0{i + 1}</span><div className="award2-title-mask"><h3>{award.name}</h3></div><div className="award2-card-bottom"><span className="award2-year">{award.year}</span><span className="award2-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div></div></article>)}</div>
       </section>
       <SeaPeopleSections testimonialStyle="editorial" />
     </main>

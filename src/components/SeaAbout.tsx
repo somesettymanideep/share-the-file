@@ -10,9 +10,9 @@ import TeamLanyardRail from "@/components/TeamLanyardRail";
 import WhatDefinesUs from "@/components/WhatDefinesUs";
 import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
 import logoColor from "@/assets/sea-logo-color.png";
-import awardIndiaDesign from "@/assets/sea-award-india-design.png.asset.json";
-import awardBharatBusiness from "@/assets/sea-award-bharat-business.png.asset.json";
-import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png.asset.json";
+import awardIndiaDesign from "@/assets/sea-award-india-design.png";
+import awardBharatBusiness from "@/assets/sea-award-bharat-business.png";
+import awardArchitectureHerald from "@/assets/sea-award-architecture-herald.png";
 
 const awards = [
   { name: "THE INDIA DESIGN AWARDS", year: "2024", image: awardIndiaDesign, alt: "P.V. Naresh Kumar receiving the India Design Awards 2024 plaque on stage" },
@@ -115,7 +115,7 @@ export default function SeaAbout() {
 
       <section className="sea-awards">
         <div className="sea-section-heading"><h2>RECOGNITION OF EXCELLENCE<span className="award-gold">.</span></h2></div>
-        <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image.url} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
+        <div className="sea-awards-list">{awards.map((award, i) => <article className="sea-award" key={award.name}><div className="award-card-top"><span className="award-index">0{i + 1}</span><span className="award-year">{award.year}</span></div><div className="award-photo"><img src={award.image} alt={award.alt} loading="lazy" /></div><div className="award-card-bottom"><div className="award-title-mask"><h3>{award.name}</h3></div><ArrowUpRight aria-hidden="true" /></div></article>)}</div>
       </section>
       <SeaPeopleSections showTeamMeta={false} parts="testimonials" />
     </main>
