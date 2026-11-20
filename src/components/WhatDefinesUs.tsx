@@ -20,7 +20,7 @@ export default function WhatDefinesUs() {
     if (!section) return;
     section.querySelectorAll(".defines-icon path, .defines-icon circle, .defines-icon line, .defines-icon rect, .defines-icon polyline").forEach((path) => path.setAttribute("pathLength", "1"));
     const media = gsap.matchMedia();
-    media.add({ desktop: "(min-width: 900px) and (min-height: 950px)", mobile: "(max-width: 899px), (max-height: 949px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
+    media.add({ desktop: "(min-width: 900px) and (min-height: 1500px)", mobile: "(max-width: 899px), (max-height: 1499px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
       if (context.conditions?.['reduce']) return;
       const rows = Array.from(section.querySelectorAll<HTMLElement>(".defines-row"));
       gsap.from(section.querySelectorAll(".defines-heading-line > span"), { yPercent: 105, stagger: 0.12, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 75%" } });
