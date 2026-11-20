@@ -20,16 +20,6 @@ export interface TeamMember {
 // The founder is confirmed; the remaining profiles are clearly marked sample content.
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "naresh",
-    name: "P.V. Naresh Kumar",
-    role: "Founder & CEO",
-    teamLine: "Leadership",
-    bio: "Leads SEA with a vision to create innovative, sustainable and people-centric spaces that inspire.",
-    tags: ["Innovative design", "Sustainable", "Partnerships"],
-    email: "naresh@s4eaindia.com",
-    portrait: founderPortrait.url,
-  },
-  {
     id: "member-2",
     name: "Aditi Rao",
     role: "Senior Architect",
@@ -38,6 +28,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
     tags: ["Design Development", "Planning"],
     portrait: teamPortraitOne,
     placeholder: true,
+  },
+  {
+    id: "naresh",
+    name: "P.V. Naresh Kumar",
+    role: "Founder & CEO",
+    teamLine: "Leadership",
+    bio: "Leads SEA with a vision to create innovative, sustainable and people-centric spaces that inspire.",
+    tags: ["Innovative design", "Sustainable", "Partnerships"],
+    email: "naresh@s4eaindia.com",
+    portrait: founderPortrait.url,
   },
   {
     id: "member-3",
