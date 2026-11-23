@@ -7,6 +7,7 @@ import AboutHero from "@/components/AboutHero";
 import FounderSection from "@/components/FounderSection";
 import SeaPeopleSections from "@/components/SeaPeopleSections";
 import SeaTeamSection from "@/components/SeaTeamSection";
+import OurTeamShowcase from "@/components/OurTeamShowcase";
 import WhatDefinesUs from "@/components/WhatDefinesUs";
 import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
 import logoColor from "@/assets/sea-logo-color.png";
@@ -128,6 +129,7 @@ export default function SeaAbout() {
 
       <FounderSection />
       <SeaTeamSection />
+      <OurTeamShowcase />
 
       <WhatDefinesUs />
 

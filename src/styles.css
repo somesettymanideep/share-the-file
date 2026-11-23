@@ -1566,6 +1566,350 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 
+/* ===== Our Team Showcase Section (Curved Signature Card Architecture) ===== */
+.sea-ourteam-section {
+  background: #E8F1F2;
+  color: #071e29;
+  padding: clamp(64px, 7vw, 100px) clamp(20px, 5vw, 80px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sea-ourteam-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sea-ourteam-header {
+  margin-bottom: clamp(32px, 4vw, 44px);
+  text-align: left;
+}
+
+.sea-ourteam-title {
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+}
+
+.sea-ourteam-title-our {
+  color: #071e29;
+}
+
+.sea-ourteam-title-team {
+  color: #08616b;
+}
+
+.sea-ourteam-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+}
+
+.sea-ourteam-card {
+  position: relative;
+  display: block;
+  background: linear-gradient(180deg, #072b31 0%, #041c22 100%);
+  border-top-left-radius: 46px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(5, 28, 33, 0.25);
+  aspect-ratio: 454 / 690;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+
+.sea-ourteam-card.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sea-ourteam-card:hover,
+.sea-ourteam-card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px -10px rgba(5, 28, 33, 0.45);
+  border-color: rgba(72, 169, 178, 0.45);
+  outline: none;
+}
+
+.sea-ourteam-card-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sea-ourteam-watermark {
+  position: absolute;
+  top: 36px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: clamp(3.2rem, 5vw, 4.6rem);
+  font-weight: 800;
+  line-height: 0.88;
+  color: rgba(30, 95, 105, 0.5);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.sea-ourteam-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sea-ourteam-card:hover .sea-ourteam-img,
+.sea-ourteam-card:focus-visible .sea-ourteam-img {
+  transform: scale(1.03);
+}
+
+.sea-ourteam-card-scrim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  background: linear-gradient(
+    to top,
+    rgba(3, 20, 24, 0.96) 0%,
+    rgba(3, 20, 24, 0.72) 45%,
+    rgba(3, 20, 24, 0.2) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.sea-ourteam-card-info {
+  position: absolute;
+  bottom: clamp(16px, 2.5vw, 24px);
+  left: clamp(16px, 2.5vw, 24px);
+  right: clamp(16px, 2.5vw, 24px);
+  z-index: 4;
+  text-align: left;
+}
+
+.sea-ourteam-name {
+  font-family: "DM Sans", "Inter", sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.sea-ourteam-role {
+  font-family: "DM Sans", "Inter", sans-serif;
+  font-size: clamp(0.7rem, 0.82vw, 0.8rem);
+  font-weight: 700;
+  color: #48a9b2;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Modal styles for Our Team Showcase */
+.sea-ourteam-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 15, 18, 0.82);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: seaTeamFadeIn 0.3s ease-out forwards;
+}
+
+.sea-ourteam-modal {
+  background: #06242c;
+  border: 1px solid rgba(72, 169, 178, 0.3);
+  border-top-left-radius: 40px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  max-width: 820px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+  animation: seaTeamZoomIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sea-ourteam-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sea-ourteam-modal-close:hover {
+  background: #006b80;
+  transform: rotate(90deg);
+}
+
+.sea-ourteam-modal-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.sea-ourteam-modal-photo {
+  background: #041a1f;
+  position: relative;
+  overflow: hidden;
+}
+
+.sea-ourteam-modal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sea-ourteam-modal-body {
+  padding: 36px 32px;
+  color: #f1f8f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sea-ourteam-modal-badge {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: #48a9b2;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.sea-ourteam-modal-body h3 {
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.sea-ourteam-modal-role {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #48a9b2;
+  margin: 0 0 18px 0;
+}
+
+.sea-ourteam-modal-bio {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccdcdc;
+  margin-bottom: 24px;
+}
+
+.sea-ourteam-modal-details {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sea-ourteam-modal-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sea-ourteam-modal-icon {
+  color: #48a9b2;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sea-ourteam-modal-detail-row strong {
+  display: block;
+  font-size: 0.75rem;
+  color: #8fa8ad;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.sea-ourteam-modal-detail-row span {
+  font-size: 0.9rem;
+  color: #e5f1f3;
+}
+
+@media (max-width: 991px) {
+  .sea-ourteam-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .sea-ourteam-modal-content {
+    grid-template-columns: 1fr;
+  }
+  .sea-ourteam-modal-photo {
+    max-height: 320px;
+  }
+  .sea-ourteam-modal-body {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sea-ourteam-grid {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
 
 /* ===== Projects page (The Art of Creation) ===== */
 .sea-projects {

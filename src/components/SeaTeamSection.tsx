@@ -1,15 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { X, Award, GraduationCap, Compass } from "lucide-react";
 
-import johnImg from "@/assets/team/john-harper.jpg";
-import jennyImg from "@/assets/team/jenny-wilson.jpg";
-import jacobImg from "@/assets/team/jacob-jones.jpg";
-import miaImg from "@/assets/team/mia-mason.jpg";
-import ankitaImg from "@/assets/team/ankita-jain.jpg";
-import rituImg from "@/assets/team/ritu-arora.jpg";
-import vikasImg from "@/assets/team/vikas-yadav.jpg";
-import pragyaImg from "@/assets/team/pragya-jain.jpg";
-import kapilImg from "@/assets/team/kapil-kathuria.jpg";
+import dummyOne from "@/assets/sea-sample-team-1.jpg";
+import dummyTwo from "@/assets/sea-sample-team-2.jpg";
+import dummyThree from "@/assets/sea-sample-team-3.jpg";
+import dummyFour from "@/assets/sea-sample-team-4.jpg";
 
 export interface TeamPrincipal {
   id: string;
@@ -31,7 +26,7 @@ export const SITE_LEADS: TeamPrincipal[] = [
     name: "JOHN HARPER",
     role: "Site Manager",
     category: "site-leads",
-    image: johnImg || "/images/team/john-harper.jpg",
+    image: dummyOne,
     bio: "Supervising on-site construction milestones, quality control, contractor alignment, and structural safety across active commercial and residential sites.",
     specialization: "Site Operations & Execution Management",
     education: "B.Tech Civil Engineering, JNTU Hyderabad",
@@ -44,7 +39,7 @@ export const SITE_LEADS: TeamPrincipal[] = [
     name: "JENNY WILSON",
     role: "Safety Officer",
     category: "site-leads",
-    image: jennyImg || "/images/team/jenny-wilson.jpg",
+    image: dummyTwo,
     bio: "Directing health, safety, and environmental (HSE) protocols on all SEA construction projects, establishing zero-incident standards and site risk governance.",
     specialization: "HSE Compliance & Safety Architecture",
     education: "Certified Safety Professional (CSP)",
@@ -57,7 +52,7 @@ export const SITE_LEADS: TeamPrincipal[] = [
     name: "JACOB JONES",
     role: "Civil Engineer",
     category: "site-leads",
-    image: jacobImg || "/images/team/jacob-jones.jpg",
+    image: dummyThree,
     bio: "Leading reinforced concrete analysis, foundation engineering, and structural integrity oversight from groundbreaking to structural topping out.",
     specialization: "Structural Engineering & Concrete Detailing",
     education: "B.E. Civil & Structural Engineering",
@@ -70,7 +65,7 @@ export const SITE_LEADS: TeamPrincipal[] = [
     name: "MIA MASON",
     role: "Lead Architect",
     category: "site-leads",
-    image: miaImg || "/images/team/mia-mason.jpg",
+    image: dummyFour,
     bio: "Translating architectural design vision into coordinated technical drawing packages, ensuring site construction remains faithful to spatial and tectonic intent.",
     specialization: "Architectural Detailing & Site Realization",
     education: "M.Arch Architectural Design",
@@ -86,7 +81,7 @@ export const PRINCIPALS: TeamPrincipal[] = [
     name: "ANKITA JAIN",
     role: "PRINCIPAL ARCHITECT",
     category: "principals",
-    image: ankitaImg || "/images/team/ankita-jain.jpg",
+    image: dummyOne,
     bio: "Spearheading master planning and sustainable residential projects with an emphasis on climatic responsiveness, tactile material palettes, and timeless structural proportions.",
     specialization: "Sustainable Master Planning & Luxury Residences",
     education: "B.Arch, School of Planning and Architecture, New Delhi",
@@ -99,7 +94,7 @@ export const PRINCIPALS: TeamPrincipal[] = [
     name: "RITU ARORA",
     role: "PRINCIPAL ARCHITECT",
     category: "principals",
-    image: rituImg || "/images/team/ritu-arora.jpg",
+    image: dummyTwo,
     bio: "Leading bespoke interior architecture and holistic spatial environments, seamlessly blending artisanal craftsmanship with contemporary lifestyle philosophies.",
     specialization: "Interior Architecture, Materiality & Curation",
     education: "M.Arch, CEPT University, Ahmedabad",
@@ -112,7 +107,7 @@ export const PRINCIPALS: TeamPrincipal[] = [
     name: "VIKAS YADAV",
     role: "PRINCIPAL ARCHITECT",
     category: "principals",
-    image: vikasImg || "/images/team/vikas-yadav.jpg",
+    image: dummyThree,
     bio: "Directing large-scale institutional developments and commercial high-rises, bridging structural ingenuity with advanced integrated delivery systems.",
     specialization: "Commercial Towers & Structural Integration",
     education: "B.Arch, Indian Institute of Technology (IIT) Roorkee",
@@ -125,7 +120,7 @@ export const PRINCIPALS: TeamPrincipal[] = [
     name: "PRAGYA JAIN",
     role: "PRINCIPAL ARCHITECT",
     category: "principals",
-    image: pragyaImg || "/images/team/pragya-jain.jpg",
+    image: dummyFour,
     bio: "Guiding institutional campus design, public realm revitalization, and environmental envelope performance across Andhra Pradesh and Telangana.",
     specialization: "Institutional Campuses & Public Architecture",
     education: "B.Arch, Sir J.J. College of Architecture, Mumbai",
@@ -138,7 +133,7 @@ export const PRINCIPALS: TeamPrincipal[] = [
     name: "KAPIL KATHURIA",
     role: "PRINCIPAL ARCHITECT",
     category: "principals",
-    image: kapilImg || "/images/team/kapil-kathuria.jpg",
+    image: dummyOne,
     bio: "Championing Building Information Modeling (BIM Level 2/3), computational design, and parametric facade engineering for zero-defect construction execution.",
     specialization: "Parametric Facades, BIM & Digital Construction",
     education: "M.Sc Computational Architecture",
@@ -149,8 +144,6 @@ export const PRINCIPALS: TeamPrincipal[] = [
 ];
 
 export const ALL_TEAM_MEMBERS: TeamPrincipal[] = [...SITE_LEADS, ...PRINCIPALS];
-
-export type TeamCategory = "site-leads" | "principals" | "all";
 
 function TeamCardItem({
   member,
@@ -230,15 +223,8 @@ function TeamCardItem({
   );
 }
 
-export default function SeaTeamSection({
-  defaultCategory = "site-leads",
-  showFilters = true,
-}: {
-  defaultCategory?: TeamCategory;
-  showFilters?: boolean;
-}) {
+export default function SeaTeamSection() {
   const [selectedMember, setSelectedMember] = useState<TeamPrincipal | null>(null);
-  const [activeTab, setActiveTab] = useState<TeamCategory>(defaultCategory);
   const [isRevealed, setIsRevealed] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -288,13 +274,6 @@ export default function SeaTeamSection({
     };
   }, [selectedMember, closeModal]);
 
-  const displayedMembers =
-    activeTab === "all"
-      ? ALL_TEAM_MEMBERS
-      : activeTab === "principals"
-      ? PRINCIPALS
-      : SITE_LEADS;
-
   return (
     <section
       ref={sectionRef}
@@ -304,48 +283,14 @@ export default function SeaTeamSection({
       <div className="sea-team-inner">
         <div className="sea-team-header-row">
           <div className="sea-team-header">
-            <span className="sea-team-kicker">OUR ARCHITECTURAL COLLECTIVE</span>
             <h2 id="sea-team-title">THE MINDS THAT MAKE SEAIPL</h2>
             <div className="sea-team-bar" aria-hidden="true" />
           </div>
-
-          {/* Discipline Filters */}
-          {showFilters && (
-            <div className="sea-team-filters" role="tablist" aria-label="Team categories">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activeTab === "site-leads"}
-                className={`sea-team-filter-btn ${activeTab === "site-leads" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("site-leads")}
-              >
-                Site &amp; Project Leads ({SITE_LEADS.length})
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activeTab === "principals"}
-                className={`sea-team-filter-btn ${activeTab === "principals" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("principals")}
-              >
-                Principal Architects ({PRINCIPALS.length})
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activeTab === "all"}
-                className={`sea-team-filter-btn ${activeTab === "all" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("all")}
-              >
-                All Team ({ALL_TEAM_MEMBERS.length})
-              </button>
-            </div>
-          )}
         </div>
 
-        {/* 4 Profile Cards Single-Row Layout */}
+        {/* 4 Profile Cards in a Single Row */}
         <div className="sea-team-grid" role="list">
-          {displayedMembers.map((member, index) => (
+          {SITE_LEADS.map((member, index) => (
             <TeamCardItem
               key={member.id}
               member={member}
