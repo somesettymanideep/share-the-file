@@ -95,7 +95,15 @@ export default function SeaAbout() {
       <nav className="sea2-header-nav" aria-label="Main navigation">
         <Link to="/">Home</Link>
         <Link to="/about">Who We Are</Link>
-        <Link to="/projects">Projects</Link>
+        <div className="sea-nav-item">
+          <Link to="/projects">Projects</Link>
+          <div className="sea-nav-sub" role="menu" aria-label="Project categories">
+            <Link to="/projects/$slug" params={{ slug: "architecture" }}>Architecture</Link>
+            <Link to="/projects/$slug" params={{ slug: "interior" }}>Interior</Link>
+            <Link to="/projects/$slug" params={{ slug: "landscape" }}>Landscape</Link>
+            <Link to="/projects/$slug" params={{ slug: "bim" }}>BIM</Link>
+          </div>
+        </div>
         <Link to="/contact">Contact</Link>
       </nav>
       <button type="button" className="sea2-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
@@ -109,7 +117,15 @@ export default function SeaAbout() {
         <nav aria-label="Main navigation">
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)}>Who We Are</Link>
-          <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+          <div className="sea-nav-item">
+            <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+            <div className="sea-nav-sub" role="menu" aria-label="Project categories">
+              <Link to="/projects/$slug" params={{ slug: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
+              <Link to="/projects/$slug" params={{ slug: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
+              <Link to="/projects/$slug" params={{ slug: "landscape" }} onClick={() => setMenuOpen(false)}>Landscape</Link>
+              <Link to="/projects/$slug" params={{ slug: "bim" }} onClick={() => setMenuOpen(false)}>BIM</Link>
+            </div>
+          </div>
           <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       </div>

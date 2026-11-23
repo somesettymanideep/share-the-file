@@ -42,8 +42,9 @@ describe("Project details", () => {
     expect(getProjectsByCategory("architecture")).toHaveLength(6);
     expect(getProjectsByCategory()).toHaveLength(6);
   });
-  it("has no interior or landscape projects until the client supplies them", () => {
+  it("has no interior, landscape or bim projects until the client supplies them", () => {
     expect(getProjectsByCategory("interior")).toHaveLength(0);
     expect(getProjectsByCategory("landscape")).toHaveLength(0);
+    expect(getProjectsByCategory("bim")).toHaveLength(0);
   });
 });

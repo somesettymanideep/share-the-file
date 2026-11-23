@@ -7,13 +7,14 @@ import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg";
 
-export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape"] as const;
+export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
 
 export const SEA_PROJECT_CATEGORY_LABELS: Record<SeaProjectCategory, string> = {
   architecture: "Architecture",
   interior: "Interior",
   landscape: "Landscape",
+  bim: "BIM",
 };
 
 export interface SeaProject {

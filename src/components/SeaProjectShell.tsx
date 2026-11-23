@@ -33,6 +33,7 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
     <Link to="/projects/$slug" params={{ slug: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
     <Link to="/projects/$slug" params={{ slug: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
     <Link to="/projects/$slug" params={{ slug: "landscape" }} onClick={() => setMenuOpen(false)}>Landscape</Link>
+    <Link to="/projects/$slug" params={{ slug: "bim" }} onClick={() => setMenuOpen(false)}>BIM</Link>
   </>;
   const navigation = <>
     <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
