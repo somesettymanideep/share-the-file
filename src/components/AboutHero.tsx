@@ -40,6 +40,7 @@ export default function AboutHero() {
         timeline.to(".history-scroll-cue", { opacity: 0, duration: 0.04 }, 0);
         timeline.to(".history-logo-art", { scale: 1, duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-fill", { clipPath: "inset(0 0% 0 0)", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
+        timeline.to(".history-logo-outline", { opacity: 0, duration: 0.08 }, HISTORY_STAGES.grow.start + HISTORY_STAGES.grow.duration - 0.08);
         timeline.to(".history-glow", { x: "92vw", duration: HISTORY_STAGES.grow.duration }, HISTORY_STAGES.grow.start);
         timeline.to(".history-logo-word", {
           yPercent: 0,
