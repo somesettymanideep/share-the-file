@@ -1,331 +1,176 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import * as THREE from "three";
 import { X, Award, GraduationCap, Compass } from "lucide-react";
+
+import johnImg from "@/assets/team/john-harper.jpg";
+import jennyImg from "@/assets/team/jenny-wilson.jpg";
+import jacobImg from "@/assets/team/jacob-jones.jpg";
+import miaImg from "@/assets/team/mia-mason.jpg";
+import ankitaImg from "@/assets/team/ankita-jain.jpg";
+import rituImg from "@/assets/team/ritu-arora.jpg";
+import vikasImg from "@/assets/team/vikas-yadav.jpg";
+import pragyaImg from "@/assets/team/pragya-jain.jpg";
+import kapilImg from "@/assets/team/kapil-kathuria.jpg";
 
 export interface TeamPrincipal {
   id: string;
   name: string;
   role: string;
+  category: "site-leads" | "principals";
   image: string;
   bio: string;
   specialization: string;
   education: string;
   projects: string;
+  linkedin?: string;
+  twitter?: string;
 }
+
+export const SITE_LEADS: TeamPrincipal[] = [
+  {
+    id: "john-harper",
+    name: "JOHN HARPER",
+    role: "Site Manager",
+    category: "site-leads",
+    image: johnImg || "/images/team/john-harper.jpg",
+    bio: "Supervising on-site construction milestones, quality control, contractor alignment, and structural safety across active commercial and residential sites.",
+    specialization: "Site Operations & Execution Management",
+    education: "B.Tech Civil Engineering, JNTU Hyderabad",
+    projects: "Krishna Sindhura Hospital, Gangadhar Estate",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
+  },
+  {
+    id: "jenny-wilson",
+    name: "JENNY WILSON",
+    role: "Safety Officer",
+    category: "site-leads",
+    image: jennyImg || "/images/team/jenny-wilson.jpg",
+    bio: "Directing health, safety, and environmental (HSE) protocols on all SEA construction projects, establishing zero-incident standards and site risk governance.",
+    specialization: "HSE Compliance & Safety Architecture",
+    education: "Certified Safety Professional (CSP)",
+    projects: "All Andhra & Telangana Project Sites",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
+  },
+  {
+    id: "jacob-jones",
+    name: "JACOB JONES",
+    role: "Civil Engineer",
+    category: "site-leads",
+    image: jacobImg || "/images/team/jacob-jones.jpg",
+    bio: "Leading reinforced concrete analysis, foundation engineering, and structural integrity oversight from groundbreaking to structural topping out.",
+    specialization: "Structural Engineering & Concrete Detailing",
+    education: "B.E. Civil & Structural Engineering",
+    projects: "Ramko Heights, KMS Corporate Core",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
+  },
+  {
+    id: "mia-mason",
+    name: "MIA MASON",
+    role: "Lead Architect",
+    category: "site-leads",
+    image: miaImg || "/images/team/mia-mason.jpg",
+    bio: "Translating architectural design vision into coordinated technical drawing packages, ensuring site construction remains faithful to spatial and tectonic intent.",
+    specialization: "Architectural Detailing & Site Realization",
+    education: "M.Arch Architectural Design",
+    projects: "Sarika Estate, Benz Horizon Suites",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
+  },
+];
 
 export const PRINCIPALS: TeamPrincipal[] = [
   {
     id: "ankita-jain",
     name: "ANKITA JAIN",
     role: "PRINCIPAL ARCHITECT",
-    image: "/images/team/ankita-jain.jpg",
+    category: "principals",
+    image: ankitaImg || "/images/team/ankita-jain.jpg",
     bio: "Spearheading master planning and sustainable residential projects with an emphasis on climatic responsiveness, tactile material palettes, and timeless structural proportions.",
     specialization: "Sustainable Master Planning & Luxury Residences",
     education: "B.Arch, School of Planning and Architecture, New Delhi",
     projects: "Gangadhar Estate, Krishna Sindhura Campus, Urban Eco-Villas",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
   },
   {
     id: "ritu-arora",
     name: "RITU ARORA",
     role: "PRINCIPAL ARCHITECT",
-    image: "/images/team/ritu-arora.jpg",
+    category: "principals",
+    image: rituImg || "/images/team/ritu-arora.jpg",
     bio: "Leading bespoke interior architecture and holistic spatial environments, seamlessly blending artisanal craftsmanship with contemporary lifestyle philosophies.",
     specialization: "Interior Architecture, Materiality & Curation",
     education: "M.Arch, CEPT University, Ahmedabad",
     projects: "Sarika Estate Interiors, Benz Horizon Suites, Studio Headquarters",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
   },
   {
     id: "vikas-yadav",
     name: "VIKAS YADAV",
     role: "PRINCIPAL ARCHITECT",
-    image: "/images/team/vikas-yadav.jpg",
+    category: "principals",
+    image: vikasImg || "/images/team/vikas-yadav.jpg",
     bio: "Directing large-scale institutional developments and commercial high-rises, bridging structural ingenuity with advanced integrated delivery systems.",
     specialization: "Commercial Towers & Structural Integration",
     education: "B.Arch, Indian Institute of Technology (IIT) Roorkee",
     projects: "Ramko Heights, KMS Corporate Park, Amaravati Commercial Core",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
   },
   {
     id: "pragya-jain",
     name: "PRAGYA JAIN",
     role: "PRINCIPAL ARCHITECT",
-    image: "/images/team/pragya-jain.jpg",
+    category: "principals",
+    image: pragyaImg || "/images/team/pragya-jain.jpg",
     bio: "Guiding institutional campus design, public realm revitalization, and environmental envelope performance across Andhra Pradesh and Telangana.",
     specialization: "Institutional Campuses & Public Architecture",
     education: "B.Arch, Sir J.J. College of Architecture, Mumbai",
     projects: "Manjunatha Health Care Campus, Heritage Cultural Pavilion",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
   },
   {
     id: "kapil-kathuria",
     name: "KAPIL KATHURIA",
     role: "PRINCIPAL ARCHITECT",
-    image: "/images/team/kapil-kathuria.jpg",
+    category: "principals",
+    image: kapilImg || "/images/team/kapil-kathuria.jpg",
     bio: "Championing Building Information Modeling (BIM Level 2/3), computational design, and parametric facade engineering for zero-defect construction execution.",
     specialization: "Parametric Facades, BIM & Digital Construction",
     education: "M.Sc Computational Architecture",
     projects: "BIM Digital Twins, Modular Care Pavilions, Kinetic Shading Facades",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
   },
 ];
 
-const VERT_SRC = `
-varying vec2 vUv;
-void main() {
-  vUv = uv;
-  gl_Position = vec4(position, 1.0);
-}
-`;
+export const ALL_TEAM_MEMBERS: TeamPrincipal[] = [...SITE_LEADS, ...PRINCIPALS];
 
-const FRAG_SRC = `
-precision highp float;
-uniform sampler2D u_texture;
-uniform float u_time;
-uniform float u_hover;
-uniform vec2 u_mouse;
-uniform vec2 u_resolution;
-varying vec2 vUv;
+export type TeamCategory = "site-leads" | "principals" | "all";
 
-void main() {
-  vec2 uv = vUv;
-  
-  // Vector from current UV to mouse cursor
-  vec2 mouseDist = uv - u_mouse;
-  float d = length(mouseDist);
-  
-  // Dynamic liquid wave refraction expanding from cursor
-  float wave = sin(d * 16.0 - u_time * 3.2) * 0.5 + 0.5;
-  float falloff = smoothstep(0.75, 0.05, d);
-  float ripple = wave * falloff * u_hover * 0.032;
-  
-  vec2 dir = d > 0.001 ? normalize(mouseDist) : vec2(0.0);
-  vec2 dispUv = uv + dir * ripple;
-  
-  // Chromatic aberration / RGB dispersion along distortion field
-  float rgbOffset = (0.003 + 0.010 * falloff) * u_hover;
-  float r = texture2D(u_texture, dispUv + vec2(rgbOffset, -rgbOffset * 0.6)).r;
-  float g = texture2D(u_texture, dispUv).g;
-  float b = texture2D(u_texture, dispUv - vec2(rgbOffset, -rgbOffset * 0.6)).b;
-  
-  vec3 color = vec3(r, g, b);
-  
-  // Architectural lens vignette on hover
-  float vig = smoothstep(1.3, 0.35, length(uv - 0.5));
-  color = mix(color, color * (0.94 + 0.06 * vig), u_hover);
-  
-  // Subtle luminous contrast lift
-  color += vec3(0.015, 0.025, 0.028) * u_hover;
-  
-  gl_FragColor = vec4(color, 1.0);
-}
-`;
-
-function TeamCardWebGL({
+function TeamCardItem({
   member,
+  index,
+  isRevealed,
   onSelect,
 }: {
   member: TeamPrincipal;
+  index: number;
+  isRevealed: boolean;
   onSelect: () => void;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<{
-    hover: number;
-    targetHover: number;
-    mouse: THREE.Vector2;
-    targetMouse: THREE.Vector2;
-    animating: boolean;
-  }>({
-    hover: 0,
-    targetHover: 0,
-    mouse: new THREE.Vector2(0.5, 0.5),
-    targetMouse: new THREE.Vector2(0.5, 0.5),
-    animating: false,
-  });
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
-
-    // Check WebGL availability and skip in test/jsdom environments where WebGL is unsupported
-    if (typeof window === "undefined" || !("WebGLRenderingContext" in window)) return;
-
-    let gl: WebGLRenderingContext | null = null;
-    try {
-      gl = canvas.getContext("webgl") || (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
-    } catch {
-      gl = null;
-    }
-    if (!gl) return; // Fall back gracefully to HTML <img>
-
-    let renderer: THREE.WebGLRenderer | null = null;
-    let scene: THREE.Scene | null = null;
-    let camera: THREE.OrthographicCamera | null = null;
-    let material: THREE.ShaderMaterial | null = null;
-    let geometry: THREE.PlaneGeometry | null = null;
-    let texture: THREE.Texture | null = null;
-    let rafId = 0;
-    let destroyed = false;
-
-    try {
-      renderer = new THREE.WebGLRenderer({
-        canvas,
-        antialias: true,
-        alpha: true,
-        powerPreference: "high-performance",
-      });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-      scene = new THREE.Scene();
-      camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-      geometry = new THREE.PlaneGeometry(2, 2);
-
-      const uniforms = {
-        u_texture: { value: null as THREE.Texture | null },
-        u_time: { value: 0 },
-        u_hover: { value: 0 },
-        u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
-        u_resolution: { value: new THREE.Vector2(1, 1) },
-      };
-
-      material = new THREE.ShaderMaterial({
-        vertexShader: VERT_SRC,
-        fragmentShader: FRAG_SRC,
-        uniforms,
-        transparent: true,
-      });
-
-      const mesh = new THREE.Mesh(geometry, material);
-      scene.add(mesh);
-
-      // Load image texture
-      const loader = new THREE.TextureLoader();
-      loader.load(
-        member.image,
-        (loadedTex) => {
-          if (destroyed) {
-            loadedTex.dispose();
-            return;
-          }
-          loadedTex.colorSpace = THREE.SRGBColorSpace;
-          loadedTex.minFilter = THREE.LinearFilter;
-          loadedTex.magFilter = THREE.LinearFilter;
-          loadedTex.generateMipmaps = false;
-          texture = loadedTex;
-          if (material) {
-            material.uniforms.u_texture.value = loadedTex;
-          }
-          renderFrame(0);
-        },
-        undefined,
-        () => {
-          // Texture load error: silently fall back to CSS <img>
-        }
-      );
-
-      const resize = () => {
-        if (!container || !renderer || !material) return;
-        const rect = container.getBoundingClientRect();
-        const w = Math.max(rect.width, 10);
-        const h = Math.max(rect.height, 10);
-        renderer.setSize(w, h, false);
-        material.uniforms.u_resolution.value.set(w, h);
-        renderFrame(0);
-      };
-
-      resize();
-
-      const ro = new ResizeObserver(resize);
-      ro.observe(container);
-
-      let lastTime = performance.now();
-      const renderFrame = (now: number) => {
-        if (destroyed || !renderer || !scene || !camera || !material) return;
-        const dt = Math.min((now - lastTime) / 1000, 0.1);
-        lastTime = now;
-
-        const st = stateRef.current;
-        // Smooth lerp
-        st.hover += (st.targetHover - st.hover) * 0.14;
-        st.mouse.lerp(st.targetMouse, 0.12);
-
-        material.uniforms.u_hover.value = st.hover;
-        material.uniforms.u_mouse.value.copy(st.mouse);
-        material.uniforms.u_time.value += dt;
-
-        renderer.render(scene, camera);
-
-        // Keep animating if hover is active or still settling
-        if (st.animating || Math.abs(st.hover - st.targetHover) > 0.002 || st.targetHover > 0) {
-          rafId = requestAnimationFrame(renderFrame);
-        } else {
-          st.hover = st.targetHover;
-          material.uniforms.u_hover.value = st.hover;
-          renderer.render(scene, camera);
-          rafId = 0;
-        }
-      };
-
-      const startLoop = () => {
-        if (rafId === 0) {
-          lastTime = performance.now();
-          rafId = requestAnimationFrame(renderFrame);
-        }
-      };
-
-      const handlePointerEnter = (e: PointerEvent) => {
-        const rect = container.getBoundingClientRect();
-        stateRef.current.targetHover = 1.0;
-        stateRef.current.animating = true;
-        stateRef.current.targetMouse.set(
-          Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)),
-          Math.max(0, Math.min(1, 1.0 - (e.clientY - rect.top) / rect.height))
-        );
-        startLoop();
-      };
-
-      const handlePointerMove = (e: PointerEvent) => {
-        const rect = container.getBoundingClientRect();
-        stateRef.current.targetMouse.set(
-          Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)),
-          Math.max(0, Math.min(1, 1.0 - (e.clientY - rect.top) / rect.height))
-        );
-        startLoop();
-      };
-
-      const handlePointerLeave = () => {
-        stateRef.current.targetHover = 0.0;
-        stateRef.current.animating = false;
-        startLoop();
-      };
-
-      container.addEventListener("pointerenter", handlePointerEnter);
-      container.addEventListener("pointermove", handlePointerMove);
-      container.addEventListener("pointerleave", handlePointerLeave);
-
-      return () => {
-        destroyed = true;
-        ro.disconnect();
-        container.removeEventListener("pointerenter", handlePointerEnter);
-        container.removeEventListener("pointermove", handlePointerMove);
-        container.removeEventListener("pointerleave", handlePointerLeave);
-        if (rafId) cancelAnimationFrame(rafId);
-        texture?.dispose();
-        material?.dispose();
-        geometry?.dispose();
-        renderer?.dispose();
-        try {
-          renderer?.forceContextLoss?.();
-        } catch {
-          // ignore
-        }
-      };
-    } catch {
-      // Graceful fallback to static img
-    }
-  }, [member.image]);
+  const staggerDelay = (index % 4) * 120;
 
   return (
     <article
-      className="sea-team-card"
+      className={`sea-team-card ${isRevealed ? "is-revealed" : ""}`}
+      style={{
+        transitionDelay: `${staggerDelay}ms`,
+      }}
       onClick={onSelect}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -338,30 +183,92 @@ function TeamCardWebGL({
       aria-haspopup="dialog"
       aria-label={`View architectural profile of ${member.name}, ${member.role}`}
     >
-      <div className="sea-team-media" ref={containerRef}>
+      <div className="sea-team-card-media">
         <img
           src={member.image}
           alt={`Portrait of ${member.name}`}
           className="sea-team-img"
           loading="lazy"
-          width={344}
-          height={326}
+          width={464}
+          height={626}
         />
-        <canvas className="sea-team-canvas" ref={canvasRef} aria-hidden="true" />
-        <span className="sea-team-overlay-hint" aria-hidden="true">
-          <span>View Profile</span>
-        </span>
-      </div>
-      <div className="sea-team-meta">
-        <h3 className="sea-team-name">{member.name}</h3>
-        <p className="sea-team-role">{member.role}</p>
+        <div className="sea-team-card-scrim" aria-hidden="true" />
+
+        {/* Bottom bar matching reference image layout */}
+        <div className="sea-team-card-bar">
+          <div className="sea-team-card-info">
+            <h3 className="sea-team-name">{member.name}</h3>
+            <p className="sea-team-role">{member.role}</p>
+          </div>
+
+          <div
+            className="sea-team-card-actions"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <a
+              href={member.linkedin ?? "https://linkedin.com"}
+              target="_blank"
+              rel="noreferrer"
+              className="sea-team-social-btn sea-team-social-in"
+              aria-label={`${member.name} LinkedIn Profile`}
+            >
+              <span>in</span>
+            </a>
+            <a
+              href={member.twitter ?? "https://x.com"}
+              target="_blank"
+              rel="noreferrer"
+              className="sea-team-social-btn sea-team-social-x"
+              aria-label={`${member.name} X Profile`}
+            >
+              <span>X</span>
+            </a>
+          </div>
+        </div>
       </div>
     </article>
   );
 }
 
-export default function SeaTeamSection() {
+export default function SeaTeamSection({
+  defaultCategory = "site-leads",
+  showFilters = true,
+}: {
+  defaultCategory?: TeamCategory;
+  showFilters?: boolean;
+}) {
   const [selectedMember, setSelectedMember] = useState<TeamPrincipal | null>(null);
+  const [activeTab, setActiveTab] = useState<TeamCategory>(defaultCategory);
+  const [isRevealed, setIsRevealed] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll reveal animation one-by-one
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setIsRevealed(true);
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      setIsRevealed(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsRevealed(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const closeModal = useCallback(() => {
     setSelectedMember(null);
@@ -381,19 +288,69 @@ export default function SeaTeamSection() {
     };
   }, [selectedMember, closeModal]);
 
+  const displayedMembers =
+    activeTab === "all"
+      ? ALL_TEAM_MEMBERS
+      : activeTab === "principals"
+      ? PRINCIPALS
+      : SITE_LEADS;
+
   return (
-    <section className="sea-team-section" aria-labelledby="sea-team-title">
+    <section
+      ref={sectionRef}
+      className={`sea-team-section ${isRevealed ? "is-revealed" : ""}`}
+      aria-labelledby="sea-team-title"
+    >
       <div className="sea-team-inner">
-        <div className="sea-team-header">
-          <h2 id="sea-team-title">THE MINDS THAT MAKE SEAIPL</h2>
-          <div className="sea-team-bar" aria-hidden="true" />
+        <div className="sea-team-header-row">
+          <div className="sea-team-header">
+            <span className="sea-team-kicker">OUR ARCHITECTURAL COLLECTIVE</span>
+            <h2 id="sea-team-title">THE MINDS THAT MAKE SEAIPL</h2>
+            <div className="sea-team-bar" aria-hidden="true" />
+          </div>
+
+          {/* Discipline Filters */}
+          {showFilters && (
+            <div className="sea-team-filters" role="tablist" aria-label="Team categories">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeTab === "site-leads"}
+                className={`sea-team-filter-btn ${activeTab === "site-leads" ? "is-active" : ""}`}
+                onClick={() => setActiveTab("site-leads")}
+              >
+                Site &amp; Project Leads ({SITE_LEADS.length})
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeTab === "principals"}
+                className={`sea-team-filter-btn ${activeTab === "principals" ? "is-active" : ""}`}
+                onClick={() => setActiveTab("principals")}
+              >
+                Principal Architects ({PRINCIPALS.length})
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeTab === "all"}
+                className={`sea-team-filter-btn ${activeTab === "all" ? "is-active" : ""}`}
+                onClick={() => setActiveTab("all")}
+              >
+                All Team ({ALL_TEAM_MEMBERS.length})
+              </button>
+            </div>
+          )}
         </div>
 
+        {/* 4 Profile Cards Single-Row Layout */}
         <div className="sea-team-grid" role="list">
-          {PRINCIPALS.map((member) => (
-            <TeamCardWebGL
+          {displayedMembers.map((member, index) => (
+            <TeamCardItem
               key={member.id}
               member={member}
+              index={index}
+              isRevealed={isRevealed}
               onSelect={() => setSelectedMember(member)}
             />
           ))}
@@ -428,12 +385,16 @@ export default function SeaTeamSection() {
                 <img
                   src={selectedMember.image}
                   alt={selectedMember.name}
-                  width={344}
-                  height={326}
+                  width={464}
+                  height={626}
                 />
               </div>
               <div className="sea-team-modal-body">
-                <span className="sea-team-modal-badge">LEADERSHIP & ARCHITECTURE</span>
+                <span className="sea-team-modal-badge">
+                  {selectedMember.category === "principals"
+                    ? "PRINCIPAL LEADERSHIP"
+                    : "SITE & PROJECT EXECUTION"}
+                </span>
                 <h3 id="modal-member-name">{selectedMember.name}</h3>
                 <p className="sea-team-modal-role">{selectedMember.role}</p>
 
@@ -461,6 +422,27 @@ export default function SeaTeamSection() {
                       <span>{selectedMember.projects}</span>
                     </div>
                   </div>
+                </div>
+
+                <div className="sea-team-modal-actions">
+                  <a
+                    href={selectedMember.linkedin ?? "https://linkedin.com"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="sea-team-modal-social"
+                  >
+                    <span>in</span>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href={selectedMember.twitter ?? "https://x.com"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="sea-team-modal-social"
+                  >
+                    <span>X</span>
+                    <span>Twitter / X</span>
+                  </a>
                 </div>
               </div>
             </div>

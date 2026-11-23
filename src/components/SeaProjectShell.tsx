@@ -11,7 +11,8 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const shellRef = useRef<HTMLDivElement>(null);
-  const pathname = useLocation({ select: (location) => location.pathname });
+  const rawPathname = useLocation({ select: (location) => location.pathname });
+  const pathname = typeof rawPathname === "string" ? rawPathname : typeof rawPathname === "object" && rawPathname && "pathname" in rawPathname ? String((rawPathname as { pathname: string }).pathname) : "";
   useEffect(() => {
     const read = () => {
       const gallery = shellRef.current?.querySelector(".project-morph");
@@ -42,6 +43,7 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
       <Link to="/projects" aria-current={pathname.startsWith("/projects") ? "page" : undefined} onClick={() => setMenuOpen(false)}>Projects</Link>
       <div className="sea-nav-sub" role="menu" aria-label="Project categories">{projectLinks}</div>
     </div>
+    <Link to="/careers" aria-current={pathname === "/careers" ? "page" : undefined} onClick={() => setMenuOpen(false)}>Careers</Link>
     <Link to="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setMenuOpen(false)}>Contact</Link>
   </>;
   return <div ref={shellRef} className={"sea-projects" + (heroHeader ? " sea-projects-detail" : "")}>
@@ -60,7 +62,7 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
         <a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span>
       </address></div>
       <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer">
-        <Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link>
+        <Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><Link to="/careers">Careers</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link>
       </nav></div>
     </footer>
     <Button variant="ghost" size="icon" className={"sea-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={scrollSeaToTop}><ArrowUp aria-hidden="true" /></Button>

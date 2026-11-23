@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AboutCopyRouteImport } from './routes/about-copy'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProjectsSlugRouteImport } from './routes/projects_.$slug'
@@ -29,6 +30,11 @@ const AboutRoute = AboutRouteImport.update({
 const AboutCopyRoute = AboutCopyRouteImport.update({
   id: '/about-copy',
   path: '/about-copy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about-copy': typeof AboutCopyRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about-copy': typeof AboutCopyRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about-copy': typeof AboutCopyRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRoute
   '/projects_/$slug': typeof ProjectsSlugRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about-copy'
+    | '/careers'
     | '/contact'
     | '/projects'
     | '/projects/$slug'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about-copy'
+    | '/careers'
     | '/contact'
     | '/projects'
     | '/projects/$slug'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about-copy'
+    | '/careers'
     | '/contact'
     | '/projects'
     | '/projects_/$slug'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AboutCopyRoute: typeof AboutCopyRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   ProjectsRoute: typeof ProjectsRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/about-copy'
       fullPath: '/about-copy'
       preLoaderRoute: typeof AboutCopyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AboutCopyRoute: AboutCopyRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   ProjectsRoute: ProjectsRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
