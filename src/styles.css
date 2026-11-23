@@ -617,6 +617,250 @@ html.lenis, html.lenis body { height: auto; }
   .sea2-about *, .sea2-about *::before, .sea2-about *::after { transition: none !important; scroll-behavior: auto !important; }
 }
 
+/* 3D Room Slider on About-Copy */
+.sea2-room-section {
+  --dur: 1100ms;
+  --ease: cubic-bezier(.65, 0, .35, 1);
+  --rink: #08222b;
+  --ceil: #e3eded;
+  --wall: #d3e1e2;
+  --floor: #9fb6ba;
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: linear-gradient(var(--ceil) 50%, var(--floor) 50%);
+  color: var(--rink);
+  user-select: none;
+}
+.sea2-room-section * {
+  box-sizing: border-box;
+}
+.sea2-room-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1400px;
+  height: 800px;
+  margin: -400px 0 0 -700px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transition: perspective-origin 0.8s ease-out;
+  touch-action: pan-y;
+}
+.sea2-room-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transition: transform var(--dur) var(--ease);
+}
+.sea2-room-plane {
+  position: absolute;
+  transform-style: flat;
+  backface-visibility: visible;
+}
+.sea2-room-wall {
+  position: absolute;
+  left: -500px;
+  top: -310px;
+  width: 1002px;
+  height: 620px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: linear-gradient(#e0eaeb, var(--wall) 60%, #c9d9db);
+  box-shadow: inset 0 0 90px rgba(8, 34, 43, 0.1);
+}
+.sea2-room-wall::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  background: #b1c6c9;
+  border-top: 2px solid #c3d4d6;
+}
+.sea2-room-frame {
+  position: absolute;
+  top: 60px;
+  padding: 10px;
+  border: 0;
+  background: #f8fbfb;
+  cursor: pointer;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 34px 44px -10px rgba(0,0,0,0.38);
+  outline-offset: 6px;
+}
+.sea2-room-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.sea2-room-plaque {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 482px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #08222b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: opacity 0.6s;
+}
+.sea2-room-wall[data-rel="0"] .sea2-room-plaque {
+  opacity: 0;
+}
+.sea2-room-shade {
+  position: absolute;
+  inset: 0;
+  background: #08222b;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+.sea2-room-wall[data-rel="1"] .sea2-room-shade,
+.sea2-room-wall[data-rel="-1"] .sea2-room-shade {
+  opacity: 0.17;
+}
+.sea2-room-wall:not([data-rel="0"]):not([data-rel="1"]):not([data-rel="-1"]) .sea2-room-shade {
+  opacity: 0.3;
+}
+.sea2-room-wall:not([data-rel="0"]):hover .sea2-room-shade,
+.sea2-room-wall:not([data-rel="0"]):focus-within .sea2-room-shade {
+  opacity: 0.06;
+}
+.sea2-room-wall:not([data-rel="0"]) .sea2-room-frame:hover,
+.sea2-room-wall:not([data-rel="0"]) .sea2-room-frame:focus-visible {
+  transform: translateZ(26px) scale(1.035);
+}
+.sea2-room-info {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + var(--s, 1) * 108px);
+  width: min(580px, 90vw);
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 4;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.sea2-room-info.out {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+}
+.sea2-room-info h2 {
+  color: #08222b;
+  margin-bottom: 22px;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+.sea2-room-info p {
+  margin: 12px auto 20px;
+  max-width: 46ch;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.55;
+  color: #2a2a2a;
+}
+.sea2-room-btn {
+  display: inline-block;
+  background: #006b80;
+  color: #fff;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 30px;
+  transition: background 0.25s, transform 0.25s;
+}
+.sea2-room-btn:hover {
+  background: #005567;
+  transform: translateY(-2px);
+}
+.sea2-room-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px #0e0e0e;
+}
+.sea2-room-arrow {
+  position: absolute;
+  bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--rink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.25s;
+}
+.sea2-room-arrow:hover {
+  transform: scale(1.15);
+}
+.sea2-room-arrow:focus-visible,
+.sea2-room-dot:focus-visible {
+  outline: 2px solid var(--rink);
+  outline-offset: 3px;
+}
+.sea2-room-arrow.prev {
+  left: clamp(12px, 3vw, 40px);
+}
+.sea2-room-arrow.next {
+  right: clamp(12px, 3vw, 40px);
+}
+.sea2-room-arrow.prev:hover {
+  transform: scale(1.15) translateX(-3px);
+}
+.sea2-room-arrow.next:hover {
+  transform: scale(1.15) translateX(3px);
+}
+.sea2-room-dots {
+  position: absolute;
+  left: 50%;
+  bottom: calc(36px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+.sea2-room-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(8, 34, 43, 0.28);
+  cursor: pointer;
+  transition: width 0.5s cubic-bezier(.65, 0, .35, 1), background 0.5s;
+  position: relative;
+}
+.sea2-room-dot::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+.sea2-room-dot[aria-current="true"] {
+  width: 28px;
+  background: var(--rink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sea2-room-section { --dur: 0.01ms; }
+  .sea2-room-stage { transition: none; }
+  .sea2-room-frame, .sea2-room-info { transition: none; }
+}
+
 /* Scroll-to-top button (shared by both About pages) */
 .sea-scroll-top, .sea2-scroll-top {
   position: fixed;
@@ -929,6 +1173,36 @@ html.lenis, html.lenis body { height: auto; }
 .project-details > h1:first-child { padding-top: calc(var(--sea-header-height) + 60px); margin: 0 5% 24px; }
 .project-morph { position: relative; }
 .project-morph-stage { position: sticky; top: 0; height: 100svh; min-height: 480px; overflow: hidden; }
+.project-gallery-fade-stage { position: absolute; inset: 0; width: 100%; height: 100%; background: #0c0d0e; }
+.project-gallery-fade-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1), transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.02);
+  will-change: opacity, transform;
+}
+.project-gallery-fade-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  z-index: 1;
+}
+.project-gallery-fade-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-gallery-fade-slide {
+    transition: none !important;
+    transform: none !important;
+  }
+}
 .project-morph-canvas { position: absolute; inset: 0; }
 .project-morph-canvas:focus-visible { outline: none; }
 .project-morph-hint { margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }

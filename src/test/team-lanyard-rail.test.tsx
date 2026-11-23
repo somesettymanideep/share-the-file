@@ -5,24 +5,27 @@ import TeamLanyardRail from "@/components/TeamLanyardRail";
 afterEach(cleanup);
 
 describe("team lanyard rail", () => {
-  it("shows the real founder profile and clearly marked placeholders", () => {
+  it("shows five clearly marked sample profiles with names and designations", () => {
     render(<TeamLanyardRail />);
-    expect(screen.getByRole("button", { name: /P\.V\. Naresh Kumar, Founder & CEO/ })).toBeInTheDocument();
-    expect(screen.getAllByRole("button", { name: /Name to be added, Designation/ })).toHaveLength(5);
-    expect(screen.getByText("naresh@s4eaindia.com")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Aditi Rao, Senior Architect/ })).toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: /activate to flip the badge/ })).toHaveLength(5);
+    expect(screen.getAllByText("Sample team profile")).toHaveLength(5);
+    for (const name of ["Riya Nair", "Kabir Shah", "Meera Iyer", "Arjun Menon"]) {
+      expect(screen.getByText(name)).toBeInTheDocument();
+    }
   });
   it("flips a badge back when its back face is clicked", () => {
     render(<TeamLanyardRail />);
-    const badge = screen.getByRole("button", { name: /P\.V\. Naresh Kumar, Founder & CEO/ });
+    const badge = screen.getByRole("button", { name: /Aditi Rao, Senior Architect/ });
     fireEvent.click(badge);
     expect(badge).toHaveAttribute("aria-pressed", "true");
-    const back = screen.getByRole("button", { name: /flip the badge back/ });
+    const back = screen.getByRole("button", { name: /Aditi Rao — activate to flip the badge back/ });
     fireEvent.click(back);
     expect(badge).toHaveAttribute("aria-pressed", "false");
   });
   it("flips a badge on click and turns it back with Escape", () => {
     render(<TeamLanyardRail />);
-    const badge = screen.getByRole("button", { name: /P\.V\. Naresh Kumar, Founder & CEO/ });
+    const badge = screen.getByRole("button", { name: /Aditi Rao, Senior Architect/ });
     expect(badge).toHaveAttribute("aria-pressed", "false");
     fireEvent.click(badge);
     expect(badge).toHaveAttribute("aria-pressed", "true");
