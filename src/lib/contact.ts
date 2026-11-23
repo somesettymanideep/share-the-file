@@ -48,6 +48,6 @@ export const STUDIO_LOCATIONS: StudioLocation[] = [
 // Confirmed branch offices only. Vijayawada has a client-supplied street address;
 // Bangalore is confirmed as a city only, so no address, phone, or hours may be shown.
 export const STUDIO_BRANCHES: StudioLocation[] = [
-  { id: "branch-vijayawada", kind: "branch", name: "SEA · Vijayawada Branch", city: "Vijayawada, Andhra Pradesh", address: "Flat No: 101, Sri Sai Nilayam, Chandramoulipuram, ADJ. HDFC Bank, BENZ Circle, Vijayawada, Andhra Pradesh, India- 520 010", latitude: 16.5062, longitude: 80.648 },
-  { id: "branch-bangalore", kind: "branch", name: "SEA · Bangalore Branch", city: "Bangalore, Karnataka", latitude: 12.9716, longitude: 77.5946 },
+  { id: "branch-vijayawada", kind: "branch", name: "Vijayawada Branch", city: "Vijayawada, Andhra Pradesh", address: "Flat No: 101, Sri Sai Nilayam, Chandramoulipuram, ADJ. HDFC Bank, BENZ Circle, Vijayawada, Andhra Pradesh, India- 520 010", latitude: 16.5062, longitude: 80.648 },
+  { id: "branch-bangalore", kind: "branch", name: "Bangalore Branch", city: "Bangalore, Karnataka", latitude: 12.9716, longitude: 77.5946 },
 ];

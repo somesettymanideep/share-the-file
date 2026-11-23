@@ -59,6 +59,9 @@ export default function SeaPreloader() {
       if (cancelled) return;
       const W = word.offsetWidth;
       const st = { p: 0 };
+      const isMobile = window.matchMedia("(max-width: 480px)").matches;
+      const endLetterSpacing = isMobile ? ".22em" : ".32em";
+      const startLetterSpacing = isMobile ? ".32em" : ".45em";
       tl = gsap.timeline();
       tl.fromTo(word, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
         .to(cnt, { opacity: 0.85, duration: 0.5 }, 0.4)
@@ -74,7 +77,7 @@ export default function SeaPreloader() {
           },
         }, 0.6)
         .to(glow, { opacity: 0, duration: 0.4 }, 2.1)
-        .fromTo(tag, { opacity: 0, y: 12, letterSpacing: ".45em" }, { opacity: 1, y: 0, letterSpacing: ".32em", duration: 1.1, ease: "power3.out" }, 1.4)
+        .fromTo(tag, { opacity: 0, y: 12, letterSpacing: startLetterSpacing }, { opacity: 1, y: 0, letterSpacing: endLetterSpacing, duration: 1.1, ease: "power3.out" }, 1.4)
         .add(() => {
           tl?.pause();
           loadReady.then(() => {
@@ -101,7 +104,7 @@ export default function SeaPreloader() {
           <SeaLogoMark className="sea-pre-fill" filled />
           <i className="sea-pre-glow" />
         </div>
-        <p className="sea-pre-tag">Studio for Eclectic Architecture</p>
+        <p className="sea-pre-tag">STUDIO FOR ECLECTIC ARCHITECTURE</p>
       </div>
       <div className="sea-pre-count" aria-hidden="true">0</div>
     </div>
