@@ -1442,7 +1442,7 @@ html.sea-pre-lock body {
   position: relative;
   display: block;
   margin: 0 auto;
-  width: clamp(220px, 44vw, 560px);
+  width: clamp(200px, 36vw, 480px);
   opacity: 0;
 }
 .sea-pre-word svg {
@@ -1480,24 +1480,24 @@ html.sea-pre-lock body {
   pointer-events: none;
 }
 .sea-pre-tag {
-  margin-top: clamp(18px, 2.6vw, 36px);
-  font-family: "Oxanium", "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: clamp(0.85rem, 2.3vw, 1.85rem);
+  margin-top: clamp(20px, 3vw, 42px);
+  font-family: "Zero Regular", "Zero", "Oxanium", "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 2.5vw, 2.25rem);
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.32em;
-  color: rgba(238, 243, 243, 0.92);
+  letter-spacing: 0.26em;
+  color: rgba(238, 243, 243, 0.95);
   opacity: 0;
   display: block;
 }
 @media (max-width: 480px) {
   .sea-pre-word {
-    width: clamp(170px, 42vw, 220px);
+    width: clamp(150px, 40vw, 200px);
   }
   .sea-pre-tag {
-    font-size: clamp(0.55rem, 2.65vw, 0.78rem);
-    letter-spacing: 0.22em;
+    font-size: clamp(0.52rem, 2.5vw, 0.72rem);
+    letter-spacing: 0.18em;
   }
 }
 .sea-pre-count {
