@@ -17,7 +17,7 @@ describe("Contact presence map", () => {
   });
   it("highlights both branch states and clears any existing tooltip when switching tabs", () => {
     render(<ContactLocations />);
-    fireEvent.mouseEnter(screen.getByRole("button", { name: "SEA · Corporate Office, Hyderabad, Telangana" }));
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "Corporate Office, Hyderabad, Telangana" }));
     expect(screen.getByRole("status").textContent).toContain("Hyderabad");
     fireEvent.click(screen.getByRole("tab", { name: "Branches" }));
     expect(selectedStates()).toEqual(["Andhra Pradesh", "Karnataka"]);

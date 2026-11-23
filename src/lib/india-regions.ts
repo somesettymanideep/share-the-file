@@ -45,7 +45,7 @@ export function indiaRegionPoint(longitude: number, latitude: number) {
 export function getRegionOffice(name: string) {
   if (name !== "Telangana") return undefined;
   return {
-    name: "SEA · Corporate Office", address: STUDIO_CONTACT.address,
+    name: "Corporate Office", address: STUDIO_CONTACT.address,
     directions: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(STUDIO_CONTACT.address)}`,
   };
 }
