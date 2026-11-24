@@ -6,6 +6,10 @@ import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg";
 import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg";
+import sindhuraFront from "@/assets/sea-project-sindhura-hospital-front.webp";
+import sindhuraAtrium from "@/assets/sea-project-sindhura-hospital-atrium.webp";
+import sindhuraDome from "@/assets/sea-project-sindhura-hospital-dome.webp";
+import sindhuraDomeAerial from "@/assets/sea-project-sindhura-hospital-dome-aerial.webp";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -67,6 +71,12 @@ export const SEA_PROJECTS: SeaProject[] = [
       "A multi-block healthcare campus joined by a glazed atrium and a sky-garden podium, planned around a clear, calm arrival.",
     image: krishnaSindhura,
     alt: "Krishna Sindhura Hospital campus with glazed atrium",
+    gallery: [
+      { image: sindhuraFront, alt: "Krishna Sindhura Hospital front elevation with landscaped arrival — view 01" },
+      { image: sindhuraAtrium, alt: "Krishna Sindhura Hospital atrium with stained-glass skylight ceiling — view 02" },
+      { image: sindhuraDome, alt: "Krishna Sindhura Hospital stained-glass dome pavilion at dusk — view 03" },
+      { image: sindhuraDomeAerial, alt: "Krishna Sindhura Hospital dome pavilion aerial view with planters — view 04" },
+    ],
   },
   {
     slug: "gangadhar-estate",
