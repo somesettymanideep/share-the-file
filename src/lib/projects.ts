@@ -16,6 +16,9 @@ import sindhuraFront from "@/assets/sea-project-sindhura-hospital-front.webp";
 import sindhuraAtrium from "@/assets/sea-project-sindhura-hospital-atrium.webp";
 import sindhuraDome from "@/assets/sea-project-sindhura-hospital-dome.webp";
 import sindhuraDomeAerial from "@/assets/sea-project-sindhura-hospital-dome-aerial.webp";
+import regaPrimeOne from "@/assets/Rega-prime-one.png";
+import regaPrimeTwo from "@/assets/Rega-prime-two.png";
+import regaPrimeThree from "@/assets/Rega-prime-three.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -43,14 +46,18 @@ export interface SeaProject {
 
 export const SEA_PROJECTS: SeaProject[] = [
   {
-    slug: "manjunatha-constructions",
-    title: "Manjunatha Constructions",
-    category: "architecture",
-    description:
-      "A four-level residence wrapped in colour-blocked perforated screens and climbing vines that filter light and cool the interiors.",
-    image: manjunatha,
-    alt: "Manjunatha Constructions residence with colour-blocked perforated screens",
-  },
+  slug: "rega-prime",
+  title: "Rega Prime",
+  category: "architecture",
+  description: "Explore Rega Prime through three architectural views.",
+  image: regaPrimeOne,
+  alt: "Rega Prime architectural view 1",
+  gallery: [
+    { image: regaPrimeOne, alt: "Rega Prime architectural view 1" },
+    { image: regaPrimeTwo, alt: "Rega Prime architectural view 2" },
+    { image: regaPrimeThree, alt: "Rega Prime architectural view 3" },
+  ],
+},
   {
     slug: "sarika-estate",
     title: "Sarika Estate",

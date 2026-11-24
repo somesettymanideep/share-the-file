@@ -11,6 +11,7 @@ describe("Project details", () => {
     expect(new Set(SEA_PROJECTS.map(p => p.image)).size).toBe(6);
     for (const project of SEA_PROJECTS) expect(getProject(project.slug)).toBe(project);
   });
+  
   it("has exactly three gallery slots without duplicating or substituting photographs", () => {
     for (const project of SEA_PROJECTS) {
       if (project.gallery) continue;
