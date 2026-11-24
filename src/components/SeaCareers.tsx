@@ -228,77 +228,87 @@ export default function SeaCareers() {
             ========================================================================= */}
         <section id="openings" className="careers-roles-section" aria-labelledby="roles-heading">
           <div className="careers-section-container">
-            <header className="careers-section-header">
-              <div className="careers-section-kicker">
-                <Briefcase size={16} aria-hidden="true" />
-                <span>OPPORTUNITIES AT SEA</span>
+            <div className="careers-openings-layout">
+              {/* Left Column: Title & Discipline Filter Pills */}
+              <div className="careers-openings-sidebar">
+                <div className="careers-section-kicker">
+                  <span>OPPORTUNITIES AT SEA</span>
+                </div>
+                <h2 id="roles-heading" className="careers-section-title">
+                  <span className="careers-title-line">CURRENT STUDIO</span>
+                  <span className="careers-title-line">OPENINGS</span>
+                </h2>
+
+                {/* Department Filter Pills */}
+                <div className="careers-filter-bar" role="toolbar" aria-label="Filter positions by discipline">
+                  <div className="careers-filter-list">
+                    {CAREER_DEPARTMENTS.map((dept) => (
+                      <button
+                        key={dept}
+                        type="button"
+                        className={`careers-filter-btn ${selectedDept === dept ? "is-active" : ""}`}
+                        onClick={() => setSelectedDept(dept)}
+                        aria-pressed={selectedDept === dept}
+                      >
+                        {dept}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <h2 id="roles-heading" className="careers-section-title">
-                Current Studio Openings
-              </h2>
-              <p className="careers-section-subtitle">
-                Explore available opportunities across our architecture, computational BIM,
-                interiors, and structural engineering disciplines. Click <strong>View More</strong> on any position to review in-depth responsibilities, criteria, and studio offerings.
-              </p>
-            </header>
 
-            {/* Department Filter Pills */}
-            <div className="careers-filter-bar" role="toolbar" aria-label="Filter positions by discipline">
-              <span className="careers-filter-label">
-                <Filter size={14} aria-hidden="true" /> Filter by:
-              </span>
-              <div className="careers-filter-list">
-                {CAREER_DEPARTMENTS.map((dept) => (
-                  <button
-                    key={dept}
-                    type="button"
-                    className={`careers-filter-btn ${selectedDept === dept ? "is-active" : ""}`}
-                    onClick={() => setSelectedDept(dept)}
-                    aria-pressed={selectedDept === dept}
-                  >
-                    {dept}
-                  </button>
-                ))}
+              {/* Right Column: Positions Table / List */}
+              <div className="careers-openings-main">
+                <div className="careers-roles-table" role="list" aria-label="Current studio openings">
+                  {filteredRoles.map((role) => {
+                    const formattedLocation = role.locations
+                      .map((loc) => loc.replace(/\s*\(Corporate Office\)/gi, ""))
+                      .join(" / ");
+                    const formattedType = role.type.toLowerCase() === "full-time" ? "Full-time" : role.type;
+
+                    return (
+                      <article key={role.id} className="careers-role-row" role="listitem">
+                        <div className="careers-row-main">
+                          <span className="careers-row-dept">{role.department.toUpperCase()}</span>
+                          <h3 className="careers-row-title">{role.title}</h3>
+                        </div>
+
+                        <div className="careers-row-meta">
+                          <span className="careers-row-location">{formattedLocation}</span>
+                          <span className="careers-row-type">{formattedType}</span>
+                        </div>
+
+                        <div className="careers-row-action">
+                          <button
+                            type="button"
+                            className="careers-view-more-btn"
+                            onClick={() => setActiveModalRole(role)}
+                            aria-label={`View detailed info about ${role.title}`}
+                          >
+                            <span className="careers-btn-text">VIEW DETAILS</span>
+                            <span className="careers-btn-circle" aria-hidden="true">
+                              <ArrowRight size={15} />
+                            </span>
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  })}
+
+                  {filteredRoles.length === 0 && (
+                    <div className="careers-empty-state">
+                      <p>No active openings found in {selectedDept}.</p>
+                      <button
+                        type="button"
+                        className="careers-empty-reset-btn"
+                        onClick={() => setSelectedDept("All")}
+                      >
+                        View all openings
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-
-            {/* Roles Grid */}
-            <div className="careers-roles-grid">
-              {filteredRoles.map((role) => (
-                <article key={role.id} className="careers-role-card">
-                  <div className="careers-card-top">
-                    <span className="careers-card-badge">{role.departmentLabel}</span>
-                    <span className="careers-card-type">{role.type}</span>
-                  </div>
-
-                  <h3 className="careers-card-title">{role.title}</h3>
-
-                  <div className="careers-card-meta">
-                    <span className="careers-meta-item">
-                      <MapPin size={15} aria-hidden="true" />
-                      {role.locations.join(" / ")}
-                    </span>
-                    <span className="careers-meta-item">
-                      <Clock size={15} aria-hidden="true" />
-                      {role.experience}
-                    </span>
-                  </div>
-
-                  <p className="careers-card-desc">{role.shortDescription}</p>
-
-                  <div className="careers-card-footer">
-                    <button
-                      type="button"
-                      className="careers-view-more-btn"
-                      onClick={() => setActiveModalRole(role)}
-                      aria-label={`View detailed info about ${role.title}`}
-                    >
-                      <span>View Details</span>
-                      <ArrowUpRight size={17} aria-hidden="true" />
-                    </button>
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </section>

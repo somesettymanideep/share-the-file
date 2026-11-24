@@ -59,6 +59,41 @@ export const CAREER_ROLES: CareerRole[] = [
     }
   },
   {
+    id: "junior-architect-visualizer",
+    title: "Architectural Associate & 3D Visualizer",
+    department: "Architecture",
+    departmentLabel: "Architecture & Visual Computation",
+    locations: ["Vijayawada", "Hyderabad"],
+    type: "Full-Time",
+    experience: "1–3 Years",
+    shortDescription: "Craft compelling 3D visualizations, spatial vignettes, and working drawings that convey the atmosphere of unbuilt spaces.",
+    overview: "Join our studio at the foundational stage of your career. In this role, you will assist design leads in translating spatial diagrams into high-fidelity architectural renderings, physical study models, and working drawing sets for active construction sites.",
+    responsibilities: [
+      "Develop atmospheric architectural visualizations, day/dusk lighting studies, and material mockups.",
+      "Produce detailed 2D architectural working drawings, elevations, sections, and detail blow-ups.",
+      "Assist in physical model making and digital 3D massing studies.",
+      "Support site measurement surveys and client presentation preparation."
+    ],
+    requirements: [
+      "B.Arch from a recognized architectural school.",
+      "1–3 years experience (including internship) in an architectural design studio.",
+      "Strong portfolio demonstrating atmospheric rendering (Enscape, Rhino, SketchUp, V-Ray, Lumion, or Blender).",
+      "Working knowledge of AutoCAD drafting conventions and construction drawings.",
+      "Eagerness to learn, ask sharp questions, and absorb architectural knowledge."
+    ],
+    benefits: [
+      "Accelerated learning curve with exposure across all stages of practice.",
+      "Mentorship directly under seasoned Senior Architects and Principal Architects.",
+      "Dedicated time for digital design workshops, tool experiments, and software mastery.",
+      "Competitive starting package with annual performance review."
+    ],
+    thinkingPrompt: {
+      title: "Atmosphere, Light & Visual Storytelling",
+      description: "When rendering an architectural space, what is your approach to composition and light? What distinguishes an architectural image that tells a story from a sterile computer render?",
+      placeholder: "e.g., I always look for how sunlight washes over natural texture, capturing the dust motes and micro-shadows that make a space feel lived-in..."
+    }
+  },
+  {
     id: "bim-manager-computation",
     title: "BIM Manager / Computational Lead",
     department: "BIM",
@@ -164,41 +199,6 @@ export const CAREER_ROLES: CareerRole[] = [
       title: "Structural Elegance & Architectural Harmony",
       description: "Tell us about a design where conventional column grids clashed with architectural openings. How did you engineer an innovative solution without adding excessive tonnage?",
       placeholder: "e.g., Rather than introducing deep transfer girders that compromised head height, we developed a vierendeel truss integrated into the partition wall..."
-    }
-  },
-  {
-    id: "junior-architect-visualizer",
-    title: "Architectural Associate & 3D Visualizer",
-    department: "Architecture",
-    departmentLabel: "Architecture & Visual Computation",
-    locations: ["Vijayawada", "Hyderabad"],
-    type: "Full-Time",
-    experience: "1–3 Years",
-    shortDescription: "Craft compelling 3D visualizations, spatial vignettes, and working drawings that convey the atmosphere of unbuilt spaces.",
-    overview: "Join our studio at the foundational stage of your career. In this role, you will assist design leads in translating spatial diagrams into high-fidelity architectural renderings, physical study models, and working drawing sets for active construction sites.",
-    responsibilities: [
-      "Develop atmospheric architectural visualizations, day/dusk lighting studies, and material mockups.",
-      "Produce detailed 2D architectural working drawings, elevations, sections, and detail blow-ups.",
-      "Assist in physical model making and digital 3D massing studies.",
-      "Support site measurement surveys and client presentation preparation."
-    ],
-    requirements: [
-      "B.Arch from a recognized architectural school.",
-      "1–3 years experience (including internship) in an architectural design studio.",
-      "Strong portfolio demonstrating atmospheric rendering (Enscape, Rhino, SketchUp, V-Ray, Lumion, or Blender).",
-      "Working knowledge of AutoCAD drafting conventions and construction drawings.",
-      "Eagerness to learn, ask sharp questions, and absorb architectural knowledge."
-    ],
-    benefits: [
-      "Accelerated learning curve with exposure across all stages of practice.",
-      "Mentorship directly under seasoned Senior Architects and Principal Architects.",
-      "Dedicated time for digital design workshops, tool experiments, and software mastery.",
-      "Competitive starting package with annual performance review."
-    ],
-    thinkingPrompt: {
-      title: "Atmosphere, Light & Visual Storytelling",
-      description: "When rendering an architectural space, what is your approach to composition and light? What distinguishes an architectural image that tells a story from a sterile computer render?",
-      placeholder: "e.g., I always look for how sunlight washes over natural texture, capturing the dust motes and micro-shadows that make a space feel lived-in..."
     }
   }
 ];

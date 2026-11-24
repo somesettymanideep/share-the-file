@@ -2445,187 +2445,275 @@ html.sea-pre-lock body {
 /* 3. Opening Roles Section */
 .careers-roles-section {
   padding: clamp(64px, 8vw, 110px) 0;
-  background-color: #f1f6f7;
-  border-bottom: 1px solid rgba(0, 107, 128, 0.1);
+  background-color: #e9f1f2;
+  color: #08222b;
+  border-bottom: 1px solid rgba(0, 107, 128, 0.2);
 }
 
-.careers-filter-bar {
+.careers-openings-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: clamp(36px, 5.5vw, 80px);
+  align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .careers-openings-layout {
+    grid-template-columns: 300px 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 860px) {
+  .careers-openings-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Left Column: Eyebrow, Title & Filter Pills */
+.careers-openings-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.careers-roles-section .careers-section-kicker {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #006b80;
+  margin-bottom: 12px;
+}
+
+.careers-roles-section .careers-section-title {
+  display: flex;
+  flex-direction: column;
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #08222b;
+  margin: 0 0 32px;
+}
+
+.careers-title-line {
+  display: block;
+}
+
+.careers-roles-section .careers-filter-bar {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.careers-roles-section .careers-filter-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 18px;
-  margin-bottom: 36px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid rgba(0, 107, 128, 0.12);
+  gap: 10px;
+  max-width: 320px;
 }
 
-.careers-filter-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.careers-roles-section .careers-filter-btn {
+  padding: 8px 22px;
+  border-radius: 9999px;
+  border: 1.5px solid #006b80;
+  background-color: transparent;
+  color: #006b80;
   font-family: "Oswald", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #617982;
-}
-
-.careers-filter-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.careers-filter-btn {
-  padding: 8px 18px;
-  border-radius: 9999px;
-  border: 1px solid rgba(0, 107, 128, 0.2);
-  background-color: #ffffff;
-  color: #24414a;
-  font-family: "Inter", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  line-height: 1.15;
 }
 
-.careers-filter-btn:hover {
-  border-color: #006b80;
-  color: #006b80;
-  background-color: #eef7f8;
+.careers-roles-section .careers-filter-btn:hover {
+  background-color: rgba(0, 107, 128, 0.08);
+  border-color: #08222b;
+  color: #08222b;
 }
 
-.careers-filter-btn.is-active {
-  background-color: #006b80;
+.careers-roles-section .careers-filter-btn.is-active {
+  background-color: #08222b;
   color: #ffffff;
-  border-color: #006b80;
-  box-shadow: 0 2px 8px rgba(0, 107, 128, 0.25);
+  border-color: #08222b;
+  box-shadow: 0 2px 8px rgba(8, 34, 43, 0.22);
 }
 
-.careers-roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 24px;
+/* Right Column: Roles Table / List */
+.careers-openings-main {
+  width: 100%;
 }
 
-.careers-role-card {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 107, 128, 0.14);
-  border-radius: 8px;
-  padding: clamp(24px, 3vw, 32px);
+.careers-roles-table {
+  border-top: 1px solid rgba(0, 107, 128, 0.35);
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 10px rgba(0, 30, 40, 0.04);
 }
 
-.careers-role-card:hover {
-  transform: translateY(-4px);
-  border-color: #006b80;
-  box-shadow: 0 12px 30px rgba(0, 107, 128, 0.12);
-}
-
-.careers-card-top {
-  display: flex;
-  justify-content: space-between;
+.careers-role-row {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.45fr) minmax(180px, 1.05fr) auto;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 18px clamp(16px, 2.5vw, 36px);
+  padding: 24px 8px;
+  border-bottom: 1px solid rgba(0, 107, 128, 0.35);
+  transition: background-color 0.2s ease, padding-left 0.2s ease, border-color 0.2s ease;
 }
 
-.careers-card-badge {
+.careers-role-row:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  border-bottom-color: rgba(0, 107, 128, 0.6);
+  padding-left: 12px;
+}
+
+.careers-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.careers-row-dept {
   font-family: "Oswald", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #006b80;
-  background-color: #eaf4f6;
-  padding: 4px 10px;
-  border-radius: 4px;
 }
 
-.careers-card-type {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #5d757f;
-}
-
-.careers-card-title {
+.careers-row-title {
   font-family: "Archivo", "Oswald", sans-serif;
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 1.55vw, 1.38rem);
   font-weight: 700;
-  color: #0c1e25;
-  margin: 0 0 14px;
+  color: #08222b;
+  margin: 0;
   line-height: 1.25;
 }
 
-.careers-card-meta {
+.careers-row-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px dashed rgba(0, 107, 128, 0.15);
+  flex-direction: column;
+  gap: 3px;
 }
 
-.careers-meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.careers-row-location {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #08222b;
+  line-height: 1.35;
+}
+
+.careers-row-type {
+  font-family: "Inter", sans-serif;
   font-size: 0.85rem;
-  color: #4b646c;
-}
-
-.careers-meta-item svg {
+  font-weight: 400;
   color: #006b80;
-  flex-shrink: 0;
+  line-height: 1.35;
 }
 
-.careers-card-desc {
-  font-size: 0.94rem;
-  line-height: 1.55;
-  color: #556c75;
-  margin: 0 0 24px;
-  flex-grow: 1;
+.careers-row-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.careers-card-footer {
-  margin-top: auto;
-}
-
-.careers-view-more-btn {
+.careers-roles-section .careers-view-more-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 107, 128, 0.35);
+  gap: 12px;
+  padding: 6px 0;
+  border: none;
   background-color: transparent;
-  color: #006b80;
+  color: #08222b;
+  cursor: pointer;
+  transition: color 0.2s ease;
   font-family: "Oswald", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.careers-roles-section .careers-btn-text {
+  transition: color 0.2s ease;
+}
+
+.careers-roles-section .careers-btn-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #08222b;
+  color: #08222b;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.careers-roles-section .careers-view-more-btn:hover {
+  color: #006b80;
+  background-color: transparent;
+}
+
+.careers-roles-section .careers-view-more-btn:hover .careers-btn-circle {
+  border-color: #006b80;
+  background-color: #006b80;
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.careers-role-row:hover .careers-btn-circle {
+  border-color: #006b80;
+  color: #006b80;
+}
+
+.careers-empty-state {
+  padding: 48px 16px;
+  text-align: center;
+  color: #08222b;
+}
+
+.careers-empty-reset-btn {
+  margin-top: 12px;
+  background: none;
+  border: 1.5px solid #006b80;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  color: #006b80;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.careers-view-more-btn:hover {
+.careers-empty-reset-btn:hover {
   background-color: #006b80;
   color: #ffffff;
-  border-color: #006b80;
 }
 
-.careers-view-more-btn svg {
-  transition: transform 0.2s ease;
-}
+@media (max-width: 640px) {
+  .careers-role-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px 4px;
+  }
 
-.careers-view-more-btn:hover svg {
-  transform: translate(2px, -2px);
+  .careers-row-action {
+    justify-content: flex-start;
+    margin-top: 4px;
+  }
 }
 
 /* 4. Role Details Modal (Popup) */
