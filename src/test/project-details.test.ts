@@ -120,31 +120,110 @@ describe("Project details", () => {
     expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
   });
 
-  it("returns adjacent projects and wraps between Rega Prime and Kishore Jain KMS Infra", () => {
+  it("shows four distinct Kishore Jain KMS Infra gallery images under architecture category", () => {
+    const project = getProject("kishore-jain-kms-infra");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Kishore Jain KMS Infra",
+      category: "architecture",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(4);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(4);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(4);
+  });
+
+  it("returns adjacent projects and wraps between Rega Prime and Chandramouli", () => {
     expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe(
       "kishore-jain-kms-infra",
     );
+    expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe(
+      "naksthravnam",
+    );
+    expect(getAdjacentProjects("naksthravnam").next?.slug).toBe("laiton-crafts");
+    expect(getAdjacentProjects("laiton-crafts").next?.slug).toBe("chandramouli");
+    expect(getAdjacentProjects("chandramouli").next?.slug).toBe("rega-prime");
     expect(getAdjacentProjects("rega-prime").previous?.slug).toBe(
-      "kishore-jain-kms-infra",
+      "chandramouli",
+    );
+    expect(getAdjacentProjects("chandramouli").previous?.slug).toBe(
+      "laiton-crafts",
+    );
+    expect(getAdjacentProjects("laiton-crafts").previous?.slug).toBe(
+      "naksthravnam",
     );
     expect(getAdjacentProjects("rega-prime").next?.slug).toBe("sarika-estate");
-    expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe(
-      "rega-prime",
-    );
+  });
+
+  it("shows seven distinct Naksthravnam gallery images under landscape category", () => {
+    const project = getProject("naksthravnam");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Naksthravnam",
+      category: "landscape",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(7);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(7);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(7);
+  });
+
+  it("shows five distinct Laiton Crafts gallery images under landscape category", () => {
+    const project = getProject("laiton-crafts");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Laiton Crafts",
+      category: "landscape",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(5);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(5);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(5);
+  });
+
+  it("shows six distinct Chandramouli gallery images under interior category", () => {
+    const project = getProject("chandramouli");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Chandramouli",
+      category: "interior",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(6);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(6);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(6);
   });
 
   it("returns undefined for an unknown project", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
 
-  it("lists all six projects under architecture", () => {
+  it("lists all six architecture projects and nine total projects", () => {
     expect(getProjectsByCategory("architecture")).toHaveLength(6);
-    expect(getProjectsByCategory()).toHaveLength(6);
+    expect(getProjectsByCategory()).toHaveLength(9);
   });
 
-  it("returns empty lists for interior, landscape, and BIM", () => {
-    expect(getProjectsByCategory("interior")).toEqual([]);
-    expect(getProjectsByCategory("landscape")).toEqual([]);
+  it("lists Naksthravnam and Laiton Crafts under landscape, Chandramouli under interior, and returns empty list for BIM", () => {
+    const landscapeProjects = getProjectsByCategory("landscape");
+    expect(landscapeProjects).toHaveLength(2);
+    expect(landscapeProjects.map((p) => p.slug)).toEqual([
+      "naksthravnam",
+      "laiton-crafts",
+    ]);
+    expect(getProjectsByCategory("interior")).toHaveLength(1);
+    expect(getProjectsByCategory("interior")[0]?.slug).toBe("chandramouli");
     expect(getProjectsByCategory("bim")).toEqual([]);
   });
 });

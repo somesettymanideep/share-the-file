@@ -9,10 +9,31 @@ import sindhuraHospitalAtrium from "@/assets/sindhura-hospital-three.png";
 import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg";
 import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
-import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg";
+import kishoreJain1 from "@/assets/sea-project-kishore-jain-kms-infra-01.png";
+import kishoreJain2 from "@/assets/sea-project-kishore-jain-kms-infra-02.png";
+import kishoreJain3 from "@/assets/sea-project-kishore-jain-kms-infra-03.png";
+import kishoreJain4 from "@/assets/sea-project-kishore-jain-kms-infra-04.png";
 import regaPrimeOne from "@/assets/Rega-prime-one.png";
 import regaPrimeTwo from "@/assets/Rega-prime-two.png";
 import regaPrimeThree from "@/assets/Rega-prime-three.png";
+import naksthravnam1 from "@/assets/naksthravanam-one.png";
+import naksthravnam2 from "@/assets/Naksthravnam-two.png";
+import naksthravnam3 from "@/assets/Naksthravnam-three.png";
+import naksthravnam4 from "@/assets/Naksthravnam-four.png";
+import naksthravnam5 from "@/assets/Naksthravnam-five.png";
+import naksthravnam6 from "@/assets/Naksthravnam-six.png";
+import naksthravnam7 from "@/assets/Naksthravnam-seven.webp";
+import chandramouli1 from "@/assets/sea-project-chandramouli-01.jpg";
+import chandramouli2 from "@/assets/sea-project-chandramouli-02.jpg";
+import chandramouli3 from "@/assets/sea-project-chandramouli-03.jpg";
+import chandramouli4 from "@/assets/sea-project-chandramouli-04.jpg";
+import chandramouli5 from "@/assets/sea-project-chandramouli-05.jpg";
+import chandramouli6 from "@/assets/sea-project-chandramouli-06.jpg";
+import laitonCrafts1 from "@/assets/sea-project-laiton-crafts-01.png";
+import laitonCrafts2 from "@/assets/sea-project-laiton-crafts-02.jpg";
+import laitonCrafts3 from "@/assets/sea-project-laiton-crafts-03.jpg";
+import laitonCrafts4 from "@/assets/sea-project-laiton-crafts-04.jpg";
+import laitonCrafts5 from "@/assets/sea-project-laiton-crafts-05.jpg";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -125,14 +146,77 @@ export const SEA_PROJECTS: SeaProject[] = [
     title: "Kishore Jain KMS Infra",
     category: "architecture",
     description:
-      "Stepped residential terraces with continuous planted balconies that give every home a green edge.",
-    image: kishoreJain,
-    alt: "Kishore Jain KMS Infra stepped terraces with planted balconies",
+      "Stepped residential terraces with continuous planted balconies, biophilic facade curves, and wind-harnessed skybridges.",
+    image: kishoreJain1,
+    alt: "Kishore Jain KMS Infra full front facade elevation with planted terraces",
+    gallery: [
+      { image: kishoreJain1, alt: "Kishore Jain KMS Infra full front facade elevation with landscaped residence entrance — view 01" },
+      { image: kishoreJain2, alt: "Kishore Jain KMS Infra stepped balconies with cascading flora and bougainvillea — view 02" },
+      { image: kishoreJain3, alt: "Kishore Jain KMS Infra twin residential towers with connecting skybridges and wind turbines — view 03" },
+      { image: kishoreJain4, alt: "Kishore Jain KMS Infra corner upward perspective of biophilic undulating balconies — view 04" },
+    ],
+  },
+  {
+    slug: "naksthravnam",
+    title: "Naksthravnam",
+    category: "landscape",
+    description:
+      "An expansive ecological landscape sanctuary harmonizing sacred planetary groves, sculpted water bodies, walking paths, and immersive native flora.",
+    image: naksthravnam1,
+    alt: "Naksthravnam landscape sanctuary with expansive green lawns and pathways",
+    gallery: [
+      { image: naksthravnam1, alt: "Naksthravnam landscape master plan and central vista — view 01" },
+      { image: naksthravnam2, alt: "Naksthravnam lush garden promenade and water feature — view 02" },
+      { image: naksthravnam3, alt: "Naksthravnam shaded canopy walkways and stone plazas — view 03" },
+      { image: naksthravnam4, alt: "Naksthravnam central pavilion and reflection pool — view 04" },
+      { image: naksthravnam5, alt: "Naksthravnam aerial perspective of ceremonial gardens — view 05" },
+      { image: naksthravnam6, alt: "Naksthravnam contoured earth mounds and native planting — view 06" },
+      { image: naksthravnam7, alt: "Naksthravnam panoramic twilight view across the estate — view 07" },
+    ],
+  },
+  {
+    slug: "laiton-crafts",
+    title: "Laiton Crafts",
+    category: "landscape",
+    description:
+      "An artisan industrial landscape combining a signature arrival canopy, curated outdoor sculpture promenades, raised bamboo courtyards, and secluded timber pergola retreats.",
+    image: laitonCrafts1,
+    alt: "Laiton Crafts grand entrance gate and signature marquee canopy",
+    gallery: [
+      { image: laitonCrafts1, alt: "Laiton Crafts grand entrance gate with marquee canopy and floral guard pavilion — view 01" },
+      { image: laitonCrafts2, alt: "Laiton Crafts facility facade with raised bamboo planter beds and paved promenade — view 02" },
+      { image: laitonCrafts3, alt: "Laiton Crafts industrial frontage with golden sculptural art installations — view 03" },
+      { image: laitonCrafts4, alt: "Laiton Crafts driveway promenade with circular seating pods and blooming trees — view 04" },
+      { image: laitonCrafts5, alt: "Laiton Crafts courtyard garden with timber pergola and manicured hedges — view 05" },
+    ],
+  },
+  {
+    slug: "chandramouli",
+    title: "Chandramouli",
+    category: "interior",
+    description:
+      "A bespoke luxury residence featuring bookmatched Italian marble, custom timber slatted media joinery, layered architectural lighting, and an integrated dining lounge.",
+    image: chandramouli1,
+    alt: "Chandramouli master bedroom with bookmatched marble accent wall and custom lighting",
+    gallery: [
+      { image: chandramouli1, alt: "Chandramouli master bedroom with bookmatched marble wall — view 01" },
+      { image: chandramouli2, alt: "Chandramouli family living lounge with slatted wood media wall — view 02" },
+      { image: chandramouli3, alt: "Chandramouli dining lounge with sculptural chandelier and bar console — view 03" },
+      { image: chandramouli4, alt: "Chandramouli kitchen with fluted splashback and built-in appliances — view 04" },
+      { image: chandramouli5, alt: "Chandramouli private home cinema with stepped luxury recliner seating and acoustic lighting — view 05" },
+      { image: chandramouli6, alt: "Chandramouli kitchen island with bookmatched marble breakfast bar and integrated ovens — view 06" },
+    ],
   },
 ];
 
 export function getProject(slug: string) {
-  return SEA_PROJECTS.find((project) => project.slug === slug);
+  return SEA_PROJECTS.find(
+    (project) =>
+      project.slug === slug ||
+      (slug === "nakshatravanam" && project.slug === "naksthravnam") ||
+      (slug === "laitoncrafts" && project.slug === "laiton-crafts") ||
+      (slug === "lation-crafts" && project.slug === "laiton-crafts"),
+  );
 }
 
 export function getProjectsByCategory(category?: SeaProjectCategory) {
