@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { getProject } from "@/lib/projects";
+import manjunatha from "@/assets/sea-project-manjunatha-constructions.jpg";
 
 interface RoomProject {
   slug: string;
@@ -74,7 +75,7 @@ export default function RoomSlider3D() {
       slug: def.slug,
       title: def.title,
       description: def.description,
-      image: proj?.image ?? "",
+      image: proj?.image ?? manjunatha,
       ar: def.ar,
     };
   });

@@ -1,71 +1,150 @@
 import { describe, expect, it } from "vitest";
-import { getAdjacentProjects, getProject, getProjectGallery, getProjectsByCategory, SEA_PROJECTS } from "@/lib/projects";
+
+import regaPrimeOne from "@/assets/Rega-prime-one.png";
+import regaPrimeTwo from "@/assets/Rega-prime-two.png";
+import regaPrimeThree from "@/assets/Rega-prime-three.png";
+import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
+import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
+
+import {
+  getAdjacentProjects,
+  getProject,
+  getProjectGallery,
+  getProjectsByCategory,
+  SEA_PROJECTS,
+} from "@/lib/projects";
 
 describe("Project details", () => {
-  it("uses the supplied Gangadhar Estate location", () => { expect(getProject("gangadhar-estate")?.location).toBe("Vijayawada, Andhra Pradesh"); });
-  it("uses the supplied plot size", () => { expect(getProject("gangadhar-estate")?.plotSize).toBe("2,110 Sq. Yds."); });
-  it("uses the supplied completed status", () => { expect(getProject("gangadhar-estate")?.status).toBe("Completed"); });
-  it("uses the supplied parametric style", () => { expect(getProject("gangadhar-estate")?.architectureStyle).toBe("Parametric"); });
-  it("gives every project a unique slug and its own photograph", () => {
-    expect(new Set(SEA_PROJECTS.map(p => p.slug)).size).toBe(6);
-    expect(new Set(SEA_PROJECTS.map(p => p.image)).size).toBe(6);
-    for (const project of SEA_PROJECTS) expect(getProject(project.slug)).toBe(project);
+  it("uses the supplied Gangadhar Estate project details", () => {
+    expect(getProject("gangadhar-estate")).toMatchObject({
+      location: "Vijayawada, Andhra Pradesh",
+      plotSize: "2,110 Sq. Yds.",
+      status: "Completed",
+      architectureStyle: "Parametric",
+    });
   });
-  
-  it("has exactly three gallery slots without duplicating or substituting photographs", () => {
+
+  it("gives every project a unique slug and cover image", () => {
+    expect(new Set(SEA_PROJECTS.map((project) => project.slug)).size).toBe(
+      SEA_PROJECTS.length,
+    );
+    expect(new Set(SEA_PROJECTS.map((project) => project.image)).size).toBe(
+      SEA_PROJECTS.length,
+    );
+
     for (const project of SEA_PROJECTS) {
-      if (project.gallery) continue;
-      const gallery = getProjectGallery(project);
-      expect(gallery).toHaveLength(3);
-      expect(gallery.map(slot => slot.image)).toEqual([project.image, null, null]);
-      expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
+      expect(getProject(project.slug)).toBe(project);
     }
   });
-  it("shows the supplied sunset photograph in all three Gangadhar Estate gallery slots", () => {
+
+  it("uses the cover and two empty slots for projects without a custom gallery", () => {
+    for (const project of SEA_PROJECTS) {
+      if (project.gallery) continue;
+
+      const gallery = getProjectGallery(project);
+
+      expect(gallery.map((slot) => slot.image)).toEqual([
+        project.image,
+        null,
+        null,
+      ]);
+      expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
+    }
+  });
+
+  it("replaces Manjunatha Constructions with Rega Prime and shows its three images in order", () => {
+    expect(getProject("manjunatha-constructions")).toBeUndefined();
+
+    const project = getProject("rega-prime");
+    expect(project).toMatchObject({
+      title: "Rega Prime",
+      category: "architecture",
+      image: regaPrimeOne,
+    });
+
+    const gallery = getProjectGallery(project!);
+
+    expect(gallery.map((slot) => slot.image)).toEqual([
+      regaPrimeOne,
+      regaPrimeTwo,
+      regaPrimeThree,
+    ]);
+    expect(gallery.map((slot) => slot.id)).toEqual([
+      "rega-prime-01",
+      "rega-prime-02",
+      "rega-prime-03",
+    ]);
+  });
+
+  it("shows the Gangadhar Estate sunset view in slots one and three and the front view in slot two", () => {
     const project = getProject("gangadhar-estate");
-    const gallery = getProjectGallery(project!);
-    expect(gallery).toHaveLength(3);
-    expect(gallery[0]!.image).toBe(project!.gallery![0]!.image);
-    expect(gallery[1]!.image).toBe(project!.gallery![1]!.image);
-    expect(gallery[2]!.image).toBe(project!.gallery![2]!.image);
-    expect(gallery.every(slot => slot.image !== null)).toBe(true);
-    expect(gallery[0]!.image).toBe(gallery[2]!.image);
-    expect(gallery[1]!.image).not.toBe(gallery[0]!.image);
-    expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
-  });
-  it("shows all four supplied photographs in Krishna Sindhura Hospital gallery slots", () => {
-    const project = getProject("krishna-sindhura-hospital");
-    const gallery = getProjectGallery(project!);
-    expect(gallery).toHaveLength(4);
-    expect(gallery.every(slot => slot.image !== null)).toBe(true);
-    expect(new Set(gallery.map(slot => slot.image)).size).toBe(4);
-    expect(new Set(gallery.map(slot => slot.id)).size).toBe(4);
-  });
-  it("shows all three supplied photographs in Mantralayam gallery slots and removes ramko-heights", () => {
-    expect(getProject("ramko-heights")).toBeUndefined();
-    const project = getProject("mantralayam");
     expect(project).toBeDefined();
-    expect(project?.title).toBe("Mantralayam");
-    expect(project?.category).toBe("architecture");
+
     const gallery = getProjectGallery(project!);
+
+    expect(gallery.map((slot) => slot.image)).toEqual([
+      gangadharSunset,
+      gangadharFrontView,
+      gangadharSunset,
+    ]);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
+  });
+
+  it("shows four distinct Krishna Sindhura Hospital gallery images with the cover first", () => {
+    const project = getProject("krishna-sindhura-hospital");
+    expect(project).toBeDefined();
+
+    const gallery = getProjectGallery(project!);
+
+    expect(gallery).toHaveLength(4);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(4);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(4);
+  });
+
+  it("shows three distinct Mantralayam gallery images and removes Ramko Heights", () => {
+    expect(getProject("ramko-heights")).toBeUndefined();
+
+    const project = getProject("mantralayam");
+    expect(project).toMatchObject({
+      title: "Mantralayam",
+      category: "architecture",
+    });
+
+    const gallery = getProjectGallery(project!);
+
     expect(gallery).toHaveLength(3);
-    expect(gallery.every(slot => slot.image !== null)).toBe(true);
-    expect(new Set(gallery.map(slot => slot.image)).size).toBe(3);
-    expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(3);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
   });
-  it("returns adjacent project links and wraps at either end", () => {
-    expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe("kishore-jain-kms-infra");
-    expect(getAdjacentProjects("manjunatha-constructions").previous?.slug).toBe("kishore-jain-kms-infra");
-    expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe("manjunatha-constructions");
+
+  it("returns adjacent projects and wraps between Rega Prime and Kishore Jain KMS Infra", () => {
+    expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe(
+      "kishore-jain-kms-infra",
+    );
+    expect(getAdjacentProjects("rega-prime").previous?.slug).toBe(
+      "kishore-jain-kms-infra",
+    );
+    expect(getAdjacentProjects("rega-prime").next?.slug).toBe("sarika-estate");
+    expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe(
+      "rega-prime",
+    );
   });
-  it("does not resolve unknown projects", () => { expect(getProject("unknown")).toBeUndefined(); });
+
+  it("returns undefined for an unknown project", () => {
+    expect(getProject("unknown")).toBeUndefined();
+  });
+
   it("lists all six projects under architecture", () => {
     expect(getProjectsByCategory("architecture")).toHaveLength(6);
     expect(getProjectsByCategory()).toHaveLength(6);
   });
-  it("has no interior, landscape or bim projects until the client supplies them", () => {
-    expect(getProjectsByCategory("interior")).toHaveLength(0);
-    expect(getProjectsByCategory("landscape")).toHaveLength(0);
-    expect(getProjectsByCategory("bim")).toHaveLength(0);
+
+  it("returns empty lists for interior, landscape, and BIM", () => {
+    expect(getProjectsByCategory("interior")).toEqual([]);
+    expect(getProjectsByCategory("landscape")).toEqual([]);
+    expect(getProjectsByCategory("bim")).toEqual([]);
   });
 });

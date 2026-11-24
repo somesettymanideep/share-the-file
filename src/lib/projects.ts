@@ -1,21 +1,15 @@
-import manjunatha from "@/assets/sea-project-manjunatha-constructions.jpg";
 import sarika from "@/assets/sea-project-sarika-estate.jpg";
 import mantralayam1 from "@/assets/sea-project-mantralayam-01.webp";
 import mantralayam2 from "@/assets/sea-project-mantralayam-02.webp";
 import mantralayam3 from "@/assets/sea-project-mantralayam-03.webp";
-import krishnaSindhura from "@/assets/sea-project-krishna-sindhura-hospital.jpg";
-import krishnaSindhura1 from "@/assets/sea-project-krishna-sindhura-hospital-01.jpg";
-import krishnaSindhura2 from "@/assets/sea-project-krishna-sindhura-hospital-02.jpg";
-import krishnaSindhura3 from "@/assets/sea-project-krishna-sindhura-hospital-03.jpg";
-import krishnaSindhura4 from "@/assets/sea-project-krishna-sindhura-hospital-04.webp";
+import sindhuraHospitalFront from "@/assets/Sindhura-hospital-one.png";
+import sindhuraHospitalDome from "@/assets/Sindhura-hospital-two.png";
+import sindhuraHospitalAerial from "@/assets/sindhura-hospital-four.png";
+import sindhuraHospitalAtrium from "@/assets/sindhura-hospital-three.png";
 import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg";
 import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
 import kishoreJain from "@/assets/sea-project-kishore-jain-kms-infra.jpg";
-import sindhuraFront from "@/assets/sea-project-sindhura-hospital-front.webp";
-import sindhuraAtrium from "@/assets/sea-project-sindhura-hospital-atrium.webp";
-import sindhuraDome from "@/assets/sea-project-sindhura-hospital-dome.webp";
-import sindhuraDomeAerial from "@/assets/sea-project-sindhura-hospital-dome-aerial.webp";
 import regaPrimeOne from "@/assets/Rega-prime-one.png";
 import regaPrimeTwo from "@/assets/Rega-prime-two.png";
 import regaPrimeThree from "@/assets/Rega-prime-three.png";
@@ -81,21 +75,33 @@ export const SEA_PROJECTS: SeaProject[] = [
       { image: mantralayam3, alt: "Mantralayam corner perspective with streetscape — night view 03" },
     ],
   },
-  {
-    slug: "krishna-sindhura-hospital",
-    title: "Krishna Sindhura Hospital",
-    category: "architecture",
-    description:
-      "A multi-block healthcare campus joined by a glazed atrium and a sky-garden podium, planned around a clear, calm arrival.",
-    image: krishnaSindhura1,
-    alt: "Krishna Sindhura Hospital campus front elevation with glazed atrium",
-    gallery: [
-      { image: krishnaSindhura1, alt: "Krishna Sindhura Hospital front elevation — view 01" },
-      { image: krishnaSindhura2, alt: "Krishna Sindhura Hospital stained-glass pavilion dome exterior — view 02" },
-      { image: krishnaSindhura3, alt: "Krishna Sindhura Hospital stained-glass dome aerial view — view 03" },
-      { image: krishnaSindhura4, alt: "Krishna Sindhura Hospital glazed atrium interior — view 04" },
-    ],
-  },
+ {
+  slug: "krishna-sindhura-hospital",
+  title: "Krishna Sindhura Hospital",
+  category: "architecture",
+  description:
+    "A multi-block hospital campus with a landscaped podium and a stained-glass dome above the central atrium.",
+  image: sindhuraHospitalFront,
+  alt: "Krishna Sindhura Hospital front elevation with two towers and a landscaped podium",
+  gallery: [
+    {
+      image: sindhuraHospitalFront,
+      alt: "Krishna Sindhura Hospital front elevation with two towers and a landscaped podium",
+    },
+    {
+      image: sindhuraHospitalDome,
+      alt: "Exterior view of the stained-glass dome beneath a curved white canopy",
+    },
+    {
+      image: sindhuraHospitalAerial,
+      alt: "Top-down view of the stained-glass dome and surrounding terrace planters",
+    },
+    {
+      image: sindhuraHospitalAtrium,
+      alt: "View looking up at the stained-glass ceiling between glass-railed balconies",
+    },
+  ],
+},
   {
     slug: "gangadhar-estate",
     title: "Gangadhar Estate",
