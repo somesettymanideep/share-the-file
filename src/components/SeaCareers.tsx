@@ -14,7 +14,10 @@ import {
   Lightbulb,
   ExternalLink,
   ChevronRight,
-  Filter
+  Filter,
+  Check,
+  ArrowLeft,
+  ArrowRight
 } from "lucide-react";
 import SeaProjectShell from "@/components/SeaProjectShell";
 import { Button } from "@/components/ui/button";
@@ -34,6 +37,7 @@ export default function SeaCareers() {
   const [selectedDept, setSelectedDept] = useState<CareerDepartment>("All");
   const [activeModalRole, setActiveModalRole] = useState<CareerRole | null>(null);
   const [selectedRoleForForm, setSelectedRoleForForm] = useState<string>(CAREER_ROLES[0]?.id ?? "");
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [draftUrl, setDraftUrl] = useState<string | null>(null);
 
@@ -70,11 +74,80 @@ export default function SeaCareers() {
   const handleApplyFromModal = (role: CareerRole) => {
     setSelectedRoleForForm(role.id);
     setActiveModalRole(null);
+    setCurrentStep(2);
     setTimeout(() => {
       formSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       const roleSelect = document.getElementById("careers-role-select");
       roleSelect?.focus();
     }, 150);
+  };
+
+  const handleGoToStep2 = () => {
+    const fullNameInput = document.getElementById("career-field-fullName") as HTMLInputElement | null;
+    const emailInput = document.getElementById("career-field-email") as HTMLInputElement | null;
+    const phoneInput = document.getElementById("career-field-phone") as HTMLInputElement | null;
+    const locationInput = document.getElementById("career-field-currentLocation") as HTMLInputElement | null;
+
+    const errors: Record<string, string> = {};
+    if (!fullNameInput?.value.trim() || fullNameInput.value.trim().length < 2) {
+      errors.fullName = "Enter your full name.";
+    }
+    if (!emailInput?.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      errors.email = "Enter a valid email address.";
+    }
+    if (!phoneInput?.value.trim() || phoneInput.value.trim().length < 8) {
+      errors.phone = "Enter a valid contact number.";
+    }
+    if (!locationInput?.value.trim() || locationInput.value.trim().length < 2) {
+      errors.currentLocation = "Enter your current location.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors((prev) => ({ ...prev, ...errors }));
+      const firstField = Object.keys(errors)[0];
+      if (firstField) document.getElementById(`career-field-${firstField}`)?.focus();
+      return;
+    }
+
+    setFormErrors((prev) => {
+      const next = { ...prev };
+      delete next.fullName;
+      delete next.email;
+      delete next.phone;
+      delete next.currentLocation;
+      return next;
+    });
+    setCurrentStep(2);
+  };
+
+  const handleGoToStep3 = () => {
+    const portfolioInput = document.getElementById("career-field-portfolioUrl") as HTMLInputElement | null;
+    const resumeInput = document.getElementById("career-field-resumeUrl") as HTMLInputElement | null;
+
+    const errors: Record<string, string> = {};
+    if (!portfolioInput?.value.trim() || !/^https?:\/\//i.test(portfolioInput.value.trim())) {
+      errors.portfolioUrl = "Provide a valid URL (http:// or https://) for your portfolio.";
+    }
+    if (!resumeInput?.value.trim() || !/^https?:\/\//i.test(resumeInput.value.trim())) {
+      errors.resumeUrl = "Provide a valid URL (http:// or https://) for your resume/LinkedIn.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors((prev) => ({ ...prev, ...errors }));
+      const firstField = Object.keys(errors)[0];
+      if (firstField) document.getElementById(`career-field-${firstField}`)?.focus();
+      return;
+    }
+
+    setFormErrors((prev) => {
+      const next = { ...prev };
+      delete next.portfolioUrl;
+      delete next.resumeUrl;
+      delete next.roleId;
+      delete next.experience;
+      return next;
+    });
+    setCurrentStep(3);
   };
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -103,9 +176,21 @@ export default function SeaCareers() {
         }
       }
       setFormErrors(errors);
+
+      // Navigate to the step containing the first error
+      if (errors["fullName"] || errors["email"] || errors["phone"] || errors["currentLocation"]) {
+        setCurrentStep(1);
+      } else if (errors["roleId"] || errors["experience"] || errors["portfolioUrl"] || errors["resumeUrl"]) {
+        setCurrentStep(2);
+      } else if (errors["roleThought"] || errors["philosophyNote"]) {
+        setCurrentStep(3);
+      }
+
       const firstErrorField = Object.keys(errors)[0];
       if (firstErrorField) {
-        document.getElementById(`career-field-${firstErrorField}`)?.focus();
+        setTimeout(() => {
+          document.getElementById(`career-field-${firstErrorField}`)?.focus();
+        }, 50);
       }
       return;
     }
@@ -358,280 +443,396 @@ export default function SeaCareers() {
               <h2 id="thinking-heading" className="careers-section-title">
                 Show us How You think
               </h2>
-              <p className="careers-section-subtitle">
-                At SEA, we care deeply about your thought process — how you analyze physical and
-                environmental context, navigate site realities, and translate conceptual vigor into
-                structural form. Select your target role to unlock its specialized design inquiry.
-              </p>
             </header>
 
             <div className="careers-form-layout">
               {/* Form Card */}
               <div className="careers-form-card">
                 <form className="careers-form" onSubmit={handleFormSubmit} noValidate>
-                  {/* General Candidate Information */}
-                  <fieldset className="careers-fieldset">
-                    <legend className="careers-legend">1. Personal &amp; Contact Details</legend>
-                    <div className="careers-field-grid">
-                      {/* Full Name */}
-                      <div className="careers-field">
-                        <label htmlFor="career-field-fullName">
-                          Full Name <span className="careers-required">*</span>
-                        </label>
-                        <Input
-                          id="career-field-fullName"
-                          name="fullName"
-                          type="text"
-                          placeholder="e.g. Ar. Ananya Sharma"
-                          autoComplete="name"
-                          required
-                          aria-invalid={Boolean(formErrors["fullName"])}
-                          aria-describedby={formErrors["fullName"] ? "error-fullName" : undefined}
-                        />
-                        {formErrors["fullName"] && (
-                          <p id="error-fullName" className="careers-field-error">
-                            {formErrors["fullName"]}
-                          </p>
-                        )}
+                  {/* 3-Step Stepper Progress Bar */}
+                  <div className="careers-stepper" role="tablist" aria-label="Application form steps">
+                    <button
+                      type="button"
+                      role="tab"
+                      id="careers-step-tab-1"
+                      aria-selected={currentStep === 1}
+                      aria-controls="careers-step-1"
+                      className={`careers-stepper-item ${currentStep === 1 ? "is-active" : ""} ${currentStep > 1 ? "is-complete" : ""}`}
+                      onClick={() => setCurrentStep(1)}
+                    >
+                      <div className="careers-stepper-badge">
+                        {currentStep > 1 ? <Check size={14} aria-hidden="true" /> : "01"}
                       </div>
+                      <div className="careers-stepper-info">
+                        <span className="careers-stepper-step">Step 1</span>
+                        <span className="careers-stepper-title">Personal Details</span>
+                      </div>
+                    </button>
 
-                      {/* Email */}
-                      <div className="careers-field">
-                        <label htmlFor="career-field-email">
-                          Email Address <span className="careers-required">*</span>
-                        </label>
-                        <Input
-                          id="career-field-email"
-                          name="email"
-                          type="email"
-                          placeholder="ananya@example.com"
-                          autoComplete="email"
-                          required
-                          aria-invalid={Boolean(formErrors["email"])}
-                          aria-describedby={formErrors["email"] ? "error-email" : undefined}
-                        />
-                        {formErrors["email"] && (
-                          <p id="error-email" className="careers-field-error">
-                            {formErrors["email"]}
-                          </p>
-                        )}
-                      </div>
+                    <div className={`careers-stepper-divider ${currentStep > 1 ? "is-complete" : ""}`} aria-hidden="true" />
 
-                      {/* Phone */}
-                      <div className="careers-field">
-                        <label htmlFor="career-field-phone">
-                          Phone Number <span className="careers-required">*</span>
-                        </label>
-                        <Input
-                          id="career-field-phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+91 98765 43210"
-                          autoComplete="tel"
-                          required
-                          aria-invalid={Boolean(formErrors["phone"])}
-                          aria-describedby={formErrors["phone"] ? "error-phone" : undefined}
-                        />
-                        {formErrors["phone"] && (
-                          <p id="error-phone" className="careers-field-error">
-                            {formErrors["phone"]}
-                          </p>
-                        )}
+                    <button
+                      type="button"
+                      role="tab"
+                      id="careers-step-tab-2"
+                      aria-selected={currentStep === 2}
+                      aria-controls="careers-step-2"
+                      className={`careers-stepper-item ${currentStep === 2 ? "is-active" : ""} ${currentStep > 2 ? "is-complete" : ""}`}
+                      onClick={() => setCurrentStep(2)}
+                    >
+                      <div className="careers-stepper-badge">
+                        {currentStep > 2 ? <Check size={14} aria-hidden="true" /> : "02"}
                       </div>
+                      <div className="careers-stepper-info">
+                        <span className="careers-stepper-step">Step 2</span>
+                        <span className="careers-stepper-title">Position &amp; Experience</span>
+                      </div>
+                    </button>
 
-                      {/* Current Location */}
-                      <div className="careers-field">
-                        <label htmlFor="career-field-currentLocation">
-                          Current Location / City <span className="careers-required">*</span>
-                        </label>
-                        <Input
-                          id="career-field-currentLocation"
-                          name="currentLocation"
-                          type="text"
-                          placeholder="e.g. Hyderabad / Bangalore / Vijayawada"
-                          required
-                          aria-invalid={Boolean(formErrors["currentLocation"])}
-                          aria-describedby={formErrors["currentLocation"] ? "error-currentLocation" : undefined}
-                        />
-                        {formErrors["currentLocation"] && (
-                          <p id="error-currentLocation" className="careers-field-error">
-                            {formErrors["currentLocation"]}
-                          </p>
-                        )}
+                    <div className={`careers-stepper-divider ${currentStep > 2 ? "is-complete" : ""}`} aria-hidden="true" />
+
+                    <button
+                      type="button"
+                      role="tab"
+                      id="careers-step-tab-3"
+                      aria-selected={currentStep === 3}
+                      aria-controls="careers-step-3"
+                      className={`careers-stepper-item ${currentStep === 3 ? "is-active" : ""}`}
+                      onClick={() => setCurrentStep(3)}
+                    >
+                      <div className="careers-stepper-badge">03</div>
+                      <div className="careers-stepper-info">
+                        <span className="careers-stepper-step">Step 3</span>
+                        <span className="careers-stepper-title">Design Inquiry</span>
                       </div>
+                    </button>
+                  </div>
+
+                  {/* ================= STEP 1: Personal Details ================= */}
+                  <div
+                    id="careers-step-1"
+                    role="tabpanel"
+                    aria-labelledby="careers-step-tab-1"
+                    className={`careers-form-step ${currentStep === 1 ? "is-active" : ""}`}
+                  >
+                    <fieldset className="careers-fieldset">
+                      <legend className="careers-legend">1. Personal &amp; Contact Details</legend>
+                      <div className="careers-field-grid">
+                        {/* Full Name */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-fullName">
+                            Full Name <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-fullName"
+                            name="fullName"
+                            type="text"
+                            placeholder="e.g. Ar. Ananya Sharma"
+                            autoComplete="name"
+                            required
+                            aria-invalid={Boolean(formErrors["fullName"])}
+                            aria-describedby={formErrors["fullName"] ? "error-fullName" : undefined}
+                          />
+                          {formErrors["fullName"] && (
+                            <p id="error-fullName" className="careers-field-error">
+                              {formErrors["fullName"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Email */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-email">
+                            Email Address <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-email"
+                            name="email"
+                            type="email"
+                            placeholder="ananya@example.com"
+                            autoComplete="email"
+                            required
+                            aria-invalid={Boolean(formErrors["email"])}
+                            aria-describedby={formErrors["email"] ? "error-email" : undefined}
+                          />
+                          {formErrors["email"] && (
+                            <p id="error-email" className="careers-field-error">
+                              {formErrors["email"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Phone */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-phone">
+                            Phone Number <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-phone"
+                            name="phone"
+                            type="tel"
+                            placeholder="+91 98765 43210"
+                            autoComplete="tel"
+                            required
+                            aria-invalid={Boolean(formErrors["phone"])}
+                            aria-describedby={formErrors["phone"] ? "error-phone" : undefined}
+                          />
+                          {formErrors["phone"] && (
+                            <p id="error-phone" className="careers-field-error">
+                              {formErrors["phone"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Current Location */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-currentLocation">
+                            Current Location / City <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-currentLocation"
+                            name="currentLocation"
+                            type="text"
+                            placeholder="e.g. Hyderabad / Bangalore / Vijayawada"
+                            required
+                            aria-invalid={Boolean(formErrors["currentLocation"])}
+                            aria-describedby={formErrors["currentLocation"] ? "error-currentLocation" : undefined}
+                          />
+                          {formErrors["currentLocation"] && (
+                            <p id="error-currentLocation" className="careers-field-error">
+                              {formErrors["currentLocation"]}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    <div className="careers-step-actions careers-step-actions--end">
+                      <Button
+                        type="button"
+                        className="careers-step-next-btn"
+                        onClick={handleGoToStep2}
+                      >
+                        <span>Next: Position &amp; Experience</span>
+                        <ArrowRight size={18} />
+                      </Button>
                     </div>
-                  </fieldset>
+                  </div>
 
-                  {/* Role & Experience Selection */}
-                  <fieldset className="careers-fieldset">
-                    <legend className="careers-legend">2. Position &amp; Experience Level</legend>
-                    <div className="careers-field-grid">
-                      {/* Role Selector */}
-                      <div className="careers-field">
-                        <label htmlFor="careers-role-select">
-                          Applying for Role <span className="careers-required">*</span>
-                        </label>
-                        <select
-                          id="careers-role-select"
-                          name="roleId"
-                          value={selectedRoleForForm}
-                          onChange={(e) => setSelectedRoleForForm(e.target.value)}
-                          className="careers-select"
-                          required
-                          aria-invalid={Boolean(formErrors["roleId"])}
-                          aria-describedby={formErrors["roleId"] ? "error-roleId" : undefined}
-                        >
-                          {CAREER_ROLES.map((role) => (
-                            <option key={role.id} value={role.id}>
-                              {role.title} ({role.departmentLabel})
-                            </option>
-                          ))}
-                        </select>
-                        {formErrors["roleId"] && (
-                          <p id="error-roleId" className="careers-field-error">
-                            {formErrors["roleId"]}
+                  {/* ================= STEP 2: Position & Experience ================= */}
+                  <div
+                    id="careers-step-2"
+                    role="tabpanel"
+                    aria-labelledby="careers-step-tab-2"
+                    className={`careers-form-step ${currentStep === 2 ? "is-active" : ""}`}
+                  >
+                    <fieldset className="careers-fieldset">
+                      <legend className="careers-legend">2. Position &amp; Experience Level</legend>
+                      <div className="careers-field-grid">
+                        {/* Role Selector */}
+                        <div className="careers-field">
+                          <label htmlFor="careers-role-select">
+                            Applying for Role <span className="careers-required">*</span>
+                          </label>
+                          <select
+                            id="careers-role-select"
+                            name="roleId"
+                            value={selectedRoleForForm}
+                            onChange={(e) => setSelectedRoleForForm(e.target.value)}
+                            className="careers-select"
+                            required
+                            aria-invalid={Boolean(formErrors["roleId"])}
+                            aria-describedby={formErrors["roleId"] ? "error-roleId" : undefined}
+                          >
+                            {CAREER_ROLES.map((role) => (
+                              <option key={role.id} value={role.id}>
+                                {role.title} ({role.departmentLabel})
+                              </option>
+                            ))}
+                          </select>
+                          {formErrors["roleId"] && (
+                            <p id="error-roleId" className="careers-field-error">
+                              {formErrors["roleId"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Experience Level */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-experience">
+                            Experience Level <span className="careers-required">*</span>
+                          </label>
+                          <select
+                            id="career-field-experience"
+                            name="experience"
+                            defaultValue={EXPERIENCE_LEVELS[2]}
+                            className="careers-select"
+                            required
+                            aria-invalid={Boolean(formErrors["experience"])}
+                            aria-describedby={formErrors["experience"] ? "error-experience" : undefined}
+                          >
+                            {EXPERIENCE_LEVELS.map((exp) => (
+                              <option key={exp} value={exp}>
+                                {exp}
+                              </option>
+                            ))}
+                          </select>
+                          {formErrors["experience"] && (
+                            <p id="error-experience" className="careers-field-error">
+                              {formErrors["experience"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Portfolio URL */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-portfolioUrl">
+                            Portfolio URL (Drive, Behance, Website) <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-portfolioUrl"
+                            name="portfolioUrl"
+                            type="url"
+                            placeholder="https://drive.google.com/... or https://behance.net/..."
+                            required
+                            aria-invalid={Boolean(formErrors["portfolioUrl"])}
+                            aria-describedby={formErrors["portfolioUrl"] ? "error-portfolioUrl" : undefined}
+                          />
+                          {formErrors["portfolioUrl"] && (
+                            <p id="error-portfolioUrl" className="careers-field-error">
+                              {formErrors["portfolioUrl"]}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Resume URL */}
+                        <div className="careers-field">
+                          <label htmlFor="career-field-resumeUrl">
+                            Resume / LinkedIn Profile URL <span className="careers-required">*</span>
+                          </label>
+                          <Input
+                            id="career-field-resumeUrl"
+                            name="resumeUrl"
+                            type="url"
+                            placeholder="https://linkedin.com/in/... or drive link"
+                            required
+                            aria-invalid={Boolean(formErrors["resumeUrl"])}
+                            aria-describedby={formErrors["resumeUrl"] ? "error-resumeUrl" : undefined}
+                          />
+                          {formErrors["resumeUrl"] && (
+                            <p id="error-resumeUrl" className="careers-field-error">
+                              {formErrors["resumeUrl"]}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    <div className="careers-step-actions">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="careers-step-prev-btn"
+                        onClick={() => setCurrentStep(1)}
+                      >
+                        <ArrowLeft size={18} />
+                        <span>Back: Personal Details</span>
+                      </Button>
+                      <Button
+                        type="button"
+                        className="careers-step-next-btn"
+                        onClick={handleGoToStep3}
+                      >
+                        <span>Next: Design Inquiry</span>
+                        <ArrowRight size={18} />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* ================= STEP 3: Design Inquiry & Philosophy ================= */}
+                  <div
+                    id="careers-step-3"
+                    role="tabpanel"
+                    aria-labelledby="careers-step-tab-3"
+                    className={`careers-form-step ${currentStep === 3 ? "is-active" : ""}`}
+                  >
+                    {/* DYNAMIC ROLE-BASED QUESTION */}
+                    <fieldset className="careers-fieldset careers-fieldset--highlight">
+                      <div className="careers-highlight-head">
+                        <Sparkles size={18} className="careers-sparkle-icon" aria-hidden="true" />
+                        <div>
+                          <span className="careers-highlight-badge">Specialized Inquiry</span>
+                          <h3 className="careers-highlight-title">
+                            {activeFormRole.thinkingPrompt.title}
+                          </h3>
+                          <p className="careers-highlight-desc">
+                            {activeFormRole.thinkingPrompt.description}
                           </p>
-                        )}
+                        </div>
                       </div>
 
-                      {/* Experience Level */}
                       <div className="careers-field">
-                        <label htmlFor="career-field-experience">
-                          Experience Level <span className="careers-required">*</span>
+                        <label htmlFor="career-field-roleThought">
+                          Your Thought Process &amp; Approach <span className="careers-required">*</span>
                         </label>
-                        <select
-                          id="career-field-experience"
-                          name="experience"
-                          defaultValue={EXPERIENCE_LEVELS[2]}
-                          className="careers-select"
+                        <Textarea
+                          id="career-field-roleThought"
+                          name="roleThought"
+                          rows={5}
+                          placeholder={activeFormRole.thinkingPrompt.placeholder}
                           required
-                          aria-invalid={Boolean(formErrors["experience"])}
-                          aria-describedby={formErrors["experience"] ? "error-experience" : undefined}
-                        >
-                          {EXPERIENCE_LEVELS.map((exp) => (
-                            <option key={exp} value={exp}>
-                              {exp}
-                            </option>
-                          ))}
-                        </select>
-                        {formErrors["experience"] && (
-                          <p id="error-experience" className="careers-field-error">
-                            {formErrors["experience"]}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Portfolio URL */}
-                      <div className="careers-field">
-                        <label htmlFor="career-field-portfolioUrl">
-                          Portfolio URL (Drive, Behance, Website) <span className="careers-required">*</span>
-                        </label>
-                        <Input
-                          id="career-field-portfolioUrl"
-                          name="portfolioUrl"
-                          type="url"
-                          placeholder="https://drive.google.com/... or https://behance.net/..."
-                          required
-                          aria-invalid={Boolean(formErrors["portfolioUrl"])}
-                          aria-describedby={formErrors["portfolioUrl"] ? "error-portfolioUrl" : undefined}
+                          aria-invalid={Boolean(formErrors["roleThought"])}
+                          aria-describedby={formErrors["roleThought"] ? "error-roleThought" : undefined}
                         />
-                        {formErrors["portfolioUrl"] && (
-                          <p id="error-portfolioUrl" className="careers-field-error">
-                            {formErrors["portfolioUrl"]}
+                        {formErrors["roleThought"] && (
+                          <p id="error-roleThought" className="careers-field-error">
+                            {formErrors["roleThought"]}
                           </p>
                         )}
                       </div>
+                    </fieldset>
 
-                      {/* Resume URL */}
+                    {/* General Philosophy / Cover Statement */}
+                    <fieldset className="careers-fieldset">
+                      <legend className="careers-legend">3. Studio Philosophy &amp; Motivation</legend>
                       <div className="careers-field">
-                        <label htmlFor="career-field-resumeUrl">
-                          Resume / LinkedIn Profile URL <span className="careers-required">*</span>
+                        <label htmlFor="career-field-philosophyNote">
+                          What philosophy or spatial ambition drives your work? Why Studio for Eclectic Architecture? <span className="careers-required">*</span>
                         </label>
-                        <Input
-                          id="career-field-resumeUrl"
-                          name="resumeUrl"
-                          type="url"
-                          placeholder="https://linkedin.com/in/... or drive link"
+                        <Textarea
+                          id="career-field-philosophyNote"
+                          name="philosophyNote"
+                          rows={4}
+                          placeholder="Tell us what draws you to our work, what kind of architecture you aspire to create, and what you hope to contribute to the studio..."
                           required
-                          aria-invalid={Boolean(formErrors["resumeUrl"])}
-                          aria-describedby={formErrors["resumeUrl"] ? "error-resumeUrl" : undefined}
+                          aria-invalid={Boolean(formErrors["philosophyNote"])}
+                          aria-describedby={formErrors["philosophyNote"] ? "error-philosophyNote" : undefined}
                         />
-                        {formErrors["resumeUrl"] && (
-                          <p id="error-resumeUrl" className="careers-field-error">
-                            {formErrors["resumeUrl"]}
+                        {formErrors["philosophyNote"] && (
+                          <p id="error-philosophyNote" className="careers-field-error">
+                            {formErrors["philosophyNote"]}
                           </p>
                         )}
                       </div>
-                    </div>
-                  </fieldset>
+                    </fieldset>
 
-                  {/* DYNAMIC ROLE-BASED QUESTION */}
-                  <fieldset className="careers-fieldset careers-fieldset--highlight">
-                    <div className="careers-highlight-head">
-                      <Sparkles size={18} className="careers-sparkle-icon" aria-hidden="true" />
-                      <div>
-                        <span className="careers-highlight-badge">Specialized Inquiry</span>
-                        <h3 className="careers-highlight-title">
-                          {activeFormRole.thinkingPrompt.title}
-                        </h3>
-                        <p className="careers-highlight-desc">
-                          {activeFormRole.thinkingPrompt.description}
-                        </p>
-                      </div>
+                    {/* Step 3 Submit Actions */}
+                    <div className="careers-step-actions">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="careers-step-prev-btn"
+                        onClick={() => setCurrentStep(2)}
+                      >
+                        <ArrowLeft size={18} />
+                        <span>Back: Position</span>
+                      </Button>
+                      <Button type="submit" className="careers-submit-btn">
+                        <Send size={18} />
+                        <span>Prepare Application Draft</span>
+                        <ArrowUpRight size={18} />
+                      </Button>
                     </div>
-
-                    <div className="careers-field">
-                      <label htmlFor="career-field-roleThought">
-                        Your Thought Process &amp; Approach <span className="careers-required">*</span>
-                      </label>
-                      <Textarea
-                        id="career-field-roleThought"
-                        name="roleThought"
-                        rows={5}
-                        placeholder={activeFormRole.thinkingPrompt.placeholder}
-                        required
-                        aria-invalid={Boolean(formErrors["roleThought"])}
-                        aria-describedby={formErrors["roleThought"] ? "error-roleThought" : undefined}
-                      />
-                      {formErrors["roleThought"] && (
-                        <p id="error-roleThought" className="careers-field-error">
-                          {formErrors["roleThought"]}
-                        </p>
-                      )}
-                    </div>
-                  </fieldset>
-
-                  {/* General Philosophy / Cover Statement */}
-                  <fieldset className="careers-fieldset">
-                    <legend className="careers-legend">3. Studio Philosophy &amp; Motivation</legend>
-                    <div className="careers-field">
-                      <label htmlFor="career-field-philosophyNote">
-                        What philosophy or spatial ambition drives your work? Why Studio for Eclectic Architecture? <span className="careers-required">*</span>
-                      </label>
-                      <Textarea
-                        id="career-field-philosophyNote"
-                        name="philosophyNote"
-                        rows={4}
-                        placeholder="Tell us what draws you to our work, what kind of architecture you aspire to create, and what you hope to contribute to the studio..."
-                        required
-                        aria-invalid={Boolean(formErrors["philosophyNote"])}
-                        aria-describedby={formErrors["philosophyNote"] ? "error-philosophyNote" : undefined}
-                      />
-                      {formErrors["philosophyNote"] && (
-                        <p id="error-philosophyNote" className="careers-field-error">
-                          {formErrors["philosophyNote"]}
-                        </p>
-                      )}
-                    </div>
-                  </fieldset>
-
-                  {/* Submit Action */}
-                  <div className="careers-submit-wrap">
-                    <Button type="submit" className="careers-submit-btn">
-                      <Send size={18} />
-                      <span>Prepare Application Draft</span>
-                      <ArrowUpRight size={18} />
-                    </Button>
                     <p className="careers-submit-note">
                       Opens your mail client with your complete structured application ready to send directly to <strong>naresh@s4eaindia.com</strong>.
                     </p>

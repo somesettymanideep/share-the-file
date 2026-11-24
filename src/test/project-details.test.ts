@@ -32,6 +32,26 @@ describe("Project details", () => {
     expect(gallery[1]!.image).not.toBe(gallery[0]!.image);
     expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
   });
+  it("shows all four supplied photographs in Krishna Sindhura Hospital gallery slots", () => {
+    const project = getProject("krishna-sindhura-hospital");
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(4);
+    expect(gallery.every(slot => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map(slot => slot.image)).size).toBe(4);
+    expect(new Set(gallery.map(slot => slot.id)).size).toBe(4);
+  });
+  it("shows all three supplied photographs in Mantralayam gallery slots and removes ramko-heights", () => {
+    expect(getProject("ramko-heights")).toBeUndefined();
+    const project = getProject("mantralayam");
+    expect(project).toBeDefined();
+    expect(project?.title).toBe("Mantralayam");
+    expect(project?.category).toBe("architecture");
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(3);
+    expect(gallery.every(slot => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map(slot => slot.image)).size).toBe(3);
+    expect(new Set(gallery.map(slot => slot.id)).size).toBe(3);
+  });
   it("returns adjacent project links and wraps at either end", () => {
     expect(getAdjacentProjects("gangadhar-estate").next?.slug).toBe("kishore-jain-kms-infra");
     expect(getAdjacentProjects("manjunatha-constructions").previous?.slug).toBe("kishore-jain-kms-infra");

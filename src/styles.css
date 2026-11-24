@@ -2907,7 +2907,184 @@ html.sea-pre-lock body {
 .careers-form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
+}
+
+/* 3-Step Form Stepper */
+.careers-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 18px;
+  background-color: #f4f8f9;
+  border: 1px solid rgba(0, 107, 128, 0.15);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.careers-stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.careers-stepper-item:hover {
+  background-color: rgba(0, 107, 128, 0.08);
+}
+
+.careers-stepper-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background-color: #e0ecee;
+  color: #4b6a76;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.careers-stepper-item.is-active .careers-stepper-badge {
+  background-color: #006b80;
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 107, 128, 0.2);
+}
+
+.careers-stepper-item.is-complete .careers-stepper-badge {
+  background-color: #0f766e;
+  color: #ffffff;
+}
+
+.careers-stepper-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.careers-stepper-step {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #728c96;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.careers-stepper-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1b323a;
+  line-height: 1.2;
+}
+
+.careers-stepper-item.is-active .careers-stepper-title {
+  color: #006b80;
+  font-weight: 700;
+}
+
+.careers-stepper-divider {
+  flex: 1;
+  height: 2px;
+  background-color: #dbe7ea;
+  transition: background-color 0.25s ease;
+}
+
+.careers-stepper-divider.is-complete {
+  background-color: #0f766e;
+}
+
+/* Step panel show/hide */
+.careers-form-step {
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.careers-form-step.is-active {
+  display: flex;
+  animation: fadeIn 0.25s ease;
+}
+
+/* Step Navigation Actions */
+.careers-step-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 107, 128, 0.12);
+}
+
+.careers-step-actions--end {
+  justify-content: flex-end;
+}
+
+.careers-step-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #006b80;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid #148ea6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.careers-step-next-btn:hover {
+  background-color: #005666;
+  transform: translateX(2px);
+}
+
+.careers-step-prev-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: "Oswald", "Archivo", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #274753;
+  border-color: rgba(0, 107, 128, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.careers-step-prev-btn:hover {
+  background-color: #f0f6f8;
+  color: #006b80;
+}
+
+@media (max-width: 680px) {
+  .careers-stepper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .careers-stepper-divider {
+    display: none;
+  }
 }
 
 .careers-fieldset {

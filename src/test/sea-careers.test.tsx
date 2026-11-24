@@ -166,6 +166,62 @@ describe("SeaCareers Page", () => {
     }
   });
 
+  it("removes the content subtitle paragraph under 'Show us How You think'", () => {
+    const { container } = render(<SeaCareers />);
+
+    const formHeading = screen.getByRole("heading", { level: 2, name: /Show us How You think/i });
+    expect(formHeading).toBeInTheDocument();
+
+    const thinkingHeader = container.querySelector(".careers-thinking-section .careers-section-header");
+    expect(thinkingHeader).toBeInTheDocument();
+
+    // Verify the subtitle paragraph is not rendered under Show us How You think
+    const subtitle = thinkingHeader?.querySelector(".careers-section-subtitle");
+    expect(subtitle).toBeNull();
+    expect(screen.queryByText(/At SEA, we care deeply about your thought process/i)).toBeNull();
+  });
+
+  it("displays the application form as a three-step form with step navigation and stepper controls", () => {
+    const { container } = render(<SeaCareers />);
+
+    // Stepper with 3 steps
+    const stepper = container.querySelector(".careers-stepper");
+    expect(stepper).toBeInTheDocument();
+
+    const stepTabs = screen.getAllByRole("tab");
+    expect(stepTabs.length).toBeGreaterThanOrEqual(3);
+
+    expect(screen.getByText("Personal Details")).toBeInTheDocument();
+    expect(screen.getByText("Position & Experience")).toBeInTheDocument();
+    expect(screen.getByText("Design Inquiry")).toBeInTheDocument();
+
+    // Step 1 active initially
+    const step1 = container.querySelector("#careers-step-1");
+    const step2 = container.querySelector("#careers-step-2");
+    const step3 = container.querySelector("#careers-step-3");
+
+    expect(step1?.classList.contains("is-active")).toBe(true);
+
+    // Advance to Step 2 using Stepper tab
+    const step2Tab = container.querySelector("#careers-step-tab-2");
+    expect(step2Tab).toBeInTheDocument();
+    fireEvent.click(step2Tab!);
+
+    expect(step2?.classList.contains("is-active")).toBe(true);
+
+    // Advance to Step 3 using Stepper tab
+    const step3Tab = container.querySelector("#careers-step-tab-3");
+    expect(step3Tab).toBeInTheDocument();
+    fireEvent.click(step3Tab!);
+
+    expect(step3?.classList.contains("is-active")).toBe(true);
+
+    // Navigate back to Step 2 using previous button
+    const backBtn = screen.getByRole("button", { name: /Back: Position/i });
+    fireEvent.click(backBtn);
+    expect(step2?.classList.contains("is-active")).toBe(true);
+  });
+
   it("correctly looks up roles by id", () => {
     const role = getRoleById("senior-architect-lead");
     expect(role).toBeDefined();

@@ -1,7 +1,13 @@
 import manjunatha from "@/assets/sea-project-manjunatha-constructions.jpg";
 import sarika from "@/assets/sea-project-sarika-estate.jpg";
-import ramko from "@/assets/sea-project-ramko-heights.jpg";
+import mantralayam1 from "@/assets/sea-project-mantralayam-01.webp";
+import mantralayam2 from "@/assets/sea-project-mantralayam-02.webp";
+import mantralayam3 from "@/assets/sea-project-mantralayam-03.webp";
 import krishnaSindhura from "@/assets/sea-project-krishna-sindhura-hospital.jpg";
+import krishnaSindhura1 from "@/assets/sea-project-krishna-sindhura-hospital-01.jpg";
+import krishnaSindhura2 from "@/assets/sea-project-krishna-sindhura-hospital-02.jpg";
+import krishnaSindhura3 from "@/assets/sea-project-krishna-sindhura-hospital-03.jpg";
+import krishnaSindhura4 from "@/assets/sea-project-krishna-sindhura-hospital-04.webp";
 import gangadhar from "@/assets/sea-project-gangadhar-estate.jpg";
 import gangadharSunset from "@/assets/sea-project-gangadhar-estate-sunset.png";
 import gangadharFrontView from "@/assets/sea-project-gangadhar-estate-front-view.png";
@@ -55,13 +61,18 @@ export const SEA_PROJECTS: SeaProject[] = [
     alt: "Sarika Estate gated villa community with tiled-roof convention centre",
   },
   {
-    slug: "ramko-heights",
-    title: "Ramko Heights",
+    slug: "mantralayam",
+    title: "Mantralayam",
     category: "architecture",
     description:
-      "A stilt-parking apartment tower with dark framed bays, glazed balconies, warm timber soffits and an illuminated vertical signature.",
-    image: ramko,
-    alt: "Ramko Heights apartment tower with glazed balconies",
+      "A multi-level conventions and service apartments development with a vibrant commercial streetscape and refined stone-clad facade.",
+    image: mantralayam1,
+    alt: "Mantralayam conventions and service apartments building front elevation",
+    gallery: [
+      { image: mantralayam1, alt: "Mantralayam building front elevation — day view 01" },
+      { image: mantralayam2, alt: "Mantralayam building front elevation — night view 02" },
+      { image: mantralayam3, alt: "Mantralayam corner perspective with streetscape — night view 03" },
+    ],
   },
   {
     slug: "krishna-sindhura-hospital",
@@ -69,13 +80,13 @@ export const SEA_PROJECTS: SeaProject[] = [
     category: "architecture",
     description:
       "A multi-block healthcare campus joined by a glazed atrium and a sky-garden podium, planned around a clear, calm arrival.",
-    image: krishnaSindhura,
-    alt: "Krishna Sindhura Hospital campus with glazed atrium",
+    image: krishnaSindhura1,
+    alt: "Krishna Sindhura Hospital campus front elevation with glazed atrium",
     gallery: [
-      { image: sindhuraFront, alt: "Krishna Sindhura Hospital front elevation with landscaped arrival — view 01" },
-      { image: sindhuraAtrium, alt: "Krishna Sindhura Hospital atrium with stained-glass skylight ceiling — view 02" },
-      { image: sindhuraDome, alt: "Krishna Sindhura Hospital stained-glass dome pavilion at dusk — view 03" },
-      { image: sindhuraDomeAerial, alt: "Krishna Sindhura Hospital dome pavilion aerial view with planters — view 04" },
+      { image: krishnaSindhura1, alt: "Krishna Sindhura Hospital front elevation — view 01" },
+      { image: krishnaSindhura2, alt: "Krishna Sindhura Hospital stained-glass pavilion dome exterior — view 02" },
+      { image: krishnaSindhura3, alt: "Krishna Sindhura Hospital stained-glass dome aerial view — view 03" },
+      { image: krishnaSindhura4, alt: "Krishna Sindhura Hospital glazed atrium interior — view 04" },
     ],
   },
   {

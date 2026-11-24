@@ -24,10 +24,10 @@ const ROOM_PROJECT_DEFS = [
     description: "A gated villa community beside the highway, anchored by a tiled-roof convention centre, a parking court and a landscaped entry.",
   },
   {
-    slug: "ramko-heights",
-    ar: 1.23,
-    title: "Ramko Heights",
-    description: "A stilt-parking apartment tower with dark framed bays, glazed balconies, warm timber soffits and an illuminated vertical signature.",
+    slug: "mantralayam",
+    ar: 1.62,
+    title: "Mantralayam",
+    description: "A multi-level conventions and service apartments development with a vibrant commercial streetscape and refined stone-clad facade.",
   },
   {
     slug: "krishna-sindhura-hospital",
