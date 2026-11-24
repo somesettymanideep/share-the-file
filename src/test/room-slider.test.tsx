@@ -4,7 +4,7 @@ import RoomSlider3D from "@/components/about-copy/RoomSlider3D";
 
 vi.mock("@tanstack/react-router", () => ({
   Link: ({ children, to, params, ...props }: { children: React.ReactNode; to: string; params?: Record<string, string> }) => (
-    <a href={params?.slug ? `/projects/${params.slug}` : to} {...props}>
+    <a href={params?.["slug"] ? `/projects/${params["slug"]}` : to} {...props}>
       {children}
     </a>
   ),

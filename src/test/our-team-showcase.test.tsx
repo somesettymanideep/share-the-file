@@ -57,7 +57,7 @@ describe("OurTeamShowcase", () => {
   it("opens profile dialog on click and closes on close button or Escape key", () => {
     render(<OurTeamShowcase />);
 
-    const firstCard = screen.getAllByRole("button", { name: /View profile of/i })[0];
+    const firstCard = screen.getAllByRole("button", { name: /View profile of/i })[0]!;
     fireEvent.click(firstCard);
 
     const dialog = screen.getByRole("dialog");
@@ -73,7 +73,7 @@ describe("OurTeamShowcase", () => {
   it("opens modal on Enter key for keyboard accessibility", () => {
     render(<OurTeamShowcase />);
 
-    const secondCard = screen.getAllByRole("button", { name: /View profile of/i })[1];
+    const secondCard = screen.getAllByRole("button", { name: /View profile of/i })[1]!;
     fireEvent.keyDown(secondCard, { key: "Enter" });
 
     const dialog = screen.getByRole("dialog");

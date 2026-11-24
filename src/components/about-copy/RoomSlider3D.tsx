@@ -97,12 +97,12 @@ export default function RoomSlider3D() {
     const current = projects[activeIndex];
     const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) {
-      setActiveProject(current);
+      setActiveProject(current ?? null);
       setIsOut(false);
       return;
     }
     const timer = window.setTimeout(() => {
-      setActiveProject(current);
+      setActiveProject(current ?? null);
       setIsOut(false);
     }, 380);
     return () => window.clearTimeout(timer);
@@ -111,7 +111,7 @@ export default function RoomSlider3D() {
   // Initial active project
   useEffect(() => {
     if (!activeProject) {
-      setActiveProject(projects[0]);
+      setActiveProject(projects[0] ?? null);
     }
   }, [activeProject, projects]);
 

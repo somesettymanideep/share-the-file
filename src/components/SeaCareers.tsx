@@ -65,7 +65,7 @@ export default function SeaCareers() {
     ? CAREER_ROLES
     : CAREER_ROLES.filter((r) => r.department === selectedDept);
 
-  const activeFormRole = CAREER_ROLES.find((r) => r.id === selectedRoleForForm) ?? CAREER_ROLES[0];
+  const activeFormRole = CAREER_ROLES.find((r) => r.id === selectedRoleForForm) ?? CAREER_ROLES[0]!;
 
   const handleApplyFromModal = (role: CareerRole) => {
     setSelectedRoleForForm(role.id);
