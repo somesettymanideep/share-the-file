@@ -38,7 +38,7 @@ describe("SeaCareers Page", () => {
   it("renders all 5 open positions with View Details buttons", () => {
     render(<SeaCareers />);
 
-    expect(screen.getByRole("heading", { level: 2, name: /Current Studio Openings/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /Find Your place at SEAIPL/i })).toBeInTheDocument();
 
     for (const role of CAREER_ROLES) {
       expect(screen.getByRole("heading", { level: 3, name: role.title })).toBeInTheDocument();

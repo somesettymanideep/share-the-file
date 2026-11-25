@@ -232,8 +232,8 @@ export default function SeaCareers() {
               {/* Left Column: Title & Discipline Filter Pills */}
               <div className="careers-openings-sidebar">
                 <h2 id="roles-heading" className="careers-section-title">
-                  <span className="careers-title-line">CURRENT STUDIO</span>
-                  <span className="careers-title-line">OPENINGS</span>
+                  <span className="careers-title-line">Find Your place</span>
+                  <span className="careers-title-line">at SEAIPL</span>
                 </h2>
 
                 {/* Department Filter Pills */}
