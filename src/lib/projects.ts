@@ -45,10 +45,25 @@ export const SEA_PROJECT_CATEGORY_LABELS: Record<SeaProjectCategory, string> = {
   bim: "BIM",
 };
 
+export const SEA_PROJECT_CATEGORY_HEADINGS: Record<SeaProjectCategory, string> = {
+  architecture: "The Art of Architecture",
+  interior: "Crafted from the Inside Out",
+  landscape: "Outdoor Spaces, Shaped by Design",
+  bim: "The Models Behind the Build",
+};
+
+export const SEA_PROJECT_CATEGORY_HEADING_LINES: Record<SeaProjectCategory, [string, string]> = {
+  architecture: ["The Art of", "Architecture"],
+  interior: ["Crafted from", "the Inside Out"],
+  landscape: ["Outdoor Spaces,", "Shaped by Design"],
+  bim: ["The Models", "Behind the Build"],
+};
+
 export interface SeaProject {
   slug: string;
   title: string;
   category: SeaProjectCategory;
+  categories?: SeaProjectCategory[];
   description: string;
   image: string;
   alt: string;
@@ -77,6 +92,7 @@ export const SEA_PROJECTS: SeaProject[] = [
     slug: "sarika-estate",
     title: "Sarika Estate",
     category: "architecture",
+    categories: [],
     description:
       "A gated villa community beside the highway, anchored by a tiled-roof convention centre, a parking court and a landscaped entry.",
     image: sarika,
@@ -194,6 +210,7 @@ export const SEA_PROJECTS: SeaProject[] = [
     slug: "chandramouli",
     title: "Chandramouli",
     category: "interior",
+    categories: ["interior", "architecture"],
     description:
       "A bespoke luxury residence featuring bookmatched Italian marble, custom timber slatted media joinery, layered architectural lighting, and an integrated dining lounge.",
     image: chandramouli1,
@@ -221,7 +238,9 @@ export function getProject(slug: string) {
 
 export function getProjectsByCategory(category?: SeaProjectCategory) {
   if (!category) return SEA_PROJECTS;
-  return SEA_PROJECTS.filter((project) => project.category === category);
+  return SEA_PROJECTS.filter((project) =>
+    project.categories ? project.categories.includes(category) : project.category === category
+  );
 }
 
 export function getProjectGallery(project: SeaProject) {

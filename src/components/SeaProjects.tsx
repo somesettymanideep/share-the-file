@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ContainerAnimated, ContainerScroll, ContainerStagger, ContainerSticky, GalleryCol, GalleryContainer } from "@/components/ui/animated-gallery";
-import { getProjectsByCategory, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
+import { getProjectsByCategory, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_HEADINGS, SEA_PROJECT_CATEGORY_HEADING_LINES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
 import SeaProjectShell from "@/components/SeaProjectShell";
 
 const COL_Y_RANGES: [string, string][] = [["-10%", "2%"], ["15%", "5%"], ["-10%", "2%"]];
@@ -8,13 +8,20 @@ const COL_Y_RANGES: [string, string][] = [["-10%", "2%"], ["15%", "5%"], ["-10%"
 export default function SeaProjects({ category }: { category?: SeaProjectCategory }) {
   const projects = getProjectsByCategory(category);
   const cols = [0, 1, 2].map((column) => projects.filter((_, index) => index % 3 === column));
+  const [line1, line2] = category
+    ? SEA_PROJECT_CATEGORY_HEADING_LINES[category]
+    : ["The Art of", "Architecture"];
+
   return <SeaProjectShell>
       <main>
         <section className="sea-projects-hero" aria-labelledby="projects-heading">
           <ContainerStagger className="sea-projects-intro">
             <ContainerAnimated>
               <h1 id="projects-heading" className="sea-projects-heading">
-                The Art of Architecture<span className="sea-projects-dot">.</span>
+                <span className="sea-projects-heading-line">{line1}</span>
+                <span className="sea-projects-heading-line">
+                  {line2}<span className="sea-projects-dot">.</span>
+                </span>
               </h1>
             </ContainerAnimated>
             {!category && <ContainerAnimated>

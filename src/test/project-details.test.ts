@@ -11,6 +11,8 @@ import {
   getProject,
   getProjectGallery,
   getProjectsByCategory,
+  SEA_PROJECT_CATEGORY_HEADINGS,
+  SEA_PROJECT_CATEGORY_HEADING_LINES,
   SEA_PROJECTS,
 } from "@/lib/projects";
 
@@ -210,8 +212,11 @@ describe("Project details", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
 
-  it("lists all six architecture projects and nine total projects", () => {
-    expect(getProjectsByCategory("architecture")).toHaveLength(6);
+  it("lists all six architecture projects including Chandramouli and excluding Sarika Estate", () => {
+    const archProjects = getProjectsByCategory("architecture");
+    expect(archProjects).toHaveLength(6);
+    expect(archProjects.map((p) => p.slug)).toContain("chandramouli");
+    expect(archProjects.map((p) => p.slug)).not.toContain("sarika-estate");
     expect(getProjectsByCategory()).toHaveLength(9);
   });
 
@@ -225,5 +230,25 @@ describe("Project details", () => {
     expect(getProjectsByCategory("interior")).toHaveLength(1);
     expect(getProjectsByCategory("interior")[0]?.slug).toBe("chandramouli");
     expect(getProjectsByCategory("bim")).toEqual([]);
+  });
+
+  it("defines the custom headings for all project category pages", () => {
+    expect(SEA_PROJECT_CATEGORY_HEADINGS.architecture).toBe("The Art of Architecture");
+    expect(SEA_PROJECT_CATEGORY_HEADINGS.interior).toBe("Crafted from the Inside Out");
+    expect(SEA_PROJECT_CATEGORY_HEADINGS.landscape).toBe("Outdoor Spaces, Shaped by Design");
+    expect(SEA_PROJECT_CATEGORY_HEADINGS.bim).toBe("The Models Behind the Build");
+  });
+
+  it("splits project category page headings into exactly two lines", () => {
+    for (const category of ["architecture", "interior", "landscape", "bim"] as const) {
+      const lines = SEA_PROJECT_CATEGORY_HEADING_LINES[category];
+      expect(lines).toHaveLength(2);
+      expect(lines[0].trim().length).toBeGreaterThan(0);
+      expect(lines[1].trim().length).toBeGreaterThan(0);
+    }
+    expect(SEA_PROJECT_CATEGORY_HEADING_LINES.interior).toEqual(["Crafted from", "the Inside Out"]);
+    expect(SEA_PROJECT_CATEGORY_HEADING_LINES.landscape).toEqual(["Outdoor Spaces,", "Shaped by Design"]);
+    expect(SEA_PROJECT_CATEGORY_HEADING_LINES.bim).toEqual(["The Models", "Behind the Build"]);
+    expect(SEA_PROJECT_CATEGORY_HEADING_LINES.architecture).toEqual(["The Art of", "Architecture"]);
   });
 });
