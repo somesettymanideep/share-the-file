@@ -129,7 +129,7 @@ export default function SeaCareers() {
       errors.portfolioUrl = "Provide a valid URL (http:// or https://) for your portfolio.";
     }
     if (!resumeInput?.value.trim() || !/^https?:\/\//i.test(resumeInput.value.trim())) {
-      errors.resumeUrl = "Provide a valid URL (http:// or https://) for your resume/LinkedIn.";
+      errors["resumeUrl"] = "Provide a valid URL (http:// or https://) for your resume/LinkedIn.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -141,10 +141,10 @@ export default function SeaCareers() {
 
     setFormErrors((prev) => {
       const next = { ...prev };
-      delete next.portfolioUrl;
-      delete next.resumeUrl;
-      delete next.roleId;
-      delete next.experience;
+      delete next["portfolioUrl"];
+      delete next["resumeUrl"];
+      delete next["roleId"];
+      delete next["experience"];
       return next;
     });
     setCurrentStep(3);
@@ -202,7 +202,7 @@ export default function SeaCareers() {
   };
 
   return (
-    <SeaProjectShell>
+    <SeaProjectShell heroHeader>
       <main className="sea-careers">
         {/* =========================================================================
             SECTION 1: HERO STARTING BANNER
@@ -231,9 +231,6 @@ export default function SeaCareers() {
             <div className="careers-openings-layout">
               {/* Left Column: Title & Discipline Filter Pills */}
               <div className="careers-openings-sidebar">
-                <div className="careers-section-kicker">
-                  <span>OPPORTUNITIES AT SEA</span>
-                </div>
                 <h2 id="roles-heading" className="careers-section-title">
                   <span className="careers-title-line">CURRENT STUDIO</span>
                   <span className="careers-title-line">OPENINGS</span>
@@ -446,10 +443,6 @@ export default function SeaCareers() {
         >
           <div className="careers-section-container">
             <header className="careers-section-header">
-              <div className="careers-section-kicker">
-                <Lightbulb size={16} aria-hidden="true" />
-                <span>APPLICATION &amp; DESIGN INQUIRY</span>
-              </div>
               <h2 id="thinking-heading" className="careers-section-title">
                 Show us How You think
               </h2>
