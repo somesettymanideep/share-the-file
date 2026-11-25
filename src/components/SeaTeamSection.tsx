@@ -193,30 +193,6 @@ function TeamCardItem({
             <h3 className="sea-team-name">{member.name}</h3>
             <p className="sea-team-role">{member.role}</p>
           </div>
-
-          <div
-            className="sea-team-card-actions"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <a
-              href={member.linkedin ?? "https://linkedin.com"}
-              target="_blank"
-              rel="noreferrer"
-              className="sea-team-social-btn sea-team-social-in"
-              aria-label={`${member.name} LinkedIn Profile`}
-            >
-              <span>in</span>
-            </a>
-            <a
-              href={member.twitter ?? "https://x.com"}
-              target="_blank"
-              rel="noreferrer"
-              className="sea-team-social-btn sea-team-social-x"
-              aria-label={`${member.name} X Profile`}
-            >
-              <span>X</span>
-            </a>
-          </div>
         </div>
       </div>
     </article>

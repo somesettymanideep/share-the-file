@@ -35,14 +35,11 @@ describe("SeaTeamSection", () => {
     expect(screen.queryByRole("tab", { name: /All Team/i })).toBeNull();
   });
 
-  it("renders social icon action buttons (in and X) for all 4 profile cards", () => {
+  it("does not render social icon action buttons (in and X) on profile cards", () => {
     render(<SeaTeamSection />);
 
-    const linkedinButtons = screen.getAllByLabelText(/LinkedIn Profile/i);
-    expect(linkedinButtons.length).toBe(SITE_LEADS.length);
-
-    const xButtons = screen.getAllByLabelText(/X Profile/i);
-    expect(xButtons.length).toBe(SITE_LEADS.length);
+    expect(screen.queryAllByLabelText(/LinkedIn Profile/i)).toHaveLength(0);
+    expect(screen.queryAllByLabelText(/X Profile/i)).toHaveLength(0);
   });
 
   it("opens modal with detailed credentials when a team member is clicked", () => {
