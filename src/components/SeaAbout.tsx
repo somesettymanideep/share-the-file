@@ -87,7 +87,7 @@ export default function SeaAbout() {
         <Link to="/">Home</Link>
         <Link to="/about" aria-current="page">Who We Are</Link>
         <div className="sea-nav-item">
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects/$slug" params={{ slug: "architecture" }}>Projects</Link>
           <div className="sea-nav-sub" role="menu" aria-label="Project categories">
             <Link to="/projects/$slug" params={{ slug: "architecture" }}>Architecture</Link>
             <Link to="/projects/$slug" params={{ slug: "interior" }}>Interior</Link>
@@ -110,7 +110,7 @@ export default function SeaAbout() {
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" aria-current="page" onClick={() => setMenuOpen(false)}>Who We Are</Link>
           <div className="sea-nav-item">
-            <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+            <Link to="/projects/$slug" params={{ slug: "architecture" }} onClick={() => setMenuOpen(false)}>Projects</Link>
             <div className="sea-nav-sub" role="menu" aria-label="Project categories">
               <Link to="/projects/$slug" params={{ slug: "architecture" }} onClick={() => setMenuOpen(false)}>Architecture</Link>
               <Link to="/projects/$slug" params={{ slug: "interior" }} onClick={() => setMenuOpen(false)}>Interior</Link>
@@ -141,7 +141,7 @@ export default function SeaAbout() {
     </main>
     <footer className="sea-footer" id="contact">
       <div className="sea-footer-top"><h2>Let’s Create<br />Something Meaningful</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
-      <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><Link to="/projects">Projects</Link><Link to="/careers">Careers</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link></nav></div>
+      <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about">Who We Are</Link><Link to="/projects/$slug" params={{ slug: "architecture" }}>Projects</Link><Link to="/careers">Careers</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link></nav></div>
     </footer>
     <button type="button" className={"sea-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={scrollSeaToTop}><ArrowUp size={20} aria-hidden="true" /></button>
   </div>;

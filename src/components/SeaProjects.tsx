@@ -39,7 +39,7 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
           {projects.length === 0 ? (
             <div className="sea-projects-empty">
               <p>No {category ? SEA_PROJECT_CATEGORY_LABELS[category].toLowerCase() : ""} projects published yet.</p>
-              <Link to="/projects" className="sea-projects-empty-link">View all projects</Link>
+              <Link to="/projects/$slug" params={{ slug: "architecture" }} className="sea-projects-empty-link">View all projects</Link>
             </div>
           ) : (
           <ContainerScroll className="sea-projects-scroll">

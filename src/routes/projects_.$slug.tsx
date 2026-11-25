@@ -33,10 +33,10 @@ export const Route = createFileRoute("/projects_/$slug")({
     ], links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }] };
   },
   component: ProjectDetailsPage,
-  notFoundComponent: () => <SeaProjectShell><main className="project-details"><h1>Project not found</h1><Link to="/projects" className="project-back"><ArrowLeft />Back to Projects</Link></main></SeaProjectShell>,
+  notFoundComponent: () => <SeaProjectShell><main className="project-details"><h1>Project not found</h1><Link to="/projects/$slug" params={{ slug: "architecture" }} className="project-back"><ArrowLeft />Back to Projects</Link></main></SeaProjectShell>,
   errorComponent: ({ reset }) => {
     const router = useRouter();
-    return <SeaProjectShell><main className="project-details"><h1>This project couldn’t load</h1><Button onClick={() => { void router.invalidate(); reset(); }}>Try again</Button><Link to="/projects" className="project-back">Back to Projects</Link></main></SeaProjectShell>;
+    return <SeaProjectShell><main className="project-details"><h1>This project couldn’t load</h1><Button onClick={() => { void router.invalidate(); reset(); }}>Try again</Button><Link to="/projects/$slug" params={{ slug: "architecture" }} className="project-back">Back to Projects</Link></main></SeaProjectShell>;
   },
 });
 
@@ -48,7 +48,7 @@ function ProjectDetailsPage() {
   if (!project) return null;
   const { previous, next } = getAdjacentProjects(slug);
   return <SeaProjectShell heroHeader><main className="project-details" key={slug}>
-    <Link to="/projects" className="project-back project-back-overlay"><ArrowLeft size={18} />Back to Projects</Link>
+    <Link to="/projects/$slug" params={{ slug: project.category }} className="project-back project-back-overlay"><ArrowLeft size={18} />Back to Projects</Link>
     <ProjectMorphGallery key={slug} project={project} />
     <section className="project-information" aria-labelledby="project-information-heading">
       <div><h2 id="project-information-heading">Project Details</h2><p>{project.description}</p></div>
