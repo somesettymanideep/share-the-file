@@ -284,7 +284,7 @@ export default function SeaCareers() {
                           >
                             <span className="careers-btn-text">VIEW DETAILS</span>
                             <span className="careers-btn-circle" aria-hidden="true">
-                              <ArrowRight size={15} />
+                              <ArrowUpRight size={16} />
                             </span>
                           </button>
                         </div>

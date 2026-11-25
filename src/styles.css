@@ -2450,17 +2450,21 @@ html.sea-pre-lock body {
   border-bottom: 1px solid rgba(0, 107, 128, 0.2);
 }
 
+.careers-roles-section .careers-section-container {
+  max-width: 1420px;
+}
+
 .careers-openings-layout {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: clamp(36px, 5.5vw, 80px);
+  grid-template-columns: 310px 1fr;
+  gap: clamp(28px, 4vw, 56px);
   align-items: flex-start;
 }
 
 @media (max-width: 1024px) {
   .careers-openings-layout {
-    grid-template-columns: 300px 1fr;
-    gap: 36px;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
   }
 }
 
@@ -2490,10 +2494,11 @@ html.sea-pre-lock body {
 .careers-roles-section .careers-section-title {
   display: flex;
   flex-direction: column;
+  gap: clamp(10px, 1.4vw, 16px);
   font-family: "Oswald", "Archivo", sans-serif;
   font-size: clamp(2.4rem, 4.4vw, 3.8rem);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 1.18;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #08222b;
@@ -2559,7 +2564,7 @@ html.sea-pre-lock body {
 
 .careers-role-row {
   display: grid;
-  grid-template-columns: minmax(240px, 1.45fr) minmax(180px, 1.05fr) auto;
+  grid-template-columns: minmax(280px, 1.5fr) minmax(200px, 1.1fr) auto;
   align-items: center;
   gap: 18px clamp(16px, 2.5vw, 36px);
   padding: 24px 8px;
@@ -2668,7 +2673,7 @@ html.sea-pre-lock body {
   border-color: #006b80;
   background-color: #006b80;
   color: #ffffff;
-  transform: translateX(3px);
+  transform: translate(2px, -2px);
 }
 
 .careers-role-row:hover .careers-btn-circle {
