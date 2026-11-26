@@ -2995,7 +2995,12 @@ html.sea-pre-lock body {
 /* 5. "Show us How You think" Form Section */
 .careers-thinking-section {
   padding: clamp(64px, 8vw, 110px) 0;
-  background-color: #ffffff;
+  background-color: #e9f1f2;
+  color: #08222b;
+}
+
+.careers-thinking-section .careers-section-container {
+  max-width: 1420px;
 }
 
 .careers-form-layout {
