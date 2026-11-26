@@ -104,6 +104,7 @@ export default function SeaAbout() {
             <Link to="/projects/$slug" params={{ slug: "bim" }}>BIM</Link>
           </div>
         </div>
+        <Link to="/careers">Careers</Link>
         <Link to="/contact">Contact</Link>
       </nav>
       <button type="button" className="sea2-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
@@ -126,6 +127,7 @@ export default function SeaAbout() {
               <Link to="/projects/$slug" params={{ slug: "bim" }} onClick={() => setMenuOpen(false)}>BIM</Link>
             </div>
           </div>
+          <Link to="/careers" onClick={() => setMenuOpen(false)}>Careers</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       </div>

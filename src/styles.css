@@ -2094,8 +2094,13 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) { .project-details { animation: none; } }
 
 /* Contact reference, isolated from the shared header and footer. */
+.sea-projects:has(.sea-contact) {
+  --sea-awards-background: #E9F1F2;
+  background-color: #E9F1F2;
+}
+
 .sea-contact {
-  --contact-background: oklch(0.965 0.014 215);
+  --contact-background: #E9F1F2;
   --contact-surface: oklch(0.995 0.003 215);
   --contact-ink: oklch(0.239 0.035 225.4);
   --contact-accent: oklch(0.488 0.085 218.5);
