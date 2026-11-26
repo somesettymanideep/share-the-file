@@ -26,6 +26,62 @@ describe("Project details", () => {
     });
   });
 
+  it("uses the supplied Kishore Jain KMS Infra project details", () => {
+    expect(getProject("kishore-jain-kms-infra")).toMatchObject({
+      location: "Vijayawada, AP.",
+      plotSize: "13682 sft",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+    expect(getProject("kms-infra")).toMatchObject({
+      title: "Kishore Jain KMS Infra",
+      location: "Vijayawada, AP.",
+      plotSize: "13682 sft",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+  });
+
+  it("uses the supplied Krishna Sindhura Hospital project details", () => {
+    expect(getProject("krishna-sindhura-hospital")).toMatchObject({
+      location: "Hyderabad, TG.",
+      plotSize: "12500 Sq.ft.",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+    expect(getProject("sindhura-hospital")).toMatchObject({
+      title: "Krishna Sindhura Hospital",
+      location: "Hyderabad, TG.",
+      plotSize: "12500 Sq.ft.",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+  });
+
+  it("uses the supplied Chandramouli project details", () => {
+    expect(getProject("chandramouli")).toMatchObject({
+      location: "Chimakurthy,AP.",
+      plotSize: "12500 Sq.ft.",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+  });
+
+  it("uses the supplied Nakshatravanam project details", () => {
+    expect(getProject("naksthravnam")).toMatchObject({
+      location: "Amaravathi,AP",
+      plotSize: "2 Acres.",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+    expect(getProject("nakshatravanam")).toMatchObject({
+      location: "Amaravathi,AP",
+      plotSize: "2 Acres.",
+      status: "Completed",
+      architectureStyle: "Modern",
+    });
+  });
+
   it("gives every project a unique slug and cover image", () => {
     expect(new Set(SEA_PROJECTS.map((project) => project.slug)).size).toBe(
       SEA_PROJECTS.length,

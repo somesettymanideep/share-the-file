@@ -12,7 +12,7 @@ describe("Contact enquiries", () => {
     expect(url).not.toContain("&bcc=");
   });
   it("never forwards invalid input to the email app", () => { expect(() => enquiryEmail({ ...enquiry, phone: "javascript:bad" })).toThrow(); });
-  it("maps only projects with a confirmed city", () => { expect(STUDIO_LOCATIONS.filter(location => location.kind === "project").map(location => location.id)).toEqual(["gangadhar-estate"]); });
+  it("maps only projects with a confirmed city", () => { expect(STUDIO_LOCATIONS.filter(location => location.kind === "project").map(location => location.id)).toEqual(["gangadhar-estate", "kishore-jain-kms-infra"]); });
   it("shows the Vijayawada branch at the client-supplied address", () => {
     expect(STUDIO_BRANCHES.find(branch => branch.id === "branch-vijayawada")?.address)
       .toBe("Flat No: 101, Sri Sai Nilayam, Chandramoulipuram, ADJ. HDFC Bank, BENZ Circle, Vijayawada, Andhra Pradesh, India- 520 010");

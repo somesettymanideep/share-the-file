@@ -112,12 +112,16 @@ export const SEA_PROJECTS: SeaProject[] = [
       { image: mantralayam3, alt: "Mantralayam corner perspective with streetscape — night view 03" },
     ],
   },
- {
-  slug: "krishna-sindhura-hospital",
-  title: "Krishna Sindhura Hospital",
-  category: "architecture",
-  description:
-    "A multi-block hospital campus with a landscaped podium and a stained-glass dome above the central atrium.",
+  {
+    slug: "krishna-sindhura-hospital",
+    title: "Krishna Sindhura Hospital",
+    category: "architecture",
+    location: "Hyderabad, TG.",
+    architectureStyle: "Modern",
+    plotSize: "12500 Sq.ft.",
+    status: "Completed",
+    description:
+      "A multi-block hospital campus with a landscaped podium and a stained-glass dome above the central atrium.",
   image: sindhuraHospitalFront,
   alt: "Krishna Sindhura Hospital front elevation with two towers and a landscaped podium",
   gallery: [
@@ -161,6 +165,10 @@ export const SEA_PROJECTS: SeaProject[] = [
     slug: "kishore-jain-kms-infra",
     title: "Kishore Jain KMS Infra",
     category: "architecture",
+    location: "Vijayawada, AP.",
+    architectureStyle: "Modern",
+    plotSize: "13682 sft",
+    status: "Completed",
     description:
       "Stepped residential terraces with continuous planted balconies, biophilic facade curves, and wind-harnessed skybridges.",
     image: kishoreJain1,
@@ -176,6 +184,10 @@ export const SEA_PROJECTS: SeaProject[] = [
     slug: "naksthravnam",
     title: "Naksthravnam",
     category: "landscape",
+    location: "Amaravathi,AP",
+    architectureStyle: "Modern",
+    plotSize: "2 Acres.",
+    status: "Completed",
     description:
       "An expansive ecological landscape sanctuary harmonizing sacred planetary groves, sculpted water bodies, walking paths, and immersive native flora.",
     image: naksthravnam1,
@@ -211,6 +223,10 @@ export const SEA_PROJECTS: SeaProject[] = [
     title: "Chandramouli",
     category: "interior",
     categories: ["interior", "architecture"],
+    location: "Chimakurthy,AP.",
+    architectureStyle: "Modern",
+    plotSize: "12500 Sq.ft.",
+    status: "Completed",
     description:
       "A bespoke luxury residence featuring bookmatched Italian marble, custom timber slatted media joinery, layered architectural lighting, and an integrated dining lounge.",
     image: chandramouli1,
@@ -232,7 +248,10 @@ export function getProject(slug: string) {
       project.slug === slug ||
       (slug === "nakshatravanam" && project.slug === "naksthravnam") ||
       (slug === "laitoncrafts" && project.slug === "laiton-crafts") ||
-      (slug === "lation-crafts" && project.slug === "laiton-crafts"),
+      (slug === "lation-crafts" && project.slug === "laiton-crafts") ||
+      (slug === "kms-infra" && project.slug === "kishore-jain-kms-infra") ||
+      (slug === "kishore-jain" && project.slug === "kishore-jain-kms-infra") ||
+      (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }
 
