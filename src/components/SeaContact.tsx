@@ -31,12 +31,50 @@ export default function SeaContact() {
             scrollTrigger: { trigger, start: "top 88%", once: true },
           });
         };
-        reveal(".contact-opening > h1", page.querySelector(".contact-opening"));
-        reveal(".contact-details > div", page.querySelector(".contact-details"));
-        reveal(".contact-form", page.querySelector(".contact-form"));
-        reveal(".contact-map-heading", page.querySelector(".contact-locations"));
-        reveal(".contact-map-wrap", page.querySelector(".contact-map-wrap"));
-        reveal(".contact-presence", page.querySelector(".contact-presence"));
+        const q = (sel: string) => page.querySelector(sel);
+        const opening = q(".contact-opening");
+        if (opening) {
+          gsap.from(".contact-opening > h1", {
+            clipPath: "inset(0 100% 0 0)", y: 24, duration: 1.1, ease: "power4.out",
+            clearProps: "clipPath,transform",
+            scrollTrigger: { trigger: opening, start: "top 88%", once: true },
+          });
+        }
+        const details = q(".contact-details");
+        if (details) gsap.from(".contact-details > div", {
+          x: -48, opacity: 0, filter: "blur(6px)", duration: 0.9, stagger: 0.12, ease: "power3.out",
+          clearProps: "transform,opacity,filter",
+          scrollTrigger: { trigger: details, start: "top 85%", once: true },
+        });
+        const form = q(".contact-form");
+        if (form) gsap.from(form, {
+          x: 48, opacity: 0, duration: 1, ease: "power3.out", clearProps: "transform,opacity",
+          scrollTrigger: { trigger: form, start: "top 85%", once: true },
+        });
+        const locations = q(".contact-locations");
+        if (locations) gsap.from(".contact-map-heading", {
+          clipPath: "inset(0 100% 0 0)", y: 24, duration: 1.1, ease: "power4.out",
+          clearProps: "clipPath,transform",
+          scrollTrigger: { trigger: locations, start: "top 85%", once: true },
+        });
+        const map = q(".contact-map-wrap");
+        if (map) {
+          gsap.from(map, {
+            scale: 0.92, opacity: 0, filter: "blur(10px)", duration: 1.2, ease: "power3.out",
+            clearProps: "opacity,filter",
+            scrollTrigger: { trigger: map, start: "top 85%", once: true },
+          });
+          gsap.fromTo(map, { yPercent: 4 }, {
+            yPercent: -4, ease: "none",
+            scrollTrigger: { trigger: map, start: "top bottom", end: "bottom top", scrub: true },
+          });
+        }
+        const presence = q(".contact-presence");
+        if (presence) gsap.from(Array.from(presence.children), {
+          y: 36, opacity: 0, duration: 0.85, stagger: 0.12, ease: "power3.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: { trigger: presence, start: "top 88%", once: true },
+        });
         const footer = page.parentElement?.querySelector(".sea-footer");
         if (footer) reveal(Array.from(footer.children), footer, 0.14);
       }, page);
