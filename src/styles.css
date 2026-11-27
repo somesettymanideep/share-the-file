@@ -3543,3 +3543,5 @@ html.sea-pre-lock body {
     flex: 1 1 40%;
   }
 }
+.sea-projects-tile figure { will-change: clip-path; overflow: hidden; }
+.sea-projects-tile img { will-change: transform; }

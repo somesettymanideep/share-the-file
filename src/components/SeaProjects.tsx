@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContainerAnimated, ContainerScroll, ContainerStagger, ContainerSticky, GalleryCol, GalleryContainer } from "@/components/ui/animated-gallery";
 import { getProjectsByCategory, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_HEADINGS, SEA_PROJECT_CATEGORY_HEADING_LINES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
 import SeaProjectShell from "@/components/SeaProjectShell";
@@ -11,6 +14,29 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
   const [line1, line2] = category
     ? SEA_PROJECT_CATEGORY_HEADING_LINES[category]
     : ["The Art of", "Architecture"];
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Right-to-left clip-path reveal per image, scrubbed to scroll.
+  useEffect(() => {
+    const root = galleryRef.current;
+    if (!root) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      root.querySelectorAll<HTMLElement>(".sea-projects-tile figure").forEach((figure) => {
+        const img = figure.querySelector("img");
+        const tl = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          scrollTrigger: { trigger: figure, start: "top 95%", end: "top 45%", scrub: 1 },
+        });
+        tl.fromTo(figure, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1 }, 0);
+        if (img) tl.fromTo(img, { scale: 1.15 }, { scale: 1, duration: 1 }, 0);
+      });
+    });
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    return () => { window.removeEventListener("load", refresh); mm.revert(); };
+  }, [category]);
 
   return <SeaProjectShell>
       <main>
@@ -49,7 +75,7 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
               <Link to="/projects/$slug" params={{ slug: "architecture" }} className="sea-projects-empty-link">View all projects</Link>
             </div>
           ) : (
-          <ContainerScroll className="sea-projects-scroll">
+          <div ref={galleryRef}><ContainerScroll className="sea-projects-scroll">
             <ContainerSticky className="sea-projects-sticky">
               <GalleryContainer className="sea-projects-gallery">
                 {cols.map((col, colIndex) => (
@@ -70,7 +96,7 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
                 ))}
               </GalleryContainer>
             </ContainerSticky>
-          </ContainerScroll>
+          </ContainerScroll></div>
           )}
         </section>
 
