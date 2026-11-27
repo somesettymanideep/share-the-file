@@ -2330,7 +2330,7 @@ html.sea-pre-lock body {
 }
 .sea-pre-tag {
   margin-top: clamp(20px, 3vw, 42px);
-  font-family: "Zero Regular", "Zero", "Oxanium", "DM Sans", system-ui, sans-serif;
+  font-family: "Good Times", "GoodTimes", "Oxanium", "DM Sans", system-ui, sans-serif;
   font-weight: 400;
   font-size: clamp(0.95rem, 2.5vw, 2.25rem);
   white-space: nowrap;

@@ -152,7 +152,7 @@ export default function SeaAbout() {
       <SeaPeopleSections testimonialStyle="editorial" parts="team" />
     </main>
     <footer className="sea2-footer" id="contact">
-      <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span></address></div>
+      <div className="sea2-footer-top"><h2>Let’s build<br />something lasting.</h2><address><a href="tel:+917075779600">+91 7075779600</a><a href="mailto:operations@s4eaindia.com">operations@s4eaindia.com</a></address></div>
       <div className="sea2-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer"><Link to="/about-copy">Who We Are</Link><Link to="/projects/$slug" params={{ slug: "architecture" }}>Projects</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link></nav></div>
     </footer>
     <button type="button" className={"sea2-scroll-top" + (showTop ? " is-visible" : "")} aria-label="Scroll to top" onClick={scrollSeaToTop}><ArrowUp size={20} aria-hidden="true" /></button>

@@ -1,5 +1,5 @@
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { cleanup, render } from "@testing-library/react";
+import { act, cleanup, render } from "@testing-library/react";
 import SeaProjects from "@/components/SeaProjects";
 
 class MockIntersectionObserver implements IntersectionObserver {
@@ -62,17 +62,26 @@ afterEach(() => {
 });
 
 describe("SeaProjects image reveal", () => {
-  it("configures all project image figures with lower-screen scroll trigger bounds", () => {
-    render(<SeaProjects category="architecture" />);
+  it("configures all project image figures with right-to-left scrollTrigger reveals and waits for preloader", async () => {
+    // If locked by preloader, should not create timelines yet
+    document.documentElement.classList.add("sea-pre-lock");
+    const { unmount } = render(<SeaProjects category="architecture" />);
+    expect(createdTimelines.length).toBe(0);
+
+    // When preloader unlocks, reveals are initialized
+    await act(async () => {
+      document.documentElement.classList.remove("sea-pre-lock");
+      await new Promise((resolve) => setTimeout(resolve, 10));
+    });
 
     expect(createdTimelines.length).toBeGreaterThan(0);
-    // All timelines should have scrollTrigger configured
     createdTimelines.forEach((tl) => {
       expect(tl.scrollTrigger).toMatchObject({
-        start: "top 95%",
-        end: "top 70%",
-        scrub: 1,
+        start: "top 90%",
+        once: true,
       });
     });
+
+    unmount();
   });
 });

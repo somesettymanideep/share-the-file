@@ -16,26 +16,61 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
     : ["The Art of", "Architecture"];
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Right-to-left clip-path reveal per image, finishing in the lower part of the screen (top 70%).
+  // Right-to-left clip-path reveal per image using GSAP and ScrollTrigger.
   useEffect(() => {
     const root = galleryRef.current;
     if (!root) return;
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      root.querySelectorAll<HTMLElement>(".sea-projects-tile figure").forEach((figure) => {
-        const img = figure.querySelector("img");
-        const tl = gsap.timeline({
-          defaults: { ease: "power3.out" },
-          scrollTrigger: { trigger: figure, start: "top 95%", end: "top 70%", scrub: 1 },
+
+    let started = false;
+    const start = () => {
+      if (started || document.documentElement.classList.contains("sea-pre-lock")) return;
+      started = true;
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        root.querySelectorAll<HTMLElement>(".sea-projects-tile figure").forEach((figure, index) => {
+          const img = figure.querySelector("img");
+          const tl = gsap.timeline({
+            defaults: { ease: "power3.out" },
+            delay: (index % 3) * 0.08,
+            scrollTrigger: {
+              trigger: figure,
+              start: "top 90%",
+              once: true,
+            },
+          });
+          tl.fromTo(
+            figure,
+            { clipPath: "inset(0% 0% 0% 100%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, clearProps: "clipPath" },
+            0
+          );
+          if (img) {
+            tl.fromTo(
+              img,
+              { scale: 1.15 },
+              { scale: 1, duration: 1.1, clearProps: "transform" },
+              0
+            );
+          }
         });
-        tl.fromTo(figure, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1 }, 0);
-        if (img) tl.fromTo(img, { scale: 1.15 }, { scale: 1, duration: 1 }, 0);
+        ScrollTrigger.refresh();
       });
-    });
+    };
+
+    start();
+    const observer = new MutationObserver(start);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
-    return () => { window.removeEventListener("load", refresh); mm.revert(); };
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("load", refresh);
+      mm.revert();
+    };
   }, [category]);
 
   return <SeaProjectShell>

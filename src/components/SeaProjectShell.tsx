@@ -59,7 +59,7 @@ export default function SeaProjectShell({ children, heroHeader = false }: { chil
     {children}
     <footer className="sea-footer" id="contact">
       <div className="sea-footer-top"><h2>Let’s Create<br />Something Meaningful</h2><address>
-        <a href="mailto:naresh@s4eaindia.com">naresh@s4eaindia.com</a><a href="tel:+919000299600">+91 9000299600</a><span>Vijayawada, Andhra Pradesh</span>
+        <a href="tel:+917075779600">+91 7075779600</a><a href="mailto:operations@s4eaindia.com">operations@s4eaindia.com</a>
       </address></div>
       <div className="sea-footer-bottom"><span>© 2026 SEA – Studio for Eclectic Architecture</span><nav aria-label="Footer">
         <Link to="/about">Who We Are</Link><Link to="/projects/$slug" params={{ slug: "architecture" }}>Projects</Link><Link to="/careers">Careers</Link><a href="/studio.html#services">What We Do</a><Link to="/contact">Contact</Link>
