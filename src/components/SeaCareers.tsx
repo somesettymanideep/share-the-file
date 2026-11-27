@@ -90,16 +90,16 @@ export default function SeaCareers() {
 
     const errors: Record<string, string> = {};
     if (!fullNameInput?.value.trim() || fullNameInput.value.trim().length < 2) {
-      errors.fullName = "Enter your full name.";
+      errors["fullName"] = "Enter your full name.";
     }
     if (!emailInput?.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-      errors.email = "Enter a valid email address.";
+      errors["email"] = "Enter a valid email address.";
     }
     if (!phoneInput?.value.trim() || phoneInput.value.trim().length < 8) {
-      errors.phone = "Enter a valid contact number.";
+      errors["phone"] = "Enter a valid contact number.";
     }
     if (!locationInput?.value.trim() || locationInput.value.trim().length < 2) {
-      errors.currentLocation = "Enter your current location.";
+      errors["currentLocation"] = "Enter your current location.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -111,10 +111,10 @@ export default function SeaCareers() {
 
     setFormErrors((prev) => {
       const next = { ...prev };
-      delete next.fullName;
-      delete next.email;
-      delete next.phone;
-      delete next.currentLocation;
+      delete next["fullName"];
+      delete next["email"];
+      delete next["phone"];
+      delete next["currentLocation"];
       return next;
     });
     setCurrentStep(2);
@@ -126,7 +126,7 @@ export default function SeaCareers() {
 
     const errors: Record<string, string> = {};
     if (!portfolioInput?.value.trim() || !/^https?:\/\//i.test(portfolioInput.value.trim())) {
-      errors.portfolioUrl = "Provide a valid URL (http:// or https://) for your portfolio.";
+      errors["portfolioUrl"] = "Provide a valid URL (http:// or https://) for your portfolio.";
     }
     if (!resumeInput?.value.trim() || !/^https?:\/\//i.test(resumeInput.value.trim())) {
       errors["resumeUrl"] = "Provide a valid URL (http:// or https://) for your resume/LinkedIn.";
