@@ -74,7 +74,7 @@ export default function FounderSection() {
             alt="P.V. Naresh Kumar, Founder Architect &amp; Managing Director"
             loading="lazy"
           />
-          <span className="founder-watermark" aria-hidden="true">SEA</span>
+          {/* <span className="founder-watermark" aria-hidden="true">SEA</span> */}
         </div>
 
         <div className="founder-copy">
