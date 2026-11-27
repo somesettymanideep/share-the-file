@@ -106,7 +106,7 @@ export default function SeaContact() {
         <dl className="contact-details">
           <div><MapPin aria-hidden="true" /><div><dt>Our Corporate Office</dt><dd>{STUDIO_CONTACT.address}</dd></div></div>
           <div><Mail aria-hidden="true" /><div><dt>Email Us</dt><dd><a href={`mailto:${STUDIO_CONTACT.email}`}>{STUDIO_CONTACT.email}</a></dd></div></div>
-          <div><Phone aria-hidden="true" /><div><dt>Call Us</dt><dd><a href="tel:+919000299600">{STUDIO_CONTACT.phone}</a></dd></div></div>
+          <div><Phone aria-hidden="true" /><div><dt>Call Us</dt><dd><a href={`tel:${STUDIO_CONTACT.phone.replace(/\s/g, "")}`}>{STUDIO_CONTACT.phone}</a></dd></div></div>
           <div><Clock aria-hidden="true" /><div><dt>Working Hours</dt><dd>{STUDIO_CONTACT.hours}</dd></div></div>
         </dl>
       </div>

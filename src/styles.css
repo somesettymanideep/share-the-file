@@ -1568,7 +1568,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ===== Our Team Showcase Section (Curved Signature Card Architecture) ===== */
 .sea-ourteam-section {
-  background: #E8F1F2;
+  background: #DFE9E9;
   color: #071e29;
   padding: clamp(64px, 7vw, 100px) clamp(20px, 5vw, 80px);
   position: relative;
@@ -1604,6 +1604,10 @@ html.lenis, html.lenis body { height: auto; }
 
 .sea-ourteam-title-team {
   color: #08616b;
+}
+
+.sea-ourteam-title-text {
+  color: #071e29;
 }
 
 .sea-ourteam-grid {

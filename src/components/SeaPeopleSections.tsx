@@ -103,7 +103,7 @@ export default function SeaPeopleSections({ showTeamMeta = true, parts = "all", 
       <div className="people-inner">
         <div className="people-heading people-team-heading">
           <h2 id="people-team-title">The Minds That Make SEA<span>.</span></h2>
-          {showTeamMeta && <Button asChild variant="link" className="people-contact"><a href="mailto:naresh@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>}
+          {showTeamMeta && <Button asChild variant="link" className="people-contact"><a href="mailto:operations@s4eaindia.com">Get in Touch <ArrowUpRight /></a></Button>}
         </div>
         {showTeamMeta && <p className="people-sample people-team-disclosure">Sample team · Fictional names and illustrative portraits</p>}
         <div className="people-team-grid">{team.map((member, index) => <article className="people-team-card" key={member.name}>

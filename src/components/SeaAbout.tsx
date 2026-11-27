@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutHero from "@/components/AboutHero";
 import FounderSection from "@/components/FounderSection";
 import SeaPeopleSections from "@/components/SeaPeopleSections";
-import SeaTeamSection from "@/components/SeaTeamSection";
 import OurTeamShowcase from "@/components/OurTeamShowcase";
 import WhatDefinesUs from "@/components/WhatDefinesUs";
 import { scrollSeaToTop } from "@/components/SeaSmoothScroll";
@@ -128,8 +127,7 @@ export default function SeaAbout() {
       <AboutHero />
 
       <FounderSection />
-      <SeaTeamSection />
-      <OurTeamShowcase />
+      <OurTeamShowcase title="THE MINDS THAT MAKE SEAIPL" />
 
       <WhatDefinesUs />
 

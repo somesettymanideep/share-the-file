@@ -20,6 +20,14 @@ describe("OurTeamShowcase", () => {
     expect(teamSpan).toHaveTextContent("TEAM");
   });
 
+  it("renders custom heading 'THE MINDS THAT MAKE SEAIPL' when title prop is provided", () => {
+    render(<OurTeamShowcase title="THE MINDS THAT MAKE SEAIPL" />);
+
+    const heading = screen.getByRole("heading", { level: 2 });
+    expect(heading).toBeInTheDocument();
+    expect(heading).toHaveTextContent("THE MINDS THAT MAKE SEAIPL");
+  });
+
   it("renders 4 cards in the grid matching the layout", () => {
     const { container } = render(<OurTeamShowcase />);
 

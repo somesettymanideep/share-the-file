@@ -837,7 +837,7 @@ export default function SeaCareers() {
                       </Button>
                     </div>
                     <p className="careers-submit-note">
-                      Opens your mail client with your complete structured application ready to send directly to <strong>naresh@s4eaindia.com</strong>.
+                      Opens your mail client with your complete structured application ready to send directly to <strong>operations@s4eaindia.com</strong>.
                     </p>
 
                     {draftUrl && (
@@ -892,8 +892,8 @@ export default function SeaCareers() {
                   <p>
                     For academic internships, research collaborations, or speculative portfolios:
                   </p>
-                  <a href="mailto:naresh@s4eaindia.com" className="careers-aside-email">
-                    naresh@s4eaindia.com
+                  <a href="mailto:operations@s4eaindia.com" className="careers-aside-email">
+                    operations@s4eaindia.com
                   </a>
                   <span className="careers-aside-loc">Corporate Office: Hyderabad, Telangana</span>
                 </div>

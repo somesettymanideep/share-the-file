@@ -56,6 +56,7 @@ export const OUR_TEAM_MEMBERS: TeamMemberCard[] = [
 ];
 
 interface OurTeamShowcaseProps {
+  title?: string;
   titleOur?: string;
   titleTeam?: string;
   members?: TeamMemberCard[];
@@ -63,6 +64,7 @@ interface OurTeamShowcaseProps {
 }
 
 export default function OurTeamShowcase({
+  title,
   titleOur = "OUR",
   titleTeam = "TEAM",
   members = OUR_TEAM_MEMBERS,
@@ -123,8 +125,14 @@ export default function OurTeamShowcase({
         {/* Header matching provided layout */}
         <div className="sea-ourteam-header">
           <h2 id="sea-ourteam-title" className="sea-ourteam-title">
-            <span className="sea-ourteam-title-our">{titleOur} </span>
-            <span className="sea-ourteam-title-team">{titleTeam}</span>
+            {title ? (
+              <span className="sea-ourteam-title-text">{title}</span>
+            ) : (
+              <>
+                <span className="sea-ourteam-title-our">{titleOur} </span>
+                <span className="sea-ourteam-title-team">{titleTeam}</span>
+              </>
+            )}
           </h2>
         </div>
 

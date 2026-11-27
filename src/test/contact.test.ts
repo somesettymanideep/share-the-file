@@ -7,7 +7,7 @@ describe("Contact enquiries", () => {
   it("rejects empty project details", () => { expect(enquirySchema.safeParse({ ...enquiry, message: "" }).success).toBe(false); });
   it("encodes the validated enquiry in an email draft, without allowing extra URL parameters", () => {
     const url = enquiryEmail({ ...enquiry, message: "A courtyard &bcc=other@example.com" });
-    expect(url.startsWith("mailto:naresh@s4eaindia.com?")).toBe(true);
+    expect(url.startsWith("mailto:operations@s4eaindia.com?")).toBe(true);
     expect(url).toContain("%26bcc%3Dother%40example.com");
     expect(url).not.toContain("&bcc=");
   });

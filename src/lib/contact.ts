@@ -2,11 +2,11 @@ import { z } from "zod";
 import { SEA_PROJECTS } from "@/lib/projects";
 
 export const STUDIO_CONTACT = {
-  email: "naresh@s4eaindia.com",
-  phone: "+91 9000299600",
+  email: "operations@s4eaindia.com",
+  phone: "+91 7075779600",
   city: "Hyderabad, Telangana",
   address: "229B, 2nd Floor, alt.f Coworking Green Tower, Begumpet Main Road, Hyderabad, Telangana, India - 500016",
-  hours: "10 AM to 6 PM",
+  hours: "9:30 AM to 6:30 PM",
 };
 export const PROJECT_TYPES = ["Residence", "Apartments", "Commercial", "Healthcare", "Institutional", "Other"] as const;
 export const BUDGETS = ["To be discussed", "Below ₹50 lakh", "₹50 lakh–₹1 crore", "₹1–5 crore", "Above ₹5 crore"] as const;

@@ -160,7 +160,7 @@ describe("SeaCareers Page", () => {
 
     if (parseResult.success) {
       const draft = createCareerEmailDraft(parseResult.data);
-      expect(draft).toContain("mailto:naresh@s4eaindia.com");
+      expect(draft).toContain("mailto:operations@s4eaindia.com");
       expect(draft).toContain(encodeURIComponent("Ar. Priya Nair"));
       expect(draft).toContain(encodeURIComponent("Senior Architect / Project Lead"));
     }
