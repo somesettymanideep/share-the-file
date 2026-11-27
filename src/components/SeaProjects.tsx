@@ -16,7 +16,7 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
     : ["The Art of", "Architecture"];
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Right-to-left clip-path reveal per image, scrubbed to scroll.
+  // Right-to-left clip-path reveal per image, finishing in the lower part of the screen (top 70%).
   useEffect(() => {
     const root = galleryRef.current;
     if (!root) return;
@@ -27,7 +27,7 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
         const img = figure.querySelector("img");
         const tl = gsap.timeline({
           defaults: { ease: "power3.out" },
-          scrollTrigger: { trigger: figure, start: "top 95%", end: "top 45%", scrub: 1 },
+          scrollTrigger: { trigger: figure, start: "top 95%", end: "top 70%", scrub: 1 },
         });
         tl.fromTo(figure, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1 }, 0);
         if (img) tl.fromTo(img, { scale: 1.15 }, { scale: 1, duration: 1 }, 0);
