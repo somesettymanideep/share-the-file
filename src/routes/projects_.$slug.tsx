@@ -20,7 +20,7 @@ export const Route = createFileRoute("/projects_/$slug")({
         { property: "og:title", content: `${label} Projects | SEA` },
         { property: "og:description", content: `Explore SEA's ${label.toLowerCase()} work by Studio for Eclectic Architecture, Vijayawada.` },
         { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-      ], links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }] };
+      ], links: [{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" }] };
     }
     const project = getProject(params.slug);
     const title = project ? `${project.title} — Architecture | SEA` : "Project unavailable | SEA";

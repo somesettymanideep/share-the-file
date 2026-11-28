@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContainerAnimated, ContainerScroll, ContainerStagger, ContainerSticky, GalleryCol, GalleryContainer } from "@/components/ui/animated-gallery";
 import { getProjectsByCategory, SEA_PROJECT_CATEGORIES, SEA_PROJECT_CATEGORY_HEADINGS, SEA_PROJECT_CATEGORY_HEADING_LINES, SEA_PROJECT_CATEGORY_LABELS, type SeaProjectCategory } from "@/lib/projects";
 import SeaProjectShell from "@/components/SeaProjectShell";
+import architectureBanner from "@/assets/infra-three.webp";
 
 const COL_Y_RANGES: [string, string][] = [["-10%", "2%"], ["15%", "5%"], ["-10%", "2%"]];
 
@@ -73,68 +74,89 @@ export default function SeaProjects({ category }: { category?: SeaProjectCategor
     };
   }, [category]);
 
-  return <SeaProjectShell>
+  return <SeaProjectShell heroHeader={category === "architecture"}>
       <main>
-        <section className="sea-projects-hero" aria-labelledby="projects-heading">
-          <ContainerStagger className="sea-projects-intro">
-            <ContainerAnimated>
-              <h1 id="projects-heading" className="sea-projects-heading">
+        {category === "architecture" ? (
+          <section className="sea-projects-hero-banner" aria-labelledby="projects-heading">
+            <div className="sea-projects-hero-banner-media">
+              <img
+                src={architectureBanner}
+                alt="Architecture Portfolio — Biophilic residential balconies"
+                className="sea-projects-hero-banner-img"
+                loading="eager"
+              />
+              <div className="sea-projects-hero-banner-overlay" aria-hidden="true" />
+            </div>
+            <div className="sea-projects-hero-banner-content">
+              <h1 id="projects-heading" className="sea-projects-hero-banner-title">
                 <span className="sea-projects-heading-line">{line1}</span>
                 <span className="sea-projects-heading-line">
                   {line2}<span className="sea-projects-dot">.</span>
                 </span>
               </h1>
-            </ContainerAnimated>
-            {!category && <ContainerAnimated>
-              <p className="sea-projects-lede">
-                Where structure meets imagination — residences, estates, towers and
-                care campuses, each one an eclectic composition of light, material
-                and form, crafted for the people who live with them.
-              </p>
-            </ContainerAnimated>}
-            {!category && <ContainerAnimated>
-              <nav className="sea-projects-filters" aria-label="Project categories">
-                <Link to="/projects" className="sea-projects-filter" aria-current="page">All</Link>
-                {SEA_PROJECT_CATEGORIES.map((item) => (
-                  <Link key={item} to="/projects/$slug" params={{ slug: item }} className="sea-projects-filter">
-                    {SEA_PROJECT_CATEGORY_LABELS[item]}
-                  </Link>
-                ))}
-              </nav>
-            </ContainerAnimated>}
-          </ContainerStagger>
-
-          {projects.length === 0 ? (
-            <div className="sea-projects-empty">
-              <p>No {category ? SEA_PROJECT_CATEGORY_LABELS[category].toLowerCase() : ""} projects published yet.</p>
-              <Link to="/projects/$slug" params={{ slug: "architecture" }} className="sea-projects-empty-link">View all projects</Link>
             </div>
-          ) : (
-          <div ref={galleryRef}><ContainerScroll className="sea-projects-scroll">
-            <ContainerSticky className="sea-projects-sticky">
-              <GalleryContainer className="sea-projects-gallery">
-                {cols.map((col, colIndex) => (
-                  <GalleryCol
-                    key={colIndex}
-                    yRange={COL_Y_RANGES[colIndex] ?? ["0%", "0%"]}
-                    className={colIndex === 1 ? "sea-projects-col-mid" : undefined}
-                  >
-                    {col.map((project) => (
-                      <Link className="sea-projects-tile" key={project.slug} to="/projects/$slug" params={{ slug: project.slug }} aria-label={`View ${project.title}`}><figure>
-                        <img src={project.image} alt={project.alt} loading="lazy" />
-                        <figcaption>
-                          <span>{project.title}</span>
-                        </figcaption>
-                      </figure></Link>
-                    ))}
-                  </GalleryCol>
-                ))}
-              </GalleryContainer>
-            </ContainerSticky>
-          </ContainerScroll></div>
-          )}
-        </section>
+          </section>
+        ) : (
+          <section className="sea-projects-hero" aria-labelledby="projects-heading">
+            <ContainerStagger className="sea-projects-intro">
+              <ContainerAnimated>
+                <h1 id="projects-heading" className="sea-projects-heading">
+                  <span className="sea-projects-heading-line">{line1}</span>
+                  <span className="sea-projects-heading-line">
+                    {line2}<span className="sea-projects-dot">.</span>
+                  </span>
+                </h1>
+              </ContainerAnimated>
+              {!category && <ContainerAnimated>
+                <p className="sea-projects-lede">
+                  Where structure meets imagination — residences, estates, towers and
+                  care campuses, each one an eclectic composition of light, material
+                  and form, crafted for the people who live with them.
+                </p>
+              </ContainerAnimated>}
+              {!category && <ContainerAnimated>
+                <nav className="sea-projects-filters" aria-label="Project categories">
+                  <Link to="/projects" className="sea-projects-filter" aria-current="page">All</Link>
+                  {SEA_PROJECT_CATEGORIES.map((item) => (
+                    <Link key={item} to="/projects/$slug" params={{ slug: item }} className="sea-projects-filter">
+                      {SEA_PROJECT_CATEGORY_LABELS[item]}
+                    </Link>
+                  ))}
+                </nav>
+              </ContainerAnimated>}
+            </ContainerStagger>
+          </section>
+        )}
 
+        {projects.length === 0 ? (
+          <div className="sea-projects-empty">
+            <p>No {category ? SEA_PROJECT_CATEGORY_LABELS[category].toLowerCase() : ""} projects published yet.</p>
+            <Link to="/projects/$slug" params={{ slug: "architecture" }} className="sea-projects-empty-link">View all projects</Link>
+          </div>
+        ) : (
+        <div ref={galleryRef}><ContainerScroll className="sea-projects-scroll">
+          <ContainerSticky className="sea-projects-sticky">
+            <GalleryContainer className="sea-projects-gallery">
+              {cols.map((col, colIndex) => (
+                <GalleryCol
+                  key={colIndex}
+                  yRange={COL_Y_RANGES[colIndex] ?? ["0%", "0%"]}
+                  className={colIndex === 1 ? "sea-projects-col-mid" : undefined}
+                >
+                  {col.map((project) => (
+                    <Link className="sea-projects-tile" key={project.slug} to="/projects/$slug" params={{ slug: project.slug }} aria-label={`View ${project.title}`}><figure>
+                      <img src={project.image} alt={project.alt} loading="lazy" />
+                      <figcaption>
+                        <span>{project.title}</span>
+                      </figcaption>
+                    </figure></Link>
+                  ))}
+                </GalleryCol>
+              ))}
+            </GalleryContainer>
+          </ContainerSticky>
+        </ContainerScroll></div>
+        )}
       </main>
   </SeaProjectShell>;
 }
