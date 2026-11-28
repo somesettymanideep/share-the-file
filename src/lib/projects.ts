@@ -253,6 +253,7 @@ export const SEA_PROJECTS: SeaProject[] = [
     slug: "kishore-jain-duplex",
     title: "Kishore Jain Duplex",
     category: "interior",
+    location: "Vijayawada, AP.",
     description:
       "A duplex residence organised around a planted courtyard, with fluted timber walls, curved cove lighting, marble floors and custom joinery carried through the living rooms, bedrooms, study and kitchen.",
     image: kishoreDuplex1,

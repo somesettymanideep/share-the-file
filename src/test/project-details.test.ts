@@ -255,6 +255,7 @@ describe("Project details", () => {
     expect(project).toMatchObject({
       title: "Kishore Jain Duplex",
       category: "interior",
+      location: "Vijayawada, AP.",
     });
 
     const gallery = getProjectGallery(project!);
