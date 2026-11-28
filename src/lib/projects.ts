@@ -45,6 +45,8 @@ import kishoreDuplex8 from "@/assets/sea-project-kishore-jain-duplex-08.webp";
 import kishoreDuplex9 from "@/assets/sea-project-kishore-jain-duplex-09.webp";
 import sravyaResidence1 from "@/assets/sravya-one.png";
 import sravyaResidence2 from "@/assets/sravya-three.png";
+import mallikarjunReddy1 from "@/assets/malikarjun-reddy-one.png";
+import mallikarjunReddy2 from "@/assets/malikarjun-reddy-two.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -213,6 +215,27 @@ export const SEA_PROJECTS: SeaProject[] = [
     ],
   },
   {
+    slug: "mallikarjun-reddy-residence",
+    title: "Mallikarjun Reddy Residence",
+    category: "architecture",
+    status: "Completed",
+    architectureStyle: "Classical Neoclassical",
+    description:
+      "A stately neoclassical multi-story residence defined by fluted classical pilasters, arched French balconies with bespoke wrought-iron railings, intricate entablature cornices, and layered facade illumination.",
+    image: mallikarjunReddy1,
+    alt: "Mallikarjun Reddy Residence daytime corner perspective showcasing neoclassical facade and wrought iron balconies",
+    gallery: [
+      {
+        image: mallikarjunReddy1,
+        alt: "Mallikarjun Reddy Residence daytime corner perspective showcasing neoclassical facade and wrought iron balconies — view 01",
+      },
+      {
+        image: mallikarjunReddy2,
+        alt: "Mallikarjun Reddy Residence dual daytime and night illumination architectural elevation — view 02",
+      },
+    ],
+  },
+  {
     slug: "naksthravnam",
     title: "Naksthravnam",
     category: "landscape",
@@ -305,6 +328,8 @@ export function getProject(slug: string) {
       (slug === "kms-infra" && project.slug === "kishore-jain-kms-infra") ||
       (slug === "kishore-jain" && project.slug === "kishore-jain-kms-infra") ||
       (slug === "sravya" && project.slug === "sravya-residence") ||
+      (slug === "mallikarjun-reddy" && project.slug === "mallikarjun-reddy-residence") ||
+      (slug === "mallikarjun" && project.slug === "mallikarjun-reddy-residence") ||
       (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }
