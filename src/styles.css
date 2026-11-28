@@ -2018,6 +2018,12 @@ html.lenis, html.lenis body { height: auto; }
 .project-back-overlay { position: absolute; top: calc(var(--sea-header-height) + 22px); left: 5%; z-index: 4; color: var(--project-hero-foreground); text-shadow: var(--project-hero-shadow); }
 .project-details > h1:first-child { padding-top: calc(var(--sea-header-height) + 60px); margin: 0 5% 24px; }
 .project-morph { position: relative; }
+.project-carousel { min-height: 480px; touch-action: pan-y; }
+.project-carousel .project-morph-stage { position: relative; }
+.project-carousel-navigation { display: flex; align-items: center; gap: 12px; }
+.project-carousel-navigation span { min-width: 48px; text-align: center; }
+.project-carousel .project-gallery-dots { gap: 0; flex-wrap: wrap; justify-content: flex-end; }
+.project-carousel .project-gallery-dot { width: 24px; }
 .project-morph-stage { position: sticky; top: 0; height: 100svh; min-height: 480px; overflow: hidden; }
 .project-gallery-fade-stage { position: absolute; inset: 0; width: 100%; height: 100%; background: #0c0d0e; }
 .project-gallery-fade-slide {

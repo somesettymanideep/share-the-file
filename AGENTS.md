@@ -33,6 +33,7 @@ use the editor.
 - Share the Projects header and footer through SeaProjectShell; resolve detail pages from slug-keyed local project data, with explicit empty gallery slots for missing photos so unrelated or duplicated images are never substituted.
 - Select the detail header treatment through SeaProjectShell's heroHeader prop and animate gallery captions in a mount-scoped GSAP context; this keeps the project index unchanged and cleans up slide transitions.
 - Keep the project header transparent until its full gallery section leaves the viewport; avoid entrance transforms on the sticky gallery's ancestors because they disrupt pinning.
+- Choose project gallery interaction from the number of actual photos in ProjectMorphGallery; exclude empty slots so missing assets never affect carousel selection.
 - Centralize confirmed contact locations and enquiry validation in the contact module; the frontend prepares an encoded email draft, never reports an enquiry as sent, and does not invent unknown office or project locations.
 - Use local SVG region paths and a shared capital directory for the Contact map; map and searchable dropdown must select the same one of all 36 regions, with seasonal capitals identified and directions limited to confirmed offices.
 - Scope the Contact layout under .sea-contact with equal-width desktop map/detail columns and mobile picker-map-details order; architectural imagery must not be presented as an office photograph.
