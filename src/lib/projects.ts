@@ -47,6 +47,11 @@ import sravyaResidence1 from "@/assets/sravya-one.png";
 import sravyaResidence2 from "@/assets/sravya-three.png";
 import mallikarjunReddy1 from "@/assets/malikarjun-reddy-one.png";
 import mallikarjunReddy2 from "@/assets/malikarjun-reddy-two.png";
+import mallikarjunInterior1 from "@/assets/malikarjun-reddy-interior.png";
+import mallikarjunInterior2 from "@/assets/malikarjun-reddy-interior-two.png";
+import mallikarjunInterior3 from "@/assets/malikarjun-reddy-interior-three.png";
+import mallikarjunInterior4 from "@/assets/malikarjun-reddy-interior-four.png";
+import mallikarjunInterior5 from "@/assets/malikarjun-reddy-interior-five.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -316,6 +321,39 @@ export const SEA_PROJECTS: SeaProject[] = [
       { image: kishoreDuplex9, alt: "Kishore Jain Duplex entryway, glass-partitioned bathroom and kitchen cabinetry shown together — view 09" },
     ],
   },
+  {
+    slug: "mallikarjun-reddy-interior",
+    title: "Mallikarjun Reddy Residence",
+    category: "interior",
+    status: "Completed",
+    architectureStyle: "Contemporary Luxury",
+    description:
+      "A bespoke luxury residence featuring a nature-inspired living lounge with botanical palm murals, calacatta marble media wall, sage green shaker kitchen cabinetry, a whimsical safari-themed children's bedroom, and an elegant fluted dressing suite.",
+    image: mallikarjunInterior1,
+    alt: "Mallikarjun Reddy Residence living lounge with botanical palm mural, olive velvet sofa, and timber screen divider",
+    gallery: [
+      {
+        image: mallikarjunInterior1,
+        alt: "Mallikarjun Reddy Residence living lounge with botanical palm mural, olive velvet sofa, and timber screen divider — view 01",
+      },
+      {
+        image: mallikarjunInterior2,
+        alt: "Mallikarjun Reddy Residence media wall with calacatta marble backdrop, ambient cove lighting, and sage display joinery — view 02",
+      },
+      {
+        image: mallikarjunInterior3,
+        alt: "Mallikarjun Reddy Residence kitchen and dining with sage green cabinetry, stainless steel appliances, and arched glassware display — view 03",
+      },
+      {
+        image: mallikarjunInterior4,
+        alt: "Mallikarjun Reddy Residence children's bedroom with hot air balloon mural, study desk, and playful safari theme — view 04",
+      },
+      {
+        image: mallikarjunInterior5,
+        alt: "Mallikarjun Reddy Residence walk-in dressing suite with fluted slate-blue drawers, gold hardware, and illuminated arched vanity mirror — view 05",
+      },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
@@ -330,6 +368,9 @@ export function getProject(slug: string) {
       (slug === "sravya" && project.slug === "sravya-residence") ||
       (slug === "mallikarjun-reddy" && project.slug === "mallikarjun-reddy-residence") ||
       (slug === "mallikarjun" && project.slug === "mallikarjun-reddy-residence") ||
+      (slug === "mallikarjun-reddy-interior" && project.slug === "mallikarjun-reddy-interior") ||
+      (slug === "mallikarjun-interior" && project.slug === "mallikarjun-reddy-interior") ||
+      (slug === "mallikarjun-reddy-residence-interior" && project.slug === "mallikarjun-reddy-interior") ||
       (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }

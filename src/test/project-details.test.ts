@@ -210,9 +210,10 @@ describe("Project details", () => {
     expect(getAdjacentProjects("naksthravnam").next?.slug).toBe("laiton-crafts");
     expect(getAdjacentProjects("laiton-crafts").next?.slug).toBe("chandramouli");
     expect(getAdjacentProjects("chandramouli").next?.slug).toBe("kishore-jain-duplex");
-    expect(getAdjacentProjects("kishore-jain-duplex").next?.slug).toBe("rega-prime");
+    expect(getAdjacentProjects("kishore-jain-duplex").next?.slug).toBe("mallikarjun-reddy-interior");
+    expect(getAdjacentProjects("mallikarjun-reddy-interior").next?.slug).toBe("rega-prime");
     expect(getAdjacentProjects("rega-prime").previous?.slug).toBe(
-      "kishore-jain-duplex",
+      "mallikarjun-reddy-interior",
     );
     expect(getAdjacentProjects("sravya-residence").previous?.slug).toBe(
       "kishore-jain-kms-infra",
@@ -328,6 +329,22 @@ describe("Project details", () => {
     expect(new Set(gallery.map((slot) => slot.id)).size).toBe(2);
   });
 
+  it("shows five distinct Mallikarjun Reddy Residence gallery images under interior category", () => {
+    const project = getProject("mallikarjun-reddy-interior");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Mallikarjun Reddy Residence",
+      category: "interior",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(5);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(5);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(5);
+  });
+
   it("returns undefined for an unknown project", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
@@ -339,7 +356,7 @@ describe("Project details", () => {
     expect(archProjects.map((p) => p.slug)).toContain("sravya-residence");
     expect(archProjects.map((p) => p.slug)).toContain("mallikarjun-reddy-residence");
     expect(archProjects.map((p) => p.slug)).not.toContain("sarika-estate");
-    expect(getProjectsByCategory()).toHaveLength(12);
+    expect(getProjectsByCategory()).toHaveLength(13);
   });
 
   it("lists Naksthravnam and Laiton Crafts under landscape, Chandramouli under interior, and returns empty list for BIM", () => {
@@ -349,9 +366,10 @@ describe("Project details", () => {
       "naksthravnam",
       "laiton-crafts",
     ]);
-    expect(getProjectsByCategory("interior")).toHaveLength(2);
+    expect(getProjectsByCategory("interior")).toHaveLength(3);
     expect(getProjectsByCategory("interior")[0]?.slug).toBe("chandramouli");
     expect(getProjectsByCategory("interior")[1]?.slug).toBe("kishore-jain-duplex");
+    expect(getProjectsByCategory("interior")[2]?.slug).toBe("mallikarjun-reddy-interior");
     expect(getProjectsByCategory("bim")).toEqual([]);
   });
 
