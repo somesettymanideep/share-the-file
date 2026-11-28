@@ -199,6 +199,9 @@ describe("Project details", () => {
       "kishore-jain-kms-infra",
     );
     expect(getAdjacentProjects("kishore-jain-kms-infra").next?.slug).toBe(
+      "sravya-residence",
+    );
+    expect(getAdjacentProjects("sravya-residence").next?.slug).toBe(
       "naksthravnam",
     );
     expect(getAdjacentProjects("naksthravnam").next?.slug).toBe("laiton-crafts");
@@ -207,6 +210,12 @@ describe("Project details", () => {
     expect(getAdjacentProjects("kishore-jain-duplex").next?.slug).toBe("rega-prime");
     expect(getAdjacentProjects("rega-prime").previous?.slug).toBe(
       "kishore-jain-duplex",
+    );
+    expect(getAdjacentProjects("sravya-residence").previous?.slug).toBe(
+      "kishore-jain-kms-infra",
+    );
+    expect(getAdjacentProjects("naksthravnam").previous?.slug).toBe(
+      "sravya-residence",
     );
     expect(getAdjacentProjects("chandramouli").previous?.slug).toBe(
       "laiton-crafts",
@@ -281,16 +290,33 @@ describe("Project details", () => {
     expect(new Set(gallery.map((slot) => slot.id)).size).toBe(6);
   });
 
+  it("shows two distinct Sravya Residence gallery images under architecture category", () => {
+    const project = getProject("sravya-residence");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Sravya Residence",
+      category: "architecture",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(2);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(2);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(2);
+  });
+
   it("returns undefined for an unknown project", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
 
-  it("lists all six architecture projects including Chandramouli and excluding Sarika Estate", () => {
+  it("lists all seven architecture projects including Chandramouli and Sravya Residence and excluding Sarika Estate", () => {
     const archProjects = getProjectsByCategory("architecture");
-    expect(archProjects).toHaveLength(6);
+    expect(archProjects).toHaveLength(7);
     expect(archProjects.map((p) => p.slug)).toContain("chandramouli");
+    expect(archProjects.map((p) => p.slug)).toContain("sravya-residence");
     expect(archProjects.map((p) => p.slug)).not.toContain("sarika-estate");
-    expect(getProjectsByCategory()).toHaveLength(10);
+    expect(getProjectsByCategory()).toHaveLength(11);
   });
 
   it("lists Naksthravnam and Laiton Crafts under landscape, Chandramouli under interior, and returns empty list for BIM", () => {

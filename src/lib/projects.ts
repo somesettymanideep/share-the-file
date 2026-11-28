@@ -43,6 +43,8 @@ import kishoreDuplex6 from "@/assets/sea-project-kishore-jain-duplex-06.webp";
 import kishoreDuplex7 from "@/assets/sea-project-kishore-jain-duplex-07.webp";
 import kishoreDuplex8 from "@/assets/sea-project-kishore-jain-duplex-08.webp";
 import kishoreDuplex9 from "@/assets/sea-project-kishore-jain-duplex-09.webp";
+import sravyaResidence1 from "@/assets/sravya-one.png";
+import sravyaResidence2 from "@/assets/sravya-three.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -190,6 +192,27 @@ export const SEA_PROJECTS: SeaProject[] = [
     ],
   },
   {
+    slug: "sravya-residence",
+    title: "Sravya Residence",
+    category: "architecture",
+    status: "Completed",
+    architectureStyle: "Contemporary Modern",
+    description:
+      "A multi-tiered contemporary villa featuring an iconic circular oculus window, warm terracotta brickwork, perforated brick jali screens, and lush cascading terrace planters.",
+    image: sravyaResidence1,
+    alt: "Sravya Residence front elevation with terracotta brick facade, circular oculus window, and landscaped balconies",
+    gallery: [
+      {
+        image: sravyaResidence1,
+        alt: "Sravya Residence front elevation with terracotta brick facade, circular oculus window, and landscaped balconies — view 01",
+      },
+      {
+        image: sravyaResidence2,
+        alt: "Sravya Residence corner perspective with perforated brick jali screen and rooftop spiral staircase — view 02",
+      },
+    ],
+  },
+  {
     slug: "naksthravnam",
     title: "Naksthravnam",
     category: "landscape",
@@ -281,6 +304,7 @@ export function getProject(slug: string) {
       (slug === "lation-crafts" && project.slug === "laiton-crafts") ||
       (slug === "kms-infra" && project.slug === "kishore-jain-kms-infra") ||
       (slug === "kishore-jain" && project.slug === "kishore-jain-kms-infra") ||
+      (slug === "sravya" && project.slug === "sravya-residence") ||
       (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }
