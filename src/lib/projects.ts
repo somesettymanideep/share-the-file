@@ -34,6 +34,15 @@ import laitonCrafts2 from "@/assets/sea-project-laiton-crafts-02.jpg";
 import laitonCrafts3 from "@/assets/sea-project-laiton-crafts-03.jpg";
 import laitonCrafts4 from "@/assets/sea-project-laiton-crafts-04.jpg";
 import laitonCrafts5 from "@/assets/sea-project-laiton-crafts-05.jpg";
+import kishoreDuplex1 from "@/assets/sea-project-kishore-jain-duplex-01.webp";
+import kishoreDuplex2 from "@/assets/sea-project-kishore-jain-duplex-02.webp";
+import kishoreDuplex3 from "@/assets/sea-project-kishore-jain-duplex-03.webp";
+import kishoreDuplex4 from "@/assets/sea-project-kishore-jain-duplex-04.webp";
+import kishoreDuplex5 from "@/assets/sea-project-kishore-jain-duplex-05.webp";
+import kishoreDuplex6 from "@/assets/sea-project-kishore-jain-duplex-06.webp";
+import kishoreDuplex7 from "@/assets/sea-project-kishore-jain-duplex-07.webp";
+import kishoreDuplex8 from "@/assets/sea-project-kishore-jain-duplex-08.webp";
+import kishoreDuplex9 from "@/assets/sea-project-kishore-jain-duplex-09.webp";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -238,6 +247,26 @@ export const SEA_PROJECTS: SeaProject[] = [
       { image: chandramouli4, alt: "Chandramouli kitchen with fluted splashback and built-in appliances — view 04" },
       { image: chandramouli5, alt: "Chandramouli private home cinema with stepped luxury recliner seating and acoustic lighting — view 05" },
       { image: chandramouli6, alt: "Chandramouli kitchen island with bookmatched marble breakfast bar and integrated ovens — view 06" },
+    ],
+  },
+  {
+    slug: "kishore-jain-duplex",
+    title: "Kishore Jain Duplex",
+    category: "interior",
+    description:
+      "A duplex residence organised around a planted courtyard, with fluted timber walls, curved cove lighting, marble floors and custom joinery carried through the living rooms, bedrooms, study and kitchen.",
+    image: kishoreDuplex1,
+    alt: "Kishore Jain Duplex planted courtyard with stone paving, built-in bench seating and a low water basin",
+    gallery: [
+      { image: kishoreDuplex1, alt: "Kishore Jain Duplex planted courtyard with stone paving, built-in bench seating and a low water basin — view 01" },
+      { image: kishoreDuplex2, alt: "Kishore Jain Duplex master bedroom with textured acoustic wall panels, platform bed and arched bedside lamps — view 02" },
+      { image: kishoreDuplex3, alt: "Kishore Jain Duplex living room media wall in fluted timber with curved LED backlighting and floating console — view 03" },
+      { image: kishoreDuplex4, alt: "Kishore Jain Duplex bedroom in dusty pink with scalloped headboard, arched wardrobes and corner study desk — view 04" },
+      { image: kishoreDuplex5, alt: "Kishore Jain Duplex bedroom with diamond-tufted headboard, fluted timber panels and sheer curtained daylight — view 05" },
+      { image: kishoreDuplex6, alt: "Kishore Jain Duplex living room with ceiling skylight, curved timber media unit and low modular sectional — view 06" },
+      { image: kishoreDuplex7, alt: "Kishore Jain Duplex lounge with marble floor, timber panelling, platform sectional and round layered coffee table — view 07" },
+      { image: kishoreDuplex8, alt: "Kishore Jain Duplex entrance foyer with timber-slat ceiling, marble floor and built-in bench planter — view 08" },
+      { image: kishoreDuplex9, alt: "Kishore Jain Duplex entryway, glass-partitioned bathroom and kitchen cabinetry shown together — view 09" },
     ],
   },
 ];
