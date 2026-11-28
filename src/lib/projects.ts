@@ -52,6 +52,9 @@ import mallikarjunInterior2 from "@/assets/malikarjun-reddy-interior-two.png";
 import mallikarjunInterior3 from "@/assets/malikarjun-reddy-interior-three.png";
 import mallikarjunInterior4 from "@/assets/malikarjun-reddy-interior-four.png";
 import mallikarjunInterior5 from "@/assets/malikarjun-reddy-interior-five.png";
+import mallikarjunLandscape1 from "@/assets/malikarjun-reddy-landscape-one.png";
+import mallikarjunLandscape2 from "@/assets/malikarjun-reddy-landscape-two.png";
+import mallikarjunLandscape3 from "@/assets/malikarjun-reddy-landscape-three.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -279,6 +282,31 @@ export const SEA_PROJECTS: SeaProject[] = [
     ],
   },
   {
+    slug: "mallikarjun-reddy-landscape",
+    title: "Mallikarjun Reddy Residence",
+    category: "landscape",
+    status: "Completed",
+    architectureStyle: "Classical Neoclassical",
+    description:
+      "An open-air neoclassical courtyard landscape featuring warm illuminated wall alcoves with a central marble sculpture, vibrant flowerbeds, circular stone mosaic paving, an alfresco garden bar, and a sunlit cinema pavilion.",
+    image: mallikarjunLandscape1,
+    alt: "Mallikarjun Reddy Residence courtyard landscape with illuminated neoclassical arches, marble sculpture, and mosaic stone terrace",
+    gallery: [
+      {
+        image: mallikarjunLandscape1,
+        alt: "Mallikarjun Reddy Residence courtyard landscape with illuminated neoclassical arches, marble sculpture, and mosaic stone terrace — view 01",
+      },
+      {
+        image: mallikarjunLandscape2,
+        alt: "Mallikarjun Reddy Residence outdoor courtyard bar with green marble counter, arched wood vitrines, and mosaic flooring — view 02",
+      },
+      {
+        image: mallikarjunLandscape3,
+        alt: "Mallikarjun Reddy Residence cinema pavilion with grid-iron glass facade overlooking the landscaped courtyard — view 03",
+      },
+    ],
+  },
+  {
     slug: "chandramouli",
     title: "Chandramouli",
     category: "interior",
@@ -371,6 +399,9 @@ export function getProject(slug: string) {
       (slug === "mallikarjun-reddy-interior" && project.slug === "mallikarjun-reddy-interior") ||
       (slug === "mallikarjun-interior" && project.slug === "mallikarjun-reddy-interior") ||
       (slug === "mallikarjun-reddy-residence-interior" && project.slug === "mallikarjun-reddy-interior") ||
+      (slug === "mallikarjun-reddy-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
+      (slug === "mallikarjun-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
+      (slug === "mallikarjun-reddy-residence-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
       (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }

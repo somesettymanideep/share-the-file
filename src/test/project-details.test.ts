@@ -208,7 +208,8 @@ describe("Project details", () => {
       "naksthravnam",
     );
     expect(getAdjacentProjects("naksthravnam").next?.slug).toBe("laiton-crafts");
-    expect(getAdjacentProjects("laiton-crafts").next?.slug).toBe("chandramouli");
+    expect(getAdjacentProjects("laiton-crafts").next?.slug).toBe("mallikarjun-reddy-landscape");
+    expect(getAdjacentProjects("mallikarjun-reddy-landscape").next?.slug).toBe("chandramouli");
     expect(getAdjacentProjects("chandramouli").next?.slug).toBe("kishore-jain-duplex");
     expect(getAdjacentProjects("kishore-jain-duplex").next?.slug).toBe("mallikarjun-reddy-interior");
     expect(getAdjacentProjects("mallikarjun-reddy-interior").next?.slug).toBe("rega-prime");
@@ -225,6 +226,9 @@ describe("Project details", () => {
       "mallikarjun-reddy-residence",
     );
     expect(getAdjacentProjects("chandramouli").previous?.slug).toBe(
+      "mallikarjun-reddy-landscape",
+    );
+    expect(getAdjacentProjects("mallikarjun-reddy-landscape").previous?.slug).toBe(
       "laiton-crafts",
     );
     expect(getAdjacentProjects("laiton-crafts").previous?.slug).toBe(
@@ -345,6 +349,22 @@ describe("Project details", () => {
     expect(new Set(gallery.map((slot) => slot.id)).size).toBe(5);
   });
 
+  it("shows three distinct Mallikarjun Reddy Residence gallery images under landscape category", () => {
+    const project = getProject("mallikarjun-reddy-landscape");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Mallikarjun Reddy Residence",
+      category: "landscape",
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(3);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(3);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
+  });
+
   it("returns undefined for an unknown project", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
@@ -356,15 +376,16 @@ describe("Project details", () => {
     expect(archProjects.map((p) => p.slug)).toContain("sravya-residence");
     expect(archProjects.map((p) => p.slug)).toContain("mallikarjun-reddy-residence");
     expect(archProjects.map((p) => p.slug)).not.toContain("sarika-estate");
-    expect(getProjectsByCategory()).toHaveLength(13);
+    expect(getProjectsByCategory()).toHaveLength(14);
   });
 
   it("lists Naksthravnam and Laiton Crafts under landscape, Chandramouli under interior, and returns empty list for BIM", () => {
     const landscapeProjects = getProjectsByCategory("landscape");
-    expect(landscapeProjects).toHaveLength(2);
+    expect(landscapeProjects).toHaveLength(3);
     expect(landscapeProjects.map((p) => p.slug)).toEqual([
       "naksthravnam",
       "laiton-crafts",
+      "mallikarjun-reddy-landscape",
     ]);
     expect(getProjectsByCategory("interior")).toHaveLength(3);
     expect(getProjectsByCategory("interior")[0]?.slug).toBe("chandramouli");
