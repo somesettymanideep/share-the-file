@@ -212,8 +212,12 @@ describe("Project details", () => {
     expect(getAdjacentProjects("mallikarjun-reddy-landscape").next?.slug).toBe("chandramouli");
     expect(getAdjacentProjects("chandramouli").next?.slug).toBe("kishore-jain-duplex");
     expect(getAdjacentProjects("kishore-jain-duplex").next?.slug).toBe("mallikarjun-reddy-interior");
-    expect(getAdjacentProjects("mallikarjun-reddy-interior").next?.slug).toBe("rega-prime");
+    expect(getAdjacentProjects("mallikarjun-reddy-interior").next?.slug).toBe("matysa-villa");
+    expect(getAdjacentProjects("matysa-villa").next?.slug).toBe("rega-prime");
     expect(getAdjacentProjects("rega-prime").previous?.slug).toBe(
+      "matysa-villa",
+    );
+    expect(getAdjacentProjects("matysa-villa").previous?.slug).toBe(
       "mallikarjun-reddy-interior",
     );
     expect(getAdjacentProjects("sravya-residence").previous?.slug).toBe(
@@ -365,32 +369,52 @@ describe("Project details", () => {
     expect(new Set(gallery.map((slot) => slot.id)).size).toBe(3);
   });
 
+  it("shows five distinct Matysa Villa gallery images spanning architecture, landscape and interior categories", () => {
+    const project = getProject("matysa-villa");
+    expect(project).toBeDefined();
+    expect(project).toMatchObject({
+      title: "Matysa Villa",
+      category: "architecture",
+      categories: ["architecture", "landscape", "interior"],
+    });
+
+    const gallery = getProjectGallery(project!);
+    expect(gallery).toHaveLength(5);
+    expect(gallery[0]?.image).toBe(project?.image);
+    expect(gallery.every((slot) => slot.image !== null)).toBe(true);
+    expect(new Set(gallery.map((slot) => slot.image)).size).toBe(5);
+    expect(new Set(gallery.map((slot) => slot.id)).size).toBe(5);
+  });
+
   it("returns undefined for an unknown project", () => {
     expect(getProject("unknown")).toBeUndefined();
   });
 
-  it("lists all eight architecture projects including Chandramouli, Sravya Residence and Mallikarjun Reddy Residence and excluding Sarika Estate", () => {
+  it("lists all nine architecture projects including Chandramouli, Sravya Residence, Mallikarjun Reddy Residence and Matysa Villa and excluding Sarika Estate", () => {
     const archProjects = getProjectsByCategory("architecture");
-    expect(archProjects).toHaveLength(8);
+    expect(archProjects).toHaveLength(9);
     expect(archProjects.map((p) => p.slug)).toContain("chandramouli");
     expect(archProjects.map((p) => p.slug)).toContain("sravya-residence");
     expect(archProjects.map((p) => p.slug)).toContain("mallikarjun-reddy-residence");
+    expect(archProjects.map((p) => p.slug)).toContain("matysa-villa");
     expect(archProjects.map((p) => p.slug)).not.toContain("sarika-estate");
-    expect(getProjectsByCategory()).toHaveLength(14);
+    expect(getProjectsByCategory()).toHaveLength(15);
   });
 
   it("lists Naksthravnam and Laiton Crafts under landscape, Chandramouli under interior, and returns empty list for BIM", () => {
     const landscapeProjects = getProjectsByCategory("landscape");
-    expect(landscapeProjects).toHaveLength(3);
+    expect(landscapeProjects).toHaveLength(4);
     expect(landscapeProjects.map((p) => p.slug)).toEqual([
       "naksthravnam",
       "laiton-crafts",
       "mallikarjun-reddy-landscape",
+      "matysa-villa",
     ]);
-    expect(getProjectsByCategory("interior")).toHaveLength(3);
+    expect(getProjectsByCategory("interior")).toHaveLength(4);
     expect(getProjectsByCategory("interior")[0]?.slug).toBe("chandramouli");
     expect(getProjectsByCategory("interior")[1]?.slug).toBe("kishore-jain-duplex");
     expect(getProjectsByCategory("interior")[2]?.slug).toBe("mallikarjun-reddy-interior");
+    expect(getProjectsByCategory("interior")[3]?.slug).toBe("matysa-villa");
     expect(getProjectsByCategory("bim")).toEqual([]);
   });
 

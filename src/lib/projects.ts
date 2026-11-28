@@ -55,6 +55,11 @@ import mallikarjunInterior5 from "@/assets/malikarjun-reddy-interior-five.png";
 import mallikarjunLandscape1 from "@/assets/malikarjun-reddy-landscape-one.png";
 import mallikarjunLandscape2 from "@/assets/malikarjun-reddy-landscape-two.png";
 import mallikarjunLandscape3 from "@/assets/malikarjun-reddy-landscape-three.png";
+import matysaVilla1 from "@/assets/matsya-villa-one.png";
+import matysaVilla2 from "@/assets/matsya-villa-two.png";
+import matysaVilla3 from "@/assets/matysa-villa-four.png";
+import matysaVilla4 from "@/assets/matysa-villa-eight.png";
+import matysaVilla5 from "@/assets/matysa-villa-seven.png";
 
 export const SEA_PROJECT_CATEGORIES = ["architecture", "interior", "landscape", "bim"] as const;
 export type SeaProjectCategory = (typeof SEA_PROJECT_CATEGORIES)[number];
@@ -382,6 +387,40 @@ export const SEA_PROJECTS: SeaProject[] = [
       },
     ],
   },
+  {
+    slug: "matysa-villa",
+    title: "Matysa Villa",
+    category: "architecture",
+    categories: ["architecture", "landscape", "interior"],
+    status: "Completed",
+    architectureStyle: "Biophilic Tropical Modern",
+    description:
+      "A biophilic luxury sanctuary integrating brick jali facades, double-height lightwells with sculptural floating staircases, undulating organic cove lighting, an open-air tropical courtyard shower, and bespoke timber media lounges.",
+    image: matysaVilla1,
+    alt: "Matysa Villa double-height atrium with sculptural floating timber staircase, organic wave lighting, and perforated brick jali screen",
+    gallery: [
+      {
+        image: matysaVilla1,
+        alt: "Matysa Villa double-height atrium with sculptural floating timber staircase, organic wave lighting, and perforated brick jali screen — view 01",
+      },
+      {
+        image: matysaVilla2,
+        alt: "Matysa Villa living lounge with perforated brick jali casting morning sun, organic ceiling cove, and warm timber wall joinery — view 02",
+      },
+      {
+        image: matysaVilla3,
+        alt: "Matysa Villa double-height dining room with marble table, fluid illuminated ribbon wall, and full-height glass garden view — view 03",
+      },
+      {
+        image: matysaVilla4,
+        alt: "Matysa Villa open-air tropical courtyard shower pavilion with timber pergola, glass enclosure, and natural stone boulders — view 04",
+      },
+      {
+        image: matysaVilla5,
+        alt: "Matysa Villa entertainment lounge with fluted dark walnut slats, illuminated marble console, and bay window daybed — view 05",
+      },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
@@ -402,6 +441,10 @@ export function getProject(slug: string) {
       (slug === "mallikarjun-reddy-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
       (slug === "mallikarjun-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
       (slug === "mallikarjun-reddy-residence-landscape" && project.slug === "mallikarjun-reddy-landscape") ||
+      (slug === "matysa-villa" && project.slug === "matysa-villa") ||
+      (slug === "matysa" && project.slug === "matysa-villa") ||
+      (slug === "matsya-villa" && project.slug === "matysa-villa") ||
+      (slug === "matsya" && project.slug === "matysa-villa") ||
       (slug === "sindhura-hospital" && project.slug === "krishna-sindhura-hospital"),
   );
 }
